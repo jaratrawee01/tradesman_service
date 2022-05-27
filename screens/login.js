@@ -12,18 +12,19 @@ class Login extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-                <Text style={styles.text}>App Service</Text>
+            <Text style={styles.text}>App Service</Text>
           <View style={styles.marginTop}>
             <TextInput  style={styles.input}
                 placeholder={'Name'}
+
             />
             <TextInput style={styles.input}
-                placeholder={'Password'}
+                placeholder={'Passwrod'}
             />
             </View>
 
             <View style={styles.icons}>
-            <AntDesign name="checkcircleo" size={20} color="rgba(159, 63, 233, 1)" />
+            <AntDesign name="checkcircleo" size={20}color="rgba(159, 63, 233, 1)" />
             <Text style={styles.text1}><Text style={styles.text2}>{'Remember me'}</Text>                   {'Forgot Password?'}</Text>
             </View>
 
