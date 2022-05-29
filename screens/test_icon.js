@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,SafeAreaView,TextInput,TouchableOpacity,Image} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign } from '@expo/vector-icons';
 
 export default function App() {
   return (
+    
     <View style={styles.container}>
       <LinearGradient
         // Background Linear Gradient
@@ -17,8 +18,18 @@ export default function App() {
         style={styles.button}>
         <Text style={styles.text}>Sign in with Facebook</Text>
       </LinearGradient>
-      <AntDesign name="checkcircleo"  style={styles.imageStyle} size={20}color="rgba(159, 63, 233, 1)" />    
+ 
+
+      <View style={styles.sectionStyle}>
+            <AntDesign name="checkcircleo"  style={styles.imageStyle} size={20}color="rgba(159, 63, 233, 1)" />    
+          <TextInput
+            style={{flex: 1}}
+            placeholder="Enter Your Name Here"
+            underlineColorAndroid="transparent"
+          />
+      </View>
     </View>
+
   );
 }
 
