@@ -1,14 +1,14 @@
+import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,View} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import  Login  from './screens/login';
 import  Test_icon  from './screens/test_icon';
 
 export default function App() {
   return (
     <View>
-   {/*  <Login /> */}
-   <Test_icon />
+{/*     <Login />    */}
+    <Test_icon />  
     {/* ส่วนหัว  */}
   { <StatusBar style="auto" /> }
    </View>

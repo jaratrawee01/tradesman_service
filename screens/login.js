@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,Text,TextInput, View,TouchableOpacity} from 'react-native';
-import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 
 class Login extends Component {

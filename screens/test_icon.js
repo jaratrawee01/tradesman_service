@@ -1,55 +1,51 @@
-import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,Text,TextInput, View,TouchableOpacity,Image} from 'react-native';
-import { Button } from 'react-native-elements';
+import * as React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign } from '@expo/vector-icons';
 
-class Login extends Component {
-
-  constructor(){
-    super();
-  }
-
-  render() {
-    return (
-      <SafeAreaView style={{flex: 1}}>
-      <View style={styles.container}>
-        <View style={styles.sectionStyle}>
-            <AntDesign name="checkcircleo"  style={styles.imageStyle} size={20}color="rgba(159, 63, 233, 1)" />    
-          <TextInput
-            style={{flex: 1}}
-            placeholder="Enter Your Name Here"
-            underlineColorAndroid="transparent"
-          />
-        </View>
-
-        <View style={styles.sectionStyle}>
-          <Image
-            source={{
-              uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/input_phone.png',
-            }}
-            style={styles.imageStyle}
-          />
-          <TextInput
-            style={{flex: 1}}
-            placeholder="Enter Your Mobile No Here"
-            underlineColorAndroid="transparent"
-          />
-        </View>
-      </View>
-    </SafeAreaView>
-    );
-  }
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['#000000', '#FFFF00', 'red']}
+        style={styles.background}
+      />
+      <LinearGradient
+        // Button Linear Gradient
+        colors={['#4c669f', '#3b5998', 'red']}
+        style={styles.button}>
+        <Text style={styles.text}>Sign in with Facebook</Text>
+      </LinearGradient>
+      <AntDesign name="checkcircleo"  style={styles.imageStyle} size={20}color="rgba(159, 63, 233, 1)" />    
+    </View>
+  );
 }
-
 
 const styles = StyleSheet.create({
   container: {
-    marginTop:150,
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
+    justifyContent: 'center',
+    backgroundColor: 'orange',
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 500,
+  },
+  button: {
+    marginTop: 150,
+    padding: 15,
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  text: {
+    backgroundColor: 'transparent',
+    fontSize: 15,
+ /*    color: '#fff', */
   },
   sectionStyle: {
     flexDirection: 'row',
@@ -62,18 +58,4 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 10,
   },
-  imageStyle: {
-  paddingLeft:5,
-  paddingRight:20,
-  paddingTop:5,
-  paddingBottom:10,
-    margin: 5,
-    height: 25,
-    width: 25,
-    resizeMode: 'stretch',
-    alignItems: 'center',
-  },
 });
-
-
-export default Login;
