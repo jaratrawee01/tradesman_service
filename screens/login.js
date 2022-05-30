@@ -23,9 +23,9 @@ class Login extends Component {
 
         <View style={styles.marginTop}>
             <View style={styles.input}>
-            <FontAwesome name="user-o" size={24} color="#00c2fe" />   
+            <FontAwesome name="user" size={24} color="#00c2fe" />   
                 <TextInput 
-                    style={{flex: 1, paddingLeft: 10}}
+                    style={{flex: 1, paddingLeft: 12}}
                     placeholder="Name"
                     underlineColorAndroid="transparent"
                 />
@@ -34,7 +34,7 @@ class Login extends Component {
             <View style={styles.input}>
             <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />   
                 <TextInput
-                    style={{flex: 1, paddingLeft: 10}}
+                    style={{flex: 1, paddingLeft: 12}}
                     placeholder="Name"
                     underlineColorAndroid="transparent"
                 />
