@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     shadowColor: '#000',
-    shadowOpacity: 0.48,
-    shadowRadius: 11.95,
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
     elevation: 4,
     backgroundColor: '#fff',
     marginTop: 20,
@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     shadowColor: '#000',
-    shadowOpacity: 0.48,
-    shadowRadius: 11.95,
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
     elevation: 4,
     backgroundColor: '#fff',
     marginLeft: 200 ,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   image: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '30%' ,
+    marginTop: '10%' ,
   },
 
 });
