@@ -12,7 +12,7 @@ class Login extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
 
         <View style={styles.image}>
           <Image 
@@ -70,7 +70,10 @@ class Login extends Component {
 
 
 const styles = StyleSheet.create({
-
+  container: {
+    marginTop: '20%',
+    height: '100%'
+  },
   bigBlue: {
     color: 'blue',
     fontWeight: 'bold',
@@ -157,6 +160,10 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     marginTop: '10%' ,
   },
+  scrollView: {
+    marginHorizontal: 20,
+    height: '100%',
+  }
 
 });
 
