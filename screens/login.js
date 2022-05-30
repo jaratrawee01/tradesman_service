@@ -71,7 +71,6 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: '20%',
     height: '100%'
   },
   bigBlue: {
@@ -158,10 +157,10 @@ const styles = StyleSheet.create({
   image: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '10%' ,
+    marginTop: '20%' ,
   },
   scrollView: {
-    marginHorizontal: 20,
+    marginHorizontal: 5,
     height: '100%',
   }
 
