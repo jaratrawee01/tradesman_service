@@ -7,8 +7,8 @@ import  Test_icon  from './screens/test_icon';
 export default function App() {
   return (
     <View>
-{/*     <Login />    */}
-    <Test_icon />  
+  <Login />
+  {/*   <Test_icon />   */}
     {/* ส่วนหัว  */}
   { <StatusBar style="auto" /> }
    </View>
