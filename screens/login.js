@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,Text,TextInput,Image, View,TouchableOpacity} from 'react-native';
+import { SafeAreaView,StyleSheet,Text,TextInput,Image, View,TouchableOpacity, ScrollView} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -12,6 +12,7 @@ class Login extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
+        <ScrollView>
 
         <View style={styles.image}>
           <Image 
@@ -60,7 +61,7 @@ class Login extends Component {
           </View>
 
 
-
+          </ScrollView>
       </SafeAreaView>
     );
   }
@@ -69,9 +70,7 @@ class Login extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#d1d7eb'
-  },
+
   bigBlue: {
     color: 'blue',
     fontWeight: 'bold',
@@ -156,7 +155,7 @@ const styles = StyleSheet.create({
   image: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: 120 ,
+    marginTop: '30%' ,
   },
 
 });
