@@ -4,33 +4,17 @@ import { StyleSheet,View} from 'react-native';
 import  Login  from './screens/login';
 import  Test_icon  from './screens/test_icon';
 import  Nave  from './screens/navber';
+import  Nave2  from './screens/navbr2';
 
 export default function App() {
   return (
     <View>
  {/*  <Login /> */}
   {/*   <Test_icon />   */}
-     <Nave />   
+   {/*   <Nave />    */}
+         <Nave2 />   
     {/* ส่วนหัว  */}
   { <StatusBar style="auto" /> }
    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  preloader: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    alignItems:'center',
-    justifyContent: 'center',
-  }
-});

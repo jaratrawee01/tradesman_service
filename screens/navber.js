@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator style={{ marginTo: '500'}}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
@@ -32,8 +32,10 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
+     <NavigationContainer>
       <MyTabs />
-    </NavigationContainer>
+    </NavigationContainer> 
+
   );
 }
+
