@@ -3,17 +3,17 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet,View,Dimensions ,SafeAreaView} from 'react-native';
 import  Login  from './screens/login';
 import  Test_icon  from './screens/test_icon';
-import  Nave  from './screens/navber';
-import  Nave2  from './screens/navbr2';
+import Navbar from './screens/navbar';
+
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
 
- {/*  <Login /> */}
+  <Login />
   {/*   <Test_icon />   */}
    {/*   <Nave />    */}
-         <Nave2 />   
+         <Navbar/>   
 
    </SafeAreaView>
   );

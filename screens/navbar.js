@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+
 
 export default function App() {
     
     return (
 
         <SafeAreaView style={styles.container}>
-           <View style={styles.box}>
-           <Text>HO555566777888</Text>
-           </View>
             <View style={styles.footer}>
                 <View style={styles.navbar}>
 
