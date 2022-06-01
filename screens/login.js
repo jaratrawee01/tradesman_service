@@ -12,8 +12,6 @@ class Login extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollView}>
-
         <View style={styles.image}>
           <Image 
             source={{ uri: 'https://www.opexengine.com/wp-content/uploads/2018/11/Professional-Services-for-Private-SaaS-Vendors.png' }}
@@ -60,8 +58,6 @@ class Login extends Component {
           <AntDesign name="google" size={35} color="#00c2fe" />
           </View>
 
-
-          </ScrollView>
       </SafeAreaView>
     );
   }
