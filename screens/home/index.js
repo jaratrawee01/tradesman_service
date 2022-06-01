@@ -9,12 +9,13 @@ import Navbar from '../navbar';
 export default function App() {
   return (
     <View>
+      
+     <Login /> 
 
-        <Login /> 
+   
   {/*   <Test_icon />   */}
    {/*   <Nave />    */}
-         <Navbar/>   
-
+      
    </View>
 
   );

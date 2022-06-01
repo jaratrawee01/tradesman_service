@@ -5,46 +5,37 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 export default function App() {
-    
+
     return (
+        <View style={styles.footer}>
+            <View style={styles.navbar}>
 
-        <SafeAreaView style={styles.container}>
-            <View style={styles.footer}>
-                <View style={styles.navbar}>
-
-                    <View style={styles.textbox1}>
-                        <MaterialCommunityIcons name="home" style={styles.iconColor} />
-                        <Text style={styles.textIcon}>Home</Text>
-                    </View>
-
-                    <View style={styles.textbox1}>
-                        <MaterialCommunityIcons name="shopping" style={styles.iconColor} />
-                        <Text style={styles.textIcon}>Shop</Text>
-                    </View>
-
-                    <View style={styles.textbox1}>
-                        <MaterialCommunityIcons name="message-processing" style={styles.iconColor} />
-                        <Text style={styles.textIcon}>Message</Text>
-                    </View>
-
-                    <View style={styles.textbox1}>
-                        <FontAwesome name="user" style={styles.iconColor} />
-                        <Text style={styles.textIcon}>Profile</Text>
-                    </View>
-                    
+                <View style={styles.textbox1}>
+                    <MaterialCommunityIcons name="home" style={styles.iconColor} />
+                    <Text style={styles.textIcon}>Home</Text>
                 </View>
-            </View>
-        </SafeAreaView>
 
+                <View style={styles.textbox1}>
+                    <MaterialCommunityIcons name="shopping" style={styles.iconColor} />
+                    <Text style={styles.textIcon}>Shop</Text>
+                </View>
+
+                <View style={styles.textbox1}>
+                    <MaterialCommunityIcons name="message-processing" style={styles.iconColor} />
+                    <Text style={styles.textIcon}>Message</Text>
+                </View>
+
+                <View style={styles.textbox1}>
+                    <FontAwesome name="user" style={styles.iconColor} />
+                    <Text style={styles.textIcon}>Profile</Text>
+                </View>
+
+            </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-    },
     box: {
         width: '100%',
         height: '100%',
@@ -54,6 +45,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'skyblue',
     },
     navbar: {
+        backgroundColor: '#FFF',
         width: '100%',
         height: 70,
         flexDirection: 'row',
@@ -78,10 +70,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     textIcon: {
-      fontSize: 16,
+        fontSize: 16,
     },
     iconColor: {
-        fontSize: 34, 
+        fontSize: 34,
         color: '#01C1FF',
     },
 
