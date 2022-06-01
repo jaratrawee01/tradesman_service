@@ -4,10 +4,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign } from '@expo/vector-icons';
 
 export default function App() {
+    
     return (
 
         <SafeAreaView style={styles.container}>
-            <Text style={styles.box}>HOL</Text>
+           <View style={styles.box}>
+           <Text>HO555566777888</Text>
+           </View>
             <View style={styles.footer}>
                 <View style={styles.navbar}>
                     <Text style={styles.textbox1}>wwww</Text>
@@ -26,10 +29,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         position: 'relative',
-        backgroundColor: 'orange',
     },
     box: {
         width: '100%',
+        height: '100%',
         height: 80,
         flex: 1,
         justifyContent: 'flex-start',
