@@ -9,11 +9,13 @@ import Navbar from './screens/navbar';
 export default function App() {
   return (
     <SafeAreaView style={styles.container} >
-      <ScrollView>
+    
         <View style={styles.box}>
+        <ScrollView  style={styles.scrollView}>
           <Index />
+          </ScrollView>
         </View>
-      </ScrollView>
+
       <Navbar />
     </SafeAreaView>
   );
@@ -24,6 +26,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
+  },
+  scrollView: {
+    backgroundColor: 'pink',
+    marginHorizontal: 0,
+    height: '100%',
   },
 
 
