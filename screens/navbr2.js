@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { AntDesign } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function App() {
     
@@ -13,10 +15,27 @@ export default function App() {
            </View>
             <View style={styles.footer}>
                 <View style={styles.navbar}>
-                    <Text style={styles.textbox1}>wwww</Text>
-                    <Text style={styles.textbox2}>asd55555a</Text>
-                    <Text style={styles.textbox1}>asd55555a</Text>
-                    <Text style={styles.textbox1}>5555</Text>
+
+                    <Text style={styles.textbox1}>
+                        <MaterialCommunityIcons name="home" size={35} color="#01C1FF" />
+                        <Text>Home</Text>
+                    </Text>
+
+                    <Text style={styles.textbox1}>
+                        <MaterialCommunityIcons name="shopping" size={35} color="#01C1FF" />
+                        <Text style={styles.text}>Shop</Text>
+                    </Text>
+
+                    <Text style={styles.textbox1}>
+                        <MaterialCommunityIcons name="message-processing" size={35} color="#01C1FF" />
+                        <Text>Chat</Text>
+                    </Text>
+
+                    <Text style={styles.textbox1}>
+                        <FontAwesome name="user" size={35} color="#01C1FF" />
+                        <Text>Profile</Text>
+                    </Text>
+                    
                 </View>
             </View>
         </SafeAreaView>
@@ -40,24 +59,35 @@ const styles = StyleSheet.create({
     },
     navbar: {
         width: '100%',
-        height: 80,
-        backgroundColor: 'red',
-        flexDirection: 'row'
+        height: 90,
+        flexDirection: 'row',
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        elevation: 2,
+
     },
     footer: {
         flex: 1,
         justifyContent: 'flex-end',
     },
     textbox1: {
+        position: 'relative',
+        marginTop: 15,
+        marginLeft: 30,
         margin: 10,
-        width: 50, height: 50, backgroundColor: 'powderblue',
+        width: 50, 
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 60, 
     },
-    textbox2: {
-        margin: 10,
-        width: 50, height: 50, backgroundColor: 'skyblue',
+    text: {
+         flex: 1,
+         justifyContent: 'center',
+         alignItems: 'center',
+         position: 'absolute',
+         marginLeft: 50,
     },
-    textbox3: {
-        margin: 10,
-        width: 50, height: 50, backgroundColor: 'powderblue',
-    }
+
 });
