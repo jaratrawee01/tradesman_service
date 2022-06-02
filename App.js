@@ -27,11 +27,4 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'relative',
   },
-  scrollView: {
-    backgroundColor: 'pink',
-    marginHorizontal: 0,
-    height: '100%',
-  },
-
-
 });

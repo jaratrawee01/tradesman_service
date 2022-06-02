@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,Text,TextInput,Image, View,TouchableOpacity, ScrollView} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
-class Login extends Component {
+class Registration extends Component {
 
   constructor(){
     super();
@@ -12,11 +13,10 @@ class Login extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.image}>
-          <Image 
-            source={{ uri: 'https://www.opexengine.com/wp-content/uploads/2018/11/Professional-Services-for-Private-SaaS-Vendors.png' }}
-            style={{ width: 200, height: 130 }}
-          />
+        <View style={styles.text}>
+            <Text>
+                Registration
+            </Text>
         </View>
           
 
@@ -31,6 +31,24 @@ class Login extends Component {
             </View>
 
             <View style={styles.input}>
+                <MaterialIcons name="mail" size={24} color="#00c2fe" />   
+                <TextInput
+                    style={{flex: 1, paddingLeft: 12}}
+                    placeholder="Email"
+                    underlineColorAndroid="transparent"
+                />
+            </View>
+
+            <View style={styles.input}>
+            <FontAwesome name="phone-square" size={24} color="#00c2fe" />   
+                <TextInput 
+                    style={{flex: 1, paddingLeft: 12}}
+                    placeholder="Number"
+                    underlineColorAndroid="transparent"
+                />
+            </View>
+
+            <View style={styles.input}>
             <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />   
                 <TextInput
                     style={{flex: 1, paddingLeft: 12}}
@@ -40,14 +58,9 @@ class Login extends Component {
             </View>
         </View>
 
-            <View style={styles.icons}>
-            <AntDesign name="checkcircleo" size={20} color="#00c2fe" />
-            <Text style={styles.text1}><Text style={styles.text2}>{'Remember me'}</Text>           {'Forgot Password?'}</Text>
-            </View>
-
           <View style={styles.button}>
             <TouchableOpacity   style={styles.button1}>
-              <Text  style={{ fontSize: 34 , textAlign: 'center' ,color: 'white', marginTop: 4,}}>Log in</Text>
+              <Text  style={{ fontSize: 34 , textAlign: 'center' ,color: 'white', marginTop: 4,}}>Sign up</Text>
             </TouchableOpacity>
           </View>
 
@@ -73,11 +86,6 @@ const styles = StyleSheet.create({
       position: 'relative',
   },
   },
-  bigBlue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
   input: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -93,14 +101,14 @@ const styles = StyleSheet.create({
     fontSize: 23,
   },
   text: {
-    color: 444,
-    textAlign: 'center',
+    alignItems: 'center',
     fontWeight: 'bold',
     fontSize: 30,
+    marginTop: 100,
   },
   button: {
-  marginTop: 50,
-  margin: 60,
+  marginTop: 40,
+  margin: 70,
   },
   button1: {
   backgroundColor: '#01C1FF',
@@ -111,14 +119,6 @@ const styles = StyleSheet.create({
     marginLeft: 24,
     marginTop: -18,
     fontSize: 16,
-  },
-  text2: {
-    marginTop: -18,
-    fontSize: 16,
-  },
-  icons: {
-     marginTop: 16,
-     marginLeft: 50,
   },
   marginTop: {
     marginTop: 20,
@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 2,
     backgroundColor: '#fff',
+    marginTop: -20,
     marginLeft: 100 ,
     alignItems: 'center',
     padding: 10,
@@ -150,11 +151,6 @@ const styles = StyleSheet.create({
     padding: 8,
     marginTop: -50,
   },
-  image: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: '20%',
-  },
   scrollView: {
     marginHorizontal: 5,
     height: '100%',
@@ -163,4 +159,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Login;
+export default Registration;

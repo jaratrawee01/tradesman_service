@@ -59,9 +59,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
   },
-  red: {
-    color: 'red',
-  },
   input: {
     flexDirection: 'row',
     justifyContent: 'center',

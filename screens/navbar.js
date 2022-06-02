@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'skyblue',
     },
     navbar: {
-        backgroundColor: 'red',
         width: '100%',
         height: 70,
         flexDirection: 'row',
