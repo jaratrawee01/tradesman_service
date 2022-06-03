@@ -44,16 +44,17 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         backgroundColor: 'skyblue',
     },
-    navbar: {
+    navbar: {    
         width: '100%',
         height: 70,
         flexDirection: 'row',
         shadowColor: '#444',
-        shadowOpacity: 0.1,
-        shadowRadius: 10,
-        elevation: 1,
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
         paddingLeft: 5,
         paddingRight: 5,
+        backgroundColor: '#fff',
 
     },
     footer: {
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#01C1FF',
         fontSize: 34,
         color: '#fff',
-        borderRadius: 40,
+        borderRadius: 50,
         shadowColor: '#000',
         shadowOpacity: 0.1,
         shadowRadius: 10,
