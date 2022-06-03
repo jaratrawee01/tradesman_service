@@ -51,13 +51,16 @@ class Login extends Component {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.icons1}>
-          <FontAwesome name="facebook" size={35} color="#00c2fe" />
-          </View>
-          <View style={styles.icons2}>
-          <AntDesign name="google" size={35} color="#00c2fe" />
+          <View style={styles.boxIcon}>
+            <View style={styles.icons1}>
+              <FontAwesome name="facebook" size={35} color="#00c2fe" />
           </View>
 
+          <View style={styles.icons2}>
+              <AntDesign name="google" size={35} color="#00c2fe" />
+          </View>
+      </View>
+          
       </SafeAreaView>
     );
   }
@@ -72,6 +75,9 @@ const styles = StyleSheet.create({
       height: '100%',
       position: 'relative',
   },
+  },
+  boxIcon: {
+    height:  100,
   },
   bigBlue: {
     color: 'blue',
@@ -99,8 +105,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   button: {
-  marginTop: 50,
-  margin: 60,
+    marginTop: 40,
+    marginLeft: 70,
+    marginRight: 70,
+    marginBottom: 70
   },
   button1: {
   backgroundColor: '#01C1FF',
@@ -128,10 +136,11 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     shadowColor: '#000',
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.1,
     shadowRadius: 10,
-    elevation: 2,
+    elevation: 4,
     backgroundColor: '#fff',
+    marginTop: -20,
     marginLeft: 100 ,
     alignItems: 'center',
     padding: 10,
@@ -149,11 +158,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 8,
     marginTop: -50,
+
   },
   image: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '20%',
+    marginTop: '25%',
   },
   scrollView: {
     marginHorizontal: 5,

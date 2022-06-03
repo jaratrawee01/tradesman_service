@@ -11,7 +11,7 @@ export default function App() {
             <View style={styles.navbar}>
 
                 <View style={styles.textbox1}>
-                    <MaterialCommunityIcons name="home" style={styles.iconColor} />
+                    <MaterialCommunityIcons name="home" style={styles.iconColorcheck} />
                     <Text style={styles.textIcon}>Home</Text>
                 </View>
 
@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 70,
         flexDirection: 'row',
-        shadowColor: '#000',
+        shadowColor: '#444',
         shadowOpacity: 0.1,
         shadowRadius: 10,
-        elevation: 2,
+        elevation: 1,
         paddingLeft: 5,
         paddingRight: 5,
 
@@ -74,6 +74,17 @@ const styles = StyleSheet.create({
     iconColor: {
         fontSize: 34,
         color: '#01C1FF',
+    },
+    iconColorcheck: {
+        backgroundColor: '#01C1FF',
+        fontSize: 34,
+        color: '#fff',
+        borderRadius: 40,
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        elevation: 4,
+        padding: 3,
     },
 
 });

@@ -12,9 +12,9 @@ export default function App() {
   return (
     <View>
       
-     {/* <Login />  */}
+     <Login /> 
 {/* <Reset_paeeword/> */}
-   <Registration/>
+   {/* <Registration/> */}
   {/*   <Test_icon />   */}
    {/*   <Nave />    */}
       

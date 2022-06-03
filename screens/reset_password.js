@@ -15,8 +15,8 @@ class Reset_paeeword extends Component {
           
 
         <View style={styles.marginTop}>
-            <View style={styles.text1}>
-                <Text>
+            <View >
+                <Text style={styles.text1}>
                     An email with the reset link will be
                     sent to you
                 </Text>
@@ -81,9 +81,11 @@ const styles = StyleSheet.create({
     color: '#00c2fe',
   },
   button: {
-  marginTop: 40,
-  margin: 100,
-  },
+    marginTop: 40,
+    marginLeft: 70,
+    marginRight: 70,
+    marginBottom: 70
+    },
   button1: {
   backgroundColor: '#01C1FF',
   height: 50,
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
   text1: {
     marginLeft: 60,
     marginTop: -18,
-    fontSize: 25,
+    fontSize: 20,
   },
   marginTop: {
     marginTop: 50,

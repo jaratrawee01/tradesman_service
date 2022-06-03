@@ -13,8 +13,8 @@ class Registration extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.text}>
-            <Text>
+        <View>
+            <Text style={styles.text}>
                 Registration
             </Text>
         </View>
@@ -64,13 +64,14 @@ class Registration extends Component {
             </TouchableOpacity>
           </View>
 
+      <View style={styles.boxIcon}>
           <View style={styles.icons1}>
-          <FontAwesome name="facebook" size={35} color="#00c2fe" />
+            <FontAwesome name="facebook" size={35} color="#00c2fe" />
           </View>
           <View style={styles.icons2}>
-          <AntDesign name="google" size={35} color="#00c2fe" />
+            <AntDesign name="google" size={35} color="#00c2fe" />
           </View>
-
+      </View>
       </SafeAreaView>
     );
   }
@@ -85,6 +86,9 @@ const styles = StyleSheet.create({
       height: '100%',
       position: 'relative',
   },
+  },
+  boxIcon: {
+    height:  100,
   },
   input: {
     flexDirection: 'row',
@@ -101,14 +105,17 @@ const styles = StyleSheet.create({
     fontSize: 23,
   },
   text: {
-    alignItems: 'center',
+    textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 30,
     marginTop: 100,
+    color: '#00c2fe',
   },
   button: {
   marginTop: 40,
-  margin: 70,
+  marginLeft: 70,
+  marginRight: 70,
+  marginBottom: 70
   },
   button1: {
   backgroundColor: '#01C1FF',
@@ -128,11 +135,11 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     shadowColor: '#000',
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.1,
     shadowRadius: 10,
-    elevation: 2,
+    elevation: 4,
     backgroundColor: '#fff',
-    marginTop: -20,
+    marginTop: -30,
     marginLeft: 100 ,
     alignItems: 'center',
     padding: 10,
@@ -150,6 +157,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 8,
     marginTop: -50,
+
   },
   scrollView: {
     marginHorizontal: 5,
