@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#01C1FF',
         fontSize: 34,
         color: '#fff',
-        borderRadius: 40,
+        borderRadius: 50,
         shadowColor: '#000',
         shadowOpacity: 0.1,
         shadowRadius: 10,
