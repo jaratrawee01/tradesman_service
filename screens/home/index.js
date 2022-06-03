@@ -6,15 +6,18 @@ import  Test_icon  from '../test_icon';
 import Navbar from '../navbar';
 import Registration from '../registration';
 import Reset_paeeword from '../reset_password';
+import Profile_tradesman from '../profile_tradesman';
 
 
 export default function App() {
   return (
     <View>
       
-     <Login /> 
+     {/* <Login />  */}
+<Profile_tradesman/>
+  
 {/* <Reset_paeeword/> */}
-   {/* <Registration/> */}
+  {/*  <Registration/> */}
   {/*   <Test_icon />   */}
    {/*   <Nave />    */}
       
