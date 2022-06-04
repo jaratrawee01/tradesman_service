@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 70,
         flexDirection: 'row',
-        shadowColor: '#444',
+        shadowColor: 'red',
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
