@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
+
 
 const image = { uri: "https://s.isanook.com/ap/0/1/13/jpg/125/2516252.jpg" };
 
-class Profile_user extends Component {
+class Service_form extends Component {
    render() {
     return (
 
@@ -26,25 +24,20 @@ class Profile_user extends Component {
 
             <View style={styles.box2}>
                 <View style={styles.box3}>
-                    <View style={styles.input}>
-                        <FontAwesome5 name="user-alt" size={24} color="#00c2fe" placeholder="Password"/> 
-                        <Text style={styles.text1}><Text style={styles.text1}>{'Profile'}</Text>                            {'>'}</Text>  
+                    <View>
+                        <Text style={styles.text1}>Personal information Form</Text>
                     </View>
+                    <View>
+                        <Text style={styles.text2}>{'name-username'}</Text>                 
+                        <TextInput style={styles.input}/> 
+                    </View>
+                    <View style={styles.forme}>
+                        <Text style={styles.text3}>{'Email'}</Text>                 
+                        <TextInput style={styles.input1}/> 
+                    </View>
+                    
+                    
 
-                    <View style={styles.input}>
-                    <FontAwesome5 name="address-book" size={24} color="#00c2fe" />  
-                    <Text style={styles.text1}><Text style={styles.text1}>{'Contact informatiom'}</Text>        {'>'}</Text>  
-                    </View>
-
-                    <View style={styles.input}>
-                        <FontAwesome name="unlock-alt" size={28} color="#00c2fe" /> 
-                        <Text style={styles.text1}><Text style={styles.text1}>{'Change user/password'}</Text>      {'>'}</Text>   
-                    </View>
-
-                    <View style={styles.input}>
-                    <MaterialIcons name="chat" size={24} color="#00c2fe" />  
-                    <Text style={styles.text1}><Text style={styles.text1}>{'Cnat'}</Text>                               {'>'}</Text> 
-                    </View>
 
                 </View>
 
@@ -76,7 +69,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    marginTop: 100,
+    marginTop: 80,
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -105,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF0F0',    
   },
   box3: {
-    height: 300,
+    height: 435,
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
@@ -115,7 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginLeft: 18,
     marginRight: 20, 
-    marginTop: -20, 
+    marginTop: -60, 
     borderWidth: 1,
     borderColor: '#00c2fe', 
   },
@@ -127,19 +120,45 @@ const styles = StyleSheet.create({
     color: '#00c2fe',
     marginTop: 10,
   },
-  input: {
-    marginLeft: 30,
-    marginTop: 40,
-    borderColor: '#00c2fe',
-  },
   text1: {
-    marginLeft: 45,
-    marginTop: -23,
+    marginLeft: 20,
     fontWeight: 'bold',
     fontSize: 20,
   },
+  text2: {
+    marginLeft: 12,
+    fontSize: 16,
+    marginTop: 10,
+  },
+  text3: {
+    marginLeft: 20,
+    fontSize: 16,
+    marginTop: 10,
+  },
+  input: {
+    height: 30,
+    width: 150,
+    borderWidth: 1,
+    borderColor: '#00c2fe',
+    fontSize: 23,
+    marginLeft: 10,
+  
+  },
+  input1: {
+    height: 30,
+    width: 135,
+    borderWidth: 1,
+    borderColor: '#00c2fe',
+    fontSize: 23,
+    marginLeft: 20,
+  
+  },forme: {
+    marginLeft: 150,
+    marginTop: -58,
+  },
+
 });
 
 
 
-export default Profile_user; 
+export default Service_form; 
