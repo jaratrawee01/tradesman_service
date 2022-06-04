@@ -6,7 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const image = { uri: "https://s.isanook.com/ap/0/1/13/jpg/125/2516252.jpg" };
 
-class Profile_tradesman extends Component {
+class Profile_user extends Component {
    render() {
     return (
 
@@ -46,27 +46,9 @@ class Profile_tradesman extends Component {
                     <Text style={styles.text1}><Text style={styles.text1}>{'Cnat'}</Text>                               {'>'}</Text> 
                     </View>
 
-                    <View style={styles.input}>
-                        <FontAwesome5 name="money-check-alt" size={18} color="#00c2fe" />  
-                        <Text style={styles.text1}><Text style={styles.text1}>{'Pay for'}</Text>                            {'>'}</Text> 
-                    </View>
                 </View>
 
-                <View style={styles.box4}>
-                    <Image
-                        style={styles.image1}
-                        source={{uri: 'https://inwfile.com/s-dx/pw8rqy.jpg'}}
-                      />
-                        <Text style={styles.text2}>ระบบน้ำ</Text>
-                </View>
-
-                <View style={styles.box5}>
-                    <Image
-                        style={styles.image1}
-                        source={{uri: 'https://dx.lnwfile.com/_/dx/_raw/7x/ck/dj.jpg'}}
-                      />
-                        <Text style={styles.text2}>ระบบไฟ</Text>
-                </View>
+            
                 
             </View>
 
@@ -94,7 +76,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    marginTop: 60,
+    marginTop: 100,
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -123,7 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF0F0',    
   },
   box3: {
-    height: 255,
+    height: 300,
     width: 330,
     backgroundColor: '#fff',
     shadowColor: "#000",
@@ -133,48 +115,21 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginLeft: 16,
     marginRight: 20, 
-    marginTop: -80, 
+    marginTop: -20, 
     borderWidth: 1,
     borderColor: '#00c2fe', 
   },
-  box4:{
-    height: 180,
-    backgroundColor: '#d7d7d7',
-    marginTop: 190,
-    marginLeft: '-91%',
-    marginRight: 190,
-    shadowColor: "#000",
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-    elevation: 9,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
-  },
-   box5: {
-    height: 180,
-    backgroundColor: '#d7d7d7',
-    marginTop: 190,
-    marginLeft: '-45%',
-    marginRight: 190,
-    shadowColor: "#000",
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-    elevation: 9,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
-  }, 
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
     fontWeight: 'bold',
     fontSize: 35,
     color: '#00c2fe',
+    marginTop: 10,
   },
   input: {
     marginLeft: 30,
-    marginTop: 22,
+    marginTop: 40,
     borderColor: '#00c2fe',
   },
   text1: {
@@ -183,15 +138,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
-  text2: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginTop: 5,
-  },
 });
 
 
 
-export default Profile_tradesman; 
+export default Profile_user; 

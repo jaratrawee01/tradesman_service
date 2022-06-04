@@ -7,6 +7,7 @@ import Navbar from '../navbar';
 import Registration from '../registration';
 import Reset_paeeword from '../reset_password';
 import Profile_tradesman from '../profile_tradesman';
+import Profile_user from '../profile_user';
 
 
 export default function App() {
@@ -14,8 +15,8 @@ export default function App() {
     <View>
       
      {/* <Login />  */}
-<Profile_tradesman/>
-  
+{/* <Profile_tradesman/> */}
+  <Profile_user/>
 {/* <Reset_paeeword/> */}
   {/*  <Registration/> */}
   {/*   <Test_icon />   */}
