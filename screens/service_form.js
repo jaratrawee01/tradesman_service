@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
 
 
-const image = { uri: "https://s.isanook.com/ap/0/1/13/jpg/125/2516252.jpg" };
+const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
 
 class Service_form extends Component {
    render() {
     return (
 
       <SafeAreaView style={styles.container}> 
-
+        <ScrollView>
             <View style={styles.box1}>
                 <View>
                     <ImageBackground source={image} resizeMode="cover" style={styles.backgroun}>
                       <Image
                         style={styles.image}
-                        source={{uri: 'https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/db4aa575960c4f90bec96f1e97d9b2c7.jpg'}}
+                        source={{uri: 'https://st2.depositphotos.com/2589681/8216/v/600/depositphotos_82168986-stock-illustration-plumber.jpg'}}
                       />
                       <Text style={styles.text}>Yonzook</Text>
                     </ImageBackground>
@@ -39,14 +39,9 @@ class Service_form extends Component {
                     
 
 
-                </View>
-
-            
-                
+                </View>              
             </View>
-
-                 
-
+          </ScrollView>
       </SafeAreaView>
     );
   }
@@ -69,7 +64,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    marginTop: 80,
+    marginTop: 50,
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -108,7 +103,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginLeft: 18,
     marginRight: 20, 
-    marginTop: -60, 
+    marginTop: -80, 
     borderWidth: 1,
     borderColor: '#00c2fe', 
   },

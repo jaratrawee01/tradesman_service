@@ -10,6 +10,8 @@ import Profile_user from './screens/navbar/profile_user';
 import Login from './screens/login';
 import Registration from './screens/registration';
 import Profile_tradesman from './screens/navbar/profile_tradesman';
+import Service_form from './screens/service_form';
+
 const Tab = createBottomTabNavigator();
 
 function MyStack() {
@@ -27,7 +29,7 @@ function MyStack() {
           options={{
             tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="message-processing" color={color} size={size} />)
         }}/>
-         <Tab.Screen name="user" component={Profile_user} 
+         <Tab.Screen name="Profile" component={Profile_tradesman} 
           options={{
             tabBarIcon: ({size, color}) => (<FontAwesome name="user" color={color} size={size} />)
         }}/>

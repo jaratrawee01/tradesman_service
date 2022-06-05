@@ -4,20 +4,20 @@ import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-const image = { uri: "https://s.isanook.com/ap/0/1/13/jpg/125/2516252.jpg" };
+const image = { uri: 'https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/4001/1024001-h-ba8013ea561b' };
 
 class Profile_tradesman extends Component {
    render() {
     return (
 
       <SafeAreaView style={styles.container}> 
-
+        <ScrollView>
             <View style={styles.box1}>
                 <View>
                     <ImageBackground source={image} resizeMode="cover" style={styles.backgroun}>
                       <Image
                         style={styles.image}
-                        source={{uri: 'https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/db4aa575960c4f90bec96f1e97d9b2c7.jpg'}}
+                        source={{uri: 'https://i.pinimg.com/originals/0c/62/50/0c6250e9411e1042671f170db1aab1fc.jpg'}}
                       />
                       <Text style={styles.text}>Yonzook</Text>
                     </ImageBackground>
@@ -28,27 +28,27 @@ class Profile_tradesman extends Component {
                 <View style={styles.box3}>
                     <View style={styles.input}>
                         <FontAwesome5 name="user-alt" size={24} color="#00c2fe" placeholder="Password"/> 
-                        <Text style={styles.text1}><Text style={styles.text1}>{'Profile'}</Text>                            {'>'}</Text>  
+                        <Text style={styles.text1}>{'Profile'}</Text>       
                     </View>
 
                     <View style={styles.input}>
                     <FontAwesome5 name="address-book" size={24} color="#00c2fe" />  
-                    <Text style={styles.text1}><Text style={styles.text1}>{'Contact informatiom'}</Text>        {'>'}</Text>  
+                    <Text style={styles.text1}>{'Contact informatiom'}</Text>        
                     </View>
 
                     <View style={styles.input}>
                         <FontAwesome name="unlock-alt" size={28} color="#00c2fe" /> 
-                        <Text style={styles.text1}><Text style={styles.text1}>{'Change user/password'}</Text>      {'>'}</Text>   
+                        <Text style={styles.text1}>{'Change user/password'}</Text>    
                     </View>
 
                     <View style={styles.input}>
                     <MaterialIcons name="chat" size={24} color="#00c2fe" />  
-                    <Text style={styles.text1}><Text style={styles.text1}>{'Cnat'}</Text>                               {'>'}</Text> 
+                    <Text style={styles.text1}>{'Cnat'}</Text>                              
                     </View>
 
                     <View style={styles.input}>
                         <FontAwesome5 name="money-check-alt" size={18} color="#00c2fe" />  
-                        <Text style={styles.text1}><Text style={styles.text1}>{'Pay for'}</Text>                            {'>'}</Text> 
+                        <Text style={styles.text1}>{'Pay for'}</Text>                        
                     </View>
                 </View>
 
@@ -57,21 +57,13 @@ class Profile_tradesman extends Component {
                         style={styles.image1}
                         source={{uri: 'https://inwfile.com/s-dx/pw8rqy.jpg'}}
                       />
-                        <Text style={styles.text2}>ระบบน้ำ</Text>
-                </View>
-
-                <View style={styles.box5}>
                     <Image
-                        style={styles.image1}
-                        source={{uri: 'https://dx.lnwfile.com/_/dx/_raw/7x/ck/dj.jpg'}}
+                        style={styles.image2}
+                        source={{uri: 'https://www.ตรวจระบบไฟฟ้าประจําปี.com/wp-content/uploads/2021/09/%E0%B8%AD%E0%B8%B2%E0%B8%8A%E0%B8%B5%E0%B8%9E%E0%B8%8A%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%99%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B8%E0%B8%95%E0%B8%AA%E0%B8%B2%E0%B8%AB%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1.jpg'}}
                       />
-                        <Text style={styles.text2}>ระบบไฟ</Text>
                 </View>
-                
-            </View>
-
-                 
-
+            </View>     
+          </ScrollView>
       </SafeAreaView>
     );
   }
@@ -94,7 +86,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    marginTop: 60,
+    marginTop: 40,
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -104,8 +96,19 @@ const styles = StyleSheet.create({
   image1: {
     width: 128,
     height: 145,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    marginLeft: 22,
+    marginTop: 25,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#00c2fe',
+    
+  },
+  image2: {
+    width: 128,
+    height: 145,
+    marginLeft: 170,
+    marginTop: -145,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: '#00c2fe',
   },
@@ -120,51 +123,38 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 390,
     width: 360,
-    backgroundColor: '#FFF0F0',    
+    backgroundColor: '#d2e4ee',    
   },
   box3: {
     height: 255,
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
-    shadowOpacity: 0.39,
-    shadowRadius: 8.30,
-    elevation: 13,
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
     borderRadius: 20,
     marginLeft: 18,
     marginRight: 20, 
-    marginTop: -80, 
+    marginTop: -120, 
     borderWidth: 1,
     borderColor: '#00c2fe', 
   },
   box4:{
-    height: 180,
-    backgroundColor: '#d7d7d7',
-    marginTop: 190,
-    marginLeft: '-91%',
-    marginRight: 190,
+    flex: 1,
+    backgroundColor: '#d2e0e8',
+    height: '50%',
+    marginTop: '45%',
+    marginLeft: '-94%',
+    marginRight: 20,
     shadowColor: "#000",
-    shadowOpacity: 0.39,
-    shadowRadius: 8.30,
-    elevation: 13,
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: '#00c2fe',
   },
-   box5: {
-    height: 180,
-    backgroundColor: '#d7d7d7',
-    marginTop: 190,
-    marginLeft: '-45%',
-    marginRight: 190,
-    shadowColor: "#000",
-    shadowOpacity: 0.39,
-    shadowRadius: 8.30,
-    elevation: 13,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
-  }, 
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
