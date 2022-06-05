@@ -8,6 +8,7 @@ import Message from './screens/navbar/message';
 import Shop from './screens/navbar/shop';
 import Profile_user from './screens/navbar/profile_user';
 import Login from './screens/login';
+import Registration from './screens/registration';
 import Profile_tradesman from './screens/navbar/profile_tradesman';
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,7 @@ function MyStack() {
           options={{
             tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="shopping" color={color} size={size} />)
         }}/>
-         <Tab.Screen name="message-processing" component={Message} 
+         <Tab.Screen name="message" component={Registration} 
           options={{
             tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="message-processing" color={color} size={size} />)
         }}/>
