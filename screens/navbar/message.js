@@ -22,7 +22,7 @@ export default function Message() {
                   style={styles.image}
                   source={{uri: 'https://i.pinimg.com/originals/0c/62/50/0c6250e9411e1042671f170db1aab1fc.jpg'}}
               />
-              <Text style={styles.text1}><Text style={styles.text2}>{'# Anna'}</Text>                         {'14.06'}</Text>
+              <Text style={styles.text1}><Text style={styles.text2}>{'# Anna'}</Text>                             {'14.06'}</Text>
               <Text style={styles.text3}>hello</Text>
               <Text style={styles.text4}>{'2'}</Text>
           </View>
@@ -32,7 +32,7 @@ export default function Message() {
                   style={styles.image}
                   source={{uri: 'https://i.pinimg.com/736x/27/52/8c/27528cc7acfc0694be05a32c7673a052.jpg'}}
               />
-              <Text style={styles.text1}><Text style={styles.text2}>{'# Jenny'}</Text>                       {'22.36'}</Text>
+              <Text style={styles.text1}><Text style={styles.text2}>{'# Jenny'}</Text>                           {'22.36'}</Text>
               <Text style={styles.text3}>what's the jod</Text>
               <Text style={styles.text4}>{'1'}</Text>
           </View>
@@ -42,7 +42,7 @@ export default function Message() {
                   style={styles.image}
                   source={{uri: 'https://i.pinimg.com/736x/11/9b/61/119b617c1d7e60a63466016066353a47.jpg'}}
               />
-              <Text style={styles.text1}><Text style={styles.text2}>{'# Minton'}</Text>                     {'14.06'}</Text>
+              <Text style={styles.text1}><Text style={styles.text2}>{'# Minton'}</Text>                         {'14.06'}</Text>
               <Text style={styles.text3}>want to see the work</Text>
               <Text style={styles.text4}>{'3'}</Text>
           </View>
@@ -52,7 +52,7 @@ export default function Message() {
                   style={styles.image}
                   source={{uri: 'https://png.pngtree.com/element_origin_min_pic/16/06/18/2257655487af886.jpg'}}
               />
-              <Text style={styles.text1}><Text style={styles.text2}>{'# Jasmine'}</Text>                   {'14.06'}</Text>
+              <Text style={styles.text1}><Text style={styles.text2}>{'# Jasmine'}</Text>                       {'14.06'}</Text>
               <Text style={styles.text3}>want to see the work</Text>
               <Text style={styles.text4}>{'3'}</Text>
           </View>
@@ -74,8 +74,8 @@ container: {
 },
 input: {
   height: 50,
-  marginLeft: 30,
-  marginRight: 30,
+  marginLeft: 25,
+  marginRight: 25,
   padding: 10,
   marginTop: 30,
   borderRadius: 10,
@@ -87,8 +87,8 @@ input: {
 },
 box1: {
   height: 80,
-  marginLeft: 30,
-  marginRight: 30,
+  marginLeft: 25,
+  marginRight: 25,
   padding: 10,
   marginTop: 40,
   borderRadius: 10,
@@ -103,12 +103,11 @@ image: {
   height: 50,
   marginTop: 5,
   borderRadius: 50,
-  marginLeft: 5,
   borderWidth: 1,
   borderColor: '#00c2fe',
 },
 text1: {
-  marginLeft: 65,
+  marginLeft: 55,
   marginTop: -50,
   fontSize: 18,
 },
@@ -118,14 +117,14 @@ text2: {
   fontWeight: 'bold',
 },
 text3: {
-  marginLeft: 75,
+  marginLeft: 60,
   fontSize: 20,
   
 },
 text4: {
   textAlign: 'center',
   marginLeft: 'auto',
-  marginRight: 18,
+  marginRight: 20,
   marginTop: -18,
   fontSize: 18,
   width: 20,
