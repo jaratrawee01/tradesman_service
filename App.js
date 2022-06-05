@@ -25,11 +25,11 @@ function MyStack() {
           options={{
             tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="shopping" color={color} size={size} />)
         }}/>
-         <Tab.Screen name="message" component={Registration} 
+         <Tab.Screen name="message" component={Message} 
           options={{
             tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="message-processing" color={color} size={size} />)
         }}/>
-         <Tab.Screen name="Profile" component={Profile_tradesman} 
+         <Tab.Screen name="Profile" component={Profile_user} 
           options={{
             tabBarIcon: ({size, color}) => (<FontAwesome name="user" color={color} size={size} />)
         }}/>
