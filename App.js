@@ -11,6 +11,7 @@ import Login from './screens/login';
 import Registration from './screens/registration';
 import Profile_tradesman from './screens/navbar/profile_tradesman';
 import Service_form from './screens/service_form';
+import Chat from './screens/chat';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ function MyStack() {
          options={{
           tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="home" color={color} size={size} />)
       }}/>
-        <Tab.Screen name="Shop" component={Shop} 
+        <Tab.Screen name="Shop" component={Chat} 
           options={{
             tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="shopping" color={color} size={size} />)
         }}/>

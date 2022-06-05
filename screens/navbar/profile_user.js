@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 390,
     width: 360,
-    backgroundColor: '#d2e4ee',
+    backgroundColor: '#98c5df',
   },
   box3: {
     height: 300,
