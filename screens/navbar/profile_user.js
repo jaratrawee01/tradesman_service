@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-const image = { uri: "https://s.isanook.com/ap/0/1/13/jpg/125/2516252.jpg" };
+const image = { uri: 'https://www.bangkoksync.com/images/listings/changsombaan-3ca376e6e2.jpg' };
 
 class Profile_user extends Component {
   render() {
@@ -17,7 +17,7 @@ class Profile_user extends Component {
               <ImageBackground source={image} resizeMode="cover" style={styles.backgroun}>
                 <Image
                   style={styles.image}
-                  source={{ uri: 'https://รูปการ์ตูนน่ารักๆ.com/wp-content/uploads/2017/12/db4aa575960c4f90bec96f1e97d9b2c7.jpg' }}
+                  source={{ uri: 'https://st.depositphotos.com/1647366/2315/v/950/depositphotos_23151444-stock-illustration-cartoon-of-technician-or-repairman.jpg' }}
                 />
                 <Text style={styles.text}>Yonzook</Text>
               </ImageBackground>
@@ -28,22 +28,22 @@ class Profile_user extends Component {
             <View style={styles.box3}>
               <View style={styles.input}>
                 <FontAwesome5 name="user-alt" size={24} color="#00c2fe" placeholder="Password" />
-                <Text style={styles.text1}><Text style={styles.text1}>{'Profile'}</Text>                            {'>'}</Text>
+                <Text style={styles.text1}>{'Profile'}</Text>                            
               </View>
 
               <View style={styles.input}>
                 <FontAwesome5 name="address-book" size={24} color="#00c2fe" />
-                <Text style={styles.text1}><Text style={styles.text1}>{'Contact informatiom'}</Text>        {'>'}</Text>
+                <Text style={styles.text1}>{'Contact informatiom'}</Text>       
               </View>
 
               <View style={styles.input}>
                 <FontAwesome name="unlock-alt" size={28} color="#00c2fe" />
-                <Text style={styles.text1}><Text style={styles.text1}>{'Change user/password'}</Text>      {'>'}</Text>
+                <Text style={styles.text1}>{'Change user/password'}</Text>    
               </View>
 
               <View style={styles.input}>
                 <MaterialIcons name="chat" size={24} color="#00c2fe" />
-                <Text style={styles.text1}><Text style={styles.text1}>{'Cnat'}</Text>                               {'>'}</Text>
+                <Text style={styles.text1}>{'Cnat'}</Text>                              
               </View>
 
             </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    marginTop: 100,
+    marginTop: 50,
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -99,20 +99,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 390,
     width: 360,
-    backgroundColor: '#FFF0F0',
+    backgroundColor: '#d2e4ee',
   },
   box3: {
     height: 300,
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
-    shadowOpacity: 0.39,
-    shadowRadius: 8.30,
-    elevation: 13,
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
     borderRadius: 20,
     marginLeft: 18,
     marginRight: 20,
-    marginTop: -20,
+    marginTop: -50,
     borderWidth: 1,
     borderColor: '#00c2fe',
   },
@@ -121,12 +121,12 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     fontWeight: 'bold',
     fontSize: 35,
-    color: '#00c2fe',
+    color: '#fff',
     marginTop: 10,
   },
   input: {
     marginLeft: 30,
-    marginTop: 40,
+    marginTop: 30,
     borderColor: '#00c2fe',
   },
   text1: {
