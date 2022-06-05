@@ -1,66 +1,67 @@
 import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,Text,TextInput,Image, View,TouchableOpacity, ScrollView} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TextInput, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 class Login extends Component {
 
-  constructor(){
+  constructor() {
     super();
   }
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.image}>
-          <Image 
-            source={{ uri: 'https://www.opexengine.com/wp-content/uploads/2018/11/Professional-Services-for-Private-SaaS-Vendors.png' }}
-            style={{ width: 200, height: 130 }}
-          />
-        </View>
-          
+        <ScrollView>
+          <View style={styles.image}>
+            <Image
+              source={{ uri: 'https://www.opexengine.com/wp-content/uploads/2018/11/Professional-Services-for-Private-SaaS-Vendors.png' }}
+              style={{ width: 200, height: 130 }}
+            />
+          </View>
 
-        <View style={styles.marginTop}>
+
+          <View style={styles.marginTop}>
             <View style={styles.input}>
-            <FontAwesome name="user" size={24} color="#00c2fe" />   
-                <TextInput 
-                    style={{flex: 1, paddingLeft: 12}}
-                    placeholder="Name"
-                    underlineColorAndroid="transparent"
-                />
+              <FontAwesome name="user" size={24} color="#00c2fe" />
+              <TextInput
+                style={{ flex: 1, paddingLeft: 12 }}
+                placeholder="Name"
+                underlineColorAndroid="transparent"
+              />
             </View>
 
             <View style={styles.input}>
-            <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />   
-                <TextInput
-                    style={{flex: 1, paddingLeft: 12}}
-                    placeholder="Password"
-                    underlineColorAndroid="transparent"
-                />
+              <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
+              <TextInput
+                style={{ flex: 1, paddingLeft: 12 }}
+                placeholder="Password"
+                underlineColorAndroid="transparent"
+              />
             </View>
-        </View>
+          </View>
 
-            <View style={styles.icons}>
+          <View style={styles.icons}>
             <AntDesign name="checkcircleo" size={20} color="#00c2fe" />
             <Text style={styles.text1}><Text style={styles.text2}>{'Remember me'}</Text>           {'Forgot Password?'}</Text>
-            </View>
+          </View>
 
           <View style={styles.button}>
-            <TouchableOpacity   style={styles.button1}>
-              <Text  style={{ fontSize: 34 , textAlign: 'center' ,color: 'white', marginTop: 4,}}>Log in</Text>
+            <TouchableOpacity style={styles.button1}>
+              <Text style={{ fontSize: 34, textAlign: 'center', color: 'white', marginTop: 4, }}>Log in</Text>
             </TouchableOpacity>
           </View>
 
           <View style={styles.boxIcon}>
             <View style={styles.icons1}>
               <FontAwesome name="facebook" size={35} color="#00c2fe" />
-          </View>
+            </View>
 
-          <View style={styles.icons2}>
+            <View style={styles.icons2}>
               <AntDesign name="google" size={35} color="#00c2fe" />
+            </View>
           </View>
-      </View>
-          
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -74,10 +75,10 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%',
       position: 'relative',
-  },
+    },
   },
   boxIcon: {
-    height:  100,
+    height: 100,
   },
   bigBlue: {
     color: 'blue',
@@ -111,9 +112,9 @@ const styles = StyleSheet.create({
     marginBottom: 70
   },
   button1: {
-  backgroundColor: '#01C1FF',
-  height: 50,
-  borderRadius: 25,
+    backgroundColor: '#01C1FF',
+    height: 50,
+    borderRadius: 25,
   },
   text1: {
     marginLeft: 24,
@@ -125,8 +126,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   icons: {
-     marginTop: 16,
-     marginLeft: 50,
+    marginTop: 16,
+    marginLeft: 50,
   },
   marginTop: {
     marginTop: 20,
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     backgroundColor: '#fff',
     marginTop: -20,
-    marginLeft: 100 ,
+    marginLeft: 100,
     alignItems: 'center',
     padding: 10,
   },
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 4,
     backgroundColor: '#fff',
-    marginLeft: 200 ,
+    marginLeft: 200,
     alignItems: 'center',
     padding: 8,
     marginTop: -50,

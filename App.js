@@ -1,30 +1,45 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Index from './screens/home/index';
-import Navbar from './screens/navbar';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from './screens/navbar/home';
+import Message from './screens/navbar/message';
+import Shop from './screens/navbar/shop';
+import Profile_user from './screens/navbar/profile_user';
+import Login from './screens/login';
+import Profile_tradesman from './screens/navbar/profile_tradesman';
+const Tab = createBottomTabNavigator();
 
-export default function App() {
+function MyStack() {
   return (
-    <SafeAreaView style={styles.container} >
-    
-        <View style={styles.box}>
-        <ScrollView  style={styles.scrollView}>
-          <Index />
-          </ScrollView>
-        </View>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} 
+         options={{
+          tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="home" color={color} size={size} />)
+      }}/>
+        <Tab.Screen name="Shop" component={Shop} 
+          options={{
+            tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="shopping" color={color} size={size} />)
+        }}/>
+         <Tab.Screen name="message-processing" component={Message} 
+          options={{
+            tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="message-processing" color={color} size={size} />)
+        }}/>
+         <Tab.Screen name="user" component={Profile_user} 
+          options={{
+            tabBarIcon: ({size, color}) => (<FontAwesome name="user" color={color} size={size} />)
+        }}/>
+      </Tab.Navigator>
 
-      <Navbar />
-    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-    position: 'relative',
-  },
-});
+export default function App() {
+
+  return (
+    <NavigationContainer>
+          <MyStack />
+    </NavigationContainer>
+  );
+} 

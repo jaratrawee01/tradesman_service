@@ -6,8 +6,8 @@ import  Test_icon  from '../test_icon';
 import Navbar from '../navbar';
 import Registration from '../registration';
 import Reset_paeeword from '../reset_password';
-import Profile_tradesman from '../profile_tradesman';
-import Profile_user from '../profile_user';
+import Profile_tradesman from '../navbar/profile_tradesman';
+import Profile_user from '../navbar/profile_user';
 import Service_form from '../service_form'
 
 
