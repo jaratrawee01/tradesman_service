@@ -10,7 +10,7 @@ function App() {
     return (
 
         <HomeStack.Navigator>
-             <HomeStack.Screen name="Profile_user" component={Profile_user} />
+             <HomeStack.Screen name="Profile" component={Profile_user} />
             <HomeStack.Screen name="Login" component={Login} />
             <HomeStack.Screen name="Registration" component={Registration} />
         </HomeStack.Navigator>
