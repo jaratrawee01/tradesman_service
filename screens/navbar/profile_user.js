@@ -4,6 +4,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+
+
 const image = { uri: 'https://www.bangkoksync.com/images/listings/changsombaan-3ca376e6e2.jpg' };
 
 class Profile_user extends Component {
@@ -43,7 +45,7 @@ class Profile_user extends Component {
 
               <View style={styles.input}>
                 <MaterialIcons name="chat" size={24} color="#00c2fe" />
-                <Text style={styles.text1}>{'Cnat'}</Text>                              
+                <Text style={styles.text1} onPress={() => this.props.navigation.navigate('Login')}>{'Cnat'}</Text>                              
               </View>
 
             </View>

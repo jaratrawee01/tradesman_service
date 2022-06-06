@@ -45,7 +45,10 @@ class Login extends Component {
             <AntDesign name="checkcircleo" size={20} color="#00c2fe" />
             <Text style={styles.text1}><Text style={styles.text2}>{'Remember me'}</Text>           {'Forgot Password?'}</Text>
           </View>
-
+        <View style={styles.button}>
+          <Text   title="Go to Details"
+        onPress={() => this.props.navigation.navigate('Registration')}>Registration</Text>
+        </View>
           <View style={styles.button}>
             <TouchableOpacity style={styles.button1}>
               <Text style={{ fontSize: 34, textAlign: 'center', color: 'white', marginTop: 4, }}>Log in</Text>
