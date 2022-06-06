@@ -22,7 +22,7 @@ function MyStack() {
          options={{
           tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="home" color={color} size={size} />)
       }}/>
-        <Tab.Screen name="Shop" component={Chat} 
+        <Tab.Screen name="Shop" component={Shop} 
           options={{
             tabBarIcon: ({size, color}) => (<MaterialCommunityIcons name="shopping" color={color} size={size} />)
         }}/>

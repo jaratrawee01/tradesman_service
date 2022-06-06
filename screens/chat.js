@@ -14,6 +14,10 @@ export default function Chat() {
                 <Text style={styles.text}>Anna</Text>
             </View>
 
+            <View style={styles.box1}>
+
+            </View>
+
         </ScrollView>
     </SafeAreaView>
     );
@@ -37,7 +41,20 @@ text: {
     fontWeight: 'bold',
     marginLeft: 70,
     marginTop: -35,
-}
+},
+box1: {
+    height: 80,
+    marginLeft: 25,
+    marginRight: 25,
+    padding: 10,
+    marginTop: 40,
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 8,
+  },
 
 
 
