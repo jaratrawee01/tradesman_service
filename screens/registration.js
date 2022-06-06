@@ -4,13 +4,38 @@ import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
-class Registration extends Component {
 
-  constructor() {
-    super();
+
+class Registration extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: null,
+      email: null,
+      phone_number:null,
+      password: null,
+    };
   }
+  
+  onChange = (fieldName,event) => {
+  /*  [event.target.id]: event.target.value */
+
+  const valueName = event.nativeEvent.text;
+     console.log(fieldName,event.nativeEvent.text);  
+ /*    console.log('555'); */
+  this.setState({
+    [fieldName]: valueName
+  }) 
+} 
+
+save = () => {
+  console.log('save');
+}
 
   render() {
+
+    const { name ,email,phone_number,password} = this.state;
+    console.log( name ,email,phone_number,password);
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -26,7 +51,7 @@ class Registration extends Component {
               <FontAwesome name="user" size={24} color="#00c2fe" />
               <TextInput
                 style={{ flex: 1, paddingLeft: 12 }}
-                placeholder="Name"
+                placeholder="Name"  name="name" onChange={e => this.onChange("name",e)}
                 underlineColorAndroid="transparent"
               />
             </View>
@@ -34,7 +59,7 @@ class Registration extends Component {
             <View style={styles.input}>
               <MaterialIcons name="mail" size={24} color="#00c2fe" />
               <TextInput
-                style={{ flex: 1, paddingLeft: 12 }}
+                style={{ flex: 1, paddingLeft: 12 }} onChange={e => this.onChange("email",e)}
                 placeholder="Email"
                 underlineColorAndroid="transparent"
               />
@@ -44,15 +69,17 @@ class Registration extends Component {
               <FontAwesome name="phone-square" size={24} color="#00c2fe" />
               <TextInput
                 style={{ flex: 1, paddingLeft: 12 }}
-                placeholder="Number"
+                onChange={e => this.onChange("phone_number",e)}
+                placeholder="PhoneNumber"
                 underlineColorAndroid="transparent"
               />
             </View>
 
             <View style={styles.input}>
               <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
-              <TextInput
+              <TextInput   secureTextEntry={true}
                 style={{ flex: 1, paddingLeft: 12 }}
+                onChange={e => this.onChange("password",e)}
                 placeholder="Password"
                 underlineColorAndroid="transparent"
               />
@@ -61,7 +88,7 @@ class Registration extends Component {
 
           <View style={styles.button}>
             <TouchableOpacity style={styles.button1}>
-              <Text style={{ fontSize: 34, textAlign: 'center', color: 'white', marginTop: 4, }}>Sign up</Text>
+              <Text style={{ fontSize: 34, textAlign: 'center', color: 'white', marginTop: 4, }} onPress={this.save}>Sign up</Text>
             </TouchableOpacity>
           </View>
 
