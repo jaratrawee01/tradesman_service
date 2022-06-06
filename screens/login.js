@@ -45,15 +45,17 @@ class Login extends Component {
             <AntDesign name="checkcircleo" size={20} color="#00c2fe" />
             <Text style={styles.text1}><Text style={styles.text2}>{'Remember me'}</Text>           {'Forgot Password?'}</Text>
           </View>
-        <View style={styles.button}>
-          <Text   title="Go to Details"
-        onPress={() => this.props.navigation.navigate('Registration')}>Registration</Text>
-        </View>
+  
           <View style={styles.button}>
             <TouchableOpacity style={styles.button1}>
               <Text style={{ fontSize: 34, textAlign: 'center', color: 'white', marginTop: 4, }}>Log in</Text>
             </TouchableOpacity>
           </View>
+
+          <View style={styles.button}>
+          <Text   title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Registration')}>Registration</Text>
+        </View>
 
           <View style={styles.boxIcon}>
             <View style={styles.icons1}>
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginLeft: 70,
     marginRight: 70,
-    marginBottom: 70
+    marginBottom: 20,
   },
   button1: {
     backgroundColor: '#01C1FF',

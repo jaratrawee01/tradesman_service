@@ -9,13 +9,6 @@ export default function Message() {
     return (
       <SafeAreaView style={styles.container}> 
       <ScrollView>
-          <View style={styles.input}>
-              <TextInput
-                style={{ flex: 1, paddingLeft: 12, fontSize: 20, }}
-                placeholder="search for contacts"
-                underlineColorAndroid="transparent"
-              />
-          </View>
 
           <View style={styles.box1}>
               <Image
@@ -72,25 +65,12 @@ container: {
   position: 'relative',
   backgroundColor: '#98c5df',
 },
-input: {
-  height: 50,
-  marginLeft: 25,
-  marginRight: 25,
-  padding: 10,
-  marginTop: 30,
-  borderRadius: 10,
-  backgroundColor: '#fff',
-  shadowColor: "#000",
-  shadowOpacity: 0.34,
-  shadowRadius: 6.27,
-  elevation: 10,
-},
 box1: {
   height: 80,
   marginLeft: 25,
   marginRight: 25,
   padding: 10,
-  marginTop: 40,
+  marginTop: 30,
   borderRadius: 10,
   backgroundColor: '#fff',
   shadowColor: "#000",
