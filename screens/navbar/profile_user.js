@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
-    backgroundColor: '#98c5df',
+    backgroundColor: '#eefbff',
   },
   image: {
     width: 100,
@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     borderWidth: 1,
-    borderColor: '#00c2fe',
+    borderColor: '#000',
   },
   box1: {
     height: 250,
     width: 300,
-    backgroundColor: '#ffeaf3',
+    backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -88,15 +88,16 @@ const styles = StyleSheet.create({
   box3: {
     height: 60,
     width: 300,
-    backgroundColor: '#ffeaf3',
+    backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    elevation: 6,
+    elevation: 3,
     borderRadius: 10,
     marginLeft: 28,
     marginRight: 20,
-    marginTop: 20,
+    marginTop: 15,
+    marginBottom: 4,
   },
   text: {
     marginLeft: 'auto',
@@ -156,8 +157,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 6,
     fontSize: 24, 
-    color: '#444e57',
-    backgroundColor: '#bcbdbe',
+    color: '#00c2fe',
+    backgroundColor: '#dcecf4',
     borderRadius: 10,
     paddingTop: 12,
     paddingLeft: 14,
@@ -169,27 +170,3 @@ const styles = StyleSheet.create({
 export default Profile_user; 
 
 
-{/* <View style={styles.box2}>
-<View style={styles.box3}>
-  <View style={styles.input}>
-    <FontAwesome5 name="user-alt" size={24} color="#00c2fe" placeholder="Password" />
-    <Text style={styles.text1}>{'Profile'}</Text>                            
-  </View>
-
-  <View style={styles.input}>
-    <FontAwesome5 name="address-book" size={24} color="#00c2fe" />
-    <Text style={styles.text1}>{'Contact informatiom'}</Text>       
-  </View>
-
-  <View style={styles.input}>
-    <FontAwesome name="unlock-alt" size={28} color="#00c2fe" />
-    <Text style={styles.text1}>{'Change user/password'}</Text>    
-  </View>
-
-  <View style={styles.input}>
-    <MaterialIcons name="chat" size={24} color="#00c2fe" />
-    <Text style={styles.text1} onPress={() => this.props.navigation.navigate('Login')}>{'Cnat'}</Text>                              
-  </View>
-
-</View>
-</View> */}
