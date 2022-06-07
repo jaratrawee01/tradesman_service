@@ -8,9 +8,9 @@ export default function Message() {
 
     return (
       <SafeAreaView style={styles.container}> 
-      <ScrollView>
-
-          <View style={styles.box1}>
+        <ScrollView>
+          <View style={styles.top}>
+            <View style={styles.box1}>
               <Image
                   style={styles.image}
                   source={{uri: 'https://i.pinimg.com/originals/0c/62/50/0c6250e9411e1042671f170db1aab1fc.jpg'}}
@@ -18,9 +18,9 @@ export default function Message() {
               <Text style={styles.text1}><Text style={styles.text2}>{'# Anna'}</Text>                             {'14.06'}</Text>
               <Text style={styles.text3}>hello</Text>
               <Text style={styles.text4}>{'2'}</Text>
-          </View>
+            </View>
 
-          <View style={styles.box1}>
+            <View style={styles.box1}>
               <Image
                   style={styles.image}
                   source={{uri: 'https://i.pinimg.com/736x/27/52/8c/27528cc7acfc0694be05a32c7673a052.jpg'}}
@@ -28,9 +28,9 @@ export default function Message() {
               <Text style={styles.text1}><Text style={styles.text2}>{'# Jenny'}</Text>                           {'22.36'}</Text>
               <Text style={styles.text3}>what's the jod</Text>
               <Text style={styles.text4}>{'1'}</Text>
-          </View>
+            </View>
 
-          <View style={styles.box1}>
+            <View style={styles.box1}>
               <Image
                   style={styles.image}
                   source={{uri: 'https://i.pinimg.com/736x/11/9b/61/119b617c1d7e60a63466016066353a47.jpg'}}
@@ -38,9 +38,9 @@ export default function Message() {
               <Text style={styles.text1}><Text style={styles.text2}>{'# Minton'}</Text>                         {'14.06'}</Text>
               <Text style={styles.text3}>want to see the work</Text>
               <Text style={styles.text4}>{'3'}</Text>
-          </View>
+            </View>
 
-          <View style={styles.box1}>
+            <View style={styles.box1}>
               <Image
                   style={styles.image}
                   source={{uri: 'https://png.pngtree.com/element_origin_min_pic/16/06/18/2257655487af886.jpg'}}
@@ -48,11 +48,8 @@ export default function Message() {
               <Text style={styles.text1}><Text style={styles.text2}>{'# Jasmine'}</Text>                       {'14.06'}</Text>
               <Text style={styles.text3}>want to see the work</Text>
               <Text style={styles.text4}>{'3'}</Text>
+            </View>
           </View>
-
-
-
-
         </ScrollView>
     </SafeAreaView>
     );
@@ -63,20 +60,24 @@ container: {
   width: '100%',
   height: '100%',
   position: 'relative',
-  backgroundColor: '#98c5df',
+  backgroundColor: '#eefbff',
+},
+top: {
+  marginTop: 20,
 },
 box1: {
   height: 80,
   marginLeft: 25,
   marginRight: 25,
   padding: 10,
-  marginTop: 30,
+  marginTop: 10,
   borderRadius: 10,
   backgroundColor: '#fff',
   shadowColor: "#000",
   shadowOpacity: 0.34,
   shadowRadius: 6.27,
-  elevation: 8,
+  elevation: 4,
+  marginBottom: 10,
 },
 image: {
   width: 50,

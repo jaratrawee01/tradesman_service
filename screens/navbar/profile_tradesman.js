@@ -1,69 +1,66 @@
 import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
+import { SafeAreaView, StyleSheet, Text,  View, Image, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
-const image = { uri: 'https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/4001/1024001-h-ba8013ea561b' };
 
 class Profile_tradesman extends Component {
-   render() {
+  render() {
     return (
 
-      <SafeAreaView style={styles.container}> 
+      <SafeAreaView style={styles.container}>
         <ScrollView>
-            <View style={styles.box1}>
-                <View>
-                    <ImageBackground source={image} resizeMode="cover" style={styles.backgroun}>
-                      <Image
-                        style={styles.image}
-                        source={{uri: 'https://i.pinimg.com/originals/0c/62/50/0c6250e9411e1042671f170db1aab1fc.jpg'}}
-                      />
-                      <Text style={styles.text}>Yonzook</Text>
-                    </ImageBackground>
-                </View>
-            </View>
+          <View style={styles.box1}>
+              <Image
+                style={styles.image}
+                source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1zrmmzTYC6hHZP-XapM5K0eCU3cy8LldkTz6C-MXkUxO6iRX1GQvar3LCvtzvhzWb2Y&usqp=CAU'}}
+             />
+             <Text style={styles.text}>Jason Amada</Text>
+             <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
+             <FontAwesome name="star" style={styles.icons} />
+             <FontAwesome name="star" style={styles.icons1} />
+             <FontAwesome name="star" style={styles.icons2} />
+             <FontAwesome name="star" style={styles.icons3} />
+             <FontAwesome name="star" style={styles.icons4} />
+          </View>
 
-            <View style={styles.box2}>
-                <View style={styles.box3}>
-                    <View style={styles.input}>
-                        <FontAwesome5 name="user-alt" size={24} color="#00c2fe" placeholder="Password"/> 
-                        <Text style={styles.text1}>{'Profile'}</Text>       
-                    </View>
+          <View style={styles.box3}>
+              <FontAwesome5 name="user-alt" style={styles.icons5} />
+              <Text style={styles.text2}>{'Profile'}</Text>                            
+          </View>
 
-                    <View style={styles.input}>
-                    <FontAwesome5 name="address-book" size={24} color="#00c2fe" />  
-                    <Text style={styles.text1}>{'Contact informatiom'}</Text>        
-                    </View>
+          <View style={styles.box3}>
+              <FontAwesome5 name="address-book" style={styles.icons5} />
+              <Text style={styles.text2}>{'Contact informatiom'}</Text>                           
+          </View>
 
-                    <View style={styles.input}>
-                        <FontAwesome name="unlock-alt" size={28} color="#00c2fe" /> 
-                        <Text style={styles.text1}>{'Change user/password'}</Text>    
-                    </View>
+          <View style={styles.box3}>
+              <FontAwesome5 name="unlock-alt" style={styles.icons5} />
+              <Text style={styles.text2}>{'Change user/password'}</Text>                             
+          </View>
 
-                    <View style={styles.input}>
-                    <MaterialIcons name="chat" size={24} color="#00c2fe" />  
-                    <Text style={styles.text1}>{'Cnat'}</Text>                              
-                    </View>
+          <View style={styles.box3}>
+              <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
+              <Text style={styles.text2} onPress={() => this.props.navigation.navigate('Login')}>{'Cnat'}</Text>                             
+          </View>
 
-                    <View style={styles.input}>
-                        <FontAwesome5 name="money-check-alt" size={18} color="#00c2fe" />  
-                        <Text style={styles.text1}>{'Pay for'}</Text>                        
-                    </View>
-                </View>
+          <View style={styles.box3}>
+              <FontAwesome5  name="money-check-alt" style={styles.icons6} />
+              <Text style={styles.text2}>{'Pay for'}</Text>                             
+          </View>
 
-                <View style={styles.box4}>
-                    <Image
-                        style={styles.image1}
-                        source={{uri: 'https://inwfile.com/s-dx/pw8rqy.jpg'}}
-                      />
-                    <Image
-                        style={styles.image2}
-                        source={{uri: 'https://www.ตรวจระบบไฟฟ้าประจําปี.com/wp-content/uploads/2021/09/%E0%B8%AD%E0%B8%B2%E0%B8%8A%E0%B8%B5%E0%B8%9E%E0%B8%8A%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%99%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B8%E0%B8%95%E0%B8%AA%E0%B8%B2%E0%B8%AB%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1.jpg'}}
-                      />
-                </View>
-            </View>     
-          </ScrollView>
+          <View style={styles.box4}>
+              <Image
+                style={styles.image1}
+                source={{uri: 'https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg'}}
+             />
+              <Image
+                style={styles.image2}
+                source={{uri: 'https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg'}}
+             />
+          </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -73,115 +70,165 @@ class Profile_tradesman extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    container: {
-      width: '100%',
-      height: '100%',
-      position: 'relative',
-  },
-  },
-  backgroun: {
-    width: 360,
-    height: 300 ,
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    backgroundColor: '#eefbff',
   },
   image: {
     width: 100,
     height: 100,
-    marginTop: 40,
-    borderRadius: 50,
+    marginTop: 20,
+    borderRadius: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
     borderWidth: 1,
-    borderColor: '#00c2fe',
+    borderColor: '#000',
   },
   image1: {
-    width: 128,
-    height: 145,
-    marginLeft: 22,
-    marginTop: 25,
-    borderRadius: 20,
+    width: 130,
+    height: 130,
+    marginTop: 15,
+    borderRadius: 10,
+    marginLeft: 13,
     borderWidth: 1,
-    borderColor: '#00c2fe',
-    
+    borderColor: '#000',
   },
   image2: {
-    width: 128,
-    height: 145,
-    marginLeft: 170,
-    marginTop: -145,
-    borderRadius: 20,
+    width: 130,
+    height: 130,
+    marginTop: -130,
+    borderRadius: 10,
+    marginLeft: 158,
     borderWidth: 1,
-    borderColor: '#00c2fe',
+    borderColor: '#000',
   },
   box1: {
-    flex: 1,
-    flexDirection: "row",
-    height: 300,
-    width: 360,
-  },
-  box2: {
-    flex: 1, 
-    flexDirection: "row",
-    height: 390,
-    width: 360,
-    backgroundColor: '#d2e4ee',    
-  },
-  box3: {
-    height: 255,
-    width: 320,
+    height: 250,
+    width: 300,
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
     borderRadius: 20,
-    marginLeft: 18,
-    marginRight: 20, 
-    marginTop: -120, 
-    borderWidth: 1,
-    borderColor: '#00c2fe', 
-  },
-  box4:{
-    flex: 1,
-    backgroundColor: '#d2e0e8',
-    height: '50%',
-    marginTop: '45%',
-    marginLeft: '-94%',
+    marginLeft: 28,
     marginRight: 20,
+    marginTop: 25,
+  },
+  box3: {
+    height: 60,
+    width: 300,
+    backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    elevation: 6,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
+    elevation: 3,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginRight: 20,
+    marginTop: 10,
+    marginBottom: 4,
   },
+  box4:{
+    height: 160,
+    width: 300,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 3,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginRight: 20,
+    marginTop: 10,
+    marginBottom: 4,
+  }, 
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
     fontWeight: 'bold',
-    fontSize: 35,
-    color: '#00c2fe',
-  },
-  input: {
-    marginLeft: 30,
-    marginTop: 22,
-    borderColor: '#00c2fe',
+    fontSize: 25,
+    marginTop: 10,
   },
   text1: {
-    marginLeft: 45,
-    marginTop: -23,
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  text2: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    fontWeight: 'bold',
     fontSize: 20,
     marginTop: 5,
   },
+  text2: {
+    marginLeft: 80,
+    fontSize: 20,
+    marginTop: -35,
+  },
+  icons: {
+    marginLeft: 80,
+    marginTop: 15,
+    fontSize: 24, 
+    color: '#bcbdbe'
+  },
+  icons1: {
+    marginLeft: 110,
+    marginTop: 15,
+    fontSize: 24, 
+    color: '#bcbdbe',
+    marginTop: -25,
+  },
+  icons2: {
+    marginLeft: 140,
+    marginTop: 15,
+    fontSize: 24, 
+    color: '#bcbdbe',
+    marginTop: -25,
+  },
+  icons3: {
+    marginLeft: 170,
+    marginTop: 15,
+    fontSize: 24, 
+    color: '#bcbdbe',
+    marginTop: -25,
+  },
+  icons4: {
+    marginLeft: 200,
+    marginTop: 15,
+    fontSize: 24, 
+    color: '#bcbdbe',
+    marginTop: -25,
+  },
+  icons5: {
+    width: 50,
+    height: 48,
+    marginLeft: 10,
+    marginTop: 6,
+    fontSize: 24, 
+    color: '#00c2fe',
+    backgroundColor: '#dcecf4',
+    borderRadius: 10,
+    paddingTop: 12,
+    paddingLeft: 14,
+  },
+  icons6: {
+    width: 50,
+    height: 48,
+    marginLeft: 10,
+    marginTop: 6,
+    fontSize: 22, 
+    color: '#00c2fe',
+    backgroundColor: '#dcecf4',
+    borderRadius: 10,
+    paddingTop: 12,
+    paddingLeft: 12,
+  },
+
 });
 
 
 
 export default Profile_tradesman; 
+
+
+
+
+
+
