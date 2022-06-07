@@ -1,11 +1,15 @@
-import * as React from 'react';
-import {  Text, View } from 'react-native';
-export default function Shop() {
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+
+class Shop extends Component {
+  render() {
 
     return (
       <View>
-          <Text> Shop</Text>
+        <Text> Shop</Text>
       </View>
     );
+  }
 }
 
+export default Shop; 

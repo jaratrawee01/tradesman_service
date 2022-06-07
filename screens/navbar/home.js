@@ -1,10 +1,10 @@
-import * as React from 'react';
+import  React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text, View, Image, ScrollView} from 'react-native';
 
 
 
-export default function Home() {
-
+class Home extends Component {
+  render() {
     return (
       <SafeAreaView style={styles.container}> 
       <ScrollView>
@@ -71,6 +71,7 @@ export default function Home() {
         </ScrollView>
     </SafeAreaView>
     );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -138,3 +139,5 @@ box2: {
 
 
 });
+
+export default Home; 
