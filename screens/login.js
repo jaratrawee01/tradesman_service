@@ -43,19 +43,18 @@ class Login extends Component {
 
           <View style={styles.icons}>
             <AntDesign name="checkcircleo" size={20} color="#00c2fe" />
-            <Text style={styles.text1}><Text style={styles.text2}>{'Remember me'}</Text>           {'Forgot Password?'}</Text>
+            <Text style={styles.text1}>{'Remember me'}</Text>
+            <View style={styles.button2}>
+            <Text   title="Go to Details"
+              onPress={() => this.props.navigation.navigate('Registration')}>Registration</Text>
+            </View>
           </View>
   
           <View style={styles.button}>
             <TouchableOpacity style={styles.button1}>
-              <Text style={{ fontSize: 34, textAlign: 'center', color: 'white', marginTop: 4, }}>Log in</Text>
+              <Text style={{ fontSize: 30, textAlign: 'center', color: 'white', marginTop: 4, }}>Log in</Text>
             </TouchableOpacity>
           </View>
-
-          <View style={styles.button}>
-          <Text   title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Registration')}>Registration</Text>
-        </View>
 
           <View style={styles.boxIcon}>
             <View style={styles.icons1}>
@@ -66,6 +65,7 @@ class Login extends Component {
               <AntDesign name="google" size={35} color="#00c2fe" />
             </View>
           </View>
+          
         </ScrollView>
       </SafeAreaView>
     );
@@ -121,12 +121,12 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
   },
-  text1: {
-    marginLeft: 24,
-    marginTop: -18,
-    fontSize: 16,
+  button2: {
+    marginTop: -15,
+    marginLeft: 180,
   },
-  text2: {
+  text1: {
+    marginLeft: 26,
     marginTop: -18,
     fontSize: 16,
   },
@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 4,
     backgroundColor: '#fff',
-    marginTop: -20,
-    marginLeft: 100,
+    marginTop: 20,
+    marginLeft: 110,
     alignItems: 'center',
     padding: 10,
   },
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 4,
     backgroundColor: '#fff',
-    marginLeft: 200,
+    marginLeft: 210,
     alignItems: 'center',
     padding: 8,
     marginTop: -50,

@@ -88,7 +88,7 @@ save = () => {
 
           <View style={styles.button}>
             <TouchableOpacity style={styles.button1}>
-              <Text style={{ fontSize: 34, textAlign: 'center', color: 'white', marginTop: 4, }} onPress={this.save}>Sign up</Text>
+              <Text style={{ fontSize: 32, textAlign: 'center', color: 'white', marginTop: 4, }} onPress={this.save}>Sign up</Text>
             </TouchableOpacity>
           </View>
 
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     backgroundColor: '#fff',
     marginTop: -30,
-    marginLeft: 100,
+    marginLeft: 110,
     alignItems: 'center',
     padding: 10,
   },
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 4,
     backgroundColor: '#fff',
-    marginLeft: 200,
+    marginLeft: 210,
     alignItems: 'center',
     padding: 8,
     marginTop: -50,
