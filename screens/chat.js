@@ -9,15 +9,9 @@ export default function Chat() {
     return (
       <SafeAreaView style={styles.container}> 
         <ScrollView>
-            <View style={styles.input}>
-                <Ionicons name="arrow-back" style={styles.icons}/>
-                <Text style={styles.text}>Anna</Text>
-            </View>
-
             <View style={styles.box1}>
-
+           
             </View>
-
         </ScrollView>
     </SafeAreaView>
     );
@@ -28,7 +22,7 @@ container: {
   width: '100%',
   height: '100%',
   position: 'relative',
-  backgroundColor: '#98c5df',
+  backgroundColor: '#f8fdff',
 },
 icons: {
     marginTop: 20,
@@ -53,7 +47,8 @@ box1: {
     shadowColor: "#000",
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-    elevation: 8,
+    elevation: 7,
+    marginBottom: 4,
   },
 
 

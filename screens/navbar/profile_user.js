@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
-    backgroundColor: '#eefbff',
+    backgroundColor: '#f8fdff',
   },
   image: {
     width: 100,
@@ -69,8 +69,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
-    borderWidth: 1,
-    borderColor: '#000',
   },
   box1: {
     height: 250,
