@@ -14,10 +14,10 @@ class Message extends Component {
             <View style={styles.box1}>
             <Image
                   style={styles.image}
-                  source={{uri: 'https://i.pinimg.com/originals/0c/62/50/0c6250e9411e1042671f170db1aab1fc.jpg'}}
+                  source={{uri: 'https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg'}}
               />
               <Text style={styles.text1}><Text style={styles.text2}>{'# Anna'}</Text>                             {'14.06'}</Text>
-              <Text style={styles.text3}>hello</Text>
+              <Text style={styles.text3}>Message</Text>
               <Text style={styles.text4}>{'2'}</Text>
             </View>
             </TouchableWithoutFeedback>
@@ -26,30 +26,30 @@ class Message extends Component {
             <View style={styles.box1}>
               <Image
                 style={styles.image}
-                source={{ uri: 'https://i.pinimg.com/736x/27/52/8c/27528cc7acfc0694be05a32c7673a052.jpg' }}
+                source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD47w-kjxI64_mo8RmdEFl0qJz-zZAwXDn8r6wNKZsyck8f4g3he8Qib_S_aXrygr6rlY&usqp=CAU' }}
               />
               <Text style={styles.text1}><Text style={styles.text2}>{'# Jenny'}</Text>                           {'22.36'}</Text>
-              <Text style={styles.text3}>what's the jod</Text>
+              <Text style={styles.text3}>Message</Text>
               <Text style={styles.text4}>{'1'}</Text>
             </View>
 
             <View style={styles.box1}>
               <Image
                 style={styles.image}
-                source={{ uri: 'https://i.pinimg.com/736x/11/9b/61/119b617c1d7e60a63466016066353a47.jpg' }}
+                source={{ uri: 'https://img.my-best.in.th/press_component/images/60032404a06bfae09ca65f06363457f6.jpg?ixlib=rails-4.2.0&q=70&lossless=0&w=690&fit=max' }}
               />
               <Text style={styles.text1}><Text style={styles.text2}>{'# Minton'}</Text>                         {'14.06'}</Text>
-              <Text style={styles.text3}>want to see the work</Text>
+              <Text style={styles.text3}>Message</Text>
               <Text style={styles.text4}>{'3'}</Text>
             </View>
 
             <View style={styles.box1}>
               <Image
                 style={styles.image}
-                source={{ uri: 'https://png.pngtree.com/element_origin_min_pic/16/06/18/2257655487af886.jpg' }}
+                source={{ uri: 'https://www.josephiteweb.org/wp-content/uploads/2017/03/sel_237-400x300.jpg' }}
               />
               <Text style={styles.text1}><Text style={styles.text2}>{'# Jasmine'}</Text>                       {'14.06'}</Text>
-              <Text style={styles.text3}>want to see the work</Text>
+              <Text style={styles.text3}>Message</Text>
               <Text style={styles.text4}>{'3'}</Text>
             </View>
           </View>
@@ -88,8 +88,6 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 5,
     borderRadius: 50,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
   },
   text1: {
     marginLeft: 55,
@@ -103,7 +101,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     marginLeft: 60,
-    fontSize: 20,
+    fontSize: 18,
 
   },
   text4: {
