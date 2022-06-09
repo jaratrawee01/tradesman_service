@@ -134,7 +134,16 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 25,
     fontSize: 26,
-    color: '#00c2fe',
+    color: '#444',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    
+    elevation: 9,
   },
 
  

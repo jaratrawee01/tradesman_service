@@ -25,13 +25,15 @@ class Home extends Component {
                 <Text style={styles.text}>
                   รีวิว :
                 </Text>
-                  <View style={styles.icons5}>
+                <View style={styles.icons1}>
+                  <View style={styles.boxhead}>
                     <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons1} />
-                    <FontAwesome name="star" style={styles.icons2} />
-                    <FontAwesome name="star" style={styles.icons3} />
-                    <FontAwesome name="star" style={styles.icons4} />
-                  </View>       
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                  </View>
+                </View>      
             </View>
 
             <View style={styles.box}>
@@ -49,13 +51,15 @@ class Home extends Component {
                   <Text style={styles.text}>
                     รีวิว :
                   </Text>
-                    <View style={styles.icons5}>
-                      <FontAwesome name="star" style={styles.icons} />
-                      <FontAwesome name="star" style={styles.icons1} />
-                      <FontAwesome name="star" style={styles.icons2} />
-                      <FontAwesome name="star" style={styles.icons3} />
-                      <FontAwesome name="star" style={styles.icons4} />
-                    </View>
+                  <View style={styles.icons1}>
+                  <View style={styles.boxhead}>
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                  </View>
+                </View>
             </View>
 
             <View style={styles.box}>
@@ -73,12 +77,14 @@ class Home extends Component {
               <Text style={styles.text}>
                 รีวิว :
               </Text>
-                <View style={styles.icons5}>
-                  <FontAwesome name="star" style={styles.icons} />
-                  <FontAwesome name="star" style={styles.icons1} />
-                  <FontAwesome name="star" style={styles.icons2} />
-                  <FontAwesome name="star" style={styles.icons3} />
-                  <FontAwesome name="star" style={styles.icons4} />
+              <View style={styles.icons1}>
+                  <View style={styles.boxhead}>
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                  </View>
                 </View>
             </View>
 
@@ -97,12 +103,14 @@ class Home extends Component {
               <Text style={styles.text}>
                 รีวิว :
               </Text>
-                <View style={styles.icons5}>
-                  <FontAwesome name="star" style={styles.icons} />
-                  <FontAwesome name="star" style={styles.icons1} />
-                  <FontAwesome name="star" style={styles.icons2} />
-                  <FontAwesome name="star" style={styles.icons3} />
-                  <FontAwesome name="star" style={styles.icons4} />
+                <View style={styles.icons1}>
+                  <View style={styles.boxhead}>
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                    <FontAwesome name="star" style={styles.icons} />
+                  </View>
                 </View>
             </View>
 
@@ -124,6 +132,7 @@ container: {
 boxhead: {
   flexDirection: 'row',
   flexWrap: 'wrap'
+  
 },
 box: {
   width: '45%',
@@ -167,38 +176,14 @@ text1: {
   marginTop: -22,
 },
 icons: {
-  marginLeft: 35,
+  marginLeft: 5,
   marginTop: 15,
   fontSize: 15, 
   color: '#bcbdbe'
 },
-icons1: {
-  marginLeft: 55,
-  fontSize: 15, 
-  color: '#bcbdbe',
-  marginTop: -16,
-},
-  icons2: {
-    marginLeft: 75,
-    fontSize: 15, 
-    color: '#bcbdbe',
-    marginTop: -15,
-  },
-  icons3: {
-    marginLeft: 95,
-    fontSize: 15, 
-    color: '#bcbdbe',
-    marginTop: -15,
-  },
-  icons4: {
-    marginLeft: 115,
-    fontSize: 15, 
-    color: '#bcbdbe',
-    marginTop: -15,
-  },
-  icons5: {
+  icons1: {
     marginTop: -30,
-    marginLeft: 12,
+    marginLeft: 40,
   },
   
 

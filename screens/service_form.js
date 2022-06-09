@@ -38,7 +38,7 @@ class Service_form extends Component {
                       </View>
 
                       <View>
-                        <Text style={styles.text2}>{'บ้านเขที่'}</Text>                 
+                        <Text style={styles.text2}>{'บ้านเลขที่'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
 
