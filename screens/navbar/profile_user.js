@@ -12,41 +12,8 @@ class Profile_user extends Component {
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.box1}>
-              <Image
-                style={styles.image}
-                source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1zrmmzTYC6hHZP-XapM5K0eCU3cy8LldkTz6C-MXkUxO6iRX1GQvar3LCvtzvhzWb2Y&usqp=CAU'}}
-             />
-             <Text style={styles.text}>Jason Amada</Text>
-             <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
-             <FontAwesome name="star" style={styles.icons} />
-             <FontAwesome name="star" style={styles.icons1} />
-             <FontAwesome name="star" style={styles.icons2} />
-             <FontAwesome name="star" style={styles.icons3} />
-             <FontAwesome name="star" style={styles.icons4} />
+            
           </View>
-
-          <View style={styles.box3}>
-              <FontAwesome5 name="user-alt" style={styles.icons5} />
-              <Text style={styles.text2}>{'Profile'}</Text>                            
-          </View>
-
-          <View style={styles.box3}>
-              <FontAwesome5 name="address-book" style={styles.icons5} />
-              <Text style={styles.text2}>{'Contact informatiom'}</Text>                           
-          </View>
-
-          <View style={styles.box3}>
-              <FontAwesome5 name="unlock-alt" style={styles.icons5} />
-              <Text style={styles.text2}>{'Change user/password'}</Text>                             
-          </View>
-
-          <View style={styles.box3}>
-              <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-              <Text style={styles.text2} onPress={() => this.props.navigation.navigate('Login')}>{'Cnat'}</Text>                             
-          </View>
-
-         
-
         </ScrollView>
       </SafeAreaView>
     );
@@ -168,3 +135,36 @@ const styles = StyleSheet.create({
 export default Profile_user; 
 
 
+{/* <Image
+                style={styles.image}
+                source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1zrmmzTYC6hHZP-XapM5K0eCU3cy8LldkTz6C-MXkUxO6iRX1GQvar3LCvtzvhzWb2Y&usqp=CAU'}}
+             />
+             <Text style={styles.text}>Jason Amada</Text>
+             <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
+             <FontAwesome name="star" style={styles.icons} />
+             <FontAwesome name="star" style={styles.icons1} />
+             <FontAwesome name="star" style={styles.icons2} />
+             <FontAwesome name="star" style={styles.icons3} />
+             <FontAwesome name="star" style={styles.icons4} />
+          </View>
+
+          <View style={styles.box3}>
+              <FontAwesome5 name="user-alt" style={styles.icons5} />
+              <Text style={styles.text2}>{'Profile'}</Text>                            
+          </View>
+
+          <View style={styles.box3}>
+              <FontAwesome5 name="address-book" style={styles.icons5} />
+              <Text style={styles.text2}>{'Contact informatiom'}</Text>                           
+          </View>
+
+          <View style={styles.box3}>
+              <FontAwesome5 name="unlock-alt" style={styles.icons5} />
+              <Text style={styles.text2}>{'Change user/password'}</Text>                             
+          </View>
+
+          <View style={styles.box3}>
+              <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
+              <Text style={styles.text2} onPress={() => this.props.navigation.navigate('Login')}>{'Cnat'}</Text>                             
+          </View>
+ */}

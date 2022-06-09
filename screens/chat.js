@@ -14,8 +14,9 @@ export default function Chat() {
                 style={styles.image}
                 source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD47w-kjxI64_mo8RmdEFl0qJz-zZAwXDn8r6wNKZsyck8f4g3he8Qib_S_aXrygr6rlY&usqp=CAU' }}
               />
-              
           </View>
+
+          <View ></View>
               
           <View style={styles.box1}>
             <View style={styles.boxhead}> 
