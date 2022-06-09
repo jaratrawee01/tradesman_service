@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
-    backgroundColor: '#f8fdff',
   },
   backgroun: {
     width: 360,
@@ -90,8 +89,7 @@ const styles = StyleSheet.create({
   },
   box1: {
     height: 365,
-    width: 360,
-    backgroundColor: '#FFF0F0',    
+    width: 360,   
   },
   box2: {
     height: 300,
@@ -101,11 +99,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.39,
     shadowRadius: 8.30,
     elevation: 13,
-    borderRadius: 15,
+    borderRadius: 30,
     marginLeft: 20,
     marginRight: 20,
     marginTop: -20,
     marginBottom: 4,
+    padding: 10,
   },
   text: {
     marginLeft: 'auto',
@@ -136,14 +135,9 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: '#444',
     shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-    
-    elevation: 9,
+    elevation: 4,
   },
 
  
