@@ -10,36 +10,84 @@ class Service_form extends Component {
 
       <SafeAreaView style={styles.container}> 
         <ScrollView>
-            <View style={styles.box1}>
                 <View>
                     <ImageBackground source={image} resizeMode="cover" style={styles.backgroun}>
                       <Image
                         style={styles.image}
-                        source={{uri: 'https://st2.depositphotos.com/2589681/8216/v/600/depositphotos_82168986-stock-illustration-plumber.jpg'}}
+                        source={{uri: 'https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg'}}
                       />
                       <Text style={styles.text}>Yonzook</Text>
                     </ImageBackground>
                 </View>
-            </View>
 
             <View style={styles.box2}>
-                <View style={styles.box3}>
+                 <View style={styles.box3}>
                     <View>
                         <Text style={styles.text1}>Personal information Form</Text>
                     </View>
-                    <View>
+                  <View style={styles.boxhead}>
+
+                      <View>
                         <Text style={styles.text2}>{'name-username'}</Text>                 
-                        <TextInput style={styles.input}/> 
-                    </View>
-                    <View style={styles.forme}>
-                        <Text style={styles.text3}>{'Email'}</Text>                 
-                        <TextInput style={styles.input1}/> 
-                    </View>
-                    
-                    
+                        <TextInput style={styles.box4}/> 
+                      </View>
 
+                      <View>
+                        <Text style={styles.text2}>{'Email'}</Text>                 
+                        <TextInput style={styles.box4}/> 
+                      </View>
 
-                </View>              
+                      <View>
+                        <Text style={styles.text2}>{'บ้านเขที่'}</Text>                 
+                        <TextInput style={styles.box4}/> 
+                      </View>
+
+                      <View>
+                        <Text style={styles.text2}>{'ตำบล'}</Text>                 
+                        <TextInput style={styles.box4}/> 
+                      </View>
+
+                      <View>
+                        <Text style={styles.text2}>{'อำเภอ'}</Text>                 
+                        <TextInput style={styles.box4}/> 
+                      </View>
+
+                      <View>
+                        <Text style={styles.text2}>{'จังหวัด'}</Text>                 
+                        <TextInput style={styles.box4}/> 
+                      </View>
+
+                  </View>
+
+                  <View>
+                      <View>
+                        <Text style={styles.text2}>{'รหัสไปรษณีย์'}</Text>                 
+                        <TextInput style={styles.box4}/> 
+                      </View>
+
+                      <View>
+                        <Text style={styles.text2}>{'ชื่อช่าง'}</Text>                 
+                        <TextInput style={styles.box4}/> 
+                      </View>
+
+                      <View>
+                        <Text style={styles.text2}>{'ประเภทงาน'}</Text>                 
+                        <TextInput style={styles.box5}/> 
+                      </View>
+
+                      <View>
+                        <Text style={styles.text2}>{'ผลงานช่าง'}</Text>                 
+                        <TextInput style={styles.box5}/> 
+                      </View>
+
+                      <View>
+                        <Text style={styles.text2}>{'คำอธิบาย'}</Text>                 
+                        <TextInput style={styles.box6}/> 
+                      </View>
+
+                  </View>
+
+                </View>             
             </View>
           </ScrollView>
       </SafeAreaView>
@@ -59,70 +107,106 @@ const styles = StyleSheet.create({
   },
   backgroun: {
     width: 360,
-    height: 300 ,
+    height: 250 ,
+  },
+  boxhead: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginTop: -8,
   },
   image: {
     width: 100,
     height: 100,
-    marginTop: 50,
+    marginTop: 40,
     borderRadius: 50,
     marginLeft: 'auto',
     marginRight: 'auto',
-    borderWidth: 1,
-    borderColor: '#00c2fe',
   },
   image1: {
     width: 128,
     height: 145,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
-  },
-  box1: {
-    flex: 1,
-    flexDirection: "row",
-    height: 300,
-    width: 360,
+
   },
   box2: {
-    flex: 1, 
-    flexDirection: "row",
-    height: 390,
+    height: 450,
     width: 360,
     backgroundColor: '#FFF0F0',    
   },
   box3: {
-    height: 435,
+    height: 500,
     width: 320,
-    backgroundColor: '#fff',
+    backgroundColor: '#f8fdff',
     shadowColor: "#000",
     shadowOpacity: 0.39,
     shadowRadius: 8.30,
     elevation: 13,
-    borderRadius: 20,
-    marginLeft: 18,
+    borderRadius: 15,
+    marginLeft: 20,
     marginRight: 20, 
-    marginTop: -80, 
-    borderWidth: 1,
-    borderColor: '#00c2fe', 
+    marginTop: -60, 
+    marginBottom: 10,
+  },
+  box4: {
+    height: 30,
+    width: 145,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 12,
+    borderRadius: 5,
+    marginLeft: 8,
+    marginRight: 5, 
+    fontSize: 14,
+    padding: 2,
+  },
+  box5: {
+    height: 30,
+    width: 200,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 12,
+    borderRadius: 5,
+    marginLeft: 8,
+    marginRight: 5, 
+    marginTop: 2,
+    fontSize: 16,
+  },
+  box6: {
+    height: 60,
+    width: 200,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 12,
+    borderRadius: 5,
+    marginLeft: 8,
+    marginRight: 5, 
+    marginTop: 2,
+    fontSize: 16,
   },
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
     fontWeight: 'bold',
-    fontSize: 35,
+    fontSize: 30,
     color: '#00c2fe',
-    marginTop: 10,
+    marginTop: 5,
   },
   text1: {
     marginLeft: 20,
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 16,
+    marginTop: 5,
   },
   text2: {
     marginLeft: 12,
-    fontSize: 16,
+    fontSize: 13,
     marginTop: 10,
   },
   text3: {
@@ -131,23 +215,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   input: {
-    height: 30,
+    height: 50,
     width: 150,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
     fontSize: 23,
     marginLeft: 10,
+    shadowOffset: {width: 0,height: 6,},
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 2,
   
   },
-  input1: {
-    height: 30,
-    width: 135,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
-    fontSize: 23,
-    marginLeft: 20,
-  
-  },forme: {
+  forme: {
     marginLeft: 150,
     marginTop: -58,
   },
