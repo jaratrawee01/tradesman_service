@@ -130,12 +130,12 @@ const styles = StyleSheet.create({
 
   },
   box2: {
-    height: 810,
+    height: 860,
     width: 360,
     backgroundColor: '#FFF',    
   },
   box3: {
-    height: 865,
+    height: 915,
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   box4: {
-    height: 35,
+    height: 40,
     width: 280,
     backgroundColor: '#fff',
     shadowColor: "#000",
