@@ -72,12 +72,12 @@ class Service_form extends Component {
 
                       <View>
                         <Text style={styles.text2}>{'ประเภทงาน'}</Text>                 
-                        <TextInput style={styles.box5}/> 
+                        <TextInput style={styles.box4}/> 
                       </View>
 
                       <View>
                         <Text style={styles.text2}>{'ผลงานช่าง'}</Text>                 
-                        <TextInput style={styles.box5}/> 
+                        <TextInput style={styles.box4}/> 
                       </View>
 
                       <View>
@@ -130,66 +130,54 @@ const styles = StyleSheet.create({
 
   },
   box2: {
-    height: 450,
+    height: 810,
     width: 360,
-    backgroundColor: '#FFF0F0',    
+    backgroundColor: '#FFF',    
   },
   box3: {
-    height: 500,
+    height: 865,
     width: 320,
-    backgroundColor: '#f8fdff',
+    backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.39,
     shadowRadius: 8.30,
     elevation: 13,
-    borderRadius: 15,
+    borderRadius: 20,
     marginLeft: 20,
     marginRight: 20, 
     marginTop: -60, 
     marginBottom: 10,
   },
   box4: {
-    height: 30,
-    width: 145,
+    height: 35,
+    width: 280,
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.37,
     shadowRadius: 7.49,
     elevation: 12,
     borderRadius: 5,
-    marginLeft: 8,
+    marginLeft: 20,
     marginRight: 5, 
-    fontSize: 14,
-    padding: 2,
-  },
-  box5: {
-    height: 30,
-    width: 200,
-    backgroundColor: '#fff',
-    shadowColor: "#000",
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-    elevation: 12,
-    borderRadius: 5,
-    marginLeft: 8,
-    marginRight: 5, 
-    marginTop: 2,
-    fontSize: 16,
+    fontSize: 18,
+    paddingLeft: 10,
+    marginTop: 5,
   },
   box6: {
     height: 60,
-    width: 200,
+    width: 280,
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.37,
     shadowRadius: 7.49,
     elevation: 12,
     borderRadius: 5,
-    marginLeft: 8,
+    marginLeft: 20,
     marginRight: 5, 
-    marginTop: 2,
+    marginTop: 5,
     fontSize: 16,
   },
+
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -201,24 +189,19 @@ const styles = StyleSheet.create({
   text1: {
     marginLeft: 20,
     fontWeight: 'bold',
-    fontSize: 16,
-    marginTop: 5,
+    fontSize: 20,
+    marginTop: 10,
   },
   text2: {
-    marginLeft: 12,
-    fontSize: 13,
-    marginTop: 10,
-  },
-  text3: {
     marginLeft: 20,
     fontSize: 16,
-    marginTop: 10,
+    marginTop: 15,
   },
   input: {
     height: 50,
     width: 150,
-    fontSize: 23,
-    marginLeft: 10,
+    fontSize: 25,
+    marginLeft: 20,
     shadowOffset: {width: 0,height: 6,},
     shadowOpacity: 0.37,
     shadowRadius: 7.49,
