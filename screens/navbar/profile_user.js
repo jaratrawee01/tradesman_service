@@ -37,22 +37,22 @@ class Profile_user extends Component {
 
                   <View style={styles.boxhead}>
                     <FontAwesome5 name="user-alt" style={styles.icons2} />
-                    <Text style={styles.text1}>{'Profile'}</Text>
+                    <Text style={styles.text1}>{'โปรไฟล์'}</Text>
                   </View> 
 
                   <View style={styles.boxhead}>
                     <FontAwesome5 name="address-book" style={styles.icons2} />
-                    <Text style={styles.text1}>{'Contact informatiom'}</Text>  
+                    <Text style={styles.text2}>{'ข้อมูลติดต่อ'}</Text>  
                   </View>  
 
                   <View style={styles.boxhead}>
                     <FontAwesome5 name="unlock-alt" style={styles.icons2} />
-                    <Text style={styles.text1}>{'Change user/password'}</Text>   
+                    <Text style={styles.text1}>{'เปลียน user/password'}</Text>   
                   </View> 
 
                   <View style={styles.boxhead}>
                     <Ionicons name="chatbox-ellipses-sharp" style={styles.icons2} />
-                    <Text style={styles.text1} onPress={() => this.props.navigation.navigate('Login')}>{'Cnat'}</Text>
+                    <Text style={styles.text2} onPress={() => this.props.navigation.navigate('Login')}>{'แชท'}</Text>
                   </View> 
 
               </View>
@@ -116,8 +116,14 @@ const styles = StyleSheet.create({
   },
   text1: {
     marginLeft: 20,
-    fontSize: 24,
-    marginTop: 30,
+    fontSize: 20,
+    marginTop: 35,
+  },
+  text2: {
+    marginLeft: 20,
+    fontSize: 20,
+    marginTop: 30
+    ,
   },
   icons: {
     marginLeft: 5,
