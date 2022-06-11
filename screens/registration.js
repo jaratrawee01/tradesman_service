@@ -5,101 +5,92 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import createUser from './service/getService';
 
+
 var md5 = require('md5');
 
 
 
-  const Registration = ({ navigation: { popToTop } }) => {
-  
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [password, setPassword] = useState('');
-  
-  
-    
-    const serve = async () => {
-  
-       const data = [name, email, phone, md5(password)];
-      const result = await createUser.createUser(data);
-  
-      if (result === "success") {
-        popToTop();
-  
-      } 
-    
- 
-  } 
+const Registration = ({ navigation: { popToTop } }) => {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [checked, setChecked] = React.useState('first');
 
 
-    return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View>
-            <Text style={styles.text}>
-              Registration
-            </Text>
-          </View>
-          <View style={styles.marginTop}>
-            <View style={styles.input}>
-              <FontAwesome name="user" size={24} color="#00c2fe" />
-              <TextInput
-                style={{ flex: 1, paddingLeft: 12 }}
-                placeholder="Name" name="name" onChange={(e) => { setName(e.nativeEvent.text) }}
-                underlineColorAndroid="transparent"
-              />
-            </View>
 
-            <View style={styles.input}>
-              <MaterialIcons name="mail" size={24} color="#00c2fe" />
-              <TextInput
-                style={{ flex: 1, paddingLeft: 12 }} onChange={(e) => { setEmail(e.nativeEvent.text) }}
-                placeholder="Email"
-                underlineColorAndroid="transparent"
-              />
-            </View>
+  const serve = async () => {
 
-            <View style={styles.input}>
-              <FontAwesome name="phone-square" size={24} color="#00c2fe" />
-              <TextInput
-                style={{ flex: 1, paddingLeft: 12 }}
-                onChange={(e) => { setPhone(e.nativeEvent.text) }}
-                placeholder="PhoneNumber"
-                underlineColorAndroid="transparent"
-              />
-            </View>
+    const data = [name, email, phone, md5(password)];
+    const result = await createUser.createUser(data);
 
-            <View style={styles.input}>
-              <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
-              <TextInput secureTextEntry={true}
-                style={{ flex: 1, paddingLeft: 12 }}
-                onChange={(e) => { setPassword(e.nativeEvent.text) }}
-                placeholder="Password"
-                underlineColorAndroid="transparent"
-              />
-            </View>
-          </View>
+    if (result === "success") {
+      popToTop();
 
-          <View style={styles.button}>
-            <TouchableOpacity style={styles.button1} onPress={() => serve()}>
-              <Text style={{ fontSize: 32, textAlign: 'center', color: 'white', marginTop: 4, }} >Sign up</Text>
-            </TouchableOpacity>
-
-          </View>
+    }
 
 
-          <View style={styles.boxIcon}>
-            <View style={styles.icons1}>
-              <FontAwesome name="facebook" size={35} color="#00c2fe" />
-            </View>
-            <View style={styles.icons2}>
-              <AntDesign name="google" size={35} color="#00c2fe" />
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    );
   }
+
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View>
+          <Text style={styles.text}>
+            Registration
+          </Text>
+        </View>
+        <View style={styles.marginTop}>
+          <View style={styles.input}>
+            <FontAwesome name="user" size={24} color="#00c2fe" />
+            <TextInput
+              style={{ flex: 1, paddingLeft: 12 }}
+              placeholder="Name" name="name" onChange={(e) => { setName(e.nativeEvent.text) }}
+              underlineColorAndroid="transparent"
+            />
+          </View>
+
+          <View style={styles.input}>
+            <MaterialIcons name="mail" size={24} color="#00c2fe" />
+            <TextInput
+              style={{ flex: 1, paddingLeft: 12 }} onChange={(e) => { setEmail(e.nativeEvent.text) }}
+              placeholder="Email"
+              underlineColorAndroid="transparent"
+            />
+          </View>
+
+          <View style={styles.input}>
+            <FontAwesome name="phone-square" size={24} color="#00c2fe" />
+            <TextInput
+              style={{ flex: 1, paddingLeft: 12 }}
+              onChange={(e) => { setPhone(e.nativeEvent.text) }}
+              placeholder="PhoneNumber"
+              underlineColorAndroid="transparent"
+            />
+          </View>
+
+          <View style={styles.input}>
+            <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
+            <TextInput secureTextEntry={true}
+              style={{ flex: 1, paddingLeft: 12 }}
+              onChange={(e) => { setPassword(e.nativeEvent.text) }}
+              placeholder="Password"
+              underlineColorAndroid="transparent"
+            />
+          </View>
+        </View>
+        <View style={styles.button}>
+          <TouchableOpacity style={styles.button1} onPress={() => serve()}>
+            <Text style={{ fontSize: 32, textAlign: 'center', color: 'white', marginTop: 4, }} >Sign up</Text>
+          </TouchableOpacity>
+
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
 
 
 const styles = StyleSheet.create({
