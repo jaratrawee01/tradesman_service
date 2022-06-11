@@ -11,6 +11,8 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { Button } from "react-native-web";
 
@@ -35,107 +37,122 @@ class Profile_tradesman extends Component {
   };
 
   clickImg = (e) => {
-   
-   console.log(e); 
-/*     this.setState({
+    console.log(e);
+    /*     this.setState({
       urlImg: e,
     });  */
   };
 
   render() {
-    const { modalVisible ,urlImg} = this.state;
-/* console.log(urlImg,"123"); */
+    const { modalVisible, urlImg } = this.state;
+    /* console.log(urlImg,"123"); */
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <View style={styles.box1}>
-            <Image
-              style={styles.image}
-              source={{
-                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1zrmmzTYC6hHZP-XapM5K0eCU3cy8LldkTz6C-MXkUxO6iRX1GQvar3LCvtzvhzWb2Y&usqp=CAU",
-              }}
-            />
-            <Text style={styles.text}>Jason Amada</Text>
-            <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
-            <FontAwesome name="star" style={styles.icons} />
-            <FontAwesome name="star" style={styles.icons1} />
-            <FontAwesome name="star" style={styles.icons2} />
-            <FontAwesome name="star" style={styles.icons3} />
-            <FontAwesome name="star" style={styles.icons4} />
-          </View>
-
-          <View style={styles.box3}>
-            <FontAwesome5 name="user-alt" style={styles.icons5} />
-            <Text style={styles.text2} onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}</Text>
-          </View>
-
-          <View style={styles.box3}>
-            <FontAwesome5 name="address-book" style={styles.icons5} />
-            <Text style={styles.text2}>{"ผลงาน"}</Text>
-          </View>
-          <View style={styles.box3} >
-            <FontAwesome5 name="unlock-alt" style={styles.icons5} />
-            <Text style={styles.text2}  onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}</Text>
-          </View>
-
-          <View style={styles.box3}>
-            <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-            <Text
-              style={styles.text2}
-              onPress={() => this.props.navigation.navigate("เเชท")}  
-            >
-              {"แชท"}
-            </Text>
-          </View>
-
-          <View style={styles.box3}>
-            <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-            <Text
-              style={styles.text2}
-              onPress={() => this.props.navigation.navigate("Login")}  
-            >
-              {"Login"}
-            </Text>
-          </View>
-          
-          <View style={styles.box3}>
-            <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-            <Text
-              style={styles.text2}
-              onPress={() => this.props.navigation.navigate("Logout")}>{"Logout"}</Text>
-          </View>
-
-          <View style={styles.box3}>
-            <Ionicons name="card" style={styles.icons5} />
-            <Text style={styles.text2}   onChange={e => this.clickImg("8887",e)}>{"ชำระเงิน"}</Text>
-          </View>
-
-          <View style={styles.box3}>
-            <Ionicons name="card" style={styles.icons5} />
-            <Text style={styles.text2}   onChange={e => this.clickImg("8887",e)}>{"บัญชีธนาคาร"}</Text>
-          </View>
-
-          <View style={styles.box4}>
-            <View>
-              <Pressable onPress={() => this.setModalVisible(true)}>
+          <View style={styles.box}>
+            <View style={styles.box1}>
+              <Image
+                style={styles.image}
+                source={{
+                  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1zrmmzTYC6hHZP-XapM5K0eCU3cy8LldkTz6C-MXkUxO6iRX1GQvar3LCvtzvhzWb2Y&usqp=CAU",
+                }}
+              />
+              <Text style={styles.text}>Jason Amada</Text>
+              <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
+              <View style={styles.icons1}>
                 <View style={styles.boxhead}>
-                  <Image
-                    style={styles.image1}
-                    source={{
-                      uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-                    }}
-                  
-                  />
+                  <FontAwesome name="star" style={styles.icons} />
+                  <FontAwesome name="star" style={styles.icons} />
+                  <FontAwesome name="star" style={styles.icons} />
+                  <FontAwesome name="star" style={styles.icons} />
+                  <FontAwesome name="star" style={styles.icons} />
+                </View>
+              </View>
+            </View>
+          </View>
 
-           {/*        <Image
+          <View style={styles.top}>
+            <View style={styles.box3}>
+              <FontAwesome name="user" style={styles.icons3} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}
+                </Text>
+            </View>
+
+            <View style={styles.box3}>
+              <FontAwesome5 name="file-image" style={styles.icons5}/>
+              <Text style={styles.text2}>{"ผลงาน"}
+            </Text>
+            </View>
+            <View style={styles.box3}>
+                <FontAwesome5 name="address-book" style={styles.icons5}/>
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
+                </Text>
+            </View>
+
+            <View style={styles.box3}>
+              <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("เเชท")}>{"แชท"}
+                </Text>
+            </View>
+
+            <View style={styles.box3}>
+                <Entypo name="login" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Login")}>{"Login"}
+                </Text>
+            </View>
+
+            <View style={styles.box3}>
+                <MaterialCommunityIcons name="logout"  style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Logout")}>{"Logout"}
+                </Text>
+            </View>
+
+            <View style={styles.box3}>
+              <FontAwesome5 name="cc-visa"  style={styles.icons4} />
+                <Text
+                  style={styles.text2}
+                  onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
+                </Text>
+            </View>
+
+            <View style={styles.box3}>
+                <Ionicons name="card" style={styles.icons5} />
+                <Text
+                  style={styles.text2}>{"บัญชีธนาคาร"}
+                </Text>
+            </View>
+
+            <View style={styles.box4}>
+              <View>
+                <Pressable onPress={() => this.setModalVisible(true)}>
+                  <View style={styles.boxhead}>
+                    <Image
+                      style={styles.image1}
+                      source={{
+                        uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
+                      }}
+                    />
+
+                    {/*        <Image
                     style={styles.image1}
                     source={{
                       uri: "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg",
                     }}
                   
                   /> */}
-                </View>
-              </Pressable>
+                  </View>
+                </Pressable>
+              </View>
             </View>
           </View>
         </ScrollView>
@@ -180,8 +197,8 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 120,
+    height: 120,
     marginTop: 20,
     borderRadius: 15,
     marginLeft: "auto",
@@ -201,17 +218,32 @@ const styles = StyleSheet.create({
     marginTop: 150,
     borderRadius: 15,
   },
+  top: {
+    marginTop: 20,
+  },
+  box: {
+    height: 260,
+    width: 360,
+    backgroundColor: "#3e83f0",
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderBottomLeftRadius: 60,
+    borderBottomRightRadius: 60,
+    
+  },
   box1: {
     height: 250,
-    width: 300,
+    width: 270,
     backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
     borderRadius: 20,
-    marginLeft: 28,
-    marginRight: 20,
+    marginLeft: 45,
+    marginRight: 45,
     marginTop: 25,
   },
   box3: {
@@ -256,62 +288,52 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   text2: {
-    marginLeft: 80,
+    marginLeft: 55,
     fontSize: 20,
     marginTop: -35,
   },
   icons: {
-    marginLeft: 80,
-    marginTop: 15,
-    fontSize: 24,
+    marginLeft: 5,
+    fontSize: 25,
     color: "#bcbdbe",
   },
   icons1: {
-    marginLeft: 110,
-    fontSize: 24,
-    color: "#bcbdbe",
-    marginTop: -25,
-  },
-  icons2: {
-    marginLeft: 140,
-    fontSize: 24,
-    color: "#bcbdbe",
-    marginTop: -24,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 5 ,
   },
   icons3: {
-    marginLeft: 170,
-    fontSize: 24,
-    color: "#bcbdbe",
-    marginTop: -24,
-  },
-  icons4: {
-    marginLeft: 200,
-    fontSize: 24,
-    color: "#bcbdbe",
-    marginTop: -24,
-  },
-  icons5: {
     width: 50,
     height: 48,
     marginLeft: 6,
-    marginTop: 7,
-    fontSize: 24,
+    marginTop: 5,
+    fontSize: 26,
     color: "#00c2fe",
     borderRadius: 10,
     paddingTop: 12,
     paddingLeft: 13,
   },
-  icons6: {
+  icons4: {
     width: 50,
     height: 48,
-    marginLeft: 10,
-    marginTop: 6,
-    fontSize: 22,
+    marginLeft: 6,
+    marginTop: 5,
+    fontSize: 20,
     color: "#00c2fe",
-    backgroundColor: "#dcecf4",
     borderRadius: 10,
     paddingTop: 12,
-    paddingLeft: 12,
+    paddingLeft: 13,
+  },
+  icons5: {
+    width: 50,
+    height: 48,
+    marginLeft: 6,
+    marginTop: 5,
+    fontSize: 24,
+    color: "#00c2fe",
+    borderRadius: 10,
+    paddingTop: 12,
+    paddingLeft: 13,
   },
   modalView: {
     height: 300,

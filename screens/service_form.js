@@ -28,12 +28,12 @@ class Service_form extends Component {
                   <View style={styles.boxhead}>
 
                       <View>
-                        <Text style={styles.text2}>{'name-username'}</Text>                 
+                        <Text style={styles.text2}>{'ชื่อ'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
 
                       <View>
-                        <Text style={styles.text2}>{'Email'}</Text>                 
+                        <Text style={styles.text2}>{'อีเมล'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
 
@@ -66,22 +66,12 @@ class Service_form extends Component {
                       </View>
 
                       <View>
-                        <Text style={styles.text2}>{'ชื่อช่าง'}</Text>                 
+                        <Text style={styles.text2}>{'อัพโหลกภาพ'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
 
                       <View>
-                        <Text style={styles.text2}>{'ประเภทงาน'}</Text>                 
-                        <TextInput style={styles.box4}/> 
-                      </View>
-
-                      <View>
-                        <Text style={styles.text2}>{'ผลงานช่าง'}</Text>                 
-                        <TextInput style={styles.box4}/> 
-                      </View>
-
-                      <View>
-                        <Text style={styles.text2}>{'คำอธิบาย'}</Text>                 
+                        <Text style={styles.text2}>{'GPS'}</Text>                 
                         <TextInput style={styles.box6}/> 
                       </View>
 
@@ -130,12 +120,12 @@ const styles = StyleSheet.create({
 
   },
   box2: {
-    height: 860,
+    height: 720,
     width: 360,
     backgroundColor: '#FFF',    
   },
   box3: {
-    height: 915,
+    height: 765,
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
@@ -171,7 +161,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.37,
     shadowRadius: 7.49,
     elevation: 12,
-    borderRadius: 5,
+    borderRadius: 20,
     marginLeft: 20,
     marginRight: 5, 
     marginTop: 5,

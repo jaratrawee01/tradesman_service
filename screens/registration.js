@@ -8,36 +8,6 @@ import createUser from './service/getService';
 var md5 = require('md5');
 
 
-/* 
-class Registration extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: null,
-      email: null,
-      phone: null,
-      password: null,
-    };
-  }
-
-  onChange = (fieldName, event) => {
-    const valueName = event.nativeEvent.text;
-    console.log(fieldName, event.nativeEvent.text);
-
-    this.setState({
-      [fieldName]: valueName
-    })
-
-
-  }
-
-
-  serve = async () => {
-    const data = [thsi.state.name, thsi.state.email]
-
-    await createUser.createUser();
-
-  } */
 
   const Registration = ({ navigation: { popToTop } }) => {
   
@@ -57,10 +27,10 @@ class Registration extends Component {
         popToTop();
   
       } 
+    
  
   } 
 
-/*   render() { */
 
     return (
       <SafeAreaView style={styles.container}>
@@ -130,7 +100,6 @@ class Registration extends Component {
       </SafeAreaView>
     );
   }
-/* } */
 
 
 const styles = StyleSheet.create({
