@@ -66,7 +66,7 @@ class Profile_tradesman extends Component {
 
           <View style={styles.box3}>
             <FontAwesome5 name="user-alt" style={styles.icons5} />
-            <Text style={styles.text2}>{"Profile"}</Text>
+            <Text style={styles.text2} onPress={() => this.props.navigation.navigate("CeateUser")}>{"Profile"}</Text>
           </View>
 
           <View style={styles.box3}>

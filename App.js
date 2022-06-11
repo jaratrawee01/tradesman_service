@@ -13,14 +13,17 @@ import RouterHome from './screens/router/routerHome';
 import RouterShop from './screens/router/routerShop';
 import RouterMessge from './screens/router/routerMessge';
 import RouterProfile from './screens/router/routerProfile';
-
+import { createStore } from 'redux';
+import allReducer from './redux/index';
+import { Provider } from "react-redux";
+const store = createStore(allReducer);
 
 
 const Tab = createBottomTabNavigator();
 
 function MyStack() {
   return (
-
+    <NavigationContainer>
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={RouterHome}
         options={{
@@ -40,7 +43,7 @@ function MyStack() {
         }} />
 
     </Tab.Navigator>
-
+    </NavigationContainer>
 
   );
 }
@@ -52,10 +55,9 @@ export default function App() {
   return (
 
     <>
-      <NavigationContainer>
-     {/*    <RouterNet /> */}
+     <Provider store={store}> 
         <MyStack />
-      </NavigationContainer>
+      </Provider> 
     </>
 
 

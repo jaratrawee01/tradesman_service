@@ -1,41 +1,61 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, TextInput, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import createUser from './service/getService';
 
 
-
+/* 
 class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: null,
       email: null,
-      phone_number:null,
+      phone: null,
       password: null,
     };
   }
+
+  onChange = (fieldName, event) => {
+    const valueName = event.nativeEvent.text;
+    console.log(fieldName, event.nativeEvent.text);
+
+    this.setState({
+      [fieldName]: valueName
+    })
+
+    
+  }
+
+
+  serve = async () => {
+  const data = [thsi.state.name,thsi.state.email]
+    
+    await createUser.createUser();
   
-  onChange = (fieldName,event) => {
-  /*  [event.target.id]: event.target.value */
+  } */
 
-  const valueName = event.nativeEvent.text;
-     console.log(fieldName,event.nativeEvent.text);  
- /*    console.log('555'); */
-  this.setState({
-    [fieldName]: valueName
-  }) 
-} 
+  const Registration  = () => { 
 
-save = () => {
-  console.log('save');
-}
+      const [name ,setName] = useState('');
+      const [email ,setEmail] = useState('');
+      const [phone ,setPhone] = useState('');
+      const [password ,setPassword] = useState('');
 
-  render() {
 
-    const { name ,email,phone_number,password} = this.state;
-    console.log( name ,email,phone_number,password);
+/*    const serve = async () => {
+        await createUser.createUser('asdasd');
+      } 
+ */
+      const serve = async () => {
+     
+        const data = [name,email,phone,password];
+        await createUser.createUser(data);
+     
+      } 
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -51,7 +71,7 @@ save = () => {
               <FontAwesome name="user" size={24} color="#00c2fe" />
               <TextInput
                 style={{ flex: 1, paddingLeft: 12 }}
-                placeholder="Name"  name="name" onChange={e => this.onChange("name",e)}
+                placeholder="Name" name="name" onChange={(e) => {setName(e.nativeEvent.text)}}
                 underlineColorAndroid="transparent"
               />
             </View>
@@ -59,7 +79,7 @@ save = () => {
             <View style={styles.input}>
               <MaterialIcons name="mail" size={24} color="#00c2fe" />
               <TextInput
-                style={{ flex: 1, paddingLeft: 12 }} onChange={e => this.onChange("email",e)}
+                style={{ flex: 1, paddingLeft: 12 }} onChange={(e) => {setEmail(e.nativeEvent.text)}}
                 placeholder="Email"
                 underlineColorAndroid="transparent"
               />
@@ -69,7 +89,7 @@ save = () => {
               <FontAwesome name="phone-square" size={24} color="#00c2fe" />
               <TextInput
                 style={{ flex: 1, paddingLeft: 12 }}
-                onChange={e => this.onChange("phone_number",e)}
+                onChange={(e) => {setPhone(e.nativeEvent.text)}}
                 placeholder="PhoneNumber"
                 underlineColorAndroid="transparent"
               />
@@ -77,9 +97,9 @@ save = () => {
 
             <View style={styles.input}>
               <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
-              <TextInput   secureTextEntry={true}
+              <TextInput secureTextEntry={true}
                 style={{ flex: 1, paddingLeft: 12 }}
-                onChange={e => this.onChange("password",e)}
+                onChange={(e) => {setPassword(e.nativeEvent.text)}}
                 placeholder="Password"
                 underlineColorAndroid="transparent"
               />
@@ -87,8 +107,8 @@ save = () => {
           </View>
 
           <View style={styles.button}>
-            <TouchableOpacity style={styles.button1}>
-              <Text style={{ fontSize: 32, textAlign: 'center', color: 'white', marginTop: 4, }} onPress={this.save}>Sign up</Text>
+            <TouchableOpacity style={styles.button1} onPress={() => serve()}>
+              <Text style={{ fontSize: 32, textAlign: 'center', color: 'white', marginTop: 4, }} >Sign up</Text>
             </TouchableOpacity>
           </View>
 
@@ -103,7 +123,6 @@ save = () => {
         </ScrollView>
       </SafeAreaView>
     );
-  }
 }
 
 
@@ -113,6 +132,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
+    backgroundColor: '#f8fdff',
   },
   boxIcon: {
     height: 100,
@@ -194,4 +214,7 @@ const styles = StyleSheet.create({
 });
 
 
+
+
 export default Registration;
+
