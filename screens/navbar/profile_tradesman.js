@@ -66,35 +66,53 @@ class Profile_tradesman extends Component {
 
           <View style={styles.box3}>
             <FontAwesome5 name="user-alt" style={styles.icons5} />
-            <Text style={styles.text2} onPress={() => this.props.navigation.navigate("CeateUser")}>{"Profile"}</Text>
+            <Text style={styles.text2} onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}</Text>
           </View>
 
           <View style={styles.box3}>
             <FontAwesome5 name="address-book" style={styles.icons5} />
-            <Text style={styles.text2}>{"Contact informatiom"}</Text>
-          </View>
-
-          <View style={styles.box3}>
-            <FontAwesome5 name="unlock-alt" style={styles.icons5} />
-            <Text style={styles.text2}>{"Change user/password"}</Text>
+            <Text style={styles.text2}>{"ผลงาน"}</Text>
           </View>
           <View style={styles.box3} >
             <FontAwesome5 name="unlock-alt" style={styles.icons5} />
             <Text style={styles.text2}  onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}</Text>
           </View>
+
           <View style={styles.box3}>
             <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
             <Text
               style={styles.text2}
-              onPress={() => this.props.navigation.navigate("Login")}
+              onPress={() => this.props.navigation.navigate("เเชท")}  
             >
-              {"Cnat"}
+              {"แชท"}
             </Text>
           </View>
 
           <View style={styles.box3}>
-            <FontAwesome5 name="money-check-alt" style={styles.icons6} />
-            <Text style={styles.text2}   onChange={e => this.clickImg("8887",e)}>{"Pay for"}</Text>
+            <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
+            <Text
+              style={styles.text2}
+              onPress={() => this.props.navigation.navigate("Login")}  
+            >
+              {"Login"}
+            </Text>
+          </View>
+          
+          <View style={styles.box3}>
+            <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
+            <Text
+              style={styles.text2}
+              onPress={() => this.props.navigation.navigate("Logout")}>{"Logout"}</Text>
+          </View>
+
+          <View style={styles.box3}>
+            <Ionicons name="card" style={styles.icons5} />
+            <Text style={styles.text2}   onChange={e => this.clickImg("8887",e)}>{"ชำระเงิน"}</Text>
+          </View>
+
+          <View style={styles.box3}>
+            <Ionicons name="card" style={styles.icons5} />
+            <Text style={styles.text2}   onChange={e => this.clickImg("8887",e)}>{"บัญชีธนาคาร"}</Text>
           </View>
 
           <View style={styles.box4}>
@@ -156,7 +174,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     position: "relative",
-    backgroundColor: "#f8fdff",
   },
   boxhead: {
     flexDirection: "row",
@@ -276,14 +293,13 @@ const styles = StyleSheet.create({
   icons5: {
     width: 50,
     height: 48,
-    marginLeft: 10,
-    marginTop: 6,
+    marginLeft: 6,
+    marginTop: 7,
     fontSize: 24,
     color: "#00c2fe",
-    backgroundColor: "#dcecf4",
     borderRadius: 10,
     paddingTop: 12,
-    paddingLeft: 14,
+    paddingLeft: 13,
   },
   icons6: {
     width: 50,
