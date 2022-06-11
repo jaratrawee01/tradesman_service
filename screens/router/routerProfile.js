@@ -12,9 +12,10 @@ function App() {
     return (
 
         <HomeStack.Navigator>
-             <HomeStack.Screen name="Servict_form" component={Servict_form} />
+             <HomeStack.Screen name="Profile_tradesman" component={Profile_tradesman} />
             <HomeStack.Screen name="Login" component={Login} />
             <HomeStack.Screen name="Registration" component={Registration} />
+            <HomeStack.Screen name="Servict_form" component={Servict_form} />
         </HomeStack.Navigator>
     );
   }

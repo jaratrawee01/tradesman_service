@@ -78,7 +78,10 @@ class Profile_tradesman extends Component {
             <FontAwesome5 name="unlock-alt" style={styles.icons5} />
             <Text style={styles.text2}>{"Change user/password"}</Text>
           </View>
-
+          <View style={styles.box3} >
+            <FontAwesome5 name="unlock-alt" style={styles.icons5} />
+            <Text style={styles.text2}  onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}</Text>
+          </View>
           <View style={styles.box3}>
             <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
             <Text
