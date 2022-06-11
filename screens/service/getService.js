@@ -5,28 +5,39 @@ const url = 'http://localhost:3003';
 
 
 const getUser = async () => {
-
-  const res = await axios.get(`${url}/getUsers`).then((response) => {
-    return response.data;
+ await axios.get(`${url}/getUsers`).then((result) => {
+    // handle success
+    console.log("success");
   })
-  return (
+  .catch((error) =>  {
+    // handle error
+   console.log("error");
+  })
+/*   return (
     console.log(res)
-  );
+  ); */
+
+
 };
 const createUser = async (e) => {
   /*   console.log(e[0],e[1],e[2],e[3]); */
-  await axios.post(`${url}/create`, {
+const cerUser  =  await axios.post(`${url}/create`, {
     name: e[0],
     email: e[1],
     phone: e[2],
     password: e[3],
+  }).then((result) => {
+    // handle success
+    return "success";
+
+/*     this.props.navigation.navigate("Profile_user") */
   })
-  .then(function (response){
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log('error');
-  }); 
+  .catch((error) =>  {
+    // handle error
+      return "error";
+  });
+
+  return cerUser;
 };
 
 

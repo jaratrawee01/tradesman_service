@@ -5,6 +5,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import createUser from './service/getService';
 
+var md5 = require('md5');
+
 
 /* 
 class Registration extends Component {
@@ -26,35 +28,39 @@ class Registration extends Component {
       [fieldName]: valueName
     })
 
-    
+
   }
 
 
   serve = async () => {
-  const data = [thsi.state.name,thsi.state.email]
-    
+    const data = [thsi.state.name, thsi.state.email]
+
     await createUser.createUser();
-  
+
   } */
 
-  const Registration  = () => { 
-
-      const [name ,setName] = useState('');
-      const [email ,setEmail] = useState('');
-      const [phone ,setPhone] = useState('');
-      const [password ,setPassword] = useState('');
-
-
-/*    const serve = async () => {
-        await createUser.createUser('asdasd');
+  const Registration = ({ navigation: { popToTop } }) => {
+  
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+  
+  
+    
+    const serve = async () => {
+  
+       const data = [name, email, phone, md5(password)];
+      const result = await createUser.createUser(data);
+  
+      if (result === "success") {
+        popToTop();
+  
       } 
- */
-      const serve = async () => {
-     
-        const data = [name,email,phone,password];
-        await createUser.createUser(data);
-     
-      } 
+ 
+  } 
+
+/*   render() { */
 
     return (
       <SafeAreaView style={styles.container}>
@@ -64,14 +70,12 @@ class Registration extends Component {
               Registration
             </Text>
           </View>
-
-
           <View style={styles.marginTop}>
             <View style={styles.input}>
               <FontAwesome name="user" size={24} color="#00c2fe" />
               <TextInput
                 style={{ flex: 1, paddingLeft: 12 }}
-                placeholder="Name" name="name" onChange={(e) => {setName(e.nativeEvent.text)}}
+                placeholder="Name" name="name" onChange={(e) => { setName(e.nativeEvent.text) }}
                 underlineColorAndroid="transparent"
               />
             </View>
@@ -79,7 +83,7 @@ class Registration extends Component {
             <View style={styles.input}>
               <MaterialIcons name="mail" size={24} color="#00c2fe" />
               <TextInput
-                style={{ flex: 1, paddingLeft: 12 }} onChange={(e) => {setEmail(e.nativeEvent.text)}}
+                style={{ flex: 1, paddingLeft: 12 }} onChange={(e) => { setEmail(e.nativeEvent.text) }}
                 placeholder="Email"
                 underlineColorAndroid="transparent"
               />
@@ -89,7 +93,7 @@ class Registration extends Component {
               <FontAwesome name="phone-square" size={24} color="#00c2fe" />
               <TextInput
                 style={{ flex: 1, paddingLeft: 12 }}
-                onChange={(e) => {setPhone(e.nativeEvent.text)}}
+                onChange={(e) => { setPhone(e.nativeEvent.text) }}
                 placeholder="PhoneNumber"
                 underlineColorAndroid="transparent"
               />
@@ -99,7 +103,7 @@ class Registration extends Component {
               <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
               <TextInput secureTextEntry={true}
                 style={{ flex: 1, paddingLeft: 12 }}
-                onChange={(e) => {setPassword(e.nativeEvent.text)}}
+                onChange={(e) => { setPassword(e.nativeEvent.text) }}
                 placeholder="Password"
                 underlineColorAndroid="transparent"
               />
@@ -110,7 +114,9 @@ class Registration extends Component {
             <TouchableOpacity style={styles.button1} onPress={() => serve()}>
               <Text style={{ fontSize: 32, textAlign: 'center', color: 'white', marginTop: 4, }} >Sign up</Text>
             </TouchableOpacity>
+
           </View>
+
 
           <View style={styles.boxIcon}>
             <View style={styles.icons1}>
@@ -123,8 +129,8 @@ class Registration extends Component {
         </ScrollView>
       </SafeAreaView>
     );
-}
-
+  }
+/* } */
 
 
 const styles = StyleSheet.create({

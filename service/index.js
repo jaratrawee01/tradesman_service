@@ -13,10 +13,14 @@ const db = mysql.createConnection({
     database: "app_tradesman",
 });
 
+
+
+
+
 app.get('/getUsers', (req, res) => {
     db.query("SELECT * FROM users", (err, result) => {
         if (err) {
-            console.log(err);
+            res.send(err);
 
         } else {
             res.send(result);
@@ -26,25 +30,23 @@ app.get('/getUsers', (req, res) => {
 
 
 app.post('/create', (req, res) => {
-/* 
-    console.log(req.body); */
+
+
     const name = req.body.name;
     const email = req.body.email;
     const phone = req.body.phone;
     const password = req.body.password;
 
-db.query(`INSERT INTO users (id,name,email,phone,password,created_at,updated_at) VALUES (null ,'${name}','${email}','${phone}','${password}',null,null)`), //(null ,name,email,phone,password,null,null)
-/*      [null ,name,email,phone,password,null,null],  */
-    (err,result) => {
-        if(err) {
-            console.log(err);
-        }else{
-            console.log(result);
-           /*  res.send("Values"); */
-        }
-    }; 
 
-        
+db.query(`INSERT INTO users (id,name,email,phone,password) VALUES (null ,'${name}','${email}','${phone}','${password}')`,
+        (err, result) => {
+            if (err) {
+                res.send(err);
+
+            } else {
+                res.send(result);
+            }
+        });   
 });
 
 
