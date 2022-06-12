@@ -132,6 +132,10 @@ class Profile_tradesman extends Component {
                 </Text>
             </View>
 
+            <View style={styles.box5}>
+                <Text style={styles.text3}>ผลงาน</Text>
+            </View>
+
             <View style={styles.box4}>
               <View>
                 <Pressable onPress={() => this.setModalVisible(true)}>
@@ -274,6 +278,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 4,
   },
+  box5: {
+    height: 25,
+    width: 80,
+    backgroundColor: '#bcbdbe',
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 3,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginRight: 20,
+    marginTop: 10,
+  },
   text: {
     marginLeft: "auto",
     marginRight: "auto",
@@ -291,6 +308,13 @@ const styles = StyleSheet.create({
     marginLeft: 55,
     fontSize: 20,
     marginTop: -35,
+  },
+  text3: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginTop: 2,
   },
   icons: {
     marginLeft: 5,
