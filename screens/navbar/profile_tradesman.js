@@ -24,6 +24,7 @@ class Profile_tradesman extends Component {
       modalVisible: false,
       stausLogin: true,
       ckeckUserId: "1",
+      star: "2",
     };
   }
 
@@ -46,9 +47,27 @@ class Profile_tradesman extends Component {
       });  
     }; */
 
+
+  
+
   render() {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
     /* console.log(urlImg,"123"); */
+    var myStar = [
+                <FontAwesome name="star" style={styles.icons} />,
+                <FontAwesome name="star" style={styles.icons} />,
+                <FontAwesome name="star" style={styles.icons} />,
+                <FontAwesome name="star" style={styles.icons} />,
+                <FontAwesome name="star" style={styles.icons} />
+                ];
+
+
+    for (let i = 0; i < this.state.star; i++) {
+        myStar.splice(i,1,
+          <FontAwesome name="star" style={styles.iconsGold} />
+        );
+    }
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -64,11 +83,7 @@ class Profile_tradesman extends Component {
               <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
               <View style={styles.icons1}>
                 <View style={styles.boxhead}>
-                  <FontAwesome name="star" style={styles.icons} />
-                  <FontAwesome name="star" style={styles.icons} />
-                  <FontAwesome name="star" style={styles.icons} />
-                  <FontAwesome name="star" style={styles.icons} />
-                  <FontAwesome name="star" style={styles.icons} />
+                  {myStar}
                 </View>
               </View>
             </View>
@@ -324,6 +339,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
     marginTop: 2,
+  },
+  iconsGold: {
+    marginLeft: 5,
+    fontSize: 25,
+    color: "#FFD700",
   },
   icons: {
     marginLeft: 5,
