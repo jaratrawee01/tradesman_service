@@ -24,7 +24,7 @@ class Profile_tradesman extends Component {
       modalVisible: false,
       stausLogin: true,
       ckeckUserId: "2",
-      star: "3",
+      star: "2",
     };
   }
 

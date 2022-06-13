@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, TextInput, Image,CheckBox, View, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import createUser from './service/getService';
 
@@ -49,7 +49,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           <View style={styles.input}>
             <FontAwesome name="user" size={24} color="#00c2fe" />
             <TextInput
-              style={{ flex: 1, paddingLeft: 12 }}
+              style={{ flex: 1, paddingLeft: 12, fontSize: 18, }}
               placeholder="Name" name="name" onChange={(e) => { setName(e.nativeEvent.text) }}
               underlineColorAndroid="transparent"
             />
@@ -58,7 +58,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           <View style={styles.input}>
             <MaterialIcons name="mail" size={24} color="#00c2fe" />
             <TextInput
-              style={{ flex: 1, paddingLeft: 12 }} onChange={(e) => { setEmail(e.nativeEvent.text) }}
+              style={{ flex: 1, paddingLeft: 12, fontSize: 18, }} onChange={(e) => { setEmail(e.nativeEvent.text) }}
               placeholder="Email"
               underlineColorAndroid="transparent"
             />
@@ -67,7 +67,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           <View style={styles.input}>
             <FontAwesome name="phone-square" size={24} color="#00c2fe" />
             <TextInput
-              style={{ flex: 1, paddingLeft: 12 }}
+              style={{ flex: 1, paddingLeft: 12, fontSize: 18, }}
               onChange={(e) => { setPhone(e.nativeEvent.text) }}
               placeholder="PhoneNumber"
               underlineColorAndroid="transparent"
@@ -77,12 +77,45 @@ const Registration = ({ navigation: { popToTop } }) => {
           <View style={styles.input}>
             <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
             <TextInput secureTextEntry={true}
-              style={{ flex: 1, paddingLeft: 12 }}
+              style={{ flex: 1, paddingLeft: 12, fontSize: 18, }}
               onChange={(e) => { setPassword(e.nativeEvent.text) }}
               placeholder="Password"
               underlineColorAndroid="transparent"
             />
           </View>
+        </View>
+
+        <View style={styles.boxhead}>
+           <Entypo name="circle" style={styles.icons3} />
+            {
+            (statusUser === "user"  ? 
+            <Text>User</Text>
+            :
+            <Text style={styles.text2}>user</Text>
+            )
+            }
+          <Entypo name="circle" style={styles.icons4} />
+            {
+              (statusUser === "ช่าง"  ? 
+              <Text style={styles.text3}>ช่าง</Text>
+              :
+              <Text>ช่าง</Text>
+              )
+            }
+         </View>
+        
+          <View>
+            <View style={styles.box}>
+
+            </View>
+          {
+             (statusCkeck === "true"  ? 
+             <Text style={styles.text4}>statusCkeck</Text>
+             :
+             <Text>statusCkeck</Text>
+             )
+          }
+
         </View>
         <View style={styles.button}>
           <TouchableOpacity style={styles.button1} onPress={() => serve()}>
@@ -90,28 +123,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           </TouchableOpacity>
 
         </View>
-          {
-            (statusUser === "user"  ? 
-            <Text>User</Text>
-            :
-            <Text>  -jk'</Text>
-            )
-          }
-          {
-             (statusUser === "ช่าง"  ? 
-             <Text>ช่าง</Text>
-             :
-             <Text>  -jk'</Text>
-             )
-          }
-          
-          {
-             (statusCkeck === "true"  ? 
-             <Text>statusCkeck</Text>
-             :
-             <Text>  -jk'</Text>
-             )
-          }
+        
       </ScrollView>
     </SafeAreaView>
   );
@@ -127,6 +139,20 @@ const styles = StyleSheet.create({
   boxIcon: {
     height: 100,
   },
+  boxhead: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  box: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#00c2fe',
+    backgroundColor: '#424',
+    marginLeft: 80,
+    marginTop: 20,
+  },
   input: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -134,7 +160,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginLeft: 40,
     marginRight: 40,
-    padding: 10,
+    paddingLeft: 15,
     marginTop: 30,
     borderRadius: 30,
     borderWidth: 1,
@@ -163,6 +189,22 @@ const styles = StyleSheet.create({
     marginLeft: 24,
     marginTop: -18,
     fontSize: 16,
+  },
+  text2: {
+    marginRight: 100,
+    marginLeft: 10,
+    marginTop: 13,
+    fontSize: 18,
+  },
+  text3: {
+    marginLeft: 2,
+    marginTop: 13,
+    fontSize: 18,
+  },
+  text4: {
+    marginLeft: 110,
+    marginTop: -21,
+    fontSize: 18,
   },
   marginTop: {
     marginTop: 20,
@@ -194,15 +236,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 8,
     marginTop: -50,
-
   },
   scrollView: {
     marginHorizontal: 5,
     height: '100%',
   },
-  checkbox: {
-    alignSelf: "center",
-  },
+ icons3: {
+  marginTop: 15,
+  marginLeft: 80,
+  fontSize: 20,
+  color: "black",
+ },
+ icons4: {
+  marginTop: 15,
+  marginLeft: -15,
+  fontSize: 20,
+  color: "black",
+  marginRight: 10,
+ },
 
 });
 
