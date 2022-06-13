@@ -23,8 +23,8 @@ class Profile_tradesman extends Component {
       urlImg: null,
       modalVisible: false,
       stausLogin: true,
-      ckeckUserId: "1",
-      star: "2",
+      ckeckUserId: "2",
+      star: "3",
     };
   }
 
@@ -48,24 +48,24 @@ class Profile_tradesman extends Component {
     }; */
 
 
-  
+
 
   render() {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
     /* console.log(urlImg,"123"); */
     var myStar = [
-                <FontAwesome name="star" style={styles.icons} />,
-                <FontAwesome name="star" style={styles.icons} />,
-                <FontAwesome name="star" style={styles.icons} />,
-                <FontAwesome name="star" style={styles.icons} />,
-                <FontAwesome name="star" style={styles.icons} />
-                ];
+      <FontAwesome name="star" style={styles.icons} />,
+      <FontAwesome name="star" style={styles.icons} />,
+      <FontAwesome name="star" style={styles.icons} />,
+      <FontAwesome name="star" style={styles.icons} />,
+      <FontAwesome name="star" style={styles.icons} />
+    ];
 
 
     for (let i = 0; i < this.state.star; i++) {
-        myStar.splice(i,1,
-          <FontAwesome name="star" style={styles.iconsGold} />
-        );
+      myStar.splice(i, 1,
+        <FontAwesome name="star" style={styles.iconsGold} />
+      );
     }
 
     return (
@@ -90,13 +90,26 @@ class Profile_tradesman extends Component {
           </View>
 
           <View style={styles.top}>
+
+            {
+              (ckeckUserId === "2") ?
+
+                <View style={styles.box3}>
+                  <FontAwesome name="user" style={styles.icons3} />
+                  <Text
+                    style={styles.text2}
+                    onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}
+                  </Text>
+                </View>
+                :
+                null
+            }
             <View style={styles.box3}>
-              <FontAwesome name="user" style={styles.icons3} />
-              <Text
-                style={styles.text2}
-                onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}
+              <FontAwesome5 name="file-image" style={styles.icons5} />
+              <Text style={styles.text2}>{"ผลงาน"}
               </Text>
             </View>
+
             <View style={styles.box3}>
               <FontAwesome5 name="address-book" style={styles.icons5} />
               <Text
@@ -115,12 +128,6 @@ class Profile_tradesman extends Component {
 
             {(ckeckUserId === "2" ?
               <>
-                <View style={styles.box3}>
-                  <FontAwesome5 name="file-image" style={styles.icons5} />
-                  <Text style={styles.text2}>{"ผลงาน"}
-                  </Text>
-                </View>
-
                 {(stausLogin === true ?
                   <View style={styles.box3}>
                     <Entypo name="login" style={styles.icons5} />

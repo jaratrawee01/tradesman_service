@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { SafeAreaView, StyleSheet, Text, TextInput, Image, View, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, TextInput, Image,CheckBox, View, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -17,21 +17,24 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [checked, setChecked] = React.useState('first');
+  const [statusUser, setStatusUser] = React.useState('user');
+  const [statusCkeck, setStatusCkeck] = React.useState('true');
+
+
 
 
 
   const serve = async () => {
 
-    const data = [name, email, phone, md5(password)];
+    const data = [name, email, phone, md5(password),statusUser,statusCkeck];
     const result = await createUser.createUser(data);
 
     if (result === "success") {
       popToTop();
 
     }
-
-
   }
+
 
 
   return (

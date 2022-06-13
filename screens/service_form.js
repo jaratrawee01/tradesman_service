@@ -20,7 +20,7 @@ class Service_form extends Component {
                     </ImageBackground>
                 </View>
 
-            <View style={styles.box2}>
+            <View>
                  <View style={styles.box3}>
                     <View>
                         <Text style={styles.text1}>Personal information Form</Text>
@@ -56,27 +56,15 @@ class Service_form extends Component {
                         <Text style={styles.text2}>{'จังหวัด'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
-
-                  </View>
-
-                  <View>
                       <View>
                         <Text style={styles.text2}>{'รหัสไปรษณีย์'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
-
-                      <View>
-                        <Text style={styles.text2}>{'อัพโหลกภาพ'}</Text>                 
-                        <TextInput style={styles.box4}/> 
-                      </View>
-
                       <View>
                         <Text style={styles.text2}>{'GPS'}</Text>                 
                         <TextInput style={styles.box6}/> 
                       </View>
-
                   </View>
-
                 </View>             
             </View>
           </ScrollView>
@@ -119,22 +107,17 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
 
   },
-  box2: {
-    height: 720,
-    width: 360,
-    backgroundColor: '#FFF',    
-  },
   box3: {
-    height: 765,
+    height: 800,
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
-    shadowOpacity: 0.39,
-    shadowRadius: 8.30,
-    elevation: 13,
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
     borderRadius: 20,
-    marginLeft: 20,
-    marginRight: 20, 
+    marginLeft: "auto",
+    marginRight: "auto", 
     marginTop: -60, 
     marginBottom: 10,
   },
@@ -154,13 +137,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   box6: {
-    height: 60,
+    height: 150,
     width: 280,
     backgroundColor: '#fff',
     shadowColor: "#000",
-    shadowOpacity: 0.37,
-    shadowRadius: 7.49,
-    elevation: 12,
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
     borderRadius: 20,
     marginLeft: 20,
     marginRight: 5, 

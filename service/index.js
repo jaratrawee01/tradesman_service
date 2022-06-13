@@ -36,9 +36,11 @@ app.post('/create', (req, res) => {
     const email = req.body.email;
     const phone = req.body.phone;
     const password = req.body.password;
+    const statusUser = req.body.statusUser;
+    const statusCkeck = req.body.statusCkeck;
 
 
-db.query(`INSERT INTO users (id,name,email,phone,password) VALUES (null ,'${name}','${email}','${phone}','${password}')`,
+db.query(`INSERT INTO users (id,name,email,phone,password,status_user,status_check) VALUES (null ,'${name}','${email}','${phone}','${password}','${statusUser}','${statusCkeck}')`,
         (err, result) => {
             if (err) {
                 res.send(err);
