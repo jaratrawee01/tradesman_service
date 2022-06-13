@@ -22,6 +22,8 @@ class Profile_tradesman extends Component {
     this.state = {
       urlImg: null,
       modalVisible: false,
+      stausLogin: true,
+      ckeckUserId: "1",
     };
   }
 
@@ -29,22 +31,23 @@ class Profile_tradesman extends Component {
     modalVisible: false,
   }; */
 
-  setModalVisible = (visible) => {
-    console.log(visible);
+  setModalVisible = (visible, urlImg) => {
+    console.log(visible, urlImg);
     this.setState({
       modalVisible: visible,
+      urlImg: urlImg,
     });
   };
-
-  clickImg = (e) => {
-    console.log(e);
-    /*     this.setState({
-      urlImg: e,
-    });  */
-  };
+  /* 
+    clickImg = (e) => {
+      console.log(e);
+      /*     this.setState({
+        urlImg: e,
+      });  
+    }; */
 
   render() {
-    const { modalVisible, urlImg } = this.state;
+    const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
     /* console.log(urlImg,"123"); */
     return (
       <SafeAreaView style={styles.container}>
@@ -74,86 +77,92 @@ class Profile_tradesman extends Component {
           <View style={styles.top}>
             <View style={styles.box3}>
               <FontAwesome name="user" style={styles.icons3} />
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}
-                </Text>
-            </View>
-
-            <View style={styles.box3}>
-              <FontAwesome5 name="file-image" style={styles.icons5}/>
-              <Text style={styles.text2}>{"ผลงาน"}
-            </Text>
+              <Text
+                style={styles.text2}
+                onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}
+              </Text>
             </View>
             <View style={styles.box3}>
-                <FontAwesome5 name="address-book" style={styles.icons5}/>
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
-                </Text>
+              <FontAwesome5 name="address-book" style={styles.icons5} />
+              <Text
+                style={styles.text2}
+                onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
+              </Text>
             </View>
 
             <View style={styles.box3}>
               <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("เเชท")}>{"แชท"}
-                </Text>
+              <Text
+                style={styles.text2}
+                onPress={() => this.props.navigation.navigate("เเชท")}>{"แชท"}
+              </Text>
             </View>
 
-            <View style={styles.box3}>
-                <Entypo name="login" style={styles.icons5} />
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Login")}>{"Login"}
-                </Text>
-            </View>
+            {(ckeckUserId === "2" ?
+              <>
+                <View style={styles.box3}>
+                  <FontAwesome5 name="file-image" style={styles.icons5} />
+                  <Text style={styles.text2}>{"ผลงาน"}
+                  </Text>
+                </View>
 
-            <View style={styles.box3}>
-                <MaterialCommunityIcons name="logout"  style={styles.icons5} />
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Logout")}>{"Logout"}
-                </Text>
-            </View>
+                {(stausLogin === true ?
+                  <View style={styles.box3}>
+                    <Entypo name="login" style={styles.icons5} />
+                    <Text
+                      style={styles.text2}
+                      onPress={() => this.props.navigation.navigate("Login")}>{"Login"}
+                    </Text>
+                  </View>
+                  :
+                  <View style={styles.box3}>
+                    <MaterialCommunityIcons name="logout" style={styles.icons5} />
+                    <Text
+                      style={styles.text2}
+                      onPress={() => this.props.navigation.navigate("Logout")}>{"Logout"}
+                    </Text>
+                  </View>
+                )}
 
-            <View style={styles.box3}>
-              <FontAwesome5 name="cc-visa"  style={styles.icons4} />
-                <Text
-                  style={styles.text2}
-                  onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
-                </Text>
-            </View>
-
-            <View style={styles.box3}>
-                <Ionicons name="card" style={styles.icons5} />
-                <Text
-                  style={styles.text2}>{"บัญชีธนาคาร"}
-                </Text>
-            </View>
-
+                <View style={styles.box3}>
+                  <FontAwesome5 name="cc-visa" style={styles.icons4} />
+                  <Text
+                    style={styles.text2}
+                    onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
+                  </Text>
+                </View>
+                <View style={styles.box3}>
+                  <Ionicons name="card" style={styles.icons5} />
+                  <Text
+                    style={styles.text2}>{"บัญชีธนาคาร"}
+                  </Text>
+                </View>
+              </>
+              : null
+            )}
             <View style={styles.box5}>
-                <Text style={styles.text3}>ผลงาน</Text>
+              <Text style={styles.text3}>ผลงาน</Text>
             </View>
-
             <View style={styles.box4}>
-              <View>
-                <Pressable onPress={() => this.setModalVisible(true)}>
-                  <View style={styles.boxhead}>
+              <View style={styles.boxhead}>
+                <Pressable onPress={() => this.setModalVisible(true, "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg")}>
+                  <View>
                     <Image
                       style={styles.image1}
                       source={{
                         uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
                       }}
                     />
-
-                    {/*        <Image
-                    style={styles.image1}
-                    source={{
-                      uri: "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg",
-                    }}
-                  
-                  /> */}
+                  </View>
+                </Pressable>
+                <Pressable onPress={() => this.setModalVisible(true, "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg")}>
+                  <View>
+                    <Image
+                      style={styles.image1}
+                      source={{
+                        uri: "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg",
+                      }}
+                    />
                   </View>
                 </Pressable>
               </View>
@@ -178,7 +187,7 @@ class Profile_tradesman extends Component {
                 <Image
                   style={styles.image2}
                   source={{
-                    uri: "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg",
+                    uri: `${urlImg}`,
                   }}
                 />
               </View>
@@ -235,7 +244,7 @@ const styles = StyleSheet.create({
     elevation: 6,
     borderBottomLeftRadius: 60,
     borderBottomRightRadius: 60,
-    
+
   },
   box1: {
     height: 250,
@@ -324,7 +333,7 @@ const styles = StyleSheet.create({
   icons1: {
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: 5 ,
+    marginTop: 5,
   },
   icons3: {
     width: 50,
