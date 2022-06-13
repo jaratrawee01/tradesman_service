@@ -16,9 +16,9 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const [checked, setChecked] = React.useState('first');
-  const [statusUser, setStatusUser] = React.useState('user');
-  const [statusCkeck, setStatusCkeck] = React.useState('true');
+  const [checked, setChecked] = useState('first');
+  const [statusUser, setStatusUser] = useState('ช่าง');
+  const [statusCkeck, setStatusCkeck] = useState('true');
 
 
 
@@ -90,6 +90,28 @@ const Registration = ({ navigation: { popToTop } }) => {
           </TouchableOpacity>
 
         </View>
+          {
+            (statusUser === "user"  ? 
+            <Text>User</Text>
+            :
+            <Text>  -jk'</Text>
+            )
+          }
+          {
+             (statusUser === "ช่าง"  ? 
+             <Text>ช่าง</Text>
+             :
+             <Text>  -jk'</Text>
+             )
+          }
+          
+          {
+             (statusCkeck === "true"  ? 
+             <Text>statusCkeck</Text>
+             :
+             <Text>  -jk'</Text>
+             )
+          }
       </ScrollView>
     </SafeAreaView>
   );
@@ -177,7 +199,10 @@ const styles = StyleSheet.create({
   scrollView: {
     marginHorizontal: 5,
     height: '100%',
-  }
+  },
+  checkbox: {
+    alignSelf: "center",
+  },
 
 });
 
