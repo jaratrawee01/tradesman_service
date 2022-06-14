@@ -25,7 +25,7 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState("first");
-  const [statusUser, setStatusUser] = useState("user");
+  const [statusUser, setStatusUser] = useState("ลูกค้าทั่วไป");
   const [statusCkeck, setStatusCkeck] = useState("true");
 
   const serve = async () => {
@@ -37,7 +37,7 @@ const Registration = ({ navigation: { popToTop } }) => {
     }
   };
 
-  console.log(statusUser);
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -97,12 +97,12 @@ const Registration = ({ navigation: { popToTop } }) => {
         </View>
 
         <View style={styles.boxhead}>
-          {statusUser === "user" ? (
+          {statusUser === "ลูกค้าทั่วไป" ? (
             <AntDesign name="checkcircleo" style={styles.icons3}  /* onPress={(e) => {setStatusUser("ช่าง")}} *//>
           ) : (
-            <Entypo name="circle" style={styles.icons3}  onPress={(e) => {setStatusUser("user")}} />
+            <Entypo name="circle" style={styles.icons3}  onPress={(e) => {setStatusUser("ลูกค้าทั่วไป")}} />
           )}
-          <Text style={styles.text3}>ลูกทั่วไป</Text>
+          <Text style={styles.text3}>ลูกค้าทั่วไป</Text>
 
           {statusUser === "ช่าง" ? (
             <AntDesign name="checkcircleo" style={styles.icons3} />
