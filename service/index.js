@@ -31,7 +31,6 @@ app.get('/getUsers', (req, res) => {
 
 app.post('/create', (req, res) => {
 
-    console.log(req);
     const name = req.body.name;
     const email = req.body.email;
     const phone = req.body.phone;
@@ -39,7 +38,7 @@ app.post('/create', (req, res) => {
     const statusUser = req.body.statusUser;
     const statusCkeck = req.body.statusCkeck;
 
-/*  db.query(`INSERT INTO users (id,name,email,phone,password,status_user,status_check) VALUES (null ,'${name}','${email}','${phone}','${password}','${statusUser}','${statusCkeck}')`,
+  db.query(`INSERT INTO users (id,name,email,phone,password,status_user,status_check) VALUES (null ,'${name}','${email}','${phone}','${password}','${statusUser}','${statusCkeck}')`,
         (err, result) => {
             if (err) {
                 res.send(err);
@@ -47,7 +46,7 @@ app.post('/create', (req, res) => {
             } else {
                 res.send(result);
             }
-        });   */ 
+        });  
 });
 
 

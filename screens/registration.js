@@ -34,18 +34,15 @@ const Registration = ({ navigation: { popToTop } }) => {
     const data = [name, email, phone, md5(password), statusUser, statusCkeck];
 
 
-/*   if (statusCkeck === true) {
+   if (statusCkeck === true) {
         const result = await createUser.createUser(data);
         if (result === "success") {
           popToTop();
         }
       }else {
         Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
-      }  */
-      const result = await createUser.createUser(data);
-      if (result === "success") {
-        popToTop();/*  */
-      }
+      }  
+
  
   };
   const accept = ()=> {
