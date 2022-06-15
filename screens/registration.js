@@ -10,6 +10,7 @@ import {
   Modal,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -27,6 +28,7 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [checked, setChecked] = useState("first");
   const [statusUser, setStatusUser] = useState("ลูกค้าทั่วไป");
   const [statusCkeck, setStatusCkeck] = useState("true");
+  const [modalVisible, setModalVisible] = useState("false");
 
   const serve = async () => {
     const data = [name, email, phone, md5(password), statusUser, statusCkeck];
@@ -102,60 +104,51 @@ const Registration = ({ navigation: { popToTop } }) => {
           ) : (
             <Entypo name="circle" style={styles.icons3}  onPress={(e) => {setStatusUser("ลูกค้าทั่วไป")}} />
           )}
-          <Text style={styles.text3}>ลูกค้าทั่วไป</Text>
+          <Text style={styles.text2}>ลูกค้าทั่วไป</Text>
 
           {statusUser === "ช่าง" ? (
-            <AntDesign name="checkcircleo" style={styles.icons3} />
+            <AntDesign name="checkcircleo" style={styles.icons4} />
           ) : (
-            <Entypo name="circle" style={styles.icons3}  onPress={(e) => {setStatusUser("ช่าง")}} />
+            <Entypo name="circle" style={styles.icons4}  onPress={(e) => {setStatusUser("ช่าง")}} />
           )}
           <Text style={styles.text3}>สำหรับช่าง</Text>
         </View>
-
-
-        {/*         <View>
-          <Entypo name="circle" style={styles.icons3} />
-          {statusUser === "ช่าง" ? (
-            <Text style={styles.text3}>ช่าง</Text>
-          ) : (
-            <Text style={styles.text2}>ช่าง</Text>
-          )}
-        </View> */}
 
         <View>
           <View style={styles.box}></View>
           {statusCkeck === "true" ? (
             <Text style={styles.text4}>statusCkeck</Text>
           ) : (
-            <Pressable
-              style={[styles.button, styles.buttonOpen]}
-              onPress={() => this.setModalVisible(true)}
-            >
-              <Text style={styles.textStyle}>Show Modal</Text>
-            </Pressable>
-          )}
-          {/*     <Modal
+            <Modal
             animationType="slide"
             transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
-              Alert.alert("Modal has been closed.");
-              this.setModalVisible(!modalVisible);
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!modalVisible);
             }}
-          >
+          > 
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <Text style={styles.modalText}>Hello World!</Text>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
-                  onPress={() => this.setModalVisible(!modalVisible)}
+                  onPress={() => setModalVisible(!modalVisible)}
                 >
                   <Text style={styles.textStyle}>Hide Modal</Text>
                 </Pressable>
               </View>
             </View>
-          </Modal> */}
+          </Modal>
+          )} 
+          <Pressable
+            style={[styles.button, styles.buttonOpen]}
+            onPress={() => setModalVisible(true)}
+          >
+            <Text style={styles.textStyle}>Show Modal</Text>
+          </Pressable>
         </View>
+
         <View style={styles.button}>
           <TouchableOpacity style={styles.button1} onPress={() => serve()}>
             <Text
@@ -195,7 +188,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#01C1FF",
     backgroundColor: "#444",
-    marginLeft: 80,
+    marginLeft: 55,
     marginTop: 20,
   },
   input: {
@@ -231,12 +224,10 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   text1: {
-    marginLeft: 24,
     marginTop: -18,
     fontSize: 16,
   },
   text2: {
-    marginRight: 100,
     marginLeft: 10,
     marginTop: 18,
     fontSize: 18,
@@ -247,9 +238,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   text4: {
-    marginLeft: 110,
+    marginLeft: 85,
     marginTop: -21,
     fontSize: 18,
+    marginBottom: 2,
   },
   marginTop: {
     marginTop: 20,
@@ -288,17 +280,51 @@ const styles = StyleSheet.create({
   },
   icons3: {
     marginTop: 20,
-    marginLeft: 80,
+    marginLeft: 55,
     fontSize: 20,
     color: "#01C1FF",
   },
   icons4: {
     marginTop: 20,
-    marginLeft: -15,
+    marginLeft: 40,
     fontSize: 20,
     color: "#01C1FF",
     marginRight: 10,
   },
+
+
+
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+
+  },
+  button2: {
+    marginTop: 10,
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
+
+
 });
 
 export default Registration;

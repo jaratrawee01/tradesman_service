@@ -106,7 +106,8 @@ class Profile_tradesman extends Component {
             }
             <View style={styles.box3}>
               <FontAwesome5 name="file-image" style={styles.icons5} />
-              <Text style={styles.text2}>{"ผลงาน"}
+              <Text style={styles.text2}
+               onPress={() => this.props.navigation.navigate("Workings")}>{"ผลงาน"}
               </Text>
             </View>
 

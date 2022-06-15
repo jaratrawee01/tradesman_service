@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   backgroun: {
     width: 360,
-    height: 250 ,
+    height: 200 ,
   },
   boxhead: {
     flexDirection: "row",
@@ -78,6 +78,14 @@ const styles = StyleSheet.create({
     marginRight: 20,  
     marginTop: -60, 
     marginBottom: 10,
+  },
+  text: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    fontWeight: 'bold',
+    fontSize: 30,
+    color: '#00c2fe',
+    marginTop: 5,
   },
 
 
