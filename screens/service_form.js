@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
+import MapView from 'react-native-maps';
+
 
 
 const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
 
 class Service_form extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      
+      initialPosition: {
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      },
+      markerPostion: {
+        latitude: 0,
+        longitude: 0
+      }
+    };
+  }
+
+
    render() {
     return (
 
@@ -60,11 +81,13 @@ class Service_form extends Component {
                         <Text style={styles.text2}>{'รหัสไปรษณีย์'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
-                      <View>
-                        <Text style={styles.text2}>{'GPS'}</Text>                 
-                        <TextInput style={styles.box6}/> 
-                      </View>
                   </View>
+                  <View>
+                        <Text style={styles.text2}>{'GPS'}</Text>                 
+                      <MapView
+                        initialRegion={this.state.initialPosition}>
+                        </MapView>
+                      </View>
                 </View>             
             </View>
           </ScrollView>

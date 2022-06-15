@@ -27,18 +27,34 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState("first");
   const [statusUser, setStatusUser] = useState("ลูกค้าทั่วไป");
-  const [statusCkeck, setStatusCkeck] = useState("true");
+  const [statusCkeck, setStatusCkeck] = useState("fales");
   const [modalVisible, setModalVisible] = useState("false");
 
   const serve = async () => {
     const data = [name, email, phone, md5(password), statusUser, statusCkeck];
-    const result = await createUser.createUser(data);
 
-    if (result === "success") {
-      popToTop();
-    }
+
+/*   if (statusCkeck === true) {
+        const result = await createUser.createUser(data);
+        if (result === "success") {
+          popToTop();
+        }
+      }else {
+        Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
+      }  */
+      const result = await createUser.createUser(data);
+      if (result === "success") {
+        popToTop();/*  */
+      }
+ 
   };
+  const accept = ()=> {
+    setModalVisible(false);
+    setStatusCkeck(true);
+  }
 
+
+  console.log(statusCkeck);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -100,50 +116,125 @@ const Registration = ({ navigation: { popToTop } }) => {
 
         <View style={styles.boxhead}>
           {statusUser === "ลูกค้าทั่วไป" ? (
-            <AntDesign name="checkcircleo" style={styles.icons3}  /* onPress={(e) => {setStatusUser("ช่าง")}} *//>
+            <AntDesign name="checkcircleo" style={styles.icons3}  /* onPress={(e) => {setStatusUser("ช่าง")}} */ />
           ) : (
-            <Entypo name="circle" style={styles.icons3}  onPress={(e) => {setStatusUser("ลูกค้าทั่วไป")}} />
+            <Entypo name="circle" style={styles.icons3} onPress={(e) => { setStatusUser("ลูกค้าทั่วไป") }} />
           )}
           <Text style={styles.text2}>ลูกค้าทั่วไป</Text>
 
           {statusUser === "ช่าง" ? (
             <AntDesign name="checkcircleo" style={styles.icons4} />
           ) : (
-            <Entypo name="circle" style={styles.icons4}  onPress={(e) => {setStatusUser("ช่าง")}} />
+            <Entypo name="circle" style={styles.icons4} onPress={(e) => { setStatusUser("ช่าง") }} />
           )}
           <Text style={styles.text3}>สำหรับช่าง</Text>
         </View>
 
         <View>
-          {statusCkeck === "true" ? (
-             <Pressable
-             style={[styles.button, ]}
-             onPress={() => setModalVisible(true)}>
-             <AntDesign name="checkcircleo" style={styles.icons5} />
-             <Text style={styles.text5}>บริการ</Text>
-           </Pressable>
+          {statusCkeck === true ? (
+            <Pressable
+              style={[styles.button,]}
+              onPress={() => setModalVisible(true)}>
+              <AntDesign name="checkcircleo" style={styles.icons5} />
+              <Text style={styles.text5}>เงื่อนไขในการใช้งาน</Text>
+            </Pressable>
           ) : (
-            <Text style={styles.text4}>statusCkeck</Text>
-           
-          )} 
-           <Modal
+            <Pressable
+              style={[styles.button,]}
+              onPress={() => setModalVisible(true)}>
+              <Entypo name="circle" style={styles.icons5} />
+              <Text style={styles.text5}>เงื่อนไขในการใช้งาน</Text>
+            </Pressable>
+
+          )}
+          <Modal
             animationType="slide"
             transparent={true}
             visible={modalVisible}
             onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            setModalVisible(!modalVisible);
+              Alert.alert("Modal has been closed.");
+              setModalVisible(!modalVisible);
             }}
-          > 
+          >
             <View>
               <View style={styles.modalView}>
-              
-                <Text style={styles.modalText}>Hello World!</Text>
                 <Pressable
-                  onPress={() => setModalVisible(!modalVisible)}
+                  onPress={() => setModalVisible(false)}
                 >
                   <AntDesign name="close" style={styles.icons6} />
                 </Pressable>
+                <>
+                  <Text style={styles.modalTextHead}>ข้อกำหนดและเงื่อนไขในการใช้งาน</Text>
+                  <ScrollView>
+
+                    <Text>
+                      1. การสมัครสมาชิก
+                      {"\n"}
+                    </Text>
+                    <Text style={styles.textLeft}>
+                      1.1{')'} การสมัครสมาชิกของลูกค้าหรือผู้ใช้บริการ และผู้ให้บริการหรือช่าง ท่านสามารถสมาชิกได้ทุกช่องทางตามที่ระบบมีให้  โดยสมัครและใช้บริการฟรี ตลอด24ชั่วโมง
+                      {"\n"}
+                      1.2{')'} ผู้สมัครสมาชิกสำเร็จแล้วเท่านั้นถึงจะเข้าระบบบริการต่างๆของแอพพลิเคชั่นได้
+                      {"\n"}
+                    </Text>
+                    <Text>
+                      2. การใช้บริการสำหรับลูกค้า
+                      {"\n"}
+                    </Text>
+                    <Text style={styles.textLeft}>
+                      2.1{')'} ท่านสามารถเลือกใช้บริการจากช่างในแอพพลิเคชั่นได้ทุกประเภท ทุกรายการ  ตามระบบบริการของแอพพลิเคชั่น
+                      {"\n"}
+                      2.2{')'} ท่านสามารถ ติดต่อสอบถามหรือพูดคุยกับช่างได้ ตลอด 24 ชั่วโมง โดยจะขึ้นอยู่กับช่างที่จะให้บริการชั่วเวลานั้นๆ หรือสะดวกต่อการให้บริการ
+                      {"\n"}
+                      2.3{')'} ท่านสามารถตกลงค่าบริการต่างๆได้กับช่างที่ให้บริการโดยตรง ขึ้นอยูกับผู้ใช้บริการและผู้ให้บริการตามประเภทงานนั้นๆ
+                      {"\n"}
+                      2.4{')'} ท่านสามารถเรียกใช้บริการจากผู้ให้บริการรายเดิมหรือรายใหม่ก็ได้ ขึ้นอยู่กับความพอใจของผู้ใช้บริการ
+                      {"\n"}
+                      2.5{')'} การตกลงค่าบริการต่างๆ ท่านผู้ใช้บริการยินดีชำระค่าบริการและคิดไตร่ตรองดีแล้วจึงยินยอมชำระค่าบริการ  และในกรณีเกิดความผิดพลาดในการชำระเงินท่านผู้ชำระเงินนั้นจะตามเงินหรือเรียกค่าเสียหายด้วยตัวเองจากบริการช่างประเภทงานนั้นๆ
+                      {"\n"}
+                    </Text>
+                    <Text>
+                      3.การใช้บริการสำหรับช่าง
+                      {"\n"}
+                    </Text>
+                    <Text style={styles.textLeft}>
+                      3.1{')'} ท่านสามารถรับงานได้ ตามที่ท่านระบุเอาไว้ในแอพพลิเคชั่น ได้ตลอด 24ชั่วโมง ขึ้นอยู่กับการให้บริการจากตัวช่างเอง วันและเวลาขึ้นอยู่กับการตกลงกันระหว่างผู้ให้บริการและผู้ใช้บริการ
+                      {"\n"}
+                      3.2{')'} ท่านจะต้องลงข้อมูลให้ครบถ้วน เพื่อให้เป็นข้อมูลสำหรับลูกค้าหรือผู้ใช้บริการประเถทงานนั้นๆ ได้ตัดสินใจในการเรียกใช้บริการของผู้ใช้บริการ
+                      {"\n"}
+                      3.3{')'} ท่านยินดีรับผิดชอบงานที่ได้ตกลงและบริการงานนั้นๆ เพื่อเป็นหลักประกันว่างานที่ให้บริการนั้นเสร็จตามที่ตกลงกับผู้ใช้บริการ
+                      {"\n"}
+                      3.4{')'} ท่านยินดีชำระเงินจากผู้ใช้บริการตามที่ช่องทางได้ระบุบเอาไว้ในแอพพลิเคชั่น ถ้าหากเกิดข้อผิดพลาดท่านและผู้ใช้บริการนั้นรับผิดชอบกันเองและตรวจสอบค่าบริการต่างๆนั้นดีแล้ว
+                      {"\n"}
+                    </Text>
+                    <Text>
+                      4.ข้อห้าม
+                      {"\n"}
+                    </Text>
+                    <Text style={styles.textLeft}>
+                      4.1{')'} ห้ามลงข้อมูลเท็จโดยเด็ดขาด เพราะอาจจะถูกตัดสินในการใช้บริการ
+                      4.2{')'} ห้ามลงข้อมูลและโฆษณา ที่ทำให้เกิดอันเสื่อมเสียหายต่อตนเองและผู้อื่น
+                      4.3{')'} ห้ามลงสื่อลามก,การพนันต่างๆ หรือสิ่งผิดกฎหมายใดๆทั้งสิ้น  เพราะอาจจะถูกดำเนินคดีได้
+                    </Text>
+                    <TouchableOpacity style={styles.button2}>
+                      <Pressable
+                        onPress={() => accept()}
+                      >
+                        <Text
+                          style={{
+                            fontSize: 32,
+                            textAlign: "center",
+                            color: "white",
+                            marginTop: 0,
+                          }}
+                        >
+                          ยอมรับข้อตกลง
+                        </Text>
+                      </Pressable>
+                    </TouchableOpacity>
+
+                  </ScrollView>
+                </>
               </View>
             </View>
           </Modal>
@@ -153,13 +244,12 @@ const Registration = ({ navigation: { popToTop } }) => {
           <TouchableOpacity style={styles.button1} onPress={() => serve()}>
             <Text
               style={{
-                fontSize: 32,
+                fontSize: 30,
                 textAlign: "center",
                 color: "white",
-                marginTop: 4,
               }}
             >
-              Sign up
+              สมัครสมาชิก
             </Text>
           </TouchableOpacity>
         </View>
@@ -245,7 +335,7 @@ const styles = StyleSheet.create({
   },
   text5: {
     marginLeft: 16,
-    marginTop: -20,
+    marginTop: -22,
     fontSize: 18,
     marginBottom: 2,
   },
@@ -305,26 +395,42 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   icons6: {
-    marginTop: -110,
     textAlign: "right",
     fontSize: 23,
     color: "#000",
     marginRight: 10,
   },
   modalView: {
-    marginTop: 250,
-    width: 290,
-    height: 200,
+    marginTop: 60,
+    width: "auto",
+    height: "auto",
     marginLeft: 'auto',
     marginRight: 'auto',
     backgroundColor: "white",
-    borderRadius: 20,
-
+    /*    borderRadius: 20, */
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
-  modalText: {
-    marginTop: 100,
-    textAlign: "center"
+  modalTextHead: {
+    textAlign: "center",
+    fontSize: 18,
+    paddingBottom: 10
+  },
+  textLeft: {
+    marginTop: -10,
+    marginLeft: 25,
+    marginRight: 20
+  },
+  button2: {
+    marginTop: 30,
+    backgroundColor: "#01C1FF",
+    height: 50,
+    borderRadius: 25,
+    marginBottom: 150
   }
+
 
 
 });

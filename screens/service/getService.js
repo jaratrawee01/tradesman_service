@@ -20,12 +20,14 @@ const getUser = async () => {
 
 };
 const createUser = async (e) => {
-  /*   console.log(e[0],e[1],e[2],e[3]); */
+    console.log(e);
 const cerUser  =  await axios.post(`${url}/create`, {
     name: e[0],
     email: e[1],
     phone: e[2],
     password: e[3],
+    password: e[4],
+    password: e[5],
   }).then((result) => {
     // handle success
     return "success";
