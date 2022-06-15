@@ -77,10 +77,12 @@ class Service_form extends Component {
                         <Text style={styles.text2}>{'จังหวัด'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
+
                       <View>
                         <Text style={styles.text2}>{'รหัสไปรษณีย์'}</Text>                 
                         <TextInput style={styles.box4}/> 
                       </View>
+                      
                   </View>
                   <View>
                         <Text style={styles.text2}>{'GPS'}</Text>                 

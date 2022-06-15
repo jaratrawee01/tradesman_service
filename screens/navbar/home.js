@@ -131,7 +131,6 @@ container: {
 boxhead: {
   flexDirection: 'row',
   flexWrap: 'wrap'
-  
 },
 box: {
   width: '45%',
