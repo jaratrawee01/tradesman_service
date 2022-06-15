@@ -115,11 +115,18 @@ const Registration = ({ navigation: { popToTop } }) => {
         </View>
 
         <View>
-          <View style={styles.box}></View>
           {statusCkeck === "true" ? (
-            <Text style={styles.text4}>statusCkeck</Text>
+             <Pressable
+             style={[styles.button, ]}
+             onPress={() => setModalVisible(true)}>
+             <AntDesign name="checkcircleo" style={styles.icons5} />
+             <Text style={styles.text5}>บริการ</Text>
+           </Pressable>
           ) : (
-            <Modal
+            <Text style={styles.text4}>statusCkeck</Text>
+           
+          )} 
+           <Modal
             animationType="slide"
             transparent={true}
             visible={modalVisible}
@@ -128,25 +135,18 @@ const Registration = ({ navigation: { popToTop } }) => {
             setModalVisible(!modalVisible);
             }}
           > 
-            <View style={styles.centeredView}>
+            <View>
               <View style={styles.modalView}>
+              
                 <Text style={styles.modalText}>Hello World!</Text>
                 <Pressable
-                  style={[styles.button, styles.buttonClose]}
                   onPress={() => setModalVisible(!modalVisible)}
                 >
-                  <Text style={styles.textStyle}>Hide Modal</Text>
+                  <AntDesign name="close" style={styles.icons6} />
                 </Pressable>
               </View>
             </View>
           </Modal>
-          )} 
-          <Pressable
-            style={[styles.button, styles.buttonOpen]}
-            onPress={() => setModalVisible(true)}
-          >
-            <Text style={styles.textStyle}>Show Modal</Text>
-          </Pressable>
         </View>
 
         <View style={styles.button}>
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     color: "#00c2fe",
   },
   button: {
-    marginTop: 40,
+    marginTop: -20,
     marginLeft: 70,
     marginRight: 70,
     marginBottom: 70,
@@ -240,6 +240,12 @@ const styles = StyleSheet.create({
   text4: {
     marginLeft: 85,
     marginTop: -21,
+    fontSize: 18,
+    marginBottom: 2,
+  },
+  text5: {
+    marginLeft: 16,
+    marginTop: -20,
     fontSize: 18,
     marginBottom: 2,
   },
@@ -291,36 +297,32 @@ const styles = StyleSheet.create({
     color: "#01C1FF",
     marginRight: 10,
   },
-
-
-
+  icons5: {
+    marginTop: 35,
+    marginLeft: -14,
+    fontSize: 20,
+    color: "#01C1FF",
+    marginRight: 10,
+  },
+  icons6: {
+    marginTop: -110,
+    textAlign: "right",
+    fontSize: 23,
+    color: "#000",
+    marginRight: 10,
+  },
   modalView: {
-    margin: 20,
+    marginTop: 250,
+    width: 290,
+    height: 200,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
 
   },
-  button2: {
-    marginTop: 10,
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
   modalText: {
-    marginBottom: 15,
+    marginTop: 100,
     textAlign: "center"
   }
 
