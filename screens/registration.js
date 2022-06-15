@@ -32,8 +32,6 @@ const Registration = ({ navigation: { popToTop } }) => {
 
   const serve = async () => {
     const data = [name, email, phone, md5(password), statusUser, statusCkeck];
-
-
    if (statusCkeck === true) {
         const result = await createUser.createUser(data);
         if (result === "success") {
@@ -42,9 +40,9 @@ const Registration = ({ navigation: { popToTop } }) => {
       }else {
         Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
       }  
-
- 
   };
+
+
   const accept = ()=> {
     setModalVisible(false);
     setStatusCkeck(true);
@@ -130,14 +128,12 @@ const Registration = ({ navigation: { popToTop } }) => {
         <View>
           {statusCkeck === true ? (
             <Pressable
-              style={[styles.button,]}
               onPress={() => setModalVisible(true)}>
               <AntDesign name="checkcircleo" style={styles.icons5} />
               <Text style={styles.text5}>เงื่อนไขในการใช้งาน</Text>
             </Pressable>
           ) : (
             <Pressable
-              style={[styles.button,]}
               onPress={() => setModalVisible(true)}>
               <Entypo name="circle" style={styles.icons5} />
               <Text style={styles.text5}>เงื่อนไขในการใช้งาน</Text>
@@ -222,7 +218,7 @@ const Registration = ({ navigation: { popToTop } }) => {
                             fontSize: 32,
                             textAlign: "center",
                             color: "white",
-                            marginTop: 0,
+                            marginTop: 4,
                           }}
                         >
                           ยอมรับข้อตกลง
@@ -244,6 +240,7 @@ const Registration = ({ navigation: { popToTop } }) => {
                 fontSize: 30,
                 textAlign: "center",
                 color: "white",
+                padding: 5,
               }}
             >
               สมัครสมาชิก
@@ -300,7 +297,7 @@ const styles = StyleSheet.create({
     color: "#00c2fe",
   },
   button: {
-    marginTop: -20,
+    marginTop: 30,
     marginLeft: 70,
     marginRight: 70,
     marginBottom: 70,
@@ -309,6 +306,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#01C1FF",
     height: 50,
     borderRadius: 25,
+  },
+  button2: {
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: "#01C1FF",
+    height: 50, 
+    borderRadius: 25,
+    marginBottom: 150
   },
   text1: {
     marginTop: -18,
@@ -331,10 +337,15 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   text5: {
-    marginLeft: 16,
+    marginLeft: 85,
     marginTop: -22,
     fontSize: 18,
     marginBottom: 2,
+  },
+  textLeft: {
+    marginTop: -10,
+    marginLeft: 25,
+    marginRight: 20
   },
   marginTop: {
     marginTop: 20,
@@ -385,8 +396,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   icons5: {
-    marginTop: 35,
-    marginLeft: -14,
+    marginTop: 15,
+    marginLeft: 55,
     fontSize: 20,
     color: "#01C1FF",
     marginRight: 10,
@@ -415,20 +426,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingBottom: 10
   },
-  textLeft: {
-    marginTop: -10,
-    marginLeft: 25,
-    marginRight: 20
-  },
-  button2: {
-    marginTop: 30,
-    backgroundColor: "#01C1FF",
-    height: 50,
-    borderRadius: 25,
-    marginBottom: 150
-  }
-
-
 
 });
 
