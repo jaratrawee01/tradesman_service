@@ -189,7 +189,7 @@ import {
   Image,
 } from 'react-native';
 
-import * as ImagePicker from "react-native-image-picker";
+import ImagePicker from "react-native-image-picker";
 
 const options = {
     title: 'Select a photo',
@@ -217,7 +217,7 @@ constructor() {
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
-        const source = { uri: response.uri };
+        let source = { uri: response.uri };
         this.setState({
           imageSource: source
         }); 
