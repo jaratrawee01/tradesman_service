@@ -157,7 +157,8 @@ class Profile_tradesman extends Component {
                 <View style={styles.box3}>
                   <Ionicons name="card" style={styles.icons5} />
                   <Text
-                    style={styles.text2}>{"บัญชีธนาคาร"}
+                    style={styles.text2} 
+                    onPress={() => this.props.navigation.navigate("Bank_account")}>{"บัญชีธนาคาร"}
                   </Text>
                 </View>
               </>

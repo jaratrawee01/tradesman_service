@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -178,4 +178,5 @@ boxhead: {
 
 
 
-export default Workings; 
+export default Workings;  */
+
