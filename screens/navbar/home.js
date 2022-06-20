@@ -1,6 +1,5 @@
 import  React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text, View, Image, ScrollView} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
 
 
 
@@ -9,109 +8,43 @@ class Home extends Component {
     return (
       <SafeAreaView style={styles.container}> 
       <ScrollView>
+
+        <View style={styles.box}>
+              <Image
+                style={styles.image}
+                source={{
+                  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1zrmmzTYC6hHZP-XapM5K0eCU3cy8LldkTz6C-MXkUxO6iRX1GQvar3LCvtzvhzWb2Y&usqp=CAU",
+                }}
+              />
+          </View>  
           <View style={styles.boxhead}>
-              <View style={styles.box}> 
+
+              <View style={styles.box3}> 
                   <Image
                   style={styles.image}
                   source={{ uri: 'https://mythailiving.com/wp-content/uploads/2020/07/Be-a-mechanic-720x450.jpg' }}
-                />
-                <Image
-                    style={styles.image1}
-                    source={{uri: 'https://mythailiving.com/wp-content/uploads/2020/07/Be-a-mechanic-720x450.jpg'}}
-                />
-                <Text style={styles.text1}>
-                    ช่าง : ยนต์
-                </Text>
-                <Text style={styles.text}>
-                  รีวิว :
-                </Text>
-                <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>      
+                /> 
             </View>
 
-            <View style={styles.box}>
+            <View style={styles.box3}>
                 <Image
                     style={styles.image}
                     source={{ uri: 'https://jobschiangrai.com/storage/uploads/image/master%20photography.jpg' }}
                   />
-                  <Image
-                      style={styles.image1}
-                      source={{uri: 'https://inwfile.com/s-dx/pw8rqy.jpg'}}
-                  />
-                  <Text style={styles.text1}>
-                      ช่าง : กล้อง
-                  </Text>
-                  <Text style={styles.text}>
-                    รีวิว :
-                  </Text>
-                  <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>
             </View>
 
-            <View style={styles.box}>
+            <View style={styles.box3}>
             <Image
                 style={styles.image}
                 source={{ uri: 'https://inwfile.com/s-dx/pw8rqy.jpg' }}
               />
-               <Image
-                  style={styles.image1}
-                  source={{uri: 'https://www.knockdoor.net/info/wp-content/uploads/2020/12/technician-service-removing-air-filter-air-conditioner-cleaning-1200x800.jpg'}}
-              />
-              <Text style={styles.text1}>
-                  ช่าง : แอร์
-              </Text>
-              <Text style={styles.text}>
-                รีวิว :
-              </Text>
-              <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>
             </View>
 
-            <View style={styles.box}>
+            <View style={styles.box3}>
             <Image
                 style={styles.image}
                 source={{ uri: 'https://www.knockdoor.net/info/wp-content/uploads/2020/12/technician-service-removing-air-filter-air-conditioner-cleaning-1200x800.jpg' }}
               />
-               <Image
-                  style={styles.image1}
-                  source={{uri: 'https://inwfile.com/s-dx/pw8rqy.jpg'}}
-              />
-              <Text style={styles.text1}>
-                  ช่าง : แอร์
-              </Text>
-              <Text style={styles.text}>
-                รีวิว :
-              </Text>
-                <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>
             </View>
 
           </View>
@@ -133,6 +66,31 @@ boxhead: {
   flexWrap: 'wrap'
 },
 box: {
+  height: 260,
+  width: 360,
+  backgroundColor: "#3e83f0",
+  shadowColor: "#000",
+  shadowOpacity: 0.27,
+  shadowRadius: 4.65,
+  elevation: 6,
+  borderBottomLeftRadius: 60,
+  borderBottomRightRadius: 60,
+
+},
+box1: {
+  height: 250,
+  width: 270,
+  backgroundColor: "#fff",
+  shadowColor: "#000",
+  shadowOpacity: 0.27,
+  shadowRadius: 4.65,
+  elevation: 6,
+  borderRadius: 20,
+  marginLeft: 45,
+  marginRight: 45,
+  marginTop: 25,
+},
+box3: {
   width: '45%',
   height: 240,
   padding: 5,      
