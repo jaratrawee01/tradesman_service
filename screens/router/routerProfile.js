@@ -7,6 +7,7 @@ import Profile_tradesman from '../navbar/profile_tradesman';
 import Servict_form from '../service_form';
 import Workings from '../workings';
 import Bank_account from '../bank_account';
+import FromBank from '../fromBank';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ function App() {
             <HomeStack.Screen name="Profile_user" component={Profile_user} />
             <HomeStack.Screen name="Workings" component={Workings} />
             <HomeStack.Screen name="Bank_account" component={Bank_account} />
+            <HomeStack.Screen name="FromBank" component={FromBank} />
         </HomeStack.Navigator>
     );
   }
