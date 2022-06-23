@@ -19,6 +19,7 @@ const getUser = async () => {
 
 
 };
+
 const createUser = async (e) => {
 const cerUser  =  await axios.post(`${url}/create`, {
     name: e[0],
@@ -28,22 +29,34 @@ const cerUser  =  await axios.post(`${url}/create`, {
     statusUser: e[4],
     statusCkeck: e[5],
   }).then((result) => {
-    // handle success
     return "success";
-
-/*     this.props.navigation.navigate("Profile_user") */
   })
   .catch((error) =>  {
-    // handle error
       return "error";
   });
-
   return cerUser;
+};
+
+
+const createBookBank = async (e) => {
+  console.log('fsfsf');
+ const bookBank  =  await axios.post(`${url}/createBookBank`, {
+    name: e[0],
+    number_bank: e[1],
+    bank: e[2],
+  }).then((result) => {
+    return "success";
+  })
+  .catch((error) =>  {
+      return "error";
+  });
+  return bookBank; 
 };
 
 
 export default {
   getUser,
-  createUser
+  createUser,
+  createBookBank
 
 };

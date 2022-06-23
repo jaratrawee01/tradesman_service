@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -178,4 +178,101 @@ boxhead: {
 
 
 
-export default Workings; 
+export default Workings;  */
+
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from 'react-native';
+
+import ImagePicker from "react-native-image-picker";
+
+const options = {
+    title: 'Select a photo',
+    takePhotoButtonTitle: 'Take a photo',
+    chooseFromLibraryButtonTitle: 'Choose from gallery',
+    quality: 1
+};
+
+
+export default class Workings extends Component {
+constructor() {
+  super()
+  this.state = {
+    imageSource: null
+  }
+
+}
+
+  selectPhoto   () {
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+     
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else {
+        let source = { uri: response.uri };
+        this.setState({
+          imageSource: source
+        }); 
+      }
+    });
+  }
+
+ 
+  render() {
+    return (
+      <View style={styles.Component}>
+
+        <Image style={styles.image}
+            source={this.state.imageSource != null ? this.state.imageSource :
+            require('../assets/images/adaptive-icon.png')}
+        />
+          <TouchableOpacity style={styles.button} onPress={this.selectPhoto.bind(this)}>
+            <Text style={styles.text}>Select</Text>
+          </TouchableOpacity>
+      </View>
+
+
+    );
+  }
+}
+
+
+const styles = StyleSheet.create({
+
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#A0A0A0',
+  },
+  button: {
+    width: 250,
+    height: 50,
+    backgroundColor: '#330066',
+    borderRadius: 30,
+    justifyContent: 'center',
+    marginTop: 200,
+    marginLeft: 50,
+  },
+  text: {
+    color: 'red',
+    fontSize: 25,
+    textAlign: 'center'
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginTop: 30,
+  },
+
+
+
+})
