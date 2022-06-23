@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MapView, { Marker, Callout, Circle } from 'react-native-maps';
-import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image,Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 
 // You can import from local files
