@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FontAwesome } from '@expo/vector-icons';
@@ -20,6 +20,7 @@ const store = createStore(allReducer);
 
 
 const Tab = createBottomTabNavigator();
+
 
 function MyStack() {
   return (

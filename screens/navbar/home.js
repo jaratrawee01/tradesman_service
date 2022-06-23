@@ -31,7 +31,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -41,7 +41,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -51,7 +51,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -61,7 +61,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -71,7 +71,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -81,7 +81,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -101,7 +101,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -111,7 +111,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -121,7 +121,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -131,7 +131,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -141,7 +141,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image

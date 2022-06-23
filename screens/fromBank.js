@@ -1,5 +1,5 @@
 import React, { Component , useState} from 'react';
-import { SafeAreaView,StyleSheet,TextInput,Text,TouchableOpacity, View, Image, ScrollView} from 'react-native';
+import { SafeAreaView,StyleSheet,TextInput,Text,TouchableOpacity , View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import bookBank from './service/getService';
 
@@ -23,14 +23,15 @@ const FromBank = () => {
           
       };
     
-/* 
-      bookbank = (e,m) => {
+
+ /*      bookbank = (e,m) => {
        console.log( e.nativeEvent.text);
-      };
- */
+      }; */
+ 
       console.log(name ,number_bank, bank);
     return (
 
+     <>
       <SafeAreaView style={styles.container}> 
         <ScrollView>
             <View style={styles.box}>
@@ -68,7 +69,7 @@ const FromBank = () => {
                 </View>
 
                 <View >
-                    <TouchableOpacity style={styles.button} onPress={() => serve()}>
+                    <TouchableOpacity  style={styles.button} onPress={() => serve()}>
                     <AntDesign name="pluscircleo" style={styles.icons} />
                       <Text style={styles.text}>เพิ่มบัญชี</Text>
                     </TouchableOpacity>
@@ -78,6 +79,7 @@ const FromBank = () => {
             </View>
           </ScrollView>
       </SafeAreaView>
+     </>
     );
   }
 

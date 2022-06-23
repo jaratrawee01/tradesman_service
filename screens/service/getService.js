@@ -39,7 +39,7 @@ const cerUser  =  await axios.post(`${url}/create`, {
 
 
 const createBookBank = async (e) => {
-  console.log('fsfsf');
+  console.log('e',e);
  const bookBank  =  await axios.post(`${url}/createBookBank`, {
     name: e[0],
     number_bank: e[1],
