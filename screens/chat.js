@@ -57,7 +57,7 @@ box1: {
   marginLeft: 25,
   marginRight: 25,
   borderRadius: 25,
-  backgroundColor: '#bcbdbe',
+  backgroundColor: '#fff',
   shadowColor: "#000",
   shadowOpacity: 0.34,
   shadowRadius: 6.27,

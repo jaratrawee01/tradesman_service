@@ -123,7 +123,7 @@ class Profile_tradesman extends Component {
               <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
               <Text
                 style={styles.text2}
-                onPress={() => this.props.navigation.navigate("เเชท")}>{"แชท"}
+                onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
               </Text>
             </View>
 

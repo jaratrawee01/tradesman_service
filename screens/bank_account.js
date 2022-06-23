@@ -23,9 +23,6 @@ class Bank_account extends Component {
                       <Text style={styles.text8}><Text style={styles.text8}>จรัสรวี</Text> สายวรรณ</Text>
                       <Text style={styles.text5}>ยอดเงินที่ใช้ได้</Text>
                       <Text style={styles.text6}><Text style={styles.text6}>50,900.00</Text>  THB</Text>
-                      <TouchableOpacity style={styles.button1}>
-                      <Text style={styles.text7}>ชำระเงิน</Text>
-                      </TouchableOpacity>
                   </View>
                 </View>
 
@@ -131,7 +128,7 @@ container: {
   },
   text5: {
     fontSize: 16,
-    marginTop: 10,
+    marginTop: 30,
     fontWeight: 'bold',
     marginLeft: 165,
   },
