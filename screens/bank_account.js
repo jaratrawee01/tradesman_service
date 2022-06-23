@@ -13,7 +13,7 @@ class Bank_account extends Component {
               <View>
                 <Text style={styles.text1}>บัญชีธนาคาร</Text>
               </View>
-              <View style={styles.boxhead}>
+              <View>
 
                 <View>
                   <Text style={styles.text2}><Text style={styles.text2}>ข้อมูลล่าสุด</Text>    24 ก.พ 2565 17.00</Text>
@@ -37,6 +37,18 @@ class Bank_account extends Component {
             
               </View>
             </View>
+            
+            <View style={styles.box3}>
+              <View>
+                <Text style={styles.text1}>QR-Code</Text>
+              </View>
+                <View>
+                  <View style={styles.box2}>
+                     
+                  </View>
+                </View>
+              </View>
+        
           </ScrollView>
       </SafeAreaView>
     );
@@ -62,7 +74,7 @@ container: {
     borderRadius: 20,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 10,
   },
   box1: {
@@ -82,9 +94,9 @@ container: {
 
   },
   box2: {
-    height: 50,
-    width: 280,
-    backgroundColor: '#fff',
+    height: 200,
+    width: 250,
+    backgroundColor: '#cacdd2',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -93,8 +105,23 @@ container: {
     marginLeft: 20,
     marginRight: 5,
     fontSize: 18,
-    paddingLeft: 15,
-    marginTop: 30,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 20,
+  },
+  box3: {
+    height: 300,
+    width: 320,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    borderRadius: 20,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 10,
+    marginBottom: 10,
   },
   text: {
     flex: 1,
@@ -169,19 +196,6 @@ container: {
     paddingLeft: 15,
     marginTop: 30,
   },
-  button1: {
-    height: 25,
-    width: 100,
-    backgroundColor: '#fff',
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 4,
-    borderRadius: 30,
-    marginLeft: 162,
-    marginTop: 8,
-  },
-
 
 });
 
