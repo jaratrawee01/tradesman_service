@@ -1,6 +1,6 @@
 import  React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,TextInput,Text, View, Image, ScrollView} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { SafeAreaView,StyleSheet,TextInput,Text, TouchableWithoutFeedback, TouchableOpacity,  View, Image, ScrollView} from 'react-native';
+/* import img1 from '../../assets/images/12109.jpg' */
 
 
 
@@ -9,110 +9,128 @@ class Home extends Component {
     return (
       <SafeAreaView style={styles.container}> 
       <ScrollView>
+          <View style={styles.box}>
+          <Image
+                style={styles.image2}
+                source={require('../../assets/images/A-11.png')}
+              />
+          </View>
+
+          <View>
+            <Text style={styles.text}>ประเภทงาน</Text>
+          </View>
+          
           <View style={styles.boxhead}>
-              <View style={styles.box}> 
+          <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
+          <View style={styles.box3}> 
+            <Text style={styles.text1}>ประเภทงาน</Text>
                   <Image
-                  style={styles.image}
-                  source={{ uri: 'https://mythailiving.com/wp-content/uploads/2020/07/Be-a-mechanic-720x450.jpg' }}
-                />
+                  style={styles.image1}
+                  source={require('../../assets/images/B-1.png')}
+                /> 
+            </View>
+          </TouchableWithoutFeedback>
+           
+          <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
                     style={styles.image1}
-                    source={{uri: 'https://mythailiving.com/wp-content/uploads/2020/07/Be-a-mechanic-720x450.jpg'}}
-                />
-                <Text style={styles.text1}>
-                    ช่าง : ยนต์
-                </Text>
-                <Text style={styles.text}>
-                  รีวิว :
-                </Text>
-                <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>      
-            </View>
-
-            <View style={styles.box}>
-                <Image
-                    style={styles.image}
-                    source={{ uri: 'https://jobschiangrai.com/storage/uploads/image/master%20photography.jpg' }}
+                    source={require('../../assets/images/B-2.png')}
                   />
+            </View>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
+            <Image
+                style={styles.image1}
+                source={require('../../assets/images/B-3.png')}
+              />
+            </View>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
+            <Image
+                style={styles.image1}
+                source={require('../../assets/images/B-4.png')}
+              />
+            </View>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}> 
+            <Text style={styles.text1}>ประเภทงาน</Text>
                   <Image
-                      style={styles.image1}
-                      source={{uri: 'https://inwfile.com/s-dx/pw8rqy.jpg'}}
+                  style={styles.image1}
+                  source={require('../../assets/images/B-5.png')}
+                /> 
+            </View>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
+                <Image
+                    style={styles.image1}
+                    source={require('../../assets/images/B-6.png')}
                   />
-                  <Text style={styles.text1}>
-                      ช่าง : กล้อง
-                  </Text>
-                  <Text style={styles.text}>
-                    รีวิว :
-                  </Text>
-                  <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>
             </View>
-
-            <View style={styles.box}>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
             <Image
-                style={styles.image}
-                source={{ uri: 'https://inwfile.com/s-dx/pw8rqy.jpg' }}
+                style={styles.image1}
+                source={require('../../assets/images/B-7.png')}
               />
-               <Image
-                  style={styles.image1}
-                  source={{uri: 'https://www.knockdoor.net/info/wp-content/uploads/2020/12/technician-service-removing-air-filter-air-conditioner-cleaning-1200x800.jpg'}}
-              />
-              <Text style={styles.text1}>
-                  ช่าง : แอร์
-              </Text>
-              <Text style={styles.text}>
-                รีวิว :
-              </Text>
-              <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>
             </View>
-
-            <View style={styles.box}>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
             <Image
-                style={styles.image}
-                source={{ uri: 'https://www.knockdoor.net/info/wp-content/uploads/2020/12/technician-service-removing-air-filter-air-conditioner-cleaning-1200x800.jpg' }}
+                style={styles.image1}
+                source={require('../../assets/images/B-8.png')}
               />
-               <Image
-                  style={styles.image1}
-                  source={{uri: 'https://inwfile.com/s-dx/pw8rqy.jpg'}}
-              />
-              <Text style={styles.text1}>
-                  ช่าง : แอร์
-              </Text>
-              <Text style={styles.text}>
-                รีวิว :
-              </Text>
-                <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                    <FontAwesome name="star" style={styles.icons} />
-                  </View>
-                </View>
             </View>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
+            <Image
+                style={styles.image1}
+                source={require('../../assets/images/B-9.png')}
+              />
+            </View>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
+            <Image
+                style={styles.image1}
+                source={require('../../assets/images/B-10.png')}
+              />
+            </View>
+            <TouchableWithoutFeedback></TouchableWithoutFeedback>
+            <View style={styles.box3}>
+            <Text style={styles.text1}>ประเภทงาน</Text>
+            <Image
+                style={styles.image1}
+                source={require('../../assets/images/B-11.png')}
+              />
+            </View>
+            <TouchableWithoutFeedback>
+              <View style={styles.box3}>
+              <Text style={styles.text1}>ประเภทงาน</Text>
+              <Image
+                  style={styles.image1}
+                  source={require('../../assets/images/B-12.png')}
+                />
+              </View>
+            </TouchableWithoutFeedback>
+           
+            <TouchableWithoutFeedback>
+              <View style={styles.box3}>
+              <Text style={styles.text1}>ประเภทงาน</Text>
+              <Image
+                  style={styles.image1}
+                  source={require('../../assets/images/B-13.png')}
+                />
+              </View>
+            </TouchableWithoutFeedback>
+         
 
           </View>
         </ScrollView>
@@ -130,13 +148,26 @@ container: {
 },
 boxhead: {
   flexDirection: 'row',
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  marginTop: 15,
+  marginBottom: 20,
 },
 box: {
-  width: '45%',
-  height: 240,
+  height: 200,
+  width: 360,
+  backgroundColor: "#3e83f0",
+  shadowColor: "#000",
+  shadowOpacity: 0.27,
+  shadowRadius: 4.65,
+  elevation: 6,
+  borderBottomLeftRadius: 70,
+  borderBottomRightRadius: 70,
+},
+box3: {
+  width: 160,
+  height: 100,
   padding: 5,      
-  marginTop: 20,
+  marginTop: 10,
   marginLeft: 12,
   borderRadius: 10,
   backgroundColor: '#fff',
@@ -147,43 +178,39 @@ box: {
   marginBottom: 4,
 },
 image: {
-  width: 140,
-  height: 150,
-  marginTop: 5,
-  borderRadius: 15,
+  width: 300,
+  height: 200,
+  marginTop: 20,
+  borderRadius: 20,
   marginLeft: 'auto',
   marginRight: 'auto',
 },
 image1: {
-  width: 25,
-  height: 25,
-  marginTop: 10,
-  marginLeft: 10,
-  borderRadius: 50,
+  width: 120,
+  height: 70,
+  marginTop: 2,
+  marginLeft: 'auto',
+  marginRight: 'auto',
+},
+image2: {
+  width: 150,
+  height: 170,
+  marginTop: 20,
+  marginLeft: 'auto',
+  marginRight: 'auto',
 },
 text: {
   marginTop: 15,
-  marginLeft: 15,
+  textAlign: 'center',
   fontWeight: 'bold',
-  fontSize: 15,
+  fontSize: 20,
 },
 text1: {
   fontSize: 15,
   fontWeight: 'bold',
-  marginLeft: 45,
-  marginTop: -22,
+
 },
-icons: {
-  marginLeft: 5,
-  marginTop: 15,
-  fontSize: 15, 
-  color: '#bcbdbe'
-},
-  icons1: {
-    marginTop: -30,
-    marginLeft: 40,
-  },
-  
+
 
 
 });
@@ -193,4 +220,8 @@ export default Home;
 
 
 
-  
+{/* <Image
+style={styles.image}
+source={require('../../assets/images/A-1.jpg')}
+/* source={img1} */
+/>  */} 
