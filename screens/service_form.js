@@ -1,19 +1,116 @@
-import React, { useState } from 'react';
-import MapView, { Marker, Callout, Circle } from 'react-native-maps'; 
+import React, { useEffect, useState } from 'react';
+import MapView, { Marker, Callout, Circle } from 'react-native-maps';
+import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import Constants from 'expo-constants';
 
-import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, Dimensions, ScrollView } from 'react-native';
+// You can import from local files
 
+let apiKey = 'AIzaSyBdjxXSNpAnyW0lzE_uliQ121U4mkmSgPk';
 
-
+import * as Location from 'expo-location';
 
 const Service_form = () => {
-  const [pin, setPin] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
+  const [location, setLocation] = useState({
+    latitude: 13.7158793,
+    longitude: 100.4405985,
   });
 
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [address, setAddress] = useState(null);
 
 
+  // const [getLocation, setGetLocation] = useState(false);
+
+  const getLocation = async () => {
+
+    let { status } = await Location.requestPermissionsAsync();
+    if (status !== 'granted') {
+      setErrorMsg('Permission to access location was denied');
+    }
+
+    Location.setGoogleApiKey(apiKey);
+
+    /* console.log(status); */
+
+    let { coords } = await Location.getCurrentPositionAsync();
+
+
+
+    setLocation({
+      latitude: coords.latitude,
+      longitude: coords.longitude
+    })
+    console.log("coords", coords.latitude, coords.longitude,);
+
+    if (coords) {
+      let { longitude, latitude } = coords;
+
+      let regionName = await Location.reverseGeocodeAsync({
+        longitude,
+        latitude,
+      });
+
+      const name = regionName[0];
+      const address = JSON.stringify(name?.['subregion']);
+      setAddress(address);
+
+    }
+
+
+  };
+
+  const map = () => {
+    console.log("lode Map");
+    return (
+      <>
+        <MapView style={styles.map} initialRegion={{
+          latitude: location.latitude,
+          longitude: location.longitude,
+          /* latitude: 37.78825,
+          longitude: -122.4324, */
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }
+        }>
+          <Marker
+            coordinate={{
+              latitude: location.latitude,
+              longitude: location.longitude
+            }}
+            draggable={true}
+            onDragStart={(e) => {
+              console.log("drag start", e.nativeEvent.coordinate);
+            }}
+            onDragEnd={(e) => {
+              //  setPin({
+              //latitude:  e.nativeEvent.coordinate.latitude,
+              //longitude:  e.nativeEvent.coordinate.longitude
+              // }) 
+              console.log("drag end", e.nativeEvent.coordinate);
+            }}
+            provider="google"
+          >
+            <Callout>
+              <Text>I,amp</Text>
+            </Callout>
+          </Marker>
+        </MapView >
+      </>
+    )
+    
+  }
+
+
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        getLocation()
+      }
+
+    })();
+  }, []);
 
   const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
   return (
@@ -70,40 +167,31 @@ const Service_form = () => {
             </View>
           </View>
           <Text style={styles.text2}>{'GPS'}</Text>
+          <TouchableOpacity onPress={getLocation}>
+
+            <Text style={styles.btnText}> GET LOCATION </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={map}>
+
+            <Text style={styles.btnText}> GET MAP </Text>
+          </TouchableOpacity>
           <View style={styles.containerMap}>
-      <MapView style={styles.map} initialRegion={{
-              latitude: 19.0462083,
-              longitude: 98.9338522,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}>
-              <Marker
-                coordinate={pin}
-                draggable={true}
-                onDragStart={(e) => {
-                  console.log("drag start", e.nativeEvent.coordinate);
-                }}
-                onDragEnd={(e) => {
-                //  setPin({
-                  //latitude:  e.nativeEvent.coordinate.latitude,
-                  //longitude:  e.nativeEvent.coordinate.longitude
-                // }) 
-                 console.log("drag end", e.nativeEvent.coordinate);
-                }}
-                provider="google"
-              >
-                <Callout>
-                  <Text>I,amp</Text>
-                </Callout>
-              </Marker>
-              <Circle center={pin} radius={1000} />
-            </MapView>  
+
+            {!location
+              ? 'Waiting'
+              :
+              <>
+                {map()}
+              </>
+            }
           </View>
         </View>
       </ScrollView>
     </SafeAreaView>
+
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -223,6 +311,3 @@ const styles = StyleSheet.create({
 });
 
 export default Service_form;
-
-
-
