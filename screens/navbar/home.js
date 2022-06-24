@@ -9,17 +9,16 @@ class Home extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <View style={styles.box}>
-            <Image
-              style={styles.image2}
-              source={require('../../assets/images/A-11.png')}
-            />
+          <View style={styles.box1}>
+              <View style={styles.box}>
+                <Image
+                  style={styles.image2}
+                  source={require('../../assets/images/A-11.png')}
+                />
+              </View>
+              <Text style={styles.text}>ประเภทงาน</Text>
           </View>
-
-          <View>
-            <Text style={styles.text}>ประเภทงาน</Text>
-          </View>
-
+ 
           <View style={styles.boxhead}>
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
@@ -167,19 +166,37 @@ const styles = StyleSheet.create({
   boxhead: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 15,
     marginBottom: 20,
   },
   box: {
-    height: 200,
-    width: 360,
-    backgroundColor: "#3e83f0",
+    height: 160,
+    width: 160,
+    backgroundColor: '#78a0e3',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
-    borderBottomLeftRadius: 70,
-    borderBottomRightRadius: 70,
+    borderRadius: 100,
+    marginTop: 10,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderWidth: 5,
+    borderColor: '#fff',
+
+  },
+  box1: {
+    width: 340,
+    height: 220,
+    marginTop: 10,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 2,
+    marginBottom: 4,
   },
   box3: {
     width: 160,
@@ -211,9 +228,9 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
   },
   image2: {
-    width: 150,
-    height: 170,
-    marginTop: 20,
+    width: 100,
+    height: 120,
+    marginTop: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
   },
