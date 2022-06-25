@@ -54,10 +54,10 @@ app.post('/create', (req, res) => {
 });
 
 app.post('/createBookBank', (req, res) => {
-    console.log('asdada');
+    console.log(req.body);
     const name = req.body.name;
     const number_bank = req.body.number_bank;
-    const back = req.body.back;
+    const back = req.body.bank;
     
 
   db.query(`INSERT INTO book_bank (id,name,number_bank,bank) VALUES (null ,'${name}','${number_bank}','${back}')`,

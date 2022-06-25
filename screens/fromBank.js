@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import bookBank from './service/getService';
 
  
-const FromBank = () => {
+const FromBank = ({ navigation: { popToTop } }) => {
 
     const [name, setName] = useState(null);
     const [number_bank, setNumber_bank] = useState(null);
@@ -16,11 +16,13 @@ const FromBank = () => {
 
         const data = [name, number_bank, bank];
 
-            const result = await bookBank.createBookBank(data);
-            if (result === "success") {
+             const result = await bookBank.createBookBank(data);
+
+            console.log(result);
+             if (result === "success") {
               popToTop();
-            }
-          
+            } 
+           
       };
     
 
