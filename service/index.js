@@ -18,6 +18,7 @@ const db = mysql.createConnection({
 
 
 app.get('/getUsers', (req, res) => {
+    console.log("448888");
     db.query("SELECT * FROM users", (err, result) => {
         if (err) {
             res.send(err);
@@ -31,7 +32,7 @@ app.get('/getUsers', (req, res) => {
 
 app.post('/create', (req, res) => {
 
-    console.log("aa");
+    console.log(req.body);
     const name = req.body.name;
     const email = req.body.email;
     const phone = req.body.phone;
@@ -70,5 +71,5 @@ app.post('/createBookBank', (req, res) => {
 
 
 app.listen('3003', () => {
-    console.log('server is ren 3003');
+    console.log('server is ren 3006');
 })

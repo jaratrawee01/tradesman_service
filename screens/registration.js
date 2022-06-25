@@ -31,7 +31,11 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [modalVisible, setModalVisible] = useState("false");
 
   const serve = async () => {
-    const data = [name, email, phone, md5(password), statusUser, statusCkeck];
+    const result = await createUser.getUser();
+     /*    if (result === "success") {
+          popToTop();
+        } */
+/*     const data = [name, email, phone, md5(password), statusUser, statusCkeck];
    if (statusCkeck === true) {
         const result = await createUser.createUser(data);
         if (result === "success") {
@@ -39,8 +43,8 @@ const Registration = ({ navigation: { popToTop } }) => {
         }
       }else {
         Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
-      }  
-  };
+      }  */
+  }; 
 
 
   const accept = ()=> {

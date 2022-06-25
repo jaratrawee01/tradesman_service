@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import MapView, { Marker, Callout, Circle } from 'react-native-maps';
 import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image,Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
@@ -11,13 +11,14 @@ import * as Location from 'expo-location';
 
 const Service_form = () => {
   const [location, setLocation] = useState({
-    latitude: 13.7158793,
-    longitude: 100.4405985,
+    latitude: null,
+    longitude: null,
   });
+
 
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
-
+  const mapRef = React.createRef();
 
   // const [getLocation, setGetLocation] = useState(false);
 
@@ -30,17 +31,15 @@ const Service_form = () => {
 
     Location.setGoogleApiKey(apiKey);
 
-    /* console.log(status); */
+     console.log(status); 
 
     let { coords } = await Location.getCurrentPositionAsync();
-
-
 
     setLocation({
       latitude: coords.latitude,
       longitude: coords.longitude
     })
-    console.log("coords", coords.latitude, coords.longitude,);
+
 
     if (coords) {
       let { longitude, latitude } = coords;
@@ -55,19 +54,16 @@ const Service_form = () => {
       setAddress(address);
 
     }
-
-
   };
 
+
+
   const map = () => {
-    console.log("lode Map");
     return (
       <>
         <MapView style={styles.map} initialRegion={{
           latitude: location.latitude,
           longitude: location.longitude,
-          /* latitude: 37.78825,
-          longitude: -122.4324, */
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }
@@ -75,18 +71,20 @@ const Service_form = () => {
           <Marker
             coordinate={{
               latitude: location.latitude,
-              longitude: location.longitude
+              longitude: location.longitude,
             }}
             draggable={true}
             onDragStart={(e) => {
-              console.log("drag start", e.nativeEvent.coordinate);
+              setLocation({
+                latitude:  e.nativeEvent.coordinate.latitude,
+                longitude:  e.nativeEvent.coordinate.longitude
+               })  
             }}
             onDragEnd={(e) => {
-              //  setPin({
-              //latitude:  e.nativeEvent.coordinate.latitude,
-              //longitude:  e.nativeEvent.coordinate.longitude
-              // }) 
-              console.log("drag end", e.nativeEvent.coordinate);
+               setLocation({
+              latitude:  e.nativeEvent.coordinate.latitude,
+              longitude:  e.nativeEvent.coordinate.longitude
+             }) 
             }}
             provider="google"
           >
@@ -102,16 +100,13 @@ const Service_form = () => {
 
 
 
+
   useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        getLocation()
-      }
-
-    })();
-  }, []);
-
+    if (location.longitude === null) {
+      getLocation()
+      map()
+    }
+  },[]);
   const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
   return (
     <SafeAreaView style={styles.container}>
@@ -167,18 +162,10 @@ const Service_form = () => {
             </View>
           </View>
           <Text style={styles.text2}>{'GPS'}</Text>
-          <TouchableOpacity onPress={getLocation}>
-
-            <Text style={styles.btnText}> GET LOCATION </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={map}>
-
-            <Text style={styles.btnText}> GET MAP </Text>
-          </TouchableOpacity>
           <View style={styles.containerMap}>
 
-            {!location
-              ? 'Waiting'
+            {location.longitude === null
+              ? null
               :
               <>
                 {map()}
@@ -311,3 +298,4 @@ const styles = StyleSheet.create({
 });
 
 export default Service_form;
+ 
