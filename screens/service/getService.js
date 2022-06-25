@@ -5,18 +5,17 @@ const url = 'http://localhost:3003';
 
 
 const getUser = async () => {
- await axios.get(`${url}/getUsers`).then((result) => {
+
+const rse =  await axios.get(`${url}/getUsers`).then((result) => {
     // handle success
-    console.log("success");
+
+   return result.data; 
   })
   .catch((error) =>  {
     // handle error
-   console.log("error");
+    return error;
   })
-/*   return (
-    console.log(res)
-  ); */
-
+ return rse;
 
 };
 
@@ -57,6 +56,6 @@ const createBookBank = async (e) => {
 export default {
   getUser,
   createUser,
-  createBookBank
+  createBookBank,
 
 };

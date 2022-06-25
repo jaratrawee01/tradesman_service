@@ -18,13 +18,15 @@ const db = mysql.createConnection({
 
 
 app.get('/getUsers', (req, res) => {
-    console.log("448888");
+    console.log("aa");
     db.query("SELECT * FROM users", (err, result) => {
         if (err) {
             res.send(err);
 
         } else {
-            res.send(result);
+            console.log(result);
+           res.send(result); 
+
         }
     });
 });

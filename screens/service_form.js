@@ -89,7 +89,7 @@ const Service_form = () => {
             provider="google"
           >
             <Callout>
-              <Text>I,amp</Text>
+              <Text>ตำเเหน่งของคุณ</Text>
             </Callout>
           </Marker>
         </MapView >
