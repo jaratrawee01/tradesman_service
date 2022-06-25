@@ -30,24 +30,34 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [statusCkeck, setStatusCkeck] = useState("fales");
   const [modalVisible, setModalVisible] = useState("false");
 
+
   const serve = async () => {
 
-/*      const data = [name, email, phone, md5(password), statusUser, statusCkeck];
-   if (statusCkeck === true) {
+    const getEmail = await createUser.getUser();
+    const checkEmail = getEmail.filter(getEmail => getEmail.email ===  email);
+    if (checkEmail.length > 0) {
+      Alert.alert(`Email ${email} นี้มีการใช้งานอยู่เเล้ว`);
+    } else {
+      const data = [name, email, phone, md5(password), statusUser, statusCkeck];
+      if (statusCkeck === true) {
         const result = await createUser.createUser(data);
         if (result === "success") {
           popToTop();
         }
-      }else {
+      } else {
         Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
-      }  */ 
-      const result = await createUser.getUser(result);
-      
-      console.log("Date",result);
-  }; 
+      }
+    }
 
 
-  const accept = ()=> {
+
+
+
+
+  };
+
+
+  const accept = () => {
     setModalVisible(false);
     setStatusCkeck(true);
   }
@@ -309,14 +319,14 @@ const styles = StyleSheet.create({
   button1: {
     backgroundColor: "#01C1FF",
     height: 50,
-    borderRadius: 25, 
+    borderRadius: 25,
   },
   button2: {
     marginTop: 30,
     marginLeft: 20,
     marginRight: 20,
     backgroundColor: "#01C1FF",
-    height: 50, 
+    height: 50,
     borderRadius: 25,
     marginBottom: 150
   },
