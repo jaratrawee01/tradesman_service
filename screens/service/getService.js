@@ -52,10 +52,33 @@ const createBookBank = async (e) => {
   return bookBank; 
 };
 
+const createAddress = async (e) => {
+
+ const address  =  await axios.post(`${url}/createAddress`, {
+    name: e[0],
+    addressUser: e[1],
+    subdistrict: e[2],
+    district: e[3],
+    province: e[4],
+    zipcode: e[5],
+    location:e[6],
+
+  }).then((result) => {
+    console.log(result);
+/*     return "success"; */
+  })
+  .catch((error) =>  {
+    console.log(error);
+   /*    return "error"; */
+  });
+  return address; 
+};
+
 
 export default {
   getUser,
   createUser,
   createBookBank,
+  createAddress,
 
 };

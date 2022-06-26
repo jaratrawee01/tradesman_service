@@ -18,15 +18,13 @@ const db = mysql.createConnection({
 
 
 app.get('/getUsers', (req, res) => {
-    console.log("aa");
+    console.log("448888");
     db.query("SELECT * FROM users", (err, result) => {
         if (err) {
             res.send(err);
 
         } else {
-            console.log(result);
-           res.send(result); 
-
+            res.send(result);
         }
     });
 });
@@ -54,10 +52,10 @@ app.post('/create', (req, res) => {
 });
 
 app.post('/createBookBank', (req, res) => {
-    console.log(req.body);
+    console.log('asdada');
     const name = req.body.name;
     const number_bank = req.body.number_bank;
-    const back = req.body.bank;
+    const back = req.body.back;
     
 
   db.query(`INSERT INTO book_bank (id,name,number_bank,bank) VALUES (null ,'${name}','${number_bank}','${back}')`,
@@ -71,7 +69,30 @@ app.post('/createBookBank', (req, res) => {
         });  
 });
 
+app.post('/createAddress', (req, res) => {
+
+    console.log(req.body);
+    const name = req.body.name;
+    const addressUser = req.body.addressUser;
+    const subdistrict = req.body.subdistrict;
+    const district = req.body.district;
+    const province = req.body.province;
+    const zipcode = req.body.zipcode;
+    const location = req.body.location;
+    
+
+  db.query(`INSERT INTO address (id,name,address,subdistrict,district,province,zipcode,location) VALUES (null ,'${name}','${addressUser}','${subdistrict}','${district}','${province}','${zipcode}','${JSON.stringify(location)}')`,
+        (err, result) => {
+            if (err) {
+                res.send(err);
+
+            } else {
+                res.send(result);
+            }
+        });  
+});
+
 
 app.listen('3003', () => {
-    console.log('server is ren 3006');
+    console.log('server is ren 3003');
 })

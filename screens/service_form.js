@@ -1,13 +1,16 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import MapView, { Marker, Callout, Circle } from 'react-native-maps';
-import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image,Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
+import { AntDesign } from '@expo/vector-icons';
+import create from './service/getService';
 
 // You can import from local files
 
 let apiKey = 'AIzaSyBdjxXSNpAnyW0lzE_uliQ121U4mkmSgPk';
 
 import * as Location from 'expo-location';
+import { setDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
 const Service_form = () => {
   const [location, setLocation] = useState({
@@ -15,6 +18,12 @@ const Service_form = () => {
     longitude: null,
   });
 
+  const [name, setName] = useState(null);
+  const [addressUser, setAddressUser] = useState(null);
+  const [subdistrict, setSubdistrict] = useState(null);
+  const [district, setDistrict] = useState(null);
+  const [province, setProvince] = useState(null);
+  const [zipcode, setZipcode] = useState(null);
 
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
@@ -31,7 +40,7 @@ const Service_form = () => {
 
     Location.setGoogleApiKey(apiKey);
 
-     console.log(status); 
+    console.log(status);
 
     let { coords } = await Location.getCurrentPositionAsync();
 
@@ -56,8 +65,6 @@ const Service_form = () => {
     }
   };
 
-
-
   const map = () => {
     return (
       <>
@@ -76,15 +83,15 @@ const Service_form = () => {
             draggable={true}
             onDragStart={(e) => {
               setLocation({
-                latitude:  e.nativeEvent.coordinate.latitude,
-                longitude:  e.nativeEvent.coordinate.longitude
-               })  
+                latitude: e.nativeEvent.coordinate.latitude,
+                longitude: e.nativeEvent.coordinate.longitude
+              })
             }}
             onDragEnd={(e) => {
-               setLocation({
-              latitude:  e.nativeEvent.coordinate.latitude,
-              longitude:  e.nativeEvent.coordinate.longitude
-             }) 
+              setLocation({
+                latitude: e.nativeEvent.coordinate.latitude,
+                longitude: e.nativeEvent.coordinate.longitude
+              })
             }}
             provider="google"
           >
@@ -95,8 +102,20 @@ const Service_form = () => {
         </MapView >
       </>
     )
-    
   }
+
+  const serve = async () => {
+
+    const data = [name, addressUser, subdistrict,district,province,zipcode,location];
+
+    const result = await create.createAddress(data);
+
+    console.log(result);
+    if (result === "success") {
+      popToTop();
+    }
+
+  };
 
 
 
@@ -106,7 +125,7 @@ const Service_form = () => {
       getLocation()
       map()
     }
-  },[]);
+  }, []);
   const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
   return (
     <SafeAreaView style={styles.container}>
@@ -117,48 +136,63 @@ const Service_form = () => {
               style={styles.image}
               source={{ uri: 'https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg' }}
             />
-            <Text style={styles.text}>Yonzook</Text>
           </ImageBackground>
         </View>
 
         <View style={styles.box3}>
           <View>
-            <Text style={styles.text1}>Personal information Form</Text>
+            <Text style={styles.text1}>รายละเอียดติดต่อ</Text>
           </View>
           <View style={styles.boxhead}>
 
             <View>
               <Text style={styles.text2}>{'ชื่อ'}</Text>
-              <TextInput style={styles.box4} />
-            </View>
-
-            <View>
-              <Text style={styles.text2}>{'อีเมล'}</Text>
-              <TextInput style={styles.box4} />
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setName(e.nativeEvent.text);
+                }} />
             </View>
 
             <View>
               <Text style={styles.text2}>{'บ้านเลขที่'}</Text>
-              <TextInput style={styles.box4} />
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setAddressUser(e.nativeEvent.text);
+                }} />
             </View>
 
             <View>
               <Text style={styles.text2}>{'ตำบล'}</Text>
-              <TextInput style={styles.box4} />
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setSubdistrict(e.nativeEvent.text);
+                }} />
             </View>
 
             <View>
               <Text style={styles.text2}>{'อำเภอ'}</Text>
-              <TextInput style={styles.box4} />
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setDistrict(e.nativeEvent.text);
+                }}
+              />
             </View>
 
             <View>
               <Text style={styles.text2}>{'จังหวัด'}</Text>
-              <TextInput style={styles.box4} />
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setProvince(e.nativeEvent.text);
+                }}
+              />
             </View>
             <View>
               <Text style={styles.text2}>{'รหัสไปรษณีย์'}</Text>
-              <TextInput style={styles.box4} />
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setZipcode(e.nativeEvent.text);
+                }}
+              />
             </View>
           </View>
           <Text style={styles.text2}>{'GPS'}</Text>
@@ -172,6 +206,10 @@ const Service_form = () => {
               </>
             }
           </View>
+          <TouchableOpacity style={styles.button} onPress={() => serve()}>
+            <AntDesign name="pluscircleo" style={styles.icons} />
+            <Text style={styles.text}>บันทึก</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -191,6 +229,11 @@ const styles = StyleSheet.create({
   map: {
     width: "auto",
     height: 330,
+  },
+  icons: {
+    fontSize: 25,
+    marginTop: 13,
+    marginLeft: 75
   },
   backgroun: {
     width: 360,
@@ -298,4 +341,4 @@ const styles = StyleSheet.create({
 });
 
 export default Service_form;
- 
+
