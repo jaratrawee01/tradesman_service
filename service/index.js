@@ -3,8 +3,14 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 
+
+
 app.use(cors());
 app.use(express.json());
+
+
+
+
 
 const db = mysql.createConnection({
     user: "root",
@@ -92,6 +98,48 @@ app.post('/createAddress', (req, res) => {
         });  
 });
 
+
+
+const multer = require("multer");
+
+const multerConfig = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, 'public/')     // './public/images/' directory name where save the file
+    },
+    filename: (req, file, callBack) => {
+        const ext = file.mimetype.split('/')[1];
+        callBack(null, `image-${Date.now()}.${ext}`);
+    },
+});
+
+const upload = multer({
+    storage: multerConfig
+});
+
+
+app.post("/uplodeImages" ,upload.single('photo'),(req, res) => {
+
+
+    res.status(200).json({
+        success: 'Success'
+    })
+    if (!req.file) {
+        console.log("No file upload");
+    } else {
+
+        console.log(req.file.filename)
+        var imgsrc = 'http://127.0.0.1:3003/service/public/' + req.file.filename
+        var insertData = "INSERT INTO users_file(file_src)VALUES(?)"
+        db.query(insertData, [imgsrc], (err, result) => {
+            if (err) throw err
+            console.log("file uploaded")
+        })
+    }
+
+});
+
+
+ 
 
 app.listen('3003', () => {
     console.log('server is ren 3003');

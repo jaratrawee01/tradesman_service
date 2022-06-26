@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, TouchableOpacity, View, Image, ScrollView} from 'react-native';
+/* import React, { Component } from 'react';
+import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
@@ -12,12 +12,10 @@ class Workings extends Component {
         <ScrollView>
                 <View>
                     <ImageBackground source={image} resizeMode="cover" style={styles.backgroun}>
-                    <View style={styles.box4}>
-                        <Image
-                          style={styles.image2}
-                          source={require('../assets/images/A-11.png')}
-                        />
-                      </View>
+                      <Image
+                        style={styles.image}
+                        source={{uri: 'https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg'}}
+                      />
                       <Text style={styles.text}>Yonzook</Text>
                     </ImageBackground>
                 </View>
@@ -38,56 +36,19 @@ class Workings extends Component {
 
                 <View style={styles.boxhead}>
                   <View style={styles.box1}>
-                    <TouchableOpacity>
-                      <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
+                     <AntDesign name="pluscircleo" style={styles.icons}/>
                   </View>
 
                   <View style={styles.box1}>
-                    <TouchableOpacity>
                       <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
                   </View>
 
                   <View style={styles.box}>
-                    <TouchableOpacity>
                       <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
                   </View>
 
                   <View style={styles.box}>
-                    <TouchableOpacity>
                       <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.box1}>
-                    <TouchableOpacity>
-                      <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
-                  </View>
-
-                  <View style={styles.box1}>
-                    <TouchableOpacity>
-                      <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
-                  </View>
-
-                  <View style={styles.box}>
-                    <TouchableOpacity>
-                      <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
-                  </View>
-
-                  <View style={styles.box}>
-                    <TouchableOpacity>
-                      <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
-                  </View>
-
-                  <View style={styles.box}>
-                    <TouchableOpacity>
-                      <AntDesign name="pluscircleo" style={styles.icons}/>
-                    </TouchableOpacity>
                   </View>
 
                 </View>
@@ -110,13 +71,12 @@ const styles = StyleSheet.create({
   },
   backgroun: {
     width: 360,
-    height: 220 ,
+    height: 200 ,
   },
 boxhead: {
   flexDirection: 'row',
   flexWrap: 'wrap',
   marginTop: 10,
-  marginBottom: 20,
 },
   image: {
     width: 100,
@@ -126,16 +86,9 @@ boxhead: {
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-  image2: {
-    width: 100,
-    height: 100,
-    marginTop: 20,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
   box1: {
     width: 160,
-    height: 180,
+    height: 160,
     padding: 2,      
     marginTop: 5,
     marginLeft: 13,
@@ -149,7 +102,7 @@ boxhead: {
   },
   box: {
     width: 160,
-    height: 180,
+    height: 160,
     padding: 2,      
     marginTop: 8,
     marginLeft: 13,
@@ -159,7 +112,7 @@ boxhead: {
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 2,
-    marginBottom: 5, 
+    marginBottom: 20, 
   },
   box2: {
     height: 25,
@@ -187,21 +140,7 @@ boxhead: {
     paddingLeft: 15,
     marginTop: 5,
   },
-  box4: {
-    height: 140,
-    width: 140,
-    backgroundColor: '#78a0e3',
-    shadowColor: "#000",
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
-    borderRadius: 100,
-    marginTop: 20,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    borderWidth: 5,
-    borderColor: '#fff',
-  },
+
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -227,8 +166,76 @@ boxhead: {
     fontSize: 40,
     color: '#000',
     textAlign: 'center',
-    marginTop: 60,
+    marginTop: 55,
   },
 
+
+
+
+
+
 });
-export default Workings;
+
+
+
+export default Workings;  */
+
+import React, { useState, useEffect } from 'react';
+import { Button, Image, View, Platform, TouchableOpacity, Text } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import createUser from './service/getService';
+
+export default function ImagePickerExample() {
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+
+    if (!result.cancelled) {
+      setImage(result);
+    }
+  };
+
+  const serve = async () => {
+
+
+
+    const result = await createUser.uplodeImages(image);
+
+    /*    console.log(result); */
+    /*   if (result === "success") {
+       popToTop();
+     } 
+     */
+  }
+
+
+
+  return (
+    <>
+       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
+        <TouchableOpacity onPress={() => serve()}>
+            <Text
+              style={{
+                textAlign: "center"
+              }}
+            >
+              สมัครสมาชิก
+            </Text>
+          </TouchableOpacity>
+      </View> 
+
+   
+
+    </>
+  );
+}
