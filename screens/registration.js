@@ -17,6 +17,10 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import createUser from "./service/getService";
+import axios from "axios";
+
+/*  const  url = 'https://reqres.in';  */
+const url = "http://localhost:8001/getUsers";
 
 var md5 = require("md5");
 
@@ -32,9 +36,32 @@ const Registration = ({ navigation: { popToTop } }) => {
 
 
   const serve = async () => {
+ /*    await axios.get(`http://localhost:8001/getUsers`).then((result) => {
+      // handle success
+  console.log(result.data);
+      return result.data;  
+    })
+    .catch((error) =>  {
+      // handle error
+      console.log(error);
+       return error; 
+    }); */
+    axios
+    .get("https://jsonplaceholde555r.typicode.com/todos33")
+    .then(response => {
+ /*      return response; */
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+      /* throw error; */
+    });
+    
+  
 
-    const getEmail = await createUser.getUser();
-    const checkEmail = getEmail.filter(getEmail => getEmail.email ===  email);
+/*     const getEmail = await createUser.getUser();
+    console.log("getEmail",getEmail); */
+   /*  const checkEmail = getEmail.filter(getEmail => getEmail.email ===  email);
     if (checkEmail.length > 0) {
       Alert.alert(`Email ${email} นี้มีการใช้งานอยู่เเล้ว`);
     } else {
@@ -48,7 +75,7 @@ const Registration = ({ navigation: { popToTop } }) => {
         Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
       }
     }
-
+ */
 
 
 
@@ -69,7 +96,7 @@ const Registration = ({ navigation: { popToTop } }) => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
-          <Text style={styles.text}>Registration</Text>
+          <Text style={styles.text}>สมักสมาชิก</Text>
         </View>
         <View style={styles.marginTop}>
           <View style={styles.input}>
@@ -271,6 +298,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     position: "relative",
+    backgroundColor: '#fff',
   },
   boxIcon: {
     height: 100,
@@ -299,9 +327,12 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     marginTop: 30,
     borderRadius: 30,
-    borderWidth: 1,
-    borderColor: "#00c2fe",
     fontSize: 23,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 4,
   },
   text: {
     textAlign: "center",

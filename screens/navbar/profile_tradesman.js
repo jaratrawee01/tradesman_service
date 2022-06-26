@@ -73,12 +73,12 @@ class Profile_tradesman extends Component {
         <ScrollView>
           <View style={styles.box}>
             <View style={styles.box1}>
-              <Image
-                style={styles.image}
-                source={{
-                  uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1zrmmzTYC6hHZP-XapM5K0eCU3cy8LldkTz6C-MXkUxO6iRX1GQvar3LCvtzvhzWb2Y&usqp=CAU",
-                }}
-              />
+              <View style={styles.box6}>
+                <Image
+                  style={styles.image3}
+                  source={require('../../assets/images/A-11.png')}
+                />
+              </View>
               <Text style={styles.text}>Jason Amada</Text>
               <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
               <View style={styles.icons1}>
@@ -98,7 +98,7 @@ class Profile_tradesman extends Component {
                   <FontAwesome name="user" style={styles.icons3} />
                   <Text
                     style={styles.text2}
-                    onPress={() => this.props.navigation.navigate("Profile_user")}>{"Profile"}
+                    onPress={() => this.props.navigation.navigate("Information")}>{"โปรไฟล์"}
                   </Text>
                 </View>
                 :
@@ -255,6 +255,13 @@ const styles = StyleSheet.create({
     marginTop: 150,
     borderRadius: 15,
   },
+  image3: {
+    width: 100,
+    height: 100,
+    marginTop: 15,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
   top: {
     marginTop: 20,
   },
@@ -324,18 +331,32 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginTop: 10,
   },
+  box6: {
+    height: 140,
+    width: 140,
+    backgroundColor: '#78a0e3',
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderRadius: 100,
+    marginTop: 10,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderWidth: 5,
+    borderColor: '#fff',
+  },
   text: {
     marginLeft: "auto",
     marginRight: "auto",
     fontWeight: "bold",
     fontSize: 25,
-    marginTop: 10,
+    marginTop: 5,
   },
   text1: {
     marginLeft: "auto",
     marginRight: "auto",
     fontSize: 20,
-    marginTop: 5,
   },
   text2: {
     marginLeft: 55,

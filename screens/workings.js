@@ -1,5 +1,5 @@
-/* import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, View, Image, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, TouchableOpacity, View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
@@ -12,10 +12,12 @@ class Workings extends Component {
         <ScrollView>
                 <View>
                     <ImageBackground source={image} resizeMode="cover" style={styles.backgroun}>
-                      <Image
-                        style={styles.image}
-                        source={{uri: 'https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg'}}
-                      />
+                    <View style={styles.box4}>
+                        <Image
+                          style={styles.image2}
+                          source={require('../assets/images/A-11.png')}
+                        />
+                      </View>
                       <Text style={styles.text}>Yonzook</Text>
                     </ImageBackground>
                 </View>
@@ -36,19 +38,56 @@ class Workings extends Component {
 
                 <View style={styles.boxhead}>
                   <View style={styles.box1}>
-                     <AntDesign name="pluscircleo" style={styles.icons}/>
+                    <TouchableOpacity>
+                      <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
                   </View>
 
                   <View style={styles.box1}>
+                    <TouchableOpacity>
                       <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
                   </View>
 
                   <View style={styles.box}>
+                    <TouchableOpacity>
                       <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
                   </View>
 
                   <View style={styles.box}>
+                    <TouchableOpacity>
                       <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.box1}>
+                    <TouchableOpacity>
+                      <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.box1}>
+                    <TouchableOpacity>
+                      <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.box}>
+                    <TouchableOpacity>
+                      <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.box}>
+                    <TouchableOpacity>
+                      <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View style={styles.box}>
+                    <TouchableOpacity>
+                      <AntDesign name="pluscircleo" style={styles.icons}/>
+                    </TouchableOpacity>
                   </View>
 
                 </View>
@@ -71,12 +110,13 @@ const styles = StyleSheet.create({
   },
   backgroun: {
     width: 360,
-    height: 200 ,
+    height: 220 ,
   },
 boxhead: {
   flexDirection: 'row',
   flexWrap: 'wrap',
   marginTop: 10,
+  marginBottom: 20,
 },
   image: {
     width: 100,
@@ -86,9 +126,16 @@ boxhead: {
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  image2: {
+    width: 100,
+    height: 100,
+    marginTop: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
   box1: {
     width: 160,
-    height: 160,
+    height: 180,
     padding: 2,      
     marginTop: 5,
     marginLeft: 13,
@@ -102,7 +149,7 @@ boxhead: {
   },
   box: {
     width: 160,
-    height: 160,
+    height: 180,
     padding: 2,      
     marginTop: 8,
     marginLeft: 13,
@@ -112,7 +159,7 @@ boxhead: {
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 2,
-    marginBottom: 20, 
+    marginBottom: 5, 
   },
   box2: {
     height: 25,
@@ -140,7 +187,21 @@ boxhead: {
     paddingLeft: 15,
     marginTop: 5,
   },
-
+  box4: {
+    height: 140,
+    width: 140,
+    backgroundColor: '#78a0e3',
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderRadius: 100,
+    marginTop: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderWidth: 5,
+    borderColor: '#fff',
+  },
   text: {
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -166,113 +227,8 @@ boxhead: {
     fontSize: 40,
     color: '#000',
     textAlign: 'center',
-    marginTop: 55,
+    marginTop: 60,
   },
-
-
-
-
-
 
 });
-
-
-
-export default Workings;  */
-
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-} from 'react-native';
-
-import ImagePicker from "react-native-image-picker";
-
-const options = {
-    title: 'Select a photo',
-    takePhotoButtonTitle: 'Take a photo',
-    chooseFromLibraryButtonTitle: 'Choose from gallery',
-    quality: 1
-};
-
-
-export default class Workings extends Component {
-constructor() {
-  super()
-  this.state = {
-    imageSource: null
-  }
-
-}
-
-  selectPhoto   () {
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
-     
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else {
-        let source = { uri: response.uri };
-        this.setState({
-          imageSource: source
-        }); 
-      }
-    });
-  }
-
- 
-  render() {
-    return (
-      <View style={styles.Component}>
-
-        <Image style={styles.image}
-            source={this.state.imageSource != null ? this.state.imageSource :
-            require('../assets/images/adaptive-icon.png')}
-        />
-          <TouchableOpacity style={styles.button} onPress={this.selectPhoto.bind(this)}>
-            <Text style={styles.text}>Select</Text>
-          </TouchableOpacity>
-      </View>
-
-
-    );
-  }
-}
-
-
-const styles = StyleSheet.create({
-
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#A0A0A0',
-  },
-  button: {
-    width: 250,
-    height: 50,
-    backgroundColor: '#330066',
-    borderRadius: 30,
-    justifyContent: 'center',
-    marginTop: 200,
-    marginLeft: 50,
-  },
-  text: {
-    color: 'red',
-    fontSize: 25,
-    textAlign: 'center'
-  },
-  image: {
-    width: 200,
-    height: 200,
-    marginTop: 30,
-  },
-
-
-
-})
+export default Workings;

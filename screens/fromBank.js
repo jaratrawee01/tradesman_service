@@ -72,8 +72,7 @@ const FromBank = ({ navigation: { popToTop } }) => {
 
                 <View >
                     <TouchableOpacity  style={styles.button} onPress={() => serve()}>
-                    <AntDesign name="pluscircleo" style={styles.icons} />
-                      <Text style={styles.text}>เพิ่มบัญชี</Text>
+                      <Text style={styles.text}>บันทึกข้อมูล</Text>
                     </TouchableOpacity>
                 </View>
             
@@ -126,9 +125,9 @@ container: {
   },
   text: {
     flex: 1,
-    paddingLeft: 110,
+    textAlign: 'center',
     fontSize: 20,
-    marginTop: -25,
+    marginTop: 10,
   },
   text1: {
     marginLeft: 20,

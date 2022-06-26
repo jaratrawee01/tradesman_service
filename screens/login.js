@@ -15,28 +15,28 @@ class Login extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <View style={styles.image}>
-            <Image
-              source={{ uri: 'https://www.opexengine.com/wp-content/uploads/2018/11/Professional-Services-for-Private-SaaS-Vendors.png' }}
-              style={{ width: 200, height: 130 }}
-            />
-          </View>
+            <View style={styles.box}>
+                <Image
+                  style={styles.image2}
+                  source={require('../assets/images/A-11.png')}
+                />
+              </View>
 
 
           <View style={styles.marginTop}>
             <View style={styles.input}>
-              <FontAwesome name="user" size={24} color="#00c2fe" />
+              <FontAwesome name="user" style={styles.icons3} />
               <TextInput
-                style={{ flex: 1, paddingLeft: 12 }}
+                style={{ flex: 1, paddingLeft: 12 , fontSize: 20 }}
                 placeholder="Name"
                 underlineColorAndroid="transparent"
               />
             </View>
 
             <View style={styles.input}>
-              <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
+              <FontAwesome name="unlock-alt" style={styles.icons3} />
               <TextInput
-                style={{ flex: 1, paddingLeft: 12 }}
+                style={{ flex: 1, paddingLeft: 12 , fontSize: 20}}
                 placeholder="Password"
                 underlineColorAndroid="transparent"
               />
@@ -45,10 +45,12 @@ class Login extends Component {
 
           <View style={styles.icons}>
             <AntDesign name="checkcircleo" size={20} color="#00c2fe" />
-            <Text style={styles.text1}>{'Remember me'}</Text>
+            <Text style={styles.text1}>{'จดจำฉัน'}</Text>
             <View style={styles.button2}>
-            <Text   title="Go to Details"
-              onPress={() => this.props.navigation.navigate('Registration')}>Registration</Text>
+            <Text
+              style={styles.text2}
+              title="Go to Details"
+              onPress={() => this.props.navigation.navigate('Registration')}>สมักสมาชิก</Text>
             </View>
           </View>
   
@@ -57,7 +59,7 @@ class Login extends Component {
               <Text style={{ fontSize: 30, textAlign: 'center', color: 'white', marginTop: 4, }}>Log in</Text>
             </TouchableOpacity>
           </View>
-
+{/* 
           <View style={styles.boxIcon}>
             <View style={styles.icons1}>
               <FontAwesome name="facebook" size={35} color="#00c2fe" />
@@ -67,7 +69,7 @@ class Login extends Component {
               <AntDesign name="google" size={35} color="#00c2fe" />
             </View>
           </View>
-          
+           */}
         </ScrollView>
       </SafeAreaView>
     );
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'relative',
+    backgroundColor: '#fff'
   },
   boxIcon: {
     height: 100,
@@ -89,6 +92,21 @@ const styles = StyleSheet.create({
     color: 'blue',
     fontWeight: 'bold',
     fontSize: 30,
+  },
+  box: {
+    height: 150,
+    width: 150,
+    backgroundColor: '#78a0e3',
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderRadius: 100,
+    marginTop: 30,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderWidth: 5,
+    borderColor: '#fff',
   },
   input: {
     flexDirection: 'row',
@@ -100,8 +118,11 @@ const styles = StyleSheet.create({
     padding: 10,
     marginTop: 30,
     borderRadius: 30,
-    borderWidth: 1,
-    borderColor: '#00c2fe',
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 4,
     fontSize: 23,
   },
   text: {
@@ -109,6 +130,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 30,
+  },
+  text1: {
+    marginLeft: 30,
+    marginTop: -20,
+    fontSize: 16,
+    marginBottom: 2,
+  },
+  text2: {
+    marginLeft: -15,
+    marginTop: -4,
+    fontSize: 16,
+    marginBottom: 2,
   },
   button: {
     marginTop: 40,
@@ -125,14 +158,9 @@ const styles = StyleSheet.create({
     marginTop: -16,
     marginLeft: 180,
   },
-  text1: {
-    marginLeft: 26,
-    marginTop: -18,
-    fontSize: 16,
-  },
   icons: {
-    marginTop: 16,
-    marginLeft: 50,
+    marginTop: 25,
+    marginLeft: 60,
   },
   marginTop: {
     marginTop: 20,
@@ -164,12 +192,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 8,
     marginTop: -50,
-
   },
-  image: {
+  icons3: {
+    fontSize: 24,
+    color: '#01C1FF',
+    marginLeft: 10,
+  },
+  image2: {
+    width: 100,
+    height: 100,
+    marginTop: 20,
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '25%',
   },
   scrollView: {
     marginHorizontal: 5,
