@@ -11,25 +11,27 @@ class Information extends Component {
       <SafeAreaView style={styles.container}> 
         <ScrollView> 
 
-                <View style={styles.box1}>
+                <View style={styles.box}>
                 <Text style={styles.text}>ข้อมูลเกี่ยวกับบัญชี</Text>
                 </View>
 
-                <View  style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'ชื่อ'}</Text>                                      {'Jason Amada'}</Text>                
-                </View>
+              <View style={styles.box}>
+                  <View  style={styles.box3}>
+                        <Text style={styles.text2}><Text style={styles.text2}>{'ชื่อ'}</Text>                                        {'Jason Amada'}</Text>                
+                    </View>
 
-                <View  style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'อีเมล'}</Text>                                  {'aaaa_dddd@gmail.com'}</Text>                 
-                </View>
+                    <View  style={styles.box3}>
+                        <Text style={styles.text2}><Text style={styles.text2}>{'อีเมล'}</Text>                     {'aaaa_dddd@gmail.com'}</Text>                 
+                    </View>
 
-                <View style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'เบอร์โทร'}</Text>                             {'09999999999'}</Text>              
-                </View>
+                    <View style={styles.box3}>
+                        <Text style={styles.text2}><Text style={styles.text2}>{'เบอร์โทร'}</Text>                             {'09999999999'}</Text>              
+                    </View>
 
-                <View  style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'รหัสผ่าน'}</Text>                              {'asasdlll11111'}</Text>                 
-                </View>
+                    <View  style={styles.box3}>
+                        <Text style={styles.text2}><Text style={styles.text2}>{'รหัสผ่าน'}</Text>                              {'asasdlll11111'}</Text>                 
+                    </View>
+              </View>
             
 {/* 
                 <View style={styles.box2}>
@@ -49,16 +51,10 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%',
       position: 'relative',
+      backgroundColor: '#fff'
   },
-  box1: {
-    height: 80,
-    width: 360,
-    backgroundColor: '#fff',
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 4,
-    padding: -10,
+  box: {
+    marginTop: 20,
   },
   box2: {
     height: 40,
@@ -76,13 +72,18 @@ const styles = StyleSheet.create({
   },
   box3: {
     height: 50,
-    width: 360,
+    width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
     padding: -10,
+    marginBottom: 4,
+    marginTop: 15,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 25,
   },
   text: {
     marginLeft: 'auto',
