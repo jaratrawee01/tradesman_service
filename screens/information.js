@@ -11,28 +11,26 @@ class Information extends Component {
       <SafeAreaView style={styles.container}> 
         <ScrollView> 
 
-                <View>
+                <View style={styles.box1}>
                 <Text style={styles.text}>ข้อมูลเกี่ยวกับบัญชี</Text>
                 </View>
 
-            <View style={styles.box}>
-
                 <View  style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'ชื่อ'}</Text>                                      {'รหัสผ่าน'}</Text>                
+                    <Text style={styles.text2}><Text style={styles.text2}>{'ชื่อ'}</Text>                                      {'Jason Amada'}</Text>                
                 </View>
 
                 <View  style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'อีเมล'}</Text>                                  {'รหัสผ่าน'}</Text>                 
+                    <Text style={styles.text2}><Text style={styles.text2}>{'อีเมล'}</Text>                                  {'aaaa_dddd@gmail.com'}</Text>                 
                 </View>
 
                 <View style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'เบอร์โทร'}</Text>                             {'รหัสผ่าน'}</Text>              
+                    <Text style={styles.text2}><Text style={styles.text2}>{'เบอร์โทร'}</Text>                             {'09999999999'}</Text>              
                 </View>
 
                 <View  style={styles.box3}>
-                    <Text style={styles.text2}><Text style={styles.text2}>{'รหัสผ่าน'}</Text>                              {'รหัสผ่าน'}</Text>                 
+                    <Text style={styles.text2}><Text style={styles.text2}>{'รหัสผ่าน'}</Text>                              {'asasdlll11111'}</Text>                 
                 </View>
-            </View>
+            
 {/* 
                 <View style={styles.box2}>
                   <Text style={styles.text1}>อัพโหลดภาพ</Text>
@@ -52,8 +50,15 @@ const styles = StyleSheet.create({
       height: '100%',
       position: 'relative',
   },
-  box: {
-    marginTop: 20,
+  box1: {
+    height: 80,
+    width: 360,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    padding: -10,
   },
   box2: {
     height: 40,
@@ -77,8 +82,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
-    fontSize: 18,
-    marginBottom: 10,
+    padding: -10,
   },
   text: {
     marginLeft: 'auto',
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
   },
   text2: {
     marginLeft: 30,
-    fontSize: 18,
+    fontSize: 16,
     marginTop: 15,
     fontWeight: 'bold',
   },

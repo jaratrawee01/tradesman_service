@@ -207,7 +207,6 @@ const Service_form = () => {
             }
           </View>
           <TouchableOpacity style={styles.button} onPress={() => serve()}>
-            <AntDesign name="pluscircleo" style={styles.icons} />
             <Text style={styles.text}>บันทึก</Text>
           </TouchableOpacity>
         </View>
@@ -308,7 +307,6 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     fontWeight: 'bold',
     fontSize: 30,
-    color: '#00c2fe',
     marginTop: 5,
   },
   text1: {
@@ -336,6 +334,19 @@ const styles = StyleSheet.create({
   forme: {
     marginLeft: 150,
     marginTop: -58,
+  },
+  button: {
+    height: 50,
+    width: 200,
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    borderRadius: 30,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 30,
   },
 
 });

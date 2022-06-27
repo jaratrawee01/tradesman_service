@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6.27,
     elevation: 2,
     marginBottom: 4,
+    padding: -10,
   },
   box3: {
     width: 160,
