@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://localhost:3003';
+const url = 'http://192.168.1.5:3003';
 
 
 const getUser = async () => {
@@ -20,18 +20,20 @@ const getUser = async () => {
 };
 
 const createUser = async (e) => {
-  const cerUser = await axios.post(`${url}/create`, {
+
+  const cerUser = await axios.post(`${url}/createUser`, {
     name: e[0],
     email: e[1],
     phone: e[2],
     password: e[3],
     statusUser: e[4],
-    statusCkeck: e[5],
+    statusCkeck: e[5]
   }).then((result) => {
+
     return "success";
   })
-    .catch((error) => {
-      return "error";
+  .catch((error) => {
+      return error;
     });
   return cerUser;
 };
@@ -47,7 +49,7 @@ const createBookBank = async (e) => {
     return "success";
   })
     .catch((error) => {
-      return "error";
+      return error;
     });
   return bookBank;
 };
@@ -65,6 +67,7 @@ const createAddress = async (e) => {
 
   }).then((result) => {
     return "success";
+
   })
     .catch((error) => {
 
@@ -85,7 +88,7 @@ const uplodeImages = async (e) => {
 
   })
   const image =  axios({
-    url: `http://localhost:3003/uplodeImages`,
+    url: `${url}/uplodeImages`,
     method: 'post',
     data: formdata,
     headers: {

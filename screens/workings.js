@@ -205,8 +205,6 @@ export default function ImagePickerExample() {
 
   const serve = async () => {
 
-
-
     const result = await createUser.uplodeImages(image);
 
     /*    console.log(result); */

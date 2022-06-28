@@ -12,7 +12,7 @@ let apiKey = 'AIzaSyBdjxXSNpAnyW0lzE_uliQ121U4mkmSgPk';
 import * as Location from 'expo-location';
 import { setDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
 
-const Service_form = () => {
+const Service_form = ({ navigation: { popToTop } }) => {
   const [location, setLocation] = useState({
     latitude: null,
     longitude: null,

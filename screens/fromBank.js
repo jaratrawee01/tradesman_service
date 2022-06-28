@@ -10,15 +10,11 @@ const FromBank = ({ navigation: { popToTop } }) => {
     const [number_bank, setNumber_bank] = useState(null);
     const [bank, setBank] = useState(null);
 
-
-
     const serve = async () => {
 
         const data = [name, number_bank, bank];
 
              const result = await bookBank.createBookBank(data);
-
-            console.log(result);
              if (result === "success") {
               popToTop();
             } 

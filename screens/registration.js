@@ -16,11 +16,9 @@ import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import createUser from "./service/getService";
-import axios from "axios";
+import bookBank from "./service/getService";
 
-/*  const  url = 'https://reqres.in';  */
-const url = "http://localhost:8001/getUsers";
+
 
 var md5 = require("md5");
 
@@ -31,43 +29,15 @@ const Registration = ({ navigation: { popToTop } }) => {
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState("first");
   const [statusUser, setStatusUser] = useState("ลูกค้าทั่วไป");
-  const [statusCkeck, setStatusCkeck] = useState("fales");
+  const [statusCkeck, setStatusCkeck] = useState(false);
   const [modalVisible, setModalVisible] = useState("false");
 
 
-  const serve = async () => {
- /*    await axios.get(`http://localhost:8001/getUsers`).then((result) => {
-      // handle success
-  console.log(result.data);
-      return result.data;  
-    })
-    .catch((error) =>  {
-      // handle error
-      console.log(error);
-       return error; 
-    }); */
-    axios
-    .get("https://jsonplaceholde555r.typicode.com/todos33")
-    .then(response => {
- /*      return response; */
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-      /* throw error; */
-    });
-    
-  
-
-/*     const getEmail = await createUser.getUser();
-    console.log("getEmail",getEmail); */
-   /*  const checkEmail = getEmail.filter(getEmail => getEmail.email ===  email);
-    if (checkEmail.length > 0) {
-      Alert.alert(`Email ${email} นี้มีการใช้งานอยู่เเล้ว`);
-    } else {
+  /*   const dataLogin =  ()  =>  {
       const data = [name, email, phone, md5(password), statusUser, statusCkeck];
       if (statusCkeck === true) {
-        const result = await createUser.createUser(data);
+        const result =  createUser.createUser(data);
+        console.log("result => ",result);
         if (result === "success") {
           popToTop();
         }
@@ -75,13 +45,45 @@ const Registration = ({ navigation: { popToTop } }) => {
         Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
       }
     }
- */
+   */
+  const serve = async () => {
+    var data = [name, email, phone, md5(password), statusUser, statusCkeck];
 
 
 
 
 
+    const getEmail = await bookBank.getUser();
+
+    if (getEmail.length > 0) {
+      const awaitcheckEmail = await getEmail.filter(getEmail => getEmail.email === email);
+      if (statusCkeck === true) {
+        if (awaitcheckEmail.length > 0) {
+          Alert.alert(`Email ${email} นี้มีการใช้งานอยู่เเล้ว`);
+        } else {
+          const result = await bookBank.createUser(data);
+          console.log("result => ", result);
+          if (result === "success") {
+            popToTop();
+          }
+        }
+      } else {
+        Alert.alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
+      }
+    } else {
+      if (statusCkeck === true) {
+        const result = await bookBank.createUser(data);
+        console.log("result => ", result);
+        if (result === "success") {
+          popToTop();
+        }
+      } else {
+        Alert.alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
+      }
+    }
   };
+
+
 
 
   const accept = () => {
