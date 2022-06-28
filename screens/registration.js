@@ -92,8 +92,6 @@ const Registration = ({ navigation: { popToTop } }) => {
   }
 
 
-  console.log(statusCkeck);
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>

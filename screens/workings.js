@@ -183,7 +183,7 @@ export default Workings;  */
 import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform, TouchableOpacity, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import createUser from './service/getService';
+import bookBank from './service/getService';
 
 export default function ImagePickerExample() {
   const [image, setImage] = useState(null);
@@ -205,7 +205,7 @@ export default function ImagePickerExample() {
 
   const serve = async () => {
 
-    const result = await createUser.uplodeImages(image);
+    const result = await bookBank.uplodeImages(image);
 
     /*    console.log(result); */
     /*   if (result === "success") {

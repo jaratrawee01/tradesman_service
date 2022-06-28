@@ -35,6 +35,7 @@ const createUser = async (e) => {
   .catch((error) => {
       return error;
     });
+
   return cerUser;
 };
 
