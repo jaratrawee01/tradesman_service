@@ -22,11 +22,7 @@ const FromBank = ({ navigation: { popToTop } }) => {
       };
     
 
- /*      bookbank = (e,m) => {
-       console.log( e.nativeEvent.text);
-      }; */
- 
-      console.log(name ,number_bank, bank);
+
     return (
 
      <>
