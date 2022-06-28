@@ -33,7 +33,6 @@ const FromBank = ({ navigation: { popToTop } }) => {
                 <Text style={styles.text1}>บัญชีธนาคาร</Text>
               </View>
               <View style={styles.boxhead}>
-
                 <View>
                     <Text style={styles.text2}>{'ชื่อบัญชีธนาคาร'}</Text>
                     <TextInput style={styles.box2} 
