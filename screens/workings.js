@@ -185,8 +185,27 @@ import { Button, Image, View, Platform, TouchableOpacity, Text } from 'react-nat
 import * as ImagePicker from 'expo-image-picker';
 import bookBank from './service/getService';
 
-export default function ImagePickerExample() {
+
+const createFormData = (image, body = {}) => {
+  const data = new FormData();
+
+  data.append('image', {
+    name: image.fileName,
+    type: image.type,
+    uri: Platform.OS === 'ios' ? image.uri.replace('file://', '') : image.uri,
+  });
+
+  Object.keys(body).forEach((key) => {
+    data.append(key, body[key]);
+  });
+
+  return JSON.stringify.data;
+};
+
+const ImagePickerExample = () => {
   const [image, setImage] = useState(null);
+
+  
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -197,13 +216,14 @@ export default function ImagePickerExample() {
       quality: 1,
     });
 
-
+    console.log(result);
     if (!result.cancelled) {
       setImage(result);
     }
   };
 
   const serve = async () => {
+    
 
     const result = await bookBank.uplodeImages(image);
 
@@ -237,3 +257,4 @@ export default function ImagePickerExample() {
     </>
   );
 }
+export default  ImagePickerExample;
