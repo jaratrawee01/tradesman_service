@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'https://cd6c-171-4-250-186.ap.ngrok.io';
+const url = 'http://192.168.1.4:3003';
 
 
 const getUser = async () => {
@@ -11,7 +11,7 @@ const getUser = async () => {
 
     return result.data;
   })
-    .catch((error) => {
+    .catch((error) => {ๆๆqq
       // handle error
       return error;
     })
@@ -77,28 +77,8 @@ const createAddress = async (e) => {
   return address;
 };
 
-const uplodeImages = async (image) => {
 
-  const formdata = new FormData();
-  formdata.append('image', {
-    name: image.uri
-  })
-  let res = await  fetch(`${url}/uplodeImages`, {
-    method: 'POST',
-    body: formdata,
-    headers: {
-      'Content-Type': 'multipart/form-data; ',
-    }
-  }).then((response) => response.json())
-    .then((response) => {
-      console.log('response', response);
-    })
-    .catch((error) => {
-      console.log('error', error);
-    });
-}
-
-/* const uplodeImages = async (e) => {
+const uplodeImages = async (e) => {
 
   console.log("E",e);
   const formdata = new FormData();
@@ -128,7 +108,21 @@ const uplodeImages = async (image) => {
     });
    
     return image;
-}; */
+  /*  const image  =  await axios.post(`${url}/uplodeImages`,e, {
+        headers: {
+          'Content-Type': 'multipart/form-data;charset=utf-8',
+        },
+      }) 
+      .then((result) => {
+       console.log(result);
+  
+     })
+     .catch((error) =>  {
+       console.log(error);
+  
+     });*/
+/*   return image; */
+};
 
 
 export default {
