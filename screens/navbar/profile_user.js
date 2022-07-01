@@ -92,7 +92,9 @@ class Profile_user extends Component {
           <View style={styles.top}>
               <View style={styles.box3}>
               <FontAwesome5 name="user-alt" style={styles.icons3} />
-                <Text style={styles.text2}>{"โปรไฟล์"}</Text>
+                <Text style={styles.text2}
+                onPress={() => this.props.navigation.navigate("Information ")}>{"โปรไฟล์"}
+                </Text>
               </View>
         
  

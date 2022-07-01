@@ -15,7 +15,9 @@ const FromBank = ({ navigation: { popToTop } }) => {
         const data = [name, number_bank, bank];
 
              const result = await bookBank.createBookBank(data);
+             console.log(result);
              if (result === "success") {
+
               popToTop();
             } 
            
@@ -118,7 +120,7 @@ container: {
     flex: 1,
     textAlign: 'center',
     fontSize: 20,
-    marginTop: 10,
+    marginTop: 12,
   },
   text1: {
     marginLeft: 20,
