@@ -64,11 +64,14 @@ const Registration = ({ navigation: { popToTop } }) => {
           const result = await bookBank.createUser(data);
           console.log("result => ", result);
           if (result === "success") {
-            popToTop();
+            await  alert('บันทึกสำเร็จ');
+            await popToTop();
+          }else{
+            await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
           }
         }
       } else {
-        Alert.alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
+        alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
       }
     } else {
       if (statusCkeck === true) {

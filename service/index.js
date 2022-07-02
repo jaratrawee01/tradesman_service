@@ -103,61 +103,6 @@ app.post('/createAddress', (req, res) => {
 });
 
 
-/* const multer = require("multer");
-const multerConfig = multer.diskStorage({
-    destination: (req, file, callBack) => {
-        callBack(null, 'public/')     // './public/images/' directory name where save the file
-    },
-    filename: (req, file, callBack) => {
-        const ext = file.mimetype.split('/')[1];
-        callBack(null, `image-${Date.now()}.${ext}`);
-    },
-});
-const isImage = (req, file, callBack) => {
-    if (file.mimetype.startsWith('image')) {
-        callBack(null, true);
-    } else {
-        callBack(new Error('only Image is Allwoed..'))
-    }
-}
-const upload = multer({
-    storage: multerConfig,
-    //  fileFilter: isImage, 
-});
-app.post("/uplodeImages", upload.single('photo'), (req, res) => {
-    
-console.log(req);
-    res.status(200).json({
-        success: 'Success'
-    })
-    if (!req.file) {
-        console.log("No file upload");
-    } else {
-        var imgsrc = 'http://192.168.1.5:3003/service/public/' + req.body.photo
-        var insertData = "INSERT INTO users_file(file_src)VALUES(?)"
-        db.query(insertData, [imgsrc], (err, result) => {
-            if (err) throw err
-            console.log("file uploaded")
-        })
-    }  
-}); */
-
-/* const multer = require("multer");
-const multerConfig = multer.diskStorage({
-    destination: (req, file, callBack) => {
-        callBack(null, 'public/')     // './public/images/' directory name where save the file
-    },
-    filename: (req, file, callBack) => {
-        const ext = file.mimetype.split('/')[1];
-        callBack(null, `image-${Date.now()}.${ext}`);
-    },
-}); */
-
-/* const upload = multer({
-    storage: multerConfig,
-    //  fileFilter: isImage, 
-}); */
-
 
 const storage = multer.diskStorage({
     destination(req, file, callback) {
@@ -176,15 +121,24 @@ const storage = multer.diskStorage({
 }
   const upload = multer({ storage,isImage });
 
-  app.post('/uplodeImages', upload.single('image'), (req, res) => {
-    console.log('file', req.files);
-    console.log('body', req.body);
-    res.status(200).json({
-      message: 'success!',
-    });
-  });
-  
+  app.post('/uplodeImages', upload.single("image"), (req, res) => {
 
+    if (!req.file) {
+        console.log("No file upload");
+    } else {
+        var imgsrc = 'http://192.168.1.5:3003/service/public/' + req.file.filename
+        var insertData = "INSERT INTO users_file(file_src,id_user)VALUES(?,?)"
+        db.query(insertData, [imgsrc,req.body.id_user], (err, result) => {
+            if (err) {
+                res.send(err);
+
+            } else {
+                res.send(result);
+            }
+        })
+    }  
+
+  });
 
 
 app.listen('3003', () => {

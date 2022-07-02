@@ -112,7 +112,10 @@ const Service_form = ({ navigation: { popToTop } }) => {
 
     console.log(result);
     if (result === "success") {
+      await  alert('บันทึกสำเร็จ');
       popToTop();
+    }else{
+      await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
     }
 
   };

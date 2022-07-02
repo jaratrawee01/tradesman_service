@@ -17,8 +17,10 @@ const FromBank = ({ navigation: { popToTop } }) => {
              const result = await bookBank.createBookBank(data);
              console.log(result);
              if (result === "success") {
-
-              popToTop();
+              await  alert('บันทึกสำเร็จ');
+              await popToTop();
+            }else{
+              await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
             } 
            
       };

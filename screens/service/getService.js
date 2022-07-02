@@ -11,7 +11,7 @@ const getUser = async () => {
 
     return result.data;
   })
-    .catch((error) => {ๆๆqq
+    .catch((error) => {
       // handle error
       return error;
     })
@@ -80,48 +80,42 @@ const createAddress = async (e) => {
 
 const uplodeImages = async (e) => {
 
-  console.log("E",e);
   const formdata = new FormData();
-  formdata.append('photo', {
-    uriI: e.uri,
-    type: e.type,
+  formdata.append('image', {
+    uri: e.uri,
+    type: 'image/jpg',
     name: e.uri.split('/').pop(),
+  })
+  formdata.append('id_user', 'id_user-123456')
 
+ /*
+  ! การเขียน แปบ fetch data
+   fetch(`${url}/uplodeImages`, {
+    method: 'POST',
+    body: formdata
   })
-  const image =  axios({
-    url: `${url}/uplodeImages`,
-    method: 'post',
-    data: formdata,
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
-      'Authorization': 'Basic YnJva2VyOmJyb2tlcl8xMjM='
-    }
-  })
-    .then(function (response) {
-      return response;
-      console.log("response :", response);
+    .then((response) => response.json())
+    .then((response) => {
+      console.log('response', response);
     })
-    .catch(function (error) {
-      console.log(error);
-      return error;
+    .catch((error) => {
+      console.log('error', error);
     });
-   
-    return image;
-  /*  const image  =  await axios.post(`${url}/uplodeImages`,e, {
+ */
+  
+const image  =  await axios.post(`${url}/uplodeImages`,formdata, {
         headers: {
           'Content-Type': 'multipart/form-data;charset=utf-8',
-        },
+        }
       }) 
       .then((result) => {
-       console.log(result);
-  
+        return "success";
      })
      .catch((error) =>  {
-       console.log(error);
+      return error;
   
-     });*/
-/*   return image; */
+     });
+  return image;
 };
 
 

@@ -179,33 +179,16 @@ boxhead: {
 
 
 export default Workings;  */
-
+ 
 import React, { useState, useEffect } from 'react';
 import { Button, Image, View, Platform, TouchableOpacity, Text } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import bookBank from './service/getService';
 
 
-const createFormData = (image, body = {}) => {
-  const data = new FormData();
-
-  data.append('image', {
-    name: image.fileName,
-    type: image.type,
-    uri: Platform.OS === 'ios' ? image.uri.replace('file://', '') : image.uri,
-  });
-
-  Object.keys(body).forEach((key) => {
-    data.append(key, body[key]);
-  });
-
-  return JSON.stringify.data;
-};
-
 const ImagePickerExample = () => {
   const [image, setImage] = useState(null);
 
-  
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -227,11 +210,12 @@ const ImagePickerExample = () => {
 
     const result = await bookBank.uplodeImages(image);
 
-    /*    console.log(result); */
-    /*   if (result === "success") {
-       popToTop();
+      console.log(result); 
+   if (result === "success") {
+    await  alert('บันทึกสำเร็จ');
+/*        popToTop(); */
      } 
-     */
+     
   }
 
 
@@ -257,4 +241,7 @@ const ImagePickerExample = () => {
     </>
   );
 }
-export default  ImagePickerExample;
+export default  ImagePickerExample; 
+
+
+
