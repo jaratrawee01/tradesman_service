@@ -212,25 +212,25 @@ const ImagePickerExample = () => {
 
   const serve = async (e) => {
 
-
-    if (e === 'serve1') {
-      const result = await bookBank.uplodeImages(image1);
+  let result = null;   
+    if (image1 !== null) {
+      const result1 = await bookBank.uplodeImages(image1);
+      result = result1;
+    }
+    if (image2 !== null) {
+      const result2 = await bookBank.uplodeImages(image2);
+      result = result2;
+    }
+     
       if (result === "success") {
         await  alert('บันทึกภาพ สำเร็จ');
-       }else{
-        await  alert('บันทึกภาพ ไม่สำเร็จ');
-       } 
-
-     }else if (e === 'serve2') {
-      const result = await bookBank.uplodeImages(image2);
-      if (result === "success") {
-        await  alert('บันทึกภาพ สำเร็จ');
+        await popToTop();
        }else{
         await  alert('บันทึกภาพ ไม่สำเร็จ');
        } 
      }
      
-  }
+  
 
 
 
