@@ -187,11 +187,13 @@ import bookBank from './service/getService';
 
 
 const ImagePickerExample = () => {
-  const [image, setImage] = useState(null);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
 
 
-  const pickImage = async () => {
+  const pickImage = async (e) => {
     // No permissions request is necessary for launching the image library
+
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -199,22 +201,34 @@ const ImagePickerExample = () => {
       quality: 1,
     });
 
-    console.log(result);
     if (!result.cancelled) {
-      setImage(result);
+      if (e === "image1") {
+        setImage1(result);
+      }else{
+        setImage2(result);
+      }
     }
   };
 
-  const serve = async () => {
-    
+  const serve = async (e) => {
 
-    const result = await bookBank.uplodeImages(image);
 
-      console.log(result); 
-   if (result === "success") {
-    await  alert('บันทึกสำเร็จ');
-/*        popToTop(); */
-     } 
+    if (e === 'serve1') {
+      const result = await bookBank.uplodeImages(image1);
+      if (result === "success") {
+        await  alert('บันทึกภาพ สำเร็จ');
+       }else{
+        await  alert('บันทึกภาพ ไม่สำเร็จ');
+       } 
+
+     }else if (e === 'serve2') {
+      const result = await bookBank.uplodeImages(image2);
+      if (result === "success") {
+        await  alert('บันทึกภาพ สำเร็จ');
+       }else{
+        await  alert('บันทึกภาพ ไม่สำเร็จ');
+       } 
+     }
      
   }
 
@@ -223,9 +237,9 @@ const ImagePickerExample = () => {
   return (
     <>
        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button title="Pick an image from camera roll" onPress={pickImage} />
-        {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
-        <TouchableOpacity onPress={() => serve()}>
+        <Button title="Pick an image from camera roll" onPress={() => pickImage('image1')} />
+        {image1 && <Image source={{ uri: image1.uri }} style={{ width: 200, height: 200 }} />}
+        <TouchableOpacity onPress={() => serve('serve1')}>
             <Text
               style={{
                 textAlign: "center"
@@ -235,6 +249,21 @@ const ImagePickerExample = () => {
             </Text>
           </TouchableOpacity>
       </View> 
+
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button title="Pick an image from camera roll" onPress={() => pickImage('image2')} />
+        {image2 && <Image source={{ uri: image2.uri }} style={{ width: 200, height: 200 }} />}
+        <TouchableOpacity onPress={() => serve('serve2')}>
+            <Text
+              style={{
+                textAlign: "center"
+              }}
+            >
+              สมัครสมาชิก
+            </Text>
+          </TouchableOpacity>
+      </View> 
+
 
    
 
