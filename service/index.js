@@ -127,7 +127,7 @@ const storage = multer.diskStorage({
         console.log("No file upload");
     } else {
         var imgsrc = 'http://192.168.1.5:3003/service/public/' + req.file.filename
-        var insertData = "INSERT INTO users_file(file_src,id_user)VALUES(?,?)"
+        var insertData = "INSERT INTO image_users(file_src,id_user)VALUES(?,?)"
         db.query(insertData, [imgsrc,req.body.id_user], (err, result) => {
             if (err) {
                 res.send(err);

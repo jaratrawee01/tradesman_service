@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.12:3003';
+const url = 'http://192.168.0.107:3003';
 
 
 const getUser = async () => {

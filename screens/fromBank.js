@@ -156,19 +156,6 @@ container: {
     paddingLeft: 15,
     marginTop: 30,
   },
-  button1: {
-    height: 25,
-    width: 100,
-    backgroundColor: '#fff',
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 4,
-    borderRadius: 30,
-    marginLeft: 162,
-    marginTop: 8,
-  },
-
 
 });
 
