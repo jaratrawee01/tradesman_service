@@ -98,7 +98,7 @@ class Profile_tradesman extends Component {
                   <FontAwesome name="user" style={styles.icons3} />
                   <Text
                     style={styles.text2}
-                    onPress={() => this.props.navigation.navigate("Profile_user")}>{"โปรไฟล์"}
+                    onPress={() => this.props.navigation.navigate("Information")}>{"โปรไฟล์"}
                   </Text>
                 </View>
                 :

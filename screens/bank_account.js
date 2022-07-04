@@ -44,10 +44,17 @@ class Bank_account extends Component {
               </View>
                 <View>
                   <View style={styles.box2}>
-                     
-                  </View>
+                </View>
+                <View >
+                    <TouchableOpacity style={styles.button} 
+                    onPress={() => this.props.navigation.navigate("FromBank")}
+                    >
+                    <AntDesign name="pluscircleo" style={styles.icons1} />
+                      <Text style={styles.text9}>เพิ่ม QR-Code</Text>
+                    </TouchableOpacity>
                 </View>
               </View>
+            </View>
         
           </ScrollView>
       </SafeAreaView>
@@ -107,10 +114,10 @@ container: {
     fontSize: 18,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: 20,
+    marginTop: 15,
   },
   box3: {
-    height: 300,
+    height: 350,
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
@@ -176,10 +183,21 @@ container: {
     marginTop: 5,
     fontWeight: 'bold',
   },
+  text9: {
+    flex: 1,
+    paddingLeft: 100,
+    fontSize: 20,
+    marginTop: -25,
+  },
   icons: {
     fontSize: 25,
     marginTop: 13,
     marginLeft: 75
+  },
+  icons1: {
+    fontSize: 25,
+    marginTop: 13,
+    marginLeft: 65
   },
   button: {
     height: 50,

@@ -5,10 +5,11 @@ class Shop extends Component {
   render() {
 
     return (
+
       <SafeAreaView style={styles.container}>
         <ScrollView>
-    
-          <View style={styles.boxhead}>
+        <Text>shop</Text>
+         {/*  <View style={styles.boxhead}>
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
@@ -138,7 +139,7 @@ class Shop extends Component {
                 />
               </View>
             </TouchableWithoutFeedback>
-          </View>
+          </View> */}
         </ScrollView>
       </SafeAreaView>
     );
@@ -230,8 +231,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
 
   },
-
-
 
 });
 

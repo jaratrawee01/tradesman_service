@@ -194,7 +194,7 @@ const ImagePickerExample = () => {
             </View>
           </View>
 
-          <View style={styles.box2}>
+          <View style={styles.box5}>
             <Text style={styles.text1}>อัพโหลดภาพ</Text>
           </View>
 
@@ -238,7 +238,7 @@ const ImagePickerExample = () => {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={styles.box2}>
+          <View style={styles.box5}>
             <Text style={styles.text1}>อัพโหลดภาพ</Text>
           </View>
 
@@ -398,6 +398,18 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 15,
     marginTop: 20,
+  },
+  box5: {
+    height: 25,
+    width: 120,
+    backgroundColor: "#bcbdbe",
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 3,
+    borderRadius: 10,
+    marginLeft: 15,
+    marginTop: -5,
   },
   box3: {
     height: 40,
