@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.0.107:3003';
+const url = 'http://192.168.1.5:3003';
 
 
 const getUser = async () => {
@@ -16,6 +16,26 @@ const getUser = async () => {
       return error;
     })
   return rse;
+
+};
+
+
+const getLogin = async (e) => {
+  console.log("e",e[0]);
+ /*  const rse = await axios.get(`${url}/getLogin`,{
+    uesrname: e[0],
+
+  })
+  .then((result) => {
+    // handle success
+
+    return result.data;
+  })
+    .catch((error) => {
+      // handle error
+      return error;
+    })
+  return rse; */
 
 };
 
@@ -117,6 +137,7 @@ const image  =  await axios.post(`${url}/uplodeImages`,formdata, {
      });
   return image;
 };
+
 
 
 export default {

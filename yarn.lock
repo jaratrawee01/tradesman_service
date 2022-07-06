@@ -5904,6 +5904,11 @@
     "source-map" "~0.6.1"
     "tslib" "^2.0.1"
 
+"redux-persist@^6.0.0":
+  "integrity" "sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ=="
+  "resolved" "https://registry.npmjs.org/redux-persist/-/redux-persist-6.0.0.tgz"
+  "version" "6.0.0"
+
 "redux-saga-effects@^1.1.0":
   "integrity" "sha512-QUbKRDyNutwzH3ncKDAjGjZ02mRITFpgKR19bjRBpUx72uA55X1V8p7dTXAqBDMAH6KWCE7fPm++fAsD04w5Uw=="
   "resolved" "https://registry.npmjs.org/redux-saga-effects/-/redux-saga-effects-1.1.0.tgz"
@@ -5914,7 +5919,7 @@
   "resolved" "https://registry.npmjs.org/redux-saga/-/redux-saga-0.14.8.tgz"
   "version" "0.14.8"
 
-"redux@^4", "redux@^4.2.0":
+"redux@^4", "redux@^4.2.0", "redux@>4.0.0":
   "integrity" "sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA=="
   "resolved" "https://registry.npmjs.org/redux/-/redux-4.2.0.tgz"
   "version" "4.2.0"

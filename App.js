@@ -15,10 +15,12 @@ import RouterMessge from './screens/router/routerMessge';
 import RouterProfile from './screens/router/routerProfile';
 import { createStore } from 'redux';
 import allReducer from './redux/index';
-import { Provider } from "react-redux";
+import { Provider } from "react-redux"; 
+
+import  { PersistGate }  from 'redux-persist/integration/react';
+
+
 const store = createStore(allReducer);
-
-
 const Tab = createBottomTabNavigator();
 
 
@@ -57,7 +59,9 @@ export default function App() {
 
     <>
      <Provider store={store}> 
-        <MyStack />
+{/*       <PersistGate loading={null} persistor={persistor}> */}
+            <MyStack />
+ {/*      </PersistGate> */}
       </Provider> 
     </>
 

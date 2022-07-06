@@ -2,16 +2,33 @@ import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, Text, TextInput, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-
+import login from "./service/getService";
 
 
 class Login extends Component {
 
   constructor() {
     super();
+    this.state = {
+      username: "thanet01@planforfit.com",
+      password: null,
+    };
+  }
+
+  handleOnPress(e,user) {
+    this.setState({
+      [user]: e
+    })
+  }
+   login =  async () => {
+    const data = [username];
+    const getLogin = await login.getLogin(data);
+    console.log("getLogin",getLogin);
   }
 
   render() {
+
+    console.log(this.state.username,this.state.password);
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -29,7 +46,7 @@ class Login extends Component {
               <TextInput
                 style={{ flex: 1, paddingLeft: 12 , fontSize: 20 }}
                 placeholder="Name"
-                underlineColorAndroid="transparent"
+                underlineColorAndroid="transparent" onChange={(e)=> this.handleOnPress(e.nativeEvent.text,'username')}
               />
             </View>
 
@@ -39,6 +56,7 @@ class Login extends Component {
                 style={{ flex: 1, paddingLeft: 12 , fontSize: 20}}
                 placeholder="Password"
                 underlineColorAndroid="transparent"
+                onChange={(e)=> this.handleOnPress(e.nativeEvent.text,"password")}
               />
             </View>
           </View>
@@ -55,8 +73,8 @@ class Login extends Component {
           </View>
   
           <View style={styles.button}>
-            <TouchableOpacity style={styles.button1}>
-              <Text style={{ fontSize: 30, textAlign: 'center', color: 'white', marginTop: 4, }}>Log in</Text>
+            <TouchableOpacity style={styles.button1} onPress={() => this.login()}>
+              <Text style={{ fontSize: 30, textAlign: 'center', color: 'white', marginTop: 4, }} >Log in</Text>
             </TouchableOpacity>
           </View>
 {/* 

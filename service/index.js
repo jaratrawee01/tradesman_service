@@ -141,6 +141,41 @@ const storage = multer.diskStorage({
   });
 
 
+/*   app.post('/getLogin', (req, res) => {
+
+    console.log(req.body);
+    const username = req.body.username;
+    const password = req.body.password
+
+    db.query(`SELECT  email FROM users WHERE email='${username}'  `,
+        (err, result) => {
+            if (err) {
+                res.send(err);
+
+            } else {
+                res.send(result);
+            }
+        });
+});
+ */
+
+app.get('/getLogin', (req, res) => {
+    console.log("448888");
+    db.query(`SELECT  email ,password FROM users WHERE email='thanet@planforfit.com' AND password='e10adc3949ba59abbe56e057f20f883e'`, (err, result) => {
+        if (err) {
+            console.log("11");
+            res.send(err);
+
+        } else {
+            console.log("22");
+            res.send(result);
+        }
+    });
+});
+
+  
+
 app.listen('3003', () => {
     console.log('server is ren 3003');
 })
+
