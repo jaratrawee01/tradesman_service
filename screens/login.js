@@ -62,7 +62,7 @@ class Login extends Component {
           </View>
 
           <View style={styles.icons}>
-            <AntDesign name="checkcircleo" size={20} color="#00c2fe" />
+            <AntDesign name="checkcircleo" size={20} color="#37C1FB" />
             <Text style={styles.text1}>{'จดจำฉัน'}</Text>
             <View style={styles.button2}>
             <Text
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   box: {
     height: 150,
     width: 150,
-    backgroundColor: '#78a0e3',
+    backgroundColor: '#37C1FB',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button1: {
-    backgroundColor: '#01C1FF',
+    backgroundColor: '#37C1FB',
     height: 50,
     borderRadius: 25,
   },
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   },
   icons3: {
     fontSize: 24,
-    color: '#01C1FF',
+    color: '#37C1FB',
     marginLeft: 10,
   },
   image2: {

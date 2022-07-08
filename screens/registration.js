@@ -103,7 +103,7 @@ const Registration = ({ navigation: { popToTop } }) => {
         </View>
         <View style={styles.marginTop}>
           <View style={styles.input}>
-            <FontAwesome name="user" size={24} color="#00c2fe" />
+            <FontAwesome name="user" size={24} color="#37C1FB" />
             <TextInput
               style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
               placeholder="Name"
@@ -116,7 +116,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           </View>
 
           <View style={styles.input}>
-            <MaterialIcons name="mail" size={24} color="#00c2fe" />
+            <MaterialIcons name="mail" size={24} color="#37C1FB" />
             <TextInput
               style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
               onChange={(e) => {
@@ -128,7 +128,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           </View>
 
           <View style={styles.input}>
-            <FontAwesome name="phone-square" size={24} color="#00c2fe" />
+            <FontAwesome name="phone-square" size={24} color="#37C1FB" />
             <TextInput
               style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
               onChange={(e) => {
@@ -140,7 +140,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           </View>
 
           <View style={styles.input}>
-            <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
+            <FontAwesome name="unlock-alt" size={24} color="#37C1FB" />
             <TextInput
               secureTextEntry={true}
               style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
@@ -315,7 +315,7 @@ const styles = StyleSheet.create({
     width: 20,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: "#01C1FF",
+    borderColor: "#37C1FB",
     backgroundColor: "#444",
     marginLeft: 55,
     marginTop: 20,
@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30,
     marginTop: 50,
-    color: "#00c2fe",
+    color: "#37C1FB",
   },
   button: {
     marginTop: 30,
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
   button1: {
-    backgroundColor: "#01C1FF",
+    backgroundColor: "#37C1FB",
     height: 50,
     borderRadius: 25,
   },
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 20,
     marginRight: 20,
-    backgroundColor: "#01C1FF",
+    backgroundColor: "#37C1FB",
     height: 50,
     borderRadius: 25,
     marginBottom: 150
@@ -434,20 +434,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 55,
     fontSize: 20,
-    color: "#01C1FF",
+    color: "#37C1FB",
   },
   icons4: {
     marginTop: 20,
     marginLeft: 40,
     fontSize: 20,
-    color: "#01C1FF",
+    color: "#37C1FB",
     marginRight: 10,
   },
   icons5: {
     marginTop: 15,
     marginLeft: 55,
     fontSize: 20,
-    color: "#01C1FF",
+    color: "#37C1FB ",
     marginRight: 10,
   },
   icons6: {

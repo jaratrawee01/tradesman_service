@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   box: {
     height: 150,
     width: 150,
-    backgroundColor: '#78a0e3',
+    backgroundColor: '#37C1FB',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
