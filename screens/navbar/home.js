@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, View, Image, ScrollView } from 'react-native';
-import img1 from '../../assets/images/12109.jpg'
-
-
 
 class Home extends Component {
   render() {
@@ -20,7 +17,7 @@ class Home extends Component {
           </View>
  
           <View style={styles.boxhead}>
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Home_page")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
