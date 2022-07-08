@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../navbar/home';
 import Tradesman from '../tradesman';
 import Profile_tradesman from '../navbar/profile_tradesman';
+import Home_page from '../home_page';
 
 
 const HomeStack = createNativeStackNavigator();
@@ -14,6 +15,7 @@ function App() {
              <HomeStack.Screen name="Home" component={Home} />
              <HomeStack.Screen name="Tradesman" component={Tradesman} />
              <HomeStack.Screen name="Profile_tradesman" component={Profile_tradesman} />
+             <HomeStack.Screen name="Home_page" component={Home_page} />
 
         </HomeStack.Navigator>
     );
