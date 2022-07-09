@@ -41,7 +41,7 @@ class Login extends Component {
           <View>
             <Image
               style={styles.image2}
-              source={require("../assets/images/BB-1.png")}
+              source={require("../assets/images/BB-2.png")}
             />
           </View>
 
