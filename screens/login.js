@@ -106,11 +106,11 @@ class Login extends Component {
 
             <View style={styles.boxIcon}>
               <View style={styles.icons1}>
-                <FontAwesome name="facebook" size={35} color="#00c2fe" />
+                <FontAwesome name="facebook" size={35} color="#37C1FB" />
               </View>
 
               <View style={styles.icons2}>
-                <AntDesign name="google" size={35} color="#00c2fe" />
+                <AntDesign name="google" size={35} color="#37C1FB" />
               </View>
             </View>
           </View>
