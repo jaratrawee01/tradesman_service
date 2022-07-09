@@ -9,6 +9,7 @@ import Bank_account from '../bank_account';
 import FromBank from '../fromBank';
 import Chat from '../chat';
 import Information from '../information';
+import Home_paste from '../home_page';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ function App() {
             <HomeStack.Screen name="FromBank" component={FromBank} />
             <HomeStack.Screen name="Chat" component={Chat} />
             <HomeStack.Screen name="Information" component={Information} />
+            <HomeStack.Screen name="Home_paste" component={Home_paste} />
         </HomeStack.Navigator>
     );
   }

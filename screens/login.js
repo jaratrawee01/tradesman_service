@@ -41,7 +41,7 @@ class Login extends Component {
           <View>
             <Image
               style={styles.image2}
-              source={require("../assets/images/A-3.png")}
+              source={require("../assets/images/BB-1.png")}
             />
           </View>
 
@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   box: {
-    height: 500,
-    width: 360,
+    height: '100%',
+    width: '100%',
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.27,
@@ -145,8 +145,7 @@ const styles = StyleSheet.create({
     elevation: 6,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    marginTop: -10,
-
+    marginTop: -44,
   },
   input: {
     flexDirection: "row",
@@ -240,9 +239,10 @@ const styles = StyleSheet.create({
   },
   image2: {
     height: 220,
-    width: 360,
+    width: '100%',
     marginLeft: "auto",
     marginRight: "auto",
+    marginTop: -10,
   },
   scrollView: {
     marginHorizontal: 5,

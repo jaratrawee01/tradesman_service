@@ -86,10 +86,15 @@ const Registration = ({ navigation: { popToTop } }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View>
-          <Text style={styles.text}>สมักสมาชิก </Text>
-        </View>
-        <View style={styles.marginTop}>
+
+          <View>
+            <Image
+              style={styles.image2}
+              source={require("../assets/images/BB-1.png")}
+            />
+          </View>
+      <View style={styles.box1}>
+      <View style={styles.marginTop}>
           <View style={styles.input}>
             <FontAwesome name="phone-square" size={24} color="#00c2fe" />
             <TextInput
@@ -254,6 +259,8 @@ const Registration = ({ navigation: { popToTop } }) => {
             </Text>
           </TouchableOpacity>
         </View>
+      </View>
+       
       </ScrollView>
     </SafeAreaView>
   );
@@ -278,10 +285,22 @@ const styles = StyleSheet.create({
     width: 20,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: "#01C1FF",
+    borderColor: "#37C1FB",
     backgroundColor: "#444",
     marginLeft: 55,
     marginTop: 20,
+  },
+  box1: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#fff',
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    marginTop: -44,
   },
   input: {
     flexDirection: "row",
@@ -305,7 +324,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30,
     marginTop: 50,
-    color: "#00c2fe",
+    color: "#37C1FB",
   },
   button: {
     marginTop: 30,
@@ -314,7 +333,7 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
   button1: {
-    backgroundColor: "#01C1FF",
+    backgroundColor: "#37C1FB",
     height: 50,
     borderRadius: 25,
   },
@@ -322,7 +341,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 20,
     marginRight: 20,
-    backgroundColor: "#01C1FF",
+    backgroundColor: "#37C1FB",
     height: 50,
     borderRadius: 25,
     marginBottom: 150
@@ -397,20 +416,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 55,
     fontSize: 20,
-    color: "#01C1FF",
+    color: "#37C1FB",
   },
   icons4: {
     marginTop: 20,
     marginLeft: 40,
     fontSize: 20,
-    color: "#01C1FF",
+    color: "#37C1FB",
     marginRight: 10,
   },
   icons5: {
     marginTop: 15,
     marginLeft: 55,
     fontSize: 20,
-    color: "#01C1FF",
+    color: "#37C1FB",
     marginRight: 10,
   },
   icons6: {
@@ -436,6 +455,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     paddingBottom: 10
+  },
+  image2: {
+    height: 220,
+    width: '100%',
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: -10,
   },
 
 });
