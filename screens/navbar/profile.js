@@ -25,8 +25,7 @@ class Profile_tradesman extends Component {
     this.state = {
       urlImg: null,
       modalVisible: false,
-      stausLogin: null,
-      ckeckUserId: "2",
+      stausLogin: "ช่าง",
       star: "2",
     };
   }
@@ -40,8 +39,8 @@ class Profile_tradesman extends Component {
 
 
 
-   customer() {
- 
+  customer() {
+
     /* console.log(urlImg,"123"); */
     var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
@@ -59,57 +58,57 @@ class Profile_tradesman extends Component {
     }
     return (
       <>
-       <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View style={styles.box}>
-            <View style={styles.box1}>
-              <View style={styles.box6}>
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <View style={styles.box}>
+              <View style={styles.box1}>
+                <View style={styles.box6}>
                   <Image
                     style={styles.image3}
                     source={require('../../assets/images/A-11.png')}
                   />
                 </View>
-              <Text style={styles.text}>Jason Amada</Text>
-              <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
-              <View style={styles.icons1}>
-                <View style={styles.boxhead}>
-                  {myStar}
+                <Text style={styles.text}>Jason Amada</Text>
+                <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
+                <View style={styles.icons1}>
+                  <View style={styles.boxhead}>
+                    {myStar}
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
 
-          <View style={styles.top}>
+            <View style={styles.top}>
               <View style={styles.box3}>
-              <FontAwesome5 name="user-alt" style={styles.icons3} />
+                <FontAwesome5 name="user-alt" style={styles.icons3} />
                 <Text style={styles.text2}
-                onPress={() => this.props.navigation.navigate("Information ")}>{"โปรไฟล์"}
+                  onPress={() => this.props.navigation.navigate("Information ")}>{"โปรไฟล์"}
                 </Text>
               </View>
-        
- 
-            <View style={styles.box3}>
-            <FontAwesome5 name="address-book" style={styles.icons5} />
-              <Text style={styles.text2}>{"ข้อมูลการติดต่อ"}</Text>
-            </View>
 
-            <View style={styles.box3}>
-            <FontAwesome5 name="unlock-alt"  style={styles.icons5} />
-              <Text style={styles.text2}>{"เปลียน user/password"}</Text>
-            </View>
 
-            <View style={styles.box3}>
-              <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-              <Text style={styles.text2}>{"แชท"}</Text>
+              <View style={styles.box3}>
+                <FontAwesome5 name="address-book" style={styles.icons5} />
+                <Text style={styles.text2}>{"ข้อมูลการติดต่อ"}</Text>
+              </View>
+
+              <View style={styles.box3}>
+                <FontAwesome5 name="unlock-alt" style={styles.icons5} />
+                <Text style={styles.text2}>{"เปลียน user/password"}</Text>
+              </View>
+
+              <View style={styles.box3}>
+                <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
+                <Text style={styles.text2}>{"แชท"}</Text>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+          </ScrollView>
+        </SafeAreaView>
       </>
     )
   }
 
-  tradesman () {
+  tradesman() {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
     /* console.log(urlImg,"123"); */
     var myStar = [
@@ -125,192 +124,171 @@ class Profile_tradesman extends Component {
       );
     }
 
-    return(
+    return (
       <>
-       <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View style={styles.box}>
-            <View style={styles.box1}>
-              <View style={styles.box6}>
-                <Image
-                  style={styles.image3}
-                  source={require('../../assets/images/A-11.png')}
-                />
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <View style={styles.box}>
+              <View style={styles.box1}>
+                <View style={styles.box6}>
+                  <Image
+                    style={styles.image3}
+                    source={require('../../assets/images/A-11.png')}
+                  />
+                </View>
+                <Text style={styles.text}>Jason Amada</Text>
+                <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
+                <View style={styles.icons1}>
+                  <View style={styles.boxhead}>
+                    {myStar}
+                  </View>
+                </View>
               </View>
-              <Text style={styles.text}>Jason Amada</Text>
-              <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
-              <View style={styles.icons1}>
+            </View>
+
+            <View style={styles.top}>
+
+              <View style={styles.box3}>
+                <FontAwesome name="user" style={styles.icons3} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Information")}>{"โปรไฟล์"}
+                </Text>
+              </View>
+              <View style={styles.box3}>
+                <FontAwesome5 name="file-image" style={styles.icons5} />
+                <Text style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Workings")}>{"ผลงาน"}
+                </Text>
+              </View>
+
+              <View style={styles.box3}>
+                <FontAwesome5 name="address-book" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
+                </Text>
+              </View>
+
+              <View style={styles.box3}>
+                <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
+                </Text>
+              </View>
+
+
+              <View style={styles.box3}>
+                <MaterialCommunityIcons name="logout" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Login")}>{"Logout"}
+                </Text>
+              </View>
+              <View style={styles.box3}>
+                <FontAwesome5 name="cc-visa" style={styles.icons4} />
+                <Text
+                  style={styles.text2}
+                  onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
+                </Text>
+              </View>
+              <View style={styles.box3}>
+                <Ionicons name="card" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Bank_account")}>{"บัญชีธนาคาร"}
+                </Text>
+              </View>
+              <View style={styles.box5}>
+                <Text style={styles.text3}>ผลงาน</Text>
+              </View>
+              <View style={styles.box4}>
                 <View style={styles.boxhead}>
-                  {myStar}
+                  <Pressable onPress={() => this.setModalVisible(true, "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg")}>
+                    <View>
+                      <Image
+                        style={styles.image1}
+                        source={{
+                          uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
+                        }}
+                      />
+                    </View>
+                  </Pressable>
+                  <Pressable onPress={() => this.setModalVisible(true, "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg")}>
+                    <View>
+                      <Image
+                        style={styles.image1}
+                        source={{
+                          uri: "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg",
+                        }}
+                      />
+                    </View>
+                  </Pressable>
                 </View>
               </View>
             </View>
-          </View>
-
-          <View style={styles.top}>
-
-            {
-              (ckeckUserId === "2") ?
-
-                <View style={styles.box3}>
-                  <FontAwesome name="user" style={styles.icons3} />
-                  <Text
-                    style={styles.text2}
-                    onPress={() => this.props.navigation.navigate("Information")}>{"โปรไฟล์"}
-                  </Text>
+          </ScrollView>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+              this.setModalVisible(!modalVisible);
+            }}
+          >
+            <View>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => this.setModalVisible(!modalVisible)}
+              >
+                <View>
+                  <Image
+                    style={styles.image2}
+                    source={{
+                      uri: `${urlImg}`,
+                    }}
+                  />
                 </View>
-                :
-                null
-            }
-            <View style={styles.box3}>
-              <FontAwesome5 name="file-image" style={styles.icons5} />
-              <Text style={styles.text2}
-               onPress={() => this.props.navigation.navigate("Workings")}>{"ผลงาน"}
-              </Text>
+              </Pressable>
             </View>
-
-            <View style={styles.box3}>
-              <FontAwesome5 name="address-book" style={styles.icons5} />
-              <Text
-                style={styles.text2}
-                onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
-              </Text>
-            </View>
-
-            <View style={styles.box3}>
-              <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-              <Text
-                style={styles.text2}
-                onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
-              </Text>
-            </View>
-
-            {(ckeckUserId === "2" ?
-              <>
-                {(stausLogin === true ?
-                  <View style={styles.box3}>
-                    <Entypo name="login" style={styles.icons5} />
-                    <Text
-                      style={styles.text2}
-                      onPress={() => this.props.navigation.navigate("Login")}>{"Login"}
-                    </Text>
-                  </View>
-                  :
-                  <View style={styles.box3}>
-                    <MaterialCommunityIcons name="logout" style={styles.icons5} />
-                    <Text
-                      style={styles.text2}
-                      onPress={() => this.props.navigation.navigate("Logout")}>{"Logout"}
-                    </Text>
-                  </View>
-                )}
-
-                <View style={styles.box3}>
-                  <FontAwesome5 name="cc-visa" style={styles.icons4} />
-                  <Text
-                    style={styles.text2}
-                    onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
-                  </Text>
-                </View>
-                <View style={styles.box3}>
-                  <Ionicons name="card" style={styles.icons5} />
-                  <Text
-                    style={styles.text2} 
-                    onPress={() => this.props.navigation.navigate("Bank_account")}>{"บัญชีธนาคาร"}
-                  </Text>
-                </View>
-              </>
-              : null
-            )}
-            <View style={styles.box5}>
-              <Text style={styles.text3}>ผลงาน</Text>
-            </View>
-            <View style={styles.box4}>
-              <View style={styles.boxhead}>
-                <Pressable onPress={() => this.setModalVisible(true, "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg")}>
-                  <View>
-                    <Image
-                      style={styles.image1}
-                      source={{
-                        uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-                      }}
-                    />
-                  </View>
-                </Pressable>
-                <Pressable onPress={() => this.setModalVisible(true, "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg")}>
-                  <View>
-                    <Image
-                      style={styles.image1}
-                      source={{
-                        uri: "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg",
-                      }}
-                    />
-                  </View>
-                </Pressable>
-              </View>
-            </View>
-          </View>
-        </ScrollView>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            this.setModalVisible(!modalVisible);
-          }}
-        >
-          <View>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => this.setModalVisible(!modalVisible)}
-            >
-              <View>
-                <Image
-                  style={styles.image2}
-                  source={{
-                    uri: `${urlImg}`,
-                  }}
-                />
-              </View>
-            </Pressable>
-          </View>
-        </Modal>
-      </SafeAreaView>
+          </Modal>
+        </SafeAreaView>
       </>
     )
   }
 
-   loginNull() {
-     return (
-       <>
-        <Text>Login</Text>
-       </>
-     )
-   }
+  loginNull() {
+    return (
+      <>
+        <Text onPress={() => this.props.navigation.navigate("Login")}>Login</Text>
+      </>
+    )
+  }
 
 
   render() {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
     return (
       <>
-      {
-        stausLogin === null 
-        ?
-        this.loginNull()
-        :  
-        stausLogin === "ลูกค้าทั่วไป"
-        
-        ?
-        this.customer()
-        :
-        this.tradesman()
-   
-      }
+        {
+          stausLogin === null
+            ?
+            this.loginNull()
+            :
+            stausLogin === "ลูกค้าทั่วไป"
+
+              ?
+              this.customer()
+              :
+              this.tradesman()
+
+        }
       </>
-      
-     /*   */
-     
+
+      /*   */
+
     );
   }
 }
