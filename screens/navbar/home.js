@@ -17,7 +17,7 @@ class Home extends Component {
           </View>
  
           <View style={styles.boxhead}>
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Home_page")}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
