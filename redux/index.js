@@ -1,10 +1,11 @@
-import urlReducer from "./url";
+import { combineReducers } from 'redux';
 
-import { combineReducers } from "redux";
+import  {logInReducer}  from  './logInReducer';
+import {FriendListReducer}  from  './FriendListReducer';
 
-const allReducers = combineReducers({
-    url: urlReducer,
+const rootReducer = combineReducers({
+    login: logInReducer,
+    url: FriendListReducer,
+});
 
-})
-
-export default allReducers;
+export default  rootReducer;

@@ -17,73 +17,59 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import bookBank from "./service/getService";
+import { connect } from "react-redux";
+import getUrlReducer from "../redux/logInReducer"
+import {useSelector,useDispatch} from 'react-redux';
 
 
 
 var md5 = require("md5");
 
 const Registration = ({ navigation: { popToTop } }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState("first");
   const [statusUser, setStatusUser] = useState("ลูกค้าทั่วไป");
   const [statusCkeck, setStatusCkeck] = useState(false);
   const [modalVisible, setModalVisible] = useState("false");
+  const dispatch = useDispatch();
 
 
-  /*   const dataLogin =  ()  =>  {
-      const data = [name, email, phone, md5(password), statusUser, statusCkeck];
-      if (statusCkeck === true) {
-        const result =  createUser.createUser(data);
-        console.log("result => ",result);
-        if (result === "success") {
-          popToTop();
-        }
-      } else {
-        Alert.alert("กรุณา ยอมรับ ข้อกำหนดและเงื่อนไขในการใช้งาน");
-      }
-    }
-   */
+
   const serve = async () => {
-    var data = [name, email, phone, md5(password), statusUser, statusCkeck];
+    const  data = await [phone, md5(password), statusUser, statusCkeck];
+
+    const data2 = {
+      phone,
+      password:  md5(password),
+      statusLogin: true
+    }
 
 
+   const seaUser = await bookBank.searchUser(data);
 
 
+    if (statusCkeck === true) {
+      if (seaUser === null) {
+        const result = await bookBank.createUser(data);
+        if (result === "success") {
+          dispatch({
+            type: 'ADD_LOGIN',
+            payload: data2
+          })
 
-    const getEmail = await bookBank.getUser();
-
-    if (getEmail.length > 0) {
-      const awaitcheckEmail = await getEmail.filter(getEmail => getEmail.email === email);
-      if (statusCkeck === true) {
-        if (awaitcheckEmail.length > 0) {
-          Alert.alert(`Email ${email} นี้มีการใช้งานอยู่เเล้ว`);
+          await alert('บันทึกสำเร็จ');
+          
+         await popToTop();
         } else {
-          const result = await bookBank.createUser(data);
-          console.log("result => ", result);
-          if (result === "success") {
-            await  alert('บันทึกสำเร็จ');
-            await popToTop();
-          }else{
-            await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
-          }
+          await alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
         }
       } else {
-        alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
+        await alert(`เบอร์โทร ${phone} นี้มีในระบบอยู่เเล้ว`);
       }
     } else {
-      if (statusCkeck === true) {
-        const result = await bookBank.createUser(data);
-        console.log("result => ", result);
-        if (result === "success") {
-          popToTop();
-        }
-      } else {
-        Alert.alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
-      }
-    }
+      alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
+    }  
   };
 
 
@@ -94,41 +80,18 @@ const Registration = ({ navigation: { popToTop } }) => {
     setStatusCkeck(true);
   }
 
+  const url = useSelector(state => ({...state}));
 
+  console.log("url",url);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
-          <Text style={styles.text}>สมักสมาชิก</Text>
+          <Text style={styles.text}>สมักสมาชิก </Text>
         </View>
         <View style={styles.marginTop}>
           <View style={styles.input}>
-            <FontAwesome name="user" size={24} color="#37C1FB" />
-            <TextInput
-              style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
-              placeholder="Name"
-              name="name"
-              onChange={(e) => {
-                setName(e.nativeEvent.text);
-              }}
-              underlineColorAndroid="transparent"
-            />
-          </View>
-
-          <View style={styles.input}>
-            <MaterialIcons name="mail" size={24} color="#37C1FB" />
-            <TextInput
-              style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
-              onChange={(e) => {
-                setEmail(e.nativeEvent.text);
-              }}
-              placeholder="Email"
-              underlineColorAndroid="transparent"
-            />
-          </View>
-
-          <View style={styles.input}>
-            <FontAwesome name="phone-square" size={24} color="#37C1FB" />
+            <FontAwesome name="phone-square" size={24} color="#00c2fe" />
             <TextInput
               style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
               onChange={(e) => {
@@ -140,7 +103,7 @@ const Registration = ({ navigation: { popToTop } }) => {
           </View>
 
           <View style={styles.input}>
-            <FontAwesome name="unlock-alt" size={24} color="#37C1FB" />
+            <FontAwesome name="unlock-alt" size={24} color="#00c2fe" />
             <TextInput
               secureTextEntry={true}
               style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
@@ -315,7 +278,7 @@ const styles = StyleSheet.create({
     width: 20,
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: "#37C1FB",
+    borderColor: "#01C1FF",
     backgroundColor: "#444",
     marginLeft: 55,
     marginTop: 20,
@@ -342,7 +305,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30,
     marginTop: 50,
-    color: "#37C1FB",
+    color: "#00c2fe",
   },
   button: {
     marginTop: 30,
@@ -351,7 +314,7 @@ const styles = StyleSheet.create({
     marginBottom: 70,
   },
   button1: {
-    backgroundColor: "#37C1FB",
+    backgroundColor: "#01C1FF",
     height: 50,
     borderRadius: 25,
   },
@@ -359,7 +322,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 20,
     marginRight: 20,
-    backgroundColor: "#37C1FB",
+    backgroundColor: "#01C1FF",
     height: 50,
     borderRadius: 25,
     marginBottom: 150
@@ -434,20 +397,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 55,
     fontSize: 20,
-    color: "#37C1FB",
+    color: "#01C1FF",
   },
   icons4: {
     marginTop: 20,
     marginLeft: 40,
     fontSize: 20,
-    color: "#37C1FB",
+    color: "#01C1FF",
     marginRight: 10,
   },
   icons5: {
     marginTop: 15,
     marginLeft: 55,
     fontSize: 20,
-    color: "#37C1FB ",
+    color: "#01C1FF",
     marginRight: 10,
   },
   icons6: {
@@ -477,4 +440,5 @@ const styles = StyleSheet.create({
 
 });
 
-export default Registration;
+export default connect()(Registration);
+

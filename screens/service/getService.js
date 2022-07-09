@@ -1,10 +1,10 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.5:3003';
+const url = 'http://192.168.1.5/project/API_database';
 
 
-const getUser = async () => {
+/* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
     // handle success
@@ -17,46 +17,6 @@ const getUser = async () => {
     })
   return rse;
 
-};
-
-
-const getLogin = async (e) => {
-  console.log("e",e[0]);
- /*  const rse = await axios.get(`${url}/getLogin`,{
-    uesrname: e[0],
-
-  })
-  .then((result) => {
-    // handle success
-
-    return result.data;
-  })
-    .catch((error) => {
-      // handle error
-      return error;
-    })
-  return rse; */
-
-};
-
-const createUser = async (e) => {
-
-  const cerUser = await axios.post(`${url}/createUser`, {
-    name: e[0],
-    email: e[1],
-    phone: e[2],
-    password: e[3],
-    statusUser: e[4],
-    statusCkeck: e[5]
-  }).then((result) => {
-
-    return "success";
-  })
-  .catch((error) => {
-      return error;
-    });
-
-  return cerUser;
 };
 
 
@@ -78,13 +38,6 @@ const createBookBank = async (e) => {
 const createAddress = async (e) => {
 
   const address = await axios.post(`${url}/createAddress`, {
-    name: e[0],
-    addressUser: e[1],
-    subdistrict: e[2],
-    district: e[3],
-    province: e[4],
-    zipcode: e[5],
-    location: e[6],
 
   }).then((result) => {
     return "success";
@@ -108,7 +61,7 @@ const uplodeImages = async (e) => {
   })
   formdata.append('id_user', 'id_user-123456')
 
- /*
+
   ! การเขียน แปบ fetch data
    fetch(`${url}/uplodeImages`, {
     method: 'POST',
@@ -121,7 +74,7 @@ const uplodeImages = async (e) => {
     .catch((error) => {
       console.log('error', error);
     });
- */
+ 
   
 const image  =  await axios.post(`${url}/uplodeImages`,formdata, {
         headers: {
@@ -137,13 +90,61 @@ const image  =  await axios.post(`${url}/uplodeImages`,formdata, {
      });
   return image;
 };
+ */
 
+/*
+!api PHP  
+?isAdd=true&phone=${e[0]}
+*/
+
+const searchUser = async (e) => {
+   const seaUser = await axios.get(`${url}/searchUser.php`,{
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      phone: e[0],
+    }
+   }).then((result) => {
+  
+     return result.data; 
+  })
+  .catch((error) => {
+
+      return error;
+    });
+  return seaUser;  
+};
+
+
+
+const createUser = async (e) => {
+
+      const formdata = new FormData();
+      formdata.append('isAdd', true);
+      formdata.append('phone', e[0]);
+      formdata.append('password', e[1]);
+      formdata.append('status_user', e[2]);
+      formdata.append('status_check', e[3]);
+   const cerUser = await axios.post(`${url}/addUser.php`, formdata,{
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+   }).then((result) => {
+
+    return "success";
+  })
+  .catch((error) => {
+
+      return error;
+    });
+  return cerUser;  
+};
 
 
 export default {
-  getUser,
   createUser,
-  createBookBank,
-  createAddress,
-  uplodeImages,
+  searchUser,
+
 };
