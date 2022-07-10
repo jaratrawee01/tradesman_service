@@ -28,9 +28,7 @@ class Profile_tradesman extends Component {
     };
   }
 
-  /*   state = {
-    modalVisible: false,
-  }; */
+
 
   setModalVisible = (visible, urlImg) => {
     console.log(visible, urlImg);

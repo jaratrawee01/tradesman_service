@@ -15,20 +15,23 @@ import { Entypo } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { Button } from "react-native-web";
-/* import {connect} from 'react-redux'; */
+import { connect } from "react-redux";
+
 
 
 
 class Profile_tradesman extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       urlImg: null,
       modalVisible: false,
-      stausLogin: "ช่าง",
+      stausLogin:  null,
       star: "2",
     };
   }
+
 
   setModalVisible = (visible, urlImg) => {
     this.setState({
@@ -36,12 +39,19 @@ class Profile_tradesman extends Component {
       urlImg: urlImg,
     });
   };
+  
 
-
+  componentDidMount() {
+    if (this.props.posts.login !== null ) {
+      this.setState({
+        stausLogin: this.props.posts.login.statusLogin,
+      });
+ 
+    }
+  
+  }
 
   customer() {
-
-    /* console.log(urlImg,"123"); */
     var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
@@ -109,8 +119,8 @@ class Profile_tradesman extends Component {
   }
 
   tradesman() {
-    const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-    /* console.log(urlImg,"123"); */
+    
+    const { modalVisible, urlImg} = this.state;
     var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
@@ -118,6 +128,8 @@ class Profile_tradesman extends Component {
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />
     ];
+
+
     for (let i = 0; i < this.state.star; i++) {
       myStar.splice(i, 1,
         <FontAwesome name="star" style={styles.iconsGold} />
@@ -268,21 +280,22 @@ class Profile_tradesman extends Component {
   }
 
 
-  render() {
+   render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
+    console.log("stausLogin",stausLogin,this.props.posts.login);
     return (
       <>
         {
-          stausLogin === null
+           stausLogin === null
             ?
-            this.loginNull()
+             this.loginNull()
             :
             stausLogin === "ลูกค้าทั่วไป"
 
               ?
-              this.customer()
+                this.customer()
               :
-              this.tradesman()
+               this.tradesman()
 
         }
       </>
@@ -502,12 +515,12 @@ const styles = StyleSheet.create({
     marginTop: "70%",
   },
 });
-/* 
+
 const mapStateToProps = (state) => {
   return {
     posts: state
   }
-} */
-export default /* connect(mapStateToProps)(Profile_tradesman) */ Profile_tradesman;
+}
+export default connect(mapStateToProps,null)(Profile_tradesman);
 
 

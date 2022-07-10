@@ -16,13 +16,11 @@ import RouterProfile from './screens/router/routerProfile';
 import { createStore } from 'redux';
 /* import allReducer from './redux/index'; */
 import { Provider } from "react-redux"; 
-import  configureStore  from './redux/reducers';
+import  configureStore   from './redux/reducers';
 import { PersistGate } from 'redux-persist/integration/react';
 const { store, persistor } = configureStore();
 /* const store = createStore(allReducer); */
-
 const Tab = createBottomTabNavigator();
-
 
 function MyStack() {
   return (
@@ -51,15 +49,11 @@ function MyStack() {
   );
 }
 
-
-
 export default function App() {
-
   return (
-
     <>
      <Provider store={store}> 
-     <PersistGate   persistor={persistor}>
+     <PersistGate  load={null}  persistor={persistor}>
             <MyStack />
       </PersistGate>
       </Provider> 

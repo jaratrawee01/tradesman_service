@@ -42,7 +42,7 @@ const Registration = ({ navigation: { popToTop } }) => {
     const data2 = {
       phone,
       password:  md5(password),
-      statusLogin: true
+      statusLogin: statusUser
     }
 
 
