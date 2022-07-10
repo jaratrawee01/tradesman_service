@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.6/project/API_database';
+const url = 'http://192.168.0.107/project/api_database';
 
 
 /* const getUser = async () => {

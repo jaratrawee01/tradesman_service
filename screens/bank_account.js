@@ -9,6 +9,14 @@ class Bank_account extends Component {
 
       <SafeAreaView style={styles.container}> 
         <ScrollView>
+
+        <View>
+            <Image
+              style={styles.image2}
+              source={require("../assets/images/BB-2.png")}
+            />
+          </View>
+
             <View style={styles.box}>
               <View>
                 <Text style={styles.text1}>บัญชีธนาคาร</Text>
@@ -72,16 +80,16 @@ container: {
   },
   box: {
     height: 350,
-    width: 320,
+    width: '100%',
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
-    borderRadius: 20,
+    borderRadius: 15,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: 10,
+    marginTop: -40,
     marginBottom: 10,
   },
   box1: {
@@ -93,8 +101,8 @@ container: {
     shadowRadius: 8,
     elevation: 4,
     borderRadius: 15,
-    marginLeft: 15,
-    marginRight: 5,
+    marginLeft: "auto",
+    marginRight: "auto",
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 15,
@@ -102,7 +110,7 @@ container: {
   },
   box2: {
     height: 200,
-    width: 250,
+    width: 300,
     backgroundColor: '#cacdd2',
     shadowColor: "#000",
     shadowOpacity: 0.3,
@@ -118,7 +126,7 @@ container: {
   },
   box3: {
     height: 350,
-    width: 320,
+    width: '100%',
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.3,
@@ -208,11 +216,18 @@ container: {
     shadowRadius: 8,
     elevation: 4,
     borderRadius: 30,
-    marginLeft: 20,
-    marginRight: 5,
+    marginLeft: "auto",
+    marginRight: "auto",
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 30,
+  },
+  image2: {
+    height: 220,
+    width: '100%',
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: -10,
   },
 
 });

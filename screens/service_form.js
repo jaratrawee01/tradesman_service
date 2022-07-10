@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   containerMap: {
-    padding: 10
+    padding: 20
   },
   map: {
     width: "auto",
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
   },
   box3: {
     height: "auto",
-    width: 320,
+    width: '100%',
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.3,
@@ -318,8 +318,8 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 4,
     borderRadius: 20,
-    marginLeft: 20,
-    marginRight: 5,
+    marginLeft: 40,
+    marginRight: 40,
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 5,
@@ -347,13 +347,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   text1: {
-    marginLeft: 20,
+    marginLeft: 40,
     fontWeight: 'bold',
     fontSize: 20,
     marginTop: 10,
   },
   text2: {
-    marginLeft: 20,
+    marginLeft: 40,
     fontSize: 16,
     marginTop: 15,
   },

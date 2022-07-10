@@ -34,6 +34,10 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import bookBank from "./service/getService";
 import { AntDesign } from "@expo/vector-icons";
+import img1 from "../assets/images/A-3.png";
+
+
+
 
 const ImagePickerExample = () => {
   const [image1, setImage1] = useState(null);
@@ -126,16 +130,14 @@ const ImagePickerExample = () => {
     }
   };
 
-  const image = {
-    uri: "https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg",
-  };
+  
   return (
     <>
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View>
             <ImageBackground
-              source={image}
+              source={img1}
               resizeMode="cover"
               style={styles.backgroun}
             >
@@ -428,7 +430,7 @@ const styles = StyleSheet.create({
   box4: {
     height: 140,
     width: 140,
-    backgroundColor: "#78a0e3",
+    backgroundColor: "#37C1FB",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -445,7 +447,7 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     fontWeight: "bold",
     fontSize: 30,
-    color: "#00c2fe",
+    color: "#37C1FB",
     marginTop: 5,
   },
   text1: {

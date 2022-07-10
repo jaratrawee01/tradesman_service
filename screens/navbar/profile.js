@@ -7,7 +7,9 @@ import {
   Modal,
   Image,
   ScrollView,
-  Alert
+  Alert,
+  ImageBackground,
+  TouchableOpacity,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -17,8 +19,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { Button } from "react-native-web";
 import { connect } from "react-redux";
-
-
+import  img1 from "../../assets/images/A-6.png";
 
 
 class Profile_tradesman extends Component {
@@ -269,11 +270,23 @@ class Profile_tradesman extends Component {
   login() {
     return (
       <>
-        <Text onPress={() => this.props.navigation.navigate("Login")}>Login</Text>
+          <View>
+          <ImageBackground source={img1} resizeMode="cover" style={styles.image4}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")} >
+              <View style={styles.box7}>
+                <Text style={styles.text}>login</Text>
+              </View>
+            </TouchableOpacity >
+               
+          </ImageBackground>
+          
+              
+          </View>
+           
       </>
     )
   }
-
+  
 
    render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
@@ -340,13 +353,18 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  image4: {
+    width: '100%',
+    height: '100%',
+
+  },
   top: {
     marginTop: 20,
   },
   box: {
     height: 260,
     width: 360,
-    backgroundColor: "#3e83f0",
+    backgroundColor: "#37C1FB",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -412,7 +430,7 @@ const styles = StyleSheet.create({
   box6: {
     height: 140,
     width: 140,
-    backgroundColor: '#78a0e3',
+    backgroundColor: '#37C1FB',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -423,6 +441,22 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     borderWidth: 5,
     borderColor: '#fff',
+  },
+  box7: {
+    height: 40,
+    width: 280,
+    backgroundColor: '#fff',
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderRadius: 20,
+    marginLeft: 20,
+    marginRight: 5,
+    fontSize: 18,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 450,
+    zIndex: 1,
   },
   text: {
     marginLeft: "auto",
@@ -469,7 +503,7 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     marginTop: 5,
     fontSize: 26,
-    color: "#00c2fe",
+    color: "#37C1FB",
     borderRadius: 10,
     paddingTop: 12,
     paddingLeft: 13,
@@ -480,7 +514,7 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     marginTop: 5,
     fontSize: 20,
-    color: "#00c2fe",
+    color: "#37C1FB",
     borderRadius: 10,
     paddingTop: 12,
     paddingLeft: 13,
@@ -491,7 +525,7 @@ const styles = StyleSheet.create({
     marginLeft: 6,
     marginTop: 5,
     fontSize: 24,
-    color: "#00c2fe",
+    color: "#37C1FB",
     borderRadius: 10,
     paddingTop: 12,
     paddingLeft: 13,
