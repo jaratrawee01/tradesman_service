@@ -1,44 +1,49 @@
 import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet,TextInput,Text,ImageBackground, TouchableOpacity, View, Image, ScrollView} from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+
+import { connect } from "react-redux";
 
 const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
 
 class Information extends Component {
-   render() {
+  render() {
+
+
     return (
 
-      <SafeAreaView style={styles.container}> 
-        <ScrollView> 
+      <SafeAreaView style={styles.container}>
+        <ScrollView>
 
-                <View style={styles.box}>
-                <Text style={styles.text}>ข้อมูลเกี่ยวกับบัญชี</Text>
-                </View>
+          <View style={styles.box}>
+            <Text style={styles.text}>ข้อมูลเกี่ยวกับบัญชี</Text>
+          </View>
 
-              <View style={styles.box}>
-                  <View  style={styles.box3}>
-                        <Text style={styles.text2}><Text style={styles.text2}>{'ชื่อ'}</Text>                                        {'Jason Amada'}</Text>                
-                    </View>
+          <View style={styles.box}>
+            <View style={styles.box3}>
+              <Text style={styles.text2}>
+                <Text style={styles.text2}>{'เบอร์โทร'}</Text>
+              {this.props.posts.login[0].phone} 
+              </Text>
+            </View>
 
-                    <View  style={styles.box3}>
-                        <Text style={styles.text2}><Text style={styles.text2}>{'อีเมล'}</Text>                     {'aaaa_dddd@gmail.com'}</Text>                 
-                    </View>
 
-                    <View style={styles.box3}>
-                        <Text style={styles.text2}><Text style={styles.text2}>{'เบอร์โทร'}</Text>                             {'09999999999'}</Text>              
-                    </View>
+            <View style={styles.box3}>
+              <Text style={styles.text2}>
+                <Text style={styles.text2}>{'สถานะการสมัคร'}</Text>
+              {this.props.posts.login[0].status_user}
+                </Text>
+            </View>
 
-                    <View  style={styles.box3}>
-                        <Text style={styles.text2}><Text style={styles.text2}>{'รหัสผ่าน'}</Text>                              {'asasdlll11111'}</Text>                 
-                    </View>
-              </View>
-            
-{/* 
-                <View style={styles.box2}>
-                  <Text style={styles.text1}>อัพโหลดภาพ</Text>
-                </View> */}
+            <View style={styles.box3}>
+              <Text style={styles.text2}>
+                <Text style={styles.text2}>{'สมัครวันที่'}</Text>
+               {this.props.posts.login[0].updated_at} 
+              </Text>
+            </View>
+          </View>
 
-          </ScrollView>
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -47,11 +52,11 @@ class Information extends Component {
 
 
 const styles = StyleSheet.create({
-    container: {
-      width: '100%',
-      height: '100%',
-      position: 'relative',
-      backgroundColor: '#fff'
+  container: {
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    backgroundColor: '#fff'
   },
   box: {
     marginTop: 20,
@@ -113,4 +118,10 @@ const styles = StyleSheet.create({
   },
 
 });
-export default Information;
+
+const mapStateToProps = (state) => {
+  return {
+    posts: state
+  }
+}
+export default connect(mapStateToProps,null)(Information);

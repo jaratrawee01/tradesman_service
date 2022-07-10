@@ -92,13 +92,11 @@ const image  =  await axios.post(`${url}/uplodeImages`,formdata, {
 };
  */
 
-/*
-!api PHP  
-?isAdd=true&phone=${e[0]}
-*/
 
+
+// ดึง user  WHERE phone  ว่ามีเบอร์ อยู่ใหม
 const searchUser = async (e) => {
-   const seaUser = await axios.get(`${url}/searchUser.php`,{
+  const seaUser = await axios.get(`${url}/searchUser.php`, {
     headers: {
       'Content-Type': 'text/javascript;charset=utf-8',
     },
@@ -106,61 +104,82 @@ const searchUser = async (e) => {
       isAdd: true,
       phone: e[0],
     }
-   }).then((result) => {
-  
-     return result.data; 
+  }).then((result) => {
+
+    return result.data;
   })
-  .catch((error) => {
+    .catch((error) => {
 
       return error;
     });
-  return seaUser;  
+  return seaUser;
 };
 
-const getLogin = async (e) => {
-  const seaUser = await axios.get(`${url}/login.php`,{
-   headers: {
-     'Content-Type': 'text/javascript;charset=utf-8',
-   },
-   params: {
-     isAdd: true,
-     phone: e[0],
-     password: e[1],
-   }
+// ดึงงานช่างทั้งหมด
+const technician_type = async () => {
+  const seaUser = await axios.get(`${url}/getTechnician_job_type.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+    }
   }).then((result) => {
- 
-    return result.data; 
- })
- .catch((error) => {
 
-     return error;
-   });
- return seaUser;  
+    return result.data;
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return seaUser;
+}
+
+// เช็ค user/pass login
+const getLogin = async (e) => {
+  const seaUser = await axios.get(`${url}/login.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      phone: e[0],
+      password: e[1],
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return seaUser;
 };
 
 
-
+// สมัครสมาชิก
 const createUser = async (e) => {
 
-      const formdata = new FormData();
-      formdata.append('isAdd', true);
-      formdata.append('phone', e[0]);
-      formdata.append('password', e[1]);
-      formdata.append('status_user', e[2]);
-      formdata.append('status_check', e[3]);
-   const cerUser = await axios.post(`${url}/addUser.php`, formdata,{
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('phone', e[0]);
+  formdata.append('password', e[1]);
+  formdata.append('status_user', e[2]);
+  formdata.append('status_check', e[3]);
+  const cerUser = await axios.post(`${url}/addUser.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
     }
-   }).then((result) => {
+  }).then((result) => {
 
     return "success";
   })
-  .catch((error) => {
+    .catch((error) => {
 
       return error;
     });
-  return cerUser;  
+  return cerUser;
 };
 
 
@@ -168,5 +187,6 @@ export default {
   createUser,
   searchUser,
   getLogin,
+  technician_type,
 
 };

@@ -18,7 +18,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     login: logInReducer,
     url: FriendListReducer,
-    user: AsyncStorage.setItem('user',"thanet")
+
 });
 
  const persistedReducer = persistReducer(persistConfig, rootReducer) 

@@ -40,14 +40,6 @@ class Profile_tradesman extends Component {
     });
   };
   
-/* 
-  this.props.dispatch({
-        type: 'ADD_LOGIN',
-        payload: getLogin
-      })
-      await alert('Login สำเร็จ');
-      await  this.props.navigation.popToTop();
-    } */
  async logout () {
     this.props.dispatch({
       type: 'ADD_LOGIN',
@@ -125,7 +117,6 @@ class Profile_tradesman extends Component {
   }
 
   tradesman() {
-    
     const { modalVisible, urlImg} = this.state;
     var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
@@ -134,8 +125,6 @@ class Profile_tradesman extends Component {
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />
     ];
-
-
     for (let i = 0; i < this.state.star; i++) {
       myStar.splice(i, 1,
         <FontAwesome name="star" style={styles.iconsGold} />
@@ -277,7 +266,7 @@ class Profile_tradesman extends Component {
     )
   }
 
-  loginNull() {
+  login() {
     return (
       <>
         <Text onPress={() => this.props.navigation.navigate("Login")}>Login</Text>
@@ -288,13 +277,13 @@ class Profile_tradesman extends Component {
 
    render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-    console.log("stausLogin",this.props.posts.login);
+/*     console.log("stausLogin",this.props.posts.login); */
     return (
       <>
         {
            this.props.posts.login === null
             ?
-             this.loginNull()
+             this.login()
             :
             this.props.posts.login.status_user === "ลูกค้าทั่วไป"
 
