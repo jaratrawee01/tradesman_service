@@ -27,7 +27,6 @@ class Profile_tradesman extends Component {
     this.state = {
       urlImg: null,
       modalVisible: false,
-      stausLogin:  null,
       star: "2",
     };
   }
@@ -45,11 +44,10 @@ class Profile_tradesman extends Component {
     if (this.props.posts.login !== null ) {
       this.setState({
         stausLogin: this.props.posts.login.status_user,
-      });
- 
+      }); 
     }
-  
   }
+
 
   customer() {
     var myStar = [
@@ -282,15 +280,15 @@ class Profile_tradesman extends Component {
 
    render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-    console.log("stausLogin",stausLogin,this.props.posts.login);
+    console.log("stausLogin",this.props.posts.login);
     return (
       <>
         {
-           stausLogin === null
+           this.props.posts.login === null
             ?
              this.loginNull()
             :
-            stausLogin === "ลูกค้าทั่วไป"
+            this.props.posts.login.status_user === "ลูกค้าทั่วไป"
 
               ?
                 this.customer()
