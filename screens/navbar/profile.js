@@ -44,7 +44,7 @@ class Profile_tradesman extends Component {
   componentDidMount() {
     if (this.props.posts.login !== null ) {
       this.setState({
-        stausLogin: this.props.posts.login.statusLogin,
+        stausLogin: this.props.posts.login.status_user,
       });
  
     }

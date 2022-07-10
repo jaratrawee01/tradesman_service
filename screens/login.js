@@ -12,29 +12,47 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import login from "./service/getService";
+import {useSelector,useDispatch} from 'react-redux';
+import { connect } from "react-redux";
+var md5 = require("md5");
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
-      username: "thanet01@planforfit.com",
+      username:  null,
       password: null,
     };
   }
+
+
+  
+  
 
   handleOnPress(e, user) {
     this.setState({
       [user]: e,
     });
   }
+
   login = async () => {
-    const data = [username];
+    let password = md5(this.state.password);
+    const data = [this.state.username, password];
     const getLogin = await login.getLogin(data);
-    console.log("getLogin", getLogin);
+    if (getLogin === null) {
+      await alert('Login ไม่สำเร็จ กรุณาลองใหม่');
+    }else{
+      this.props.dispatch({
+        type: 'ADD_LOGIN',
+        payload: getLogin
+      })
+      await alert('Login สำเร็จ');
+      await  this.props.navigation.popToTop();
+    }
   };
 
   render() {
-    console.log(this.state.username, this.state.password);
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -250,4 +268,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default  connect()(Login);

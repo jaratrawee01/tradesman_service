@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.5/project/API_database';
+const url = 'http://192.168.1.6/project/API_database';
 
 
 /* const getUser = async () => {
@@ -117,6 +117,27 @@ const searchUser = async (e) => {
   return seaUser;  
 };
 
+const getLogin = async (e) => {
+  const seaUser = await axios.get(`${url}/login.php`,{
+   headers: {
+     'Content-Type': 'text/javascript;charset=utf-8',
+   },
+   params: {
+     isAdd: true,
+     phone: e[0],
+     password: e[1],
+   }
+  }).then((result) => {
+ 
+    return result.data; 
+ })
+ .catch((error) => {
+
+     return error;
+   });
+ return seaUser;  
+};
+
 
 
 const createUser = async (e) => {
@@ -146,5 +167,6 @@ const createUser = async (e) => {
 export default {
   createUser,
   searchUser,
+  getLogin,
 
 };
