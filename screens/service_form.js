@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import MapView, { Marker, Callout } from 'react-native-maps';
-import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, TouchableOpacity, ScrollView,Alert } from 'react-native';
 import technician_type from "./service/getService";
 import * as Location from 'expo-location';
 import { setDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+import { Picker } from '@react-native-picker/picker';
+import {useSelector,useDispatch} from 'react-redux';
 
 
 // You can import from local files
@@ -26,7 +28,14 @@ const Service_form = ({ navigation: { popToTop } }) => {
   const [zipcode, setZipcode] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
+  const [technicianType, setTechnicianType] = useState(null);
+  const [technician_1, setTechnician_1] = useState(null);
+  const [technician_2, setTechnician_2] = useState(null);
+  const [technician_3, setTechnician_3] = useState(null);
+  const [idPhone, setIdPhone] = useState(useSelector(state => state.login[0].phone));
+
   const mapRef = React.createRef();
+
 
   // const [getLocation, setGetLocation] = useState(false);
 
@@ -103,45 +112,37 @@ const Service_form = ({ navigation: { popToTop } }) => {
     )
   }
 
-
-  const Dropdown = () => {
-    return (
-        <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
-            items={[
-                { label: 'Football', value: 'football' },
-                { label: 'Baseball', value: 'baseball' },
-                { label: 'Hockey', value: 'hockey' },
-            ]}
-        />
-    );
-};
   const serve = async () => {
-
-    const result =  await technician_type.technician_type();
-
-    console.log("result",result);
-
-/*     const data = [name, addressUser, subdistrict,district,province,zipcode,location];
-
-    const result = await create.createAddress(data);
-
-    console.log(result);
-    if (result === "success") {
-      await  alert('บันทึกสำเร็จ');
-      popToTop();
-    }else{
-      await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
-    }
- */
+        const data = [idPhone,name, addressUser, subdistrict,district,province,zipcode,location,technician_1,technician_2,technician_3]; 
+         const result = await technician_type.createAddress(data); 
+        if (result === "success") {
+            await  Alert.alert('บันทึกสำเร็จ');
+          popToTop();
+        }else{
+            await  Alert.alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
+        }
+    
   };
+
+ const  logde = async () => {
+  const result = await technician_type.technician_type();
+  setTechnicianType(result);
+
+ }
 
   useEffect(() => {
     if (location.longitude === null) {
       getLocation()
       map()
     }
+    if (technicianType === null) {
+      logde()
+    }
+  
+  
+
   }, []);
+
 
   const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
   return (
@@ -171,24 +172,67 @@ const Service_form = ({ navigation: { popToTop } }) => {
             </View>
             <View>
               <Text style={styles.text2}>{'เลือกประเภทงานช่าง'}</Text>
-              
-            </View>
-           {/*  <View>
-              <Text style={styles.text2}>{'เลือกประเภทงานช่าง'}</Text>
-              <TextInput style={styles.box4}
-                onChange={(e) => {
-                  setZipcode(e.nativeEvent.text);
-                }}
-              />
+              <View>
+              <Picker
+                  selectedValue={technician_1}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setTechnician_1(itemValue)
+                  }>
+                  <Picker.Item label="เลือกประเภทงาน" value="null" />
+                  {
+                 (technicianType !== null) ?
+                        technicianType.map((value) => {
+                          let name = value.technician_type;
+                          let picker = <Picker.Item label={name} value={name} />;
+                     return  picker
+                    })
+                    : null
+                  }
+                </Picker>
+              </View>
             </View>
             <View>
               <Text style={styles.text2}>{'เลือกประเภทงานช่าง'}</Text>
-              <TextInput style={styles.box4}
-                onChange={(e) => {
-                  setZipcode(e.nativeEvent.text);
-                }}
-              />
-            </View> */}
+              <View>
+              <Picker
+                  selectedValue={technician_2}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setTechnician_2(itemValue)
+                  }>
+                  <Picker.Item label="เลือกประเภทงาน" value="null" />
+                  {
+                 (technicianType !== null) ?
+                        technicianType.map((value) => {
+                          let name = value.technician_type;
+                          let picker = <Picker.Item label={name} value={name} />;
+                     return  picker
+                    })
+                    : null
+                  }
+                </Picker>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{'เลือกประเภทงานช่าง'}</Text>
+              <View>
+              <Picker
+                  selectedValue={technician_3}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setTechnician_3(itemValue)
+                  }>
+                  <Picker.Item label="เลือกประเภทงาน" value="null" />
+                  {
+                 (technicianType !== null) ?
+                        technicianType.map((value) => {
+                          let name = value.technician_type;
+                          let picker = <Picker.Item label={name} value={name} />;
+                     return  picker
+                    })
+                    : null
+                  }
+                </Picker>
+              </View>
+            </View>
 
             <View>
               <Text style={styles.text2}>{'บ้านเลขที่'}</Text>
@@ -384,10 +428,12 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 30,
-    marginBottom:30
+    marginBottom: 30
   },
 
 });
 
+
 export default Service_form;
+
 

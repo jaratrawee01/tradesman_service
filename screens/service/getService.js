@@ -160,7 +160,6 @@ const getLogin = async (e) => {
 
 // สมัครสมาชิก
 const createUser = async (e) => {
-
   const formdata = new FormData();
   formdata.append('isAdd', true);
   formdata.append('phone', e[0]);
@@ -182,11 +181,43 @@ const createUser = async (e) => {
   return cerUser;
 };
 
+const createAddress = async (e) => {
+  console.log("e",e);
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('idPhone', e[0]);
+  formdata.append('name', e[1]);
+  formdata.append('addressUser', e[2]);
+  formdata.append('subdistrict', e[3]);
+  formdata.append('district', e[3]);
+  formdata.append('province', e[3]);
+  formdata.append('zipcode', e[3]);
+  formdata.append('location', e[3]);
+  formdata.append('technician_1', e[3]);
+  formdata.append('technician_2', e[3]);
+  formdata.append('technician_3', e[3]);
+  const cerAdd = await axios.post(`${url}/addUser.php`, formdata, {
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+
+    return "success";
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return cerAdd;
+  
+}
+
 
 export default {
   createUser,
   searchUser,
   getLogin,
   technician_type,
+  createAddress,
 
 };

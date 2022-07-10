@@ -17,7 +17,6 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import bookBank from "./service/getService";
-import { connect } from "react-redux";
 import getUrlReducer from "../redux/logInReducer"
 import {useSelector,useDispatch} from 'react-redux';
 
@@ -464,5 +463,5 @@ const styles = StyleSheet.create({
 
 });
 
-export default connect()(Registration);
+export default Registration;
 
