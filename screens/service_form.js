@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
-import MapView, { Marker, Callout, Circle } from 'react-native-maps';
-import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, Alert, TouchableOpacity, ScrollView } from 'react-native';
-import Constants from 'expo-constants';
-import { AntDesign } from '@expo/vector-icons';
-import create from './service/getService';
+import React, { useEffect, useState } from 'react';
+import MapView, { Marker, Callout } from 'react-native-maps';
+import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import technician_type from "./service/getService";
+import * as Location from 'expo-location';
+import { setDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+
 
 // You can import from local files
 
 let apiKey = 'AIzaSyBdjxXSNpAnyW0lzE_uliQ121U4mkmSgPk';
 
-import * as Location from 'expo-location';
-import { setDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+
 
 const Service_form = ({ navigation: { popToTop } }) => {
   const [location, setLocation] = useState({
@@ -24,7 +24,6 @@ const Service_form = ({ navigation: { popToTop } }) => {
   const [district, setDistrict] = useState(null);
   const [province, setProvince] = useState(null);
   const [zipcode, setZipcode] = useState(null);
-
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
   const mapRef = React.createRef();
@@ -104,9 +103,26 @@ const Service_form = ({ navigation: { popToTop } }) => {
     )
   }
 
+
+  const Dropdown = () => {
+    return (
+        <RNPickerSelect
+            onValueChange={(value) => console.log(value)}
+            items={[
+                { label: 'Football', value: 'football' },
+                { label: 'Baseball', value: 'baseball' },
+                { label: 'Hockey', value: 'hockey' },
+            ]}
+        />
+    );
+};
   const serve = async () => {
 
-    const data = [name, addressUser, subdistrict,district,province,zipcode,location];
+    const result =  await technician_type.technician_type();
+
+    console.log("result",result);
+
+/*     const data = [name, addressUser, subdistrict,district,province,zipcode,location];
 
     const result = await create.createAddress(data);
 
@@ -117,11 +133,8 @@ const Service_form = ({ navigation: { popToTop } }) => {
     }else{
       await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
     }
-
+ */
   };
-
-
-
 
   useEffect(() => {
     if (location.longitude === null) {
@@ -129,6 +142,7 @@ const Service_form = ({ navigation: { popToTop } }) => {
       map()
     }
   }, []);
+
   const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg' };
   return (
     <SafeAreaView style={styles.container}>
@@ -155,6 +169,26 @@ const Service_form = ({ navigation: { popToTop } }) => {
                   setName(e.nativeEvent.text);
                 }} />
             </View>
+            <View>
+              <Text style={styles.text2}>{'เลือกประเภทงานช่าง'}</Text>
+              
+            </View>
+           {/*  <View>
+              <Text style={styles.text2}>{'เลือกประเภทงานช่าง'}</Text>
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setZipcode(e.nativeEvent.text);
+                }}
+              />
+            </View>
+            <View>
+              <Text style={styles.text2}>{'เลือกประเภทงานช่าง'}</Text>
+              <TextInput style={styles.box4}
+                onChange={(e) => {
+                  setZipcode(e.nativeEvent.text);
+                }}
+              />
+            </View> */}
 
             <View>
               <Text style={styles.text2}>{'บ้านเลขที่'}</Text>
@@ -262,7 +296,7 @@ const styles = StyleSheet.create({
 
   },
   box3: {
-    height: 1000,
+    height: "auto",
     width: 320,
     backgroundColor: '#fff',
     shadowColor: "#000",
@@ -350,6 +384,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 30,
+    marginBottom:30
   },
 
 });
