@@ -7,6 +7,7 @@ import {
   Modal,
   Image,
   ScrollView,
+  Alert
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -39,15 +40,22 @@ class Profile_tradesman extends Component {
     });
   };
   
-
-  componentDidMount() {
-    if (this.props.posts.login !== null ) {
-      this.setState({
-        stausLogin: this.props.posts.login.status_user,
-      }); 
-    }
+/* 
+  this.props.dispatch({
+        type: 'ADD_LOGIN',
+        payload: getLogin
+      })
+      await alert('Login สำเร็จ');
+      await  this.props.navigation.popToTop();
+    } */
+ async logout () {
+    this.props.dispatch({
+      type: 'ADD_LOGIN',
+      payload: null
+    })
+    await Alert.alert('Logout สำเร็จ');
+    await  this.props.navigation.popToTop();
   }
-
 
   customer() {
     var myStar = [
@@ -193,7 +201,7 @@ class Profile_tradesman extends Component {
                 <MaterialCommunityIcons name="logout" style={styles.icons5} />
                 <Text
                   style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Login")}>{"Logout"}
+                  onPress={() => this.logout()}>{"Logout"}
                 </Text>
               </View>
               <View style={styles.box3}>

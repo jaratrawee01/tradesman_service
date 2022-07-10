@@ -59,22 +59,19 @@ const Registration = ({ navigation: { popToTop } }) => {
             payload: data2
           })
 
-          await alert('บันทึกสำเร็จ');
+          await Alert.alert('บันทึกสำเร็จ');
           
          await popToTop();
         } else {
-          await alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
+          await Alert.alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
         }
       } else {
-        await alert(`เบอร์โทร ${phone} นี้มีในระบบอยู่เเล้ว`);
+        await Alert.alert(`เบอร์โทร ${phone} นี้มีในระบบอยู่เเล้ว`);
       }
     } else {
       alert(`กรุณายอมรับเงื่อนไงการใช้งาน`);
     }  
   };
-
-
-
 
   const accept = () => {
     setModalVisible(false);

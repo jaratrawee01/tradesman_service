@@ -8,6 +8,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  Alert
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -46,7 +47,7 @@ class Login extends Component {
         type: 'ADD_LOGIN',
         payload: getLogin
       })
-      await alert('Login สำเร็จ');
+      await Alert.alert('Login สำเร็จ');
       await  this.props.navigation.popToTop();
     }
   };

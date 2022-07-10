@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import MapView, { Marker, Callout, Circle } from 'react-native-maps';
-import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Image, Alert, TouchableOpacity, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 import { AntDesign } from '@expo/vector-icons';
 import create from './service/getService';
