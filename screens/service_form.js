@@ -363,6 +363,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
+    borderRadius: 6,
     marginLeft: 30,
     marginRight: 30,
     fontSize: 18,
