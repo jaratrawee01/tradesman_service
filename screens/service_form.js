@@ -194,7 +194,7 @@ const Service_form = ({ navigation: { popToTop } }) => {
                 <Text style={styles.text2}>{"เลือกประเภทงานช่าง"}</Text>
                 <View>
                   <Picker
-                    style={styles.box4}
+                    style={styles.box4_1}
                     selectedValue={technician_1}
                     onValueChange={(itemValue, itemIndex) =>
                       setTechnician_1(itemValue)
@@ -217,7 +217,7 @@ const Service_form = ({ navigation: { popToTop } }) => {
                 <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
                 <View>
                   <Picker
-                    style={styles.box4}
+                    style={styles.box4_1}
                     selectedValue={technician_2}
                     onValueChange={(itemValue, itemIndex) =>
                       setTechnician_2(itemValue)
@@ -368,6 +368,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 5,
+  },
+  box4_1: {
+    height: "auto",
+    width: 300,
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    marginLeft: 30,
+    marginRight: 30,
+    fontSize: 18,
+
+
   },
   box6: {
     height: 150,
