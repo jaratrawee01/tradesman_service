@@ -195,7 +195,6 @@ console.log("e",e);
   formdata.append('location', e[7]);
   formdata.append('technician_1', e[8]);
   formdata.append('technician_2', e[9]);
-  formdata.append('technician_3', e[10]);
   const cerAdd = await axios.post(`${url}/addAddress.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',

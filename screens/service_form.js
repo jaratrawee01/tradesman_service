@@ -39,7 +39,6 @@ const Service_form = ({ navigation: { popToTop } }) => {
   const [technicianType, setTechnicianType] = useState(null);
   const [technician_1, setTechnician_1] = useState(null);
   const [technician_2, setTechnician_2] = useState(null);
-  const [technician_3, setTechnician_3] = useState(null);
   const [idPhone, setIdPhone] = useState(useSelector((state) => state.login.id));
 
   const mapRef = React.createRef();
@@ -130,7 +129,6 @@ const Service_form = ({ navigation: { popToTop } }) => {
       location,
       technician_1,
       technician_2,
-      technician_3,
     ];
     const result = await technician_type.createAddress(data);
     if (result === "success") {
@@ -196,7 +194,7 @@ const Service_form = ({ navigation: { popToTop } }) => {
                 <Text style={styles.text2}>{"เลือกประเภทงานช่าง"}</Text>
                 <View>
                   <Picker
-                    style={styles.text3}
+                    style={styles.box4}
                     selectedValue={technician_1}
                     onValueChange={(itemValue, itemIndex) =>
                       setTechnician_1(itemValue)
@@ -219,33 +217,10 @@ const Service_form = ({ navigation: { popToTop } }) => {
                 <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
                 <View>
                   <Picker
-                    style={styles.text3}
+                    style={styles.box4}
                     selectedValue={technician_2}
                     onValueChange={(itemValue, itemIndex) =>
                       setTechnician_2(itemValue)
-                    }
-                  >
-                    <Picker.Item label="เลือกประเภทงาน" value="null" />
-                    {technicianType !== null
-                      ? technicianType.map((value) => {
-                          let name = value.technician_type;
-                          let picker = (
-                            <Picker.Item label={name} value={name} />
-                          );
-                          return picker;
-                        })
-                      : null}
-                  </Picker>
-                </View>
-              </View>
-              <View>
-                <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
-                <View>
-                  <Picker
-                    style={styles.text3}
-                    selectedValue={technician_3}
-                    onValueChange={(itemValue, itemIndex) =>
-                      setTechnician_3(itemValue)
                     }
                   >
                     <Picker.Item label="เลือกประเภทงาน" value="null" />
@@ -382,15 +357,14 @@ const styles = StyleSheet.create({
   },
   box4: {
     height: 40,
-    width: 280,
+    width: 300,
     backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
-    borderRadius: 20,
-    marginLeft: 40,
-    marginRight: 40,
+    marginLeft: 30,
+    marginRight: 30,
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 5,
@@ -418,26 +392,21 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   text1: {
-    marginLeft: 45,
+    marginLeft: 30,
     fontWeight: "bold",
     fontSize: 20,
     marginTop: 10,
   },
   text2: {
-    marginLeft: 45,
+    marginLeft: 30,
     fontSize: 16,
     marginTop: 15,
     fontWeight: "bold",
   },
-  text3: {
-    marginLeft: 45,
-    fontSize: 16,
-    marginTop: -5,
-  },
   text4: {
-    marginLeft: 45,
+    marginLeft: 30,
     fontSize: 16,
-    marginTop: 5,
+    marginTop: 30,
     fontWeight: "bold",
   },
   input: {
@@ -462,7 +431,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
-    borderRadius: 30,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 30,
