@@ -470,6 +470,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
+    borderRadius: 6,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 30,

@@ -143,6 +143,7 @@ container: {
     paddingLeft: 110,
     fontSize: 20,
     marginTop: -25,
+    color: '#fff'
   },
   text1: {
     marginLeft: 20,
@@ -196,16 +197,19 @@ container: {
     paddingLeft: 100,
     fontSize: 20,
     marginTop: -25,
+    color: '#fff'
   },
   icons: {
     fontSize: 25,
     marginTop: 13,
-    marginLeft: 75
+    marginLeft: 75,
+    color: '#fff'
   },
   icons1: {
     fontSize: 25,
     marginTop: 13,
-    marginLeft: 65
+    marginLeft: 65,
+    color: '#fff'
   },
   button: {
     height: 50,
