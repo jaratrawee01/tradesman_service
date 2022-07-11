@@ -32,7 +32,7 @@ const Service_form = ({ navigation: { popToTop } }) => {
   const [technician_1, setTechnician_1] = useState(null);
   const [technician_2, setTechnician_2] = useState(null);
   const [technician_3, setTechnician_3] = useState(null);
-  const [idPhone, setIdPhone] = useState(useSelector(state => state.login[0].phone));
+  const [idPhone, setIdPhone] = useState(useSelector(state => state.login.phone));
 
   const mapRef = React.createRef();
 

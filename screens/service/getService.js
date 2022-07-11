@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.6/project/API_database';
+const url = 'http://192.168.1.3/project/API_database';
 
 
 /* const getUser = async () => {
@@ -201,7 +201,7 @@ console.log("e",e);
       'Content-Type': 'multipart/form-data;charset=utf-8',
     }
   }).then((result) => {
-    return result.data;
+    return result;
 /*     return "success"; */
   })
     .catch((error) => {

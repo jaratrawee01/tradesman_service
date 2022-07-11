@@ -10,7 +10,7 @@ const image = { uri: 'https://www.roojai.com/wp-content/uploads/2018/07/how-to-c
 class Information extends Component {
   render() {
 
-
+console.log(this.props.posts.login);
     return (
 
       <SafeAreaView style={styles.container}>
@@ -24,7 +24,7 @@ class Information extends Component {
             <View style={styles.box3}>
               <Text style={styles.text2}>
                 <Text style={styles.text2}>{'เบอร์โทร'}</Text>
-              {this.props.posts.login[0].phone} 
+              {this.props.posts.login.phone} 
               </Text>
             </View>
 
@@ -32,15 +32,8 @@ class Information extends Component {
             <View style={styles.box3}>
               <Text style={styles.text2}>
                 <Text style={styles.text2}>{'สถานะการสมัคร'}</Text>
-              {this.props.posts.login[0].status_user}
+              {this.props.posts.login.status_user}
                 </Text>
-            </View>
-
-            <View style={styles.box3}>
-              <Text style={styles.text2}>
-                <Text style={styles.text2}>{'สมัครวันที่'}</Text>
-               {this.props.posts.login[0].updated_at} 
-              </Text>
             </View>
           </View>
 

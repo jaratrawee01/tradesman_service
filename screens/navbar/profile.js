@@ -111,6 +111,13 @@ class Profile_tradesman extends Component {
                 <Text style={styles.text2}>{"แชท"}</Text>
               </View>
             </View>
+            <View style={styles.box3}>
+                <MaterialCommunityIcons name="logout" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.logout()}>{"Logout"}
+                </Text>
+              </View>
           </ScrollView>
         </SafeAreaView>
       </>
@@ -290,7 +297,7 @@ class Profile_tradesman extends Component {
 
    render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-/*     console.log("stausLogin",this.props.posts.login); */
+    console.log("stausLogin",this.props.posts.login);
     return (
       <>
         {
