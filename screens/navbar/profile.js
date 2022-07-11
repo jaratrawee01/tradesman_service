@@ -457,7 +457,7 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
   },
   box7: {
-    height: 40,
+    height: 35,
     width: 280,
     backgroundColor: '#37C1FB',
     shadowColor: "#000",
@@ -469,9 +469,9 @@ const styles = StyleSheet.create({
     zIndex: 2,
     top:80,
     position: "absolute",
-    marginTop: "98%",
-    marginLeft: 35,
-    marginRight: 35,
+    marginTop: "90%",
+    marginLeft: 40,
+    marginRight: 30,
 
   },
   text: {
@@ -502,7 +502,7 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
     fontSize: 30,
-    marginTop: 5,
+    marginTop: 2,
     color: '#fff'
   },
   iconsGold: {
