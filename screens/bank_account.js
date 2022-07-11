@@ -210,7 +210,7 @@ container: {
   button: {
     height: 50,
     width: 280,
-    backgroundColor: '#fff',
+    backgroundColor: '#37C1FB',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,

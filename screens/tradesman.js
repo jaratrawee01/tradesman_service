@@ -11,7 +11,7 @@ class Home extends Component {
       <ScrollView>
           <View style={styles.boxhead}>
 
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile_tradesman")}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile")}>
                 <View style={styles.box}> 
                       <Image
                       style={styles.image}
@@ -39,7 +39,7 @@ class Home extends Component {
                 </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile_tradesman")}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile")}>
                 <View style={styles.box}>
                     <Image
                         style={styles.image}
@@ -67,7 +67,7 @@ class Home extends Component {
                 </View>
             </TouchableWithoutFeedback>
             
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile_tradesman")}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile")}>
               <View style={styles.box}>
               <Image
                   style={styles.image}
@@ -95,7 +95,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile_tradesman")}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile")}>
               <View style={styles.box}>
                 <Image
                     style={styles.image}

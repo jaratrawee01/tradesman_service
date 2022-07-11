@@ -36,9 +36,6 @@ import bookBank from "./service/getService";
 import { AntDesign } from "@expo/vector-icons";
 import img1 from "../assets/images/A-3.png";
 
-
-
-
 const ImagePickerExample = () => {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
@@ -130,7 +127,6 @@ const ImagePickerExample = () => {
     }
   };
 
-  
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -150,145 +146,146 @@ const ImagePickerExample = () => {
               <Text style={styles.text}>Yonzook</Text>
             </ImageBackground>
           </View>
-
-          <View style={styles.box2}>
-            <Text style={styles.text1}>อัพโหลดภาพ</Text>
-          </View>
-
-          <View style={styles.boxhead}>
-            <View style={styles.box1}>
-              {image1 && (
-                <Image source={{ uri: image1.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image1")}
-                />
-              </TouchableOpacity>
+          <View style={styles.box6}>
+            <View style={styles.box2}>
+              <Text style={styles.text1}>อัพโหลดภาพ</Text>
             </View>
 
-            <View style={styles.box1}>
-              {image2 && (
-                <Image source={{ uri: image2.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image2")}
-                />
-              </TouchableOpacity>
+            <View style={styles.boxhead}>
+              <View style={styles.box1}>
+                {image1 && (
+                  <Image source={{ uri: image1.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image1")}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.box1}>
+                {image2 && (
+                  <Image source={{ uri: image2.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image2")}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.box1}>
+                {image3 && (
+                  <Image source={{ uri: image3.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image3")}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
 
-            <View style={styles.box1}>
-              {image3 && (
-                <Image source={{ uri: image3.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image3")}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.box5}>
-            <Text style={styles.text1}>อัพโหลดภาพ</Text>
-          </View>
-
-          <View style={styles.boxhead}>
-            <View style={styles.box1}>
-              {image4 && (
-                <Image source={{ uri: image4.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image4")}
-                />
-              </TouchableOpacity>
+            <View style={styles.box5}>
+              <Text style={styles.text1}>อัพโหลดภาพ</Text>
             </View>
 
-            <View style={styles.box1}>
-              {image5 && (
-                <Image source={{ uri: image5.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image5")}
-                />
-              </TouchableOpacity>
+            <View style={styles.boxhead}>
+              <View style={styles.box1}>
+                {image4 && (
+                  <Image source={{ uri: image4.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image4")}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.box1}>
+                {image5 && (
+                  <Image source={{ uri: image5.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image5")}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.box1}>
+                {image6 && (
+                  <Image source={{ uri: image6.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image6")}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.box5}>
+              <Text style={styles.text1}>อัพโหลดภาพ</Text>
             </View>
 
-            <View style={styles.box1}>
-              {image6 && (
-                <Image source={{ uri: image6.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image6")}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.box5}>
-            <Text style={styles.text1}>อัพโหลดภาพ</Text>
-          </View>
+            <View style={styles.boxhead}>
+              <View style={styles.box1}>
+                {image7 && (
+                  <Image source={{ uri: image7.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image7")}
+                  />
+                </TouchableOpacity>
+              </View>
 
-          <View style={styles.boxhead}>
-            <View style={styles.box1}>
-              {image7 && (
-                <Image source={{ uri: image7.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image7")}
-                />
-              </TouchableOpacity>
-            </View>
+              <View style={styles.box1}>
+                {image8 && (
+                  <Image source={{ uri: image8.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image8")}
+                  />
+                </TouchableOpacity>
+              </View>
 
-            <View style={styles.box1}>
-              {image8 && (
-                <Image source={{ uri: image8.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image8")}
-                />
-              </TouchableOpacity>
+              <View style={styles.box1}>
+                {image9 && (
+                  <Image source={{ uri: image9.uri }} style={styles.image3} />
+                )}
+                <TouchableOpacity>
+                  <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    onPress={() => pickImage("image9")}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
 
-            <View style={styles.box1}>
-              {image9 && (
-                <Image source={{ uri: image9.uri }} style={styles.image3} />
-              )}
-              <TouchableOpacity>
-                <AntDesign
-                  name="pluscircleo"
-                  style={styles.icons}
-                  onPress={() => pickImage("image9")}
-                />
+            <View>
+              <TouchableOpacity style={styles.button} onPress={() => serve()}>
+                <Text style={styles.text3}>บันทึกข้อมูล</Text>
               </TouchableOpacity>
             </View>
-          </View>
-
-          <View>
-            <TouchableOpacity style={styles.button} onPress={() => serve()}>
-              <Text style={styles.text3}>บันทึกข้อมูล</Text>
-            </TouchableOpacity>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -442,6 +439,20 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: "#fff",
   },
+  box6: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    borderRadius: 15,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: -10,
+    marginBottom: 10,
+  },
   text: {
     marginLeft: "auto",
     marginRight: "auto",
@@ -472,7 +483,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: 280,
-    backgroundColor: "#fff",
+    backgroundColor: "#37C1FB",
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
