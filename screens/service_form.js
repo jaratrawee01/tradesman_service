@@ -153,7 +153,7 @@ const Service_form = ({ navigation: { popToTop } }) => {
         technician_2: technician_2,
       }
       dispatch({
-        type: 'ADD_ADDRESS',
+        type: ' ',
         payload: data3
       })
       await Alert.alert("บันทึกสำเร็จ");

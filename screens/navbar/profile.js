@@ -284,10 +284,10 @@ class Profile_tradesman extends Component {
     return (
       <>
           <View>
-          <ImageBackground /* source={img1} */ resizeMode="cover" style={styles.image4}>
+          <ImageBackground  source={img1} resizeMode="cover" style={styles.image4}>
           <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")} >
               <View style={styles.box7}>
-                <Text style={styles.text}>login</Text>
+                <Text style={styles.text4}>login</Text>
               </View>
 
             </TouchableOpacity >
@@ -457,27 +457,28 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
   },
   box7: {
-    height: 1,
+    height: 40,
     width: 280,
-    backgroundColor: '#fff',
+    backgroundColor: '#37C1FB',
+    shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    elevation: 6,
-    borderRadius: 20,
+    elevation: 2,
+    borderRadius: 30,
     fontSize: 18,
-
     zIndex: 2,
     top:80,
     position: "absolute",
-    marginTop: "99%",
+    marginTop: "98%",
+    marginLeft: 35,
+    marginRight: 35,
 
   },
   text: {
     marginLeft: "auto",
     marginRight: "auto",
     fontWeight: "bold",
-    fontSize: 25,
-    color: '#37C1FB',
+    fontSize: 20,
     marginTop: 5,
   },
   text1: {
@@ -496,6 +497,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
     marginTop: 2,
+  },
+  text4: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    fontSize: 30,
+    marginTop: 5,
+    color: '#fff'
   },
   iconsGold: {
     marginLeft: 5,
