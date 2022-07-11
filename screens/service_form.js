@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import {
   SafeAreaView,
@@ -41,9 +41,10 @@ const Service_form = ({ navigation: { popToTop } }) => {
   const [technician_1, setTechnician_1] = useState(null);
   const [technician_2, setTechnician_2] = useState(null);
   const [idPhone, setIdPhone] = useState(useSelector((state) => state.login.id));
+  const [statusAddress, setStatusAddress] = useState(useSelector((state) => state.address));
   const dispatch = useDispatch();
 
-  
+
 
   const mapRef = React.createRef();
 
@@ -121,9 +122,9 @@ const Service_form = ({ navigation: { popToTop } }) => {
     );
   };
 
+
+
   const serve = async () => {
-
-
     const data = [
       idPhone,
       name,
@@ -142,30 +143,32 @@ const Service_form = ({ navigation: { popToTop } }) => {
       let data3 = {
         id: idPhone,
         name: name,
-        addressUser:  addressUser,
+        addressUser: addressUser,
         subdistrict: subdistrict,
         district: district,
         province: province,
         zipcode: zipcode,
         location: location,
-        technician_1: location,
-        technician_1: location,
-      } 
+        technician_1: technician_1,
+        technician_2: technician_2,
+      }
       dispatch({
         type: 'ADD_ADDRESS',
         payload: data3
       })
       await Alert.alert("บันทึกสำเร็จ");
-      popToTop();
+      setStatusAddress(true);
     } else {
       await Alert.alert("บันทึกไม่สำเร็จ กรุณาลองใหม่");
     }
   };
-
   const logde = async () => {
     const result = await technician_type.technician_type();
     setTechnicianType(result);
   };
+
+
+
 
   useEffect(() => {
     if (location.longitude === null) {
@@ -175,154 +178,194 @@ const Service_form = ({ navigation: { popToTop } }) => {
     if (technicianType === null) {
       logde();
     }
+    if (statusAddress !== null) {
+      /*  const latitude =  useSelector((state) => state.address.location.latitude */
+      /*   setLocation({
+          latitude: `${useSelector((state) => state.address.location.latitude}`,
+          longitude: e.nativeEvent.coordinate.longitude,
+        }); */
+    }
   }, []);
-  const url = useSelector(state => ({...state}));
 
-  console.log("url",url);
+
+  /*   const url = useSelector(state => ({...state}));
+    console.log("url",url); */
   const image = {
     uri: "https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg",
   };
-  console.log();
+
+  const editAddress = () => {
+    return (
+      <>
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <View>
+              <ImageBackground
+                source={image}
+                resizeMode="cover"
+                style={styles.backgroun}
+              >
+                <Image
+                  style={styles.image}
+                  source={{
+                    uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
+                  }}
+                />
+              </ImageBackground>
+            </View>
+
+            <View style={styles.box3}>
+              <View>
+                <Text style={styles.text1}>รายละเอียดติดต่อ</Text>
+              </View>
+              <View style={styles.boxhead}>
+                <View>
+                  <Text style={styles.text2}>{"ชื่อ"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setName(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+                <View>
+                  <View>
+                    <Text style={styles.text2}>{"เลือกประเภทงานช่าง"}</Text>
+                    <View>
+                      <Picker
+                        style={styles.box4_1}
+                        selectedValue={technician_1}
+                        onValueChange={(itemValue, itemIndex) =>
+                          setTechnician_1(itemValue)
+                        }
+                      >
+                        <Picker.Item label="เลือกประเภทงาน" value="null" />
+                        {technicianType !== null
+                          ? technicianType.map((value) => {
+                            let name = value.technician_type;
+                            let picker = (
+                              <Picker.Item label={name} value={name} />
+                            );
+                            return picker;
+                          })
+                          : null}
+                      </Picker>
+                    </View>
+                  </View>
+                  <View>
+                    <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
+                    <View>
+                      <Picker
+                        style={styles.box4_1}
+                        selectedValue={technician_2}
+                        onValueChange={(itemValue, itemIndex) =>
+                          setTechnician_2(itemValue)
+                        }
+                      >
+                        <Picker.Item label="เลือกประเภทงาน" value="null" />
+                        {technicianType !== null
+                          ? technicianType.map((value) => {
+                            let name = value.technician_type;
+                            let picker = (
+                              <Picker.Item label={name} value={name} />
+                            );
+                            return picker;
+                          })
+                          : null}
+                      </Picker>
+                    </View>
+                  </View>
+                </View>
+
+                <View>
+                  <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setAddressUser(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"ตำบล"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setSubdistrict(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"อำเภอ"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setDistrict(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"จังหวัด"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setProvince(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.text2}>{"รหัสไปรษณีย์"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setZipcode(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+              </View>
+              <Text style={styles.text2}>{"GPS"}</Text>
+              <View style={styles.containerMap}>
+                {location.longitude === null ? null : <>{map()}</>}
+              </View>
+              <TouchableOpacity style={styles.button} onPress={() => serve()}>
+                <Text style={styles.text}>บันทึก</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </>
+    )
+  }
+  const showAddress = () => {
+    return (
+      <>
+
+        <Text>{useSelector((state) => state.address.name)}</Text>
+        <Text>{useSelector((state) => state.address.addressUser)}</Text>
+        <Text>{useSelector((state) => state.address.subdistrict)}</Text>
+        <Text>{useSelector((state) => state.address.district)}</Text>
+        <Text>{useSelector((state) => state.address.province)}</Text>
+        <Text>{useSelector((state) => state.address.zipcode)}</Text>
+        <Text>{JSON.stringify(useSelector((state) => state.address.location))}</Text>
+        <Text>{useSelector((state) => state.address.technician_1)}</Text>
+        <Text>{useSelector((state) => state.address.technician_2)}</Text>
+
+
+
+      </>
+
+    )
+  }
+
+  console.log(useSelector((state) => ({ ...state })));
+
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View>
-          <ImageBackground
-            source={image}
-            resizeMode="cover"
-            style={styles.backgroun}
-          >
-            <Image
-              style={styles.image}
-              source={{
-                uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-              }}
-            />
-          </ImageBackground>
-        </View>
-
-        <View style={styles.box3}>
-          <View>
-            <Text style={styles.text1}>รายละเอียดติดต่อ</Text>
-          </View>
-          <View style={styles.boxhead}>
-            <View>
-              <Text style={styles.text2}>{"ชื่อ"}</Text>
-              <TextInput
-                style={styles.box4}
-                onChange={(e) => {
-                  setName(e.nativeEvent.text);
-                }}
-              />
-            </View>
-            <View>
-              <View>
-                <Text style={styles.text2}>{"เลือกประเภทงานช่าง"}</Text>
-                <View>
-                  <Picker
-                    style={styles.box4_1}
-                    selectedValue={technician_1}
-                    onValueChange={(itemValue, itemIndex) =>
-                      setTechnician_1(itemValue)
-                    }
-                  >
-                    <Picker.Item label="เลือกประเภทงาน" value="null" />
-                    {technicianType !== null
-                      ? technicianType.map((value) => {
-                          let name = value.technician_type;
-                          let picker = (
-                            <Picker.Item label={name} value={name} />
-                          );
-                          return picker;
-                        })
-                      : null}
-                  </Picker>
-                </View>
-              </View>
-              <View>
-                <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
-                <View>
-                  <Picker
-                    style={styles.box4_1}
-                    selectedValue={technician_2}
-                    onValueChange={(itemValue, itemIndex) =>
-                      setTechnician_2(itemValue)
-                    }
-                  >
-                    <Picker.Item label="เลือกประเภทงาน" value="null" />
-                    {technicianType !== null
-                      ? technicianType.map((value) => {
-                          let name = value.technician_type;
-                          let picker = (
-                            <Picker.Item label={name} value={name} />
-                          );
-                          return picker;
-                        })
-                      : null}
-                  </Picker>
-                </View>
-              </View>
-            </View>
-
-            <View>
-              <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
-              <TextInput
-                style={styles.box4}
-                onChange={(e) => {
-                  setAddressUser(e.nativeEvent.text);
-                }}
-              />
-            </View>
-
-            <View>
-              <Text style={styles.text2}>{"ตำบล"}</Text>
-              <TextInput
-                style={styles.box4}
-                onChange={(e) => {
-                  setSubdistrict(e.nativeEvent.text);
-                }}
-              />
-            </View>
-
-            <View>
-              <Text style={styles.text2}>{"อำเภอ"}</Text>
-              <TextInput
-                style={styles.box4}
-                onChange={(e) => {
-                  setDistrict(e.nativeEvent.text);
-                }}
-              />
-            </View>
-
-            <View>
-              <Text style={styles.text2}>{"จังหวัด"}</Text>
-              <TextInput
-                style={styles.box4}
-                onChange={(e) => {
-                  setProvince(e.nativeEvent.text);
-                }}
-              />
-            </View>
-            <View>
-              <Text style={styles.text2}>{"รหัสไปรษณีย์"}</Text>
-              <TextInput
-                style={styles.box4}
-                onChange={(e) => {
-                  setZipcode(e.nativeEvent.text);
-                }}
-              />
-            </View>
-          </View>
-          <Text style={styles.text2}>{"GPS"}</Text>
-          <View style={styles.containerMap}>
-            {location.longitude === null ? null : <>{map()}</>}
-          </View>
-          <TouchableOpacity style={styles.button} onPress={() => serve()}>
-            <Text style={styles.text}>บันทึก</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      {statusAddress === null ? editAddress() : showAddress()}
+    </>
   );
 };
 
@@ -470,13 +513,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
-    borderRadius: 6,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 30,
     marginBottom: 30,
   },
 });
+
+
 
 export default connect()(Service_form);
 

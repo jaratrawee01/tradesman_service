@@ -1,8 +1,8 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-/* const url = 'http://192.168.1.3/project/api-database'; */ //หน่วย
-const url = 'http://192.168.0.103/project/api-database'; // ยอน
+const url = 'http://192.168.1.3/project/api-database'; //หน่วย
+/* const url = 'http://192.168.0.103/project/api-database'; */ // ยอน
 
 /* const getUser = async () => {
 
@@ -92,7 +92,9 @@ const image  =  await axios.post(`${url}/uplodeImages`,formdata, {
 };
  */
 
-
+/**
+ * ! ส่วนของ get 
+*/ 
 
 // ดึง user  WHERE phone  ว่ามีเบอร์ อยู่ใหม
 const searchUser = async (e) => {
@@ -157,6 +159,29 @@ const getLogin = async (e) => {
   return seaUser;
 };
 
+const getAddress = async (e) => {
+  const seaUser = await axios.get(`${url}/getAddress.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return seaUser;
+};
+
+/**
+ * ! ส่วนของ post 
+*/ 
 
 // สมัครสมาชิก
 const createUser = async (e) => {
@@ -182,7 +207,7 @@ const createUser = async (e) => {
 };
 
 const createAddress = async (e) => {
-console.log("e",e);
+
   const formdata = new FormData();
   formdata.append('isAdd', true);
   formdata.append('idPhone', e[0]);
@@ -192,7 +217,7 @@ console.log("e",e);
   formdata.append('district', e[4]);
   formdata.append('province', e[5]);
   formdata.append('zipcode', e[6]);
-  formdata.append('location', e[7]);
+  formdata.append('location', JSON.stringify(e[7]));
   formdata.append('technician_1', e[8]);
   formdata.append('technician_2', e[9]);
   const cerAdd = await axios.post(`${url}/addAddress.php`, formdata, {
@@ -200,11 +225,11 @@ console.log("e",e);
       'Content-Type': 'multipart/form-data;charset=utf-8',
     }
   }).then((result) => {
-    return result;
-/*     return "success"; */
+
+    return "success";
   })
     .catch((error) => {
-  
+
       return error;
     });
   return cerAdd;
@@ -218,5 +243,6 @@ export default {
   getLogin,
   technician_type,
   createAddress,
+  getAddress,
 
 };

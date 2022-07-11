@@ -20,6 +20,7 @@ import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { Button } from "react-native-web";
 import { connect } from "react-redux";
 import  img1 from "../../assets/images/A-6.png";
+import {logoutStore} from "../logout";
 
 
 class Profile_tradesman extends Component {
@@ -42,11 +43,16 @@ class Profile_tradesman extends Component {
   };
   
  async logout () {
+    
+
     this.props.dispatch({
-      type: 'ADD_LOGIN',
+      type: 'DELETE_LOGIN',
       payload: null
     })
-
+    this.props.dispatch({
+      type: 'DELETE_ADDRESS',
+      payload: null
+    })
     await  this.props.navigation.popToTop();
   }
 
@@ -298,7 +304,7 @@ class Profile_tradesman extends Component {
 
    render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-    console.log("stausLogin",this.props.posts.login);
+/*     console.log("stausLogin",this.props.posts); */
     return (
       <>
         {
