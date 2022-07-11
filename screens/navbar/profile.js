@@ -10,6 +10,7 @@ import {
   Alert,
   ImageBackground,
   TouchableOpacity,
+  TouchableHighlight
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -280,17 +281,21 @@ class Profile_tradesman extends Component {
     )
   }
 
+
+  login2 () {
+    console.log("asdasd");
+  }
   login() {
     return (
       <>
           <View>
           <ImageBackground  source={img1} resizeMode="cover" style={styles.image4}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")} >
-              <View style={styles.box7}>
-                <Text style={styles.text4}>login</Text>
-              </View>
-
+            <View style={styles.container}>
+            <TouchableOpacity  style={styles.box7} onPress={() => this.props.navigation.navigate("Login")}>
+                <Text style={styles.text4}>เข้าสุ่ระบบ</Text>
             </TouchableOpacity >
+            </View>
+       
                
           </ImageBackground>
           
@@ -459,7 +464,7 @@ const styles = StyleSheet.create({
   box7: {
     height: 35,
     width: 280,
-    backgroundColor: '#37C1FB',
+    backgroundColor: /* '#37C1FB' */'#ffff',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -499,11 +504,11 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   text4: {
+    padding: 8,
     marginLeft: "auto",
     marginRight: "auto",
-    fontSize: 30,
-    marginTop: 2,
-    color: '#fff'
+    fontSize: 25,
+    color: '#37C1FB'
   },
   iconsGold: {
     marginLeft: 5,
