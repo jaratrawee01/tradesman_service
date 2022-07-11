@@ -40,12 +40,11 @@ class Login extends Component {
     let password = md5(this.state.password);
     const data = [this.state.username, password];
     const getLogin = await login.getLogin(data);
-
-
     if (getLogin === null) {
       await alert('Login ไม่สำเร็จ กรุณาลองใหม่');
     }else{
         let data2 = {
+        id: getLogin[0].id,
         phone: getLogin[0].phone,
         password:  getLogin[0].password,
         status_user: getLogin[0].status_user,

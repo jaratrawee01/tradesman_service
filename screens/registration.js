@@ -39,12 +39,6 @@ const Registration = ({ navigation: { popToTop } }) => {
   const serve = async () => {
     const  data = await [phone, md5(password), statusUser, statusCkeck];
 
-    const data2 = {
-      phone,
-      password:  md5(password),
-      status_user: statusUser,
-      status_check: statusCkeck
-    }
 
 
    const seaUser = await bookBank.searchUser(data);
@@ -54,13 +48,20 @@ const Registration = ({ navigation: { popToTop } }) => {
       if (seaUser === null) {
         const result = await bookBank.createUser(data);
         if (result === "success") {
+          let data2 = [phone, md5(password)];
+          const getLogin = await bookBank.getLogin(data2);
+          let data3 = {
+            id: getLogin[0].id,
+            phone: getLogin[0].phone,
+            password:  getLogin[0].password,
+            status_user: getLogin[0].status_user,
+            status_check: getLogin[0].status_check,
+          } 
           dispatch({
             type: 'ADD_LOGIN',
-            payload: data2
+            payload: data3
           })
-
           await Alert.alert('บันทึกสำเร็จ');
-          
          await popToTop();
         } else {
           await Alert.alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
