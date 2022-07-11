@@ -17,6 +17,7 @@ import * as Location from "expo-location";
 import { setDisabled } from "react-native/Libraries/LogBox/Data/LogBoxData";
 import { Picker } from "@react-native-picker/picker";
 import { useSelector, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 
 // You can import from local files
 
@@ -40,6 +41,9 @@ const Service_form = ({ navigation: { popToTop } }) => {
   const [technician_1, setTechnician_1] = useState(null);
   const [technician_2, setTechnician_2] = useState(null);
   const [idPhone, setIdPhone] = useState(useSelector((state) => state.login.id));
+  const dispatch = useDispatch();
+
+  
 
   const mapRef = React.createRef();
 
@@ -118,6 +122,8 @@ const Service_form = ({ navigation: { popToTop } }) => {
   };
 
   const serve = async () => {
+
+
     const data = [
       idPhone,
       name,
@@ -130,8 +136,25 @@ const Service_form = ({ navigation: { popToTop } }) => {
       technician_1,
       technician_2,
     ];
+
     const result = await technician_type.createAddress(data);
     if (result === "success") {
+      let data3 = {
+        id: idPhone,
+        name: name,
+        addressUser:  addressUser,
+        subdistrict: subdistrict,
+        district: district,
+        province: province,
+        zipcode: zipcode,
+        location: location,
+        technician_1: location,
+        technician_1: location,
+      } 
+      dispatch({
+        type: 'ADD_ADDRESS',
+        payload: data3
+      })
       await Alert.alert("บันทึกสำเร็จ");
       popToTop();
     } else {
@@ -153,10 +176,13 @@ const Service_form = ({ navigation: { popToTop } }) => {
       logde();
     }
   }, []);
+  const url = useSelector(state => ({...state}));
 
+  console.log("url",url);
   const image = {
     uri: "https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg",
   };
+  console.log();
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -451,4 +477,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Service_form;
+export default connect()(Service_form);
+
+

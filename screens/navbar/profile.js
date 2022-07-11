@@ -46,7 +46,7 @@ class Profile_tradesman extends Component {
       type: 'ADD_LOGIN',
       payload: null
     })
-    await Alert.alert('Logout สำเร็จ');
+
     await  this.props.navigation.popToTop();
   }
 
