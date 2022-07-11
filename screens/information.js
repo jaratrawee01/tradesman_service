@@ -22,18 +22,14 @@ console.log(this.props.posts.login);
 
           <View style={styles.box}>
             <View style={styles.box3}>
-              <Text style={styles.text2}>
-                <Text style={styles.text2}>{'เบอร์โทร'}</Text>
-              {this.props.posts.login.phone} 
-              </Text>
+              <Text style={styles.text2}>{'เบอร์โทร'}</Text>
+              <Text style={styles.text3}>{this.props.posts.login.phone}</Text>
             </View>
 
 
             <View style={styles.box3}>
-              <Text style={styles.text2}>
-                <Text style={styles.text2}>{'สถานะการสมัคร'}</Text>
-              {this.props.posts.login.status_user}
-                </Text>
+              <Text style={styles.text2}>{'สถานะการสมัคร'}</Text>
+              <Text style={styles.text3}>{this.props.posts.login.status_user}</Text>
             </View>
           </View>
 
@@ -78,7 +74,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 4,
     padding: -10,
-    marginBottom: 4,
+    marginBottom: 10,
     marginTop: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -91,23 +87,16 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginTop: 20,
   },
-  text1: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    fontWeight: "bold",
-    fontSize: 16,
-    marginTop: 2,
-  },
   text2: {
-    marginLeft: 30,
-    fontSize: 16,
+    marginLeft: 25,
+    fontSize: 18,
     marginTop: 15,
     fontWeight: 'bold',
   },
   text3: {
-    marginLeft: 30,
+    marginLeft: 210,
     fontSize: 18,
-    marginTop: 15,
+    marginTop: -20,
     fontWeight: 'bold',
   },
 
