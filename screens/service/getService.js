@@ -1,7 +1,7 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.0.107/project/api_database';
+const url = 'http://192.168.1.6/project/API_database';
 
 
 /* const getUser = async () => {
@@ -160,7 +160,6 @@ const getLogin = async (e) => {
 
 // สมัครสมาชิก
 const createUser = async (e) => {
-
   const formdata = new FormData();
   formdata.append('isAdd', true);
   formdata.append('phone', e[0]);
@@ -182,11 +181,43 @@ const createUser = async (e) => {
   return cerUser;
 };
 
+const createAddress = async (e) => {
+console.log("e",e);
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('idPhone', e[0]);
+  formdata.append('name', e[1]);
+  formdata.append('addressUser', e[2]);
+  formdata.append('subdistrict', e[3]);
+  formdata.append('district', e[4]);
+  formdata.append('province', e[5]);
+  formdata.append('zipcode', e[6]);
+  formdata.append('location', e[7]);
+  formdata.append('technician_1', e[8]);
+  formdata.append('technician_2', e[9]);
+  formdata.append('technician_3', e[10]);
+  const cerAdd = await axios.post(`${url}/addAddress.php`, formdata, {
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+    return result.data;
+/*     return "success"; */
+  })
+    .catch((error) => {
+  
+      return error;
+    });
+  return cerAdd;
+  
+}
+
 
 export default {
   createUser,
   searchUser,
   getLogin,
   technician_type,
+  createAddress,
 
 };
