@@ -148,7 +148,7 @@ const ImagePickerExample = () => {
           </View>
           <View style={styles.box6}>
             <View style={styles.box2}>
-              <Text style={styles.text1}>อัพโหลดภาพ</Text>
+              <Text style={styles.text1}>ประเภทงาน 1</Text>
             </View>
 
             <View style={styles.boxhead}>
@@ -193,7 +193,7 @@ const ImagePickerExample = () => {
             </View>
 
             <View style={styles.box5}>
-              <Text style={styles.text1}>อัพโหลดภาพ</Text>
+              <Text style={styles.text1}>ประเภทงาน 2</Text>
             </View>
 
             <View style={styles.boxhead}>
@@ -232,50 +232,6 @@ const ImagePickerExample = () => {
                     name="pluscircleo"
                     style={styles.icons}
                     onPress={() => pickImage("image6")}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.box5}>
-              <Text style={styles.text1}>อัพโหลดภาพ</Text>
-            </View>
-
-            <View style={styles.boxhead}>
-              <View style={styles.box1}>
-                {image7 && (
-                  <Image source={{ uri: image7.uri }} style={styles.image3} />
-                )}
-                <TouchableOpacity>
-                  <AntDesign
-                    name="pluscircleo"
-                    style={styles.icons}
-                    onPress={() => pickImage("image7")}
-                  />
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.box1}>
-                {image8 && (
-                  <Image source={{ uri: image8.uri }} style={styles.image3} />
-                )}
-                <TouchableOpacity>
-                  <AntDesign
-                    name="pluscircleo"
-                    style={styles.icons}
-                    onPress={() => pickImage("image8")}
-                  />
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.box1}>
-                {image9 && (
-                  <Image source={{ uri: image9.uri }} style={styles.image3} />
-                )}
-                <TouchableOpacity>
-                  <AntDesign
-                    name="pluscircleo"
-                    style={styles.icons}
-                    onPress={() => pickImage("image9")}
                   />
                 </TouchableOpacity>
               </View>
@@ -389,7 +345,7 @@ const styles = StyleSheet.create({
   box2: {
     height: 25,
     width: 120,
-    backgroundColor: "#bcbdbe",
+    backgroundColor: "#e8e9e9",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -401,7 +357,7 @@ const styles = StyleSheet.create({
   box5: {
     height: 25,
     width: 120,
-    backgroundColor: "#bcbdbe",
+    backgroundColor: "#e8e9e9",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,

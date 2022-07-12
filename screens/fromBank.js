@@ -32,6 +32,12 @@ const FromBank = ({ navigation: { popToTop } }) => {
      <>
       <SafeAreaView style={styles.container}> 
         <ScrollView>
+        <View>
+            <Image
+              style={styles.image2}
+              source={require("../assets/images/BB-2.png")}
+            />
+          </View>
             <View style={styles.box}>
               <View>
                 <Text style={styles.text1}>บัญชีธนาคาร</Text>
@@ -90,30 +96,30 @@ container: {
 
   },
   box: {
-    height: 420,
-    width: 320,
+    height: '100%',
+    width: '100%',
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
-    borderRadius: 20,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: 20,
-    marginBottom: 10,
+    marginTop: -30,
+    marginBottom: 20,
+    borderRadius: 15,
   },
   box2: {
-    height: 50,
-    width: 280,
-    backgroundColor: '#fff',
+    height: 45 ,
+    width: 300,
+    backgroundColor: '#e8e9e9',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
     borderRadius: 25,
-    marginLeft: 20,
-    marginRight: 5,
+    marginLeft: "auto",
+    marginRight: "auto",
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 10,
@@ -121,8 +127,9 @@ container: {
   text: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 20,
-    marginTop: 12,
+    fontSize: 24,
+    padding: 10,
+    color: '#fff'
   },
   text1: {
     marginLeft: 20,
@@ -132,9 +139,10 @@ container: {
     textAlign: 'center'
   },
     text2: {
-        marginLeft: 20,
-        fontSize: 16,
-        marginTop: 15,
+      marginLeft: 35,
+      fontSize: 16,
+      marginTop: 15,
+      fontWeight: 'bold',
     },
   icons: {
     fontSize: 25,
@@ -143,18 +151,25 @@ container: {
   },
   button: {
     height: 50,
-    width: 280,
-    backgroundColor: '#fff',
+    width: 300,
+    backgroundColor: '#37C1FB',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
     borderRadius: 30,
-    marginLeft: 20,
-    marginRight: 5,
+    marginLeft: "auto",
+    marginRight: "auto",
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 30,
+  },
+  image2: {
+    height: 220,
+    width: '100%',
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: -10,
   },
 
 });
