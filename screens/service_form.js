@@ -42,6 +42,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
   const [technician_2, setTechnician_2] = useState(null);
   const [idPhone, setIdPhone] = useState(useSelector((state) => state.login.id));
   const [statusAddress, setStatusAddress] = useState(useSelector((state) => state.address));
+  const [statusEdit, setStatusEdit] = useState(false);
+  const [id, setId] = useState(null);
   const dispatch = useDispatch();
 
 
@@ -135,22 +137,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
     const result = await technician_type.createAddress(data);
     if (result === "success") {
-      let data3 = {
-        id: idPhone,
-        name: name,
-        addressUser: addressUser,
-        subdistrict: subdistrict,
-        district: district,
-        province: province,
-        zipcode: zipcode,
-        location: location,
-        technician_1: technician_1,
-        technician_2: technician_2,
-      }
-      dispatch({
-        type: 'ADD_ADDRESS',
-        payload: data3
-      })
+      await getAddress(idPhone);
       await Alert.alert("บันทึกสำเร็จ");
       setStatusAddress(true);
       await popToTop();
@@ -158,10 +145,82 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       await Alert.alert("บันทึกไม่สำเร็จ กรุณาลองใหม่");
     }
   };
+  const update = async () => {
+
+    const data = [
+      id,
+      name,
+      addressUser,
+      subdistrict,
+      district,
+      province,
+      zipcode,
+      location,
+      technician_1,
+      technician_2,
+    ];
+
+    const result = await technician_type.updateAddress(data);
+    console.log(result);
+    if (result === "success") {
+      await getAddress(idPhone)
+      setStatusEdit(false);
+      await Alert.alert("เเก้ไขสำเร็จ");
+      setStatusAddress(true);
+      await popToTop();
+    } else {
+      await Alert.alert("เเก้ไขไม่สำเร็จ กรุณาลองใหม่");
+    }
+
+  }
+
   const logde = async () => {
     const result = await technician_type.technician_type();
     setTechnicianType(result);
   };
+
+  const edit = async () => {
+    setStatusEdit(true);
+    setId(statusAddress.id)
+    setName(statusAddress.name);
+    setAddressUser(statusAddress.addressUser);
+    setSubdistrict(statusAddress.subdistrict);
+    setDistrict(statusAddress.district);
+    setProvince(statusAddress.province);
+    setZipcode(statusAddress.zipcode);
+    setTechnician_1(statusAddress.technician_1);
+    setTechnician_2(statusAddress.technician_2);
+    setLocation({
+      latitude: statusAddress.location.latitude,
+      longitude: statusAddress.location.longitude,
+    });
+  }
+
+  const getAddress = async (e) => {
+
+    const result = await technician_type.getAddress(e);
+
+    if (result !== null) {
+      let data3 = {
+        id: result[0].id,
+        name: result[0].name,
+        addressUser: result[0].address,
+        subdistrict: result[0].subdistrict,
+        district: result[0].district,
+        province: result[0].province,
+        zipcode: result[0].zipcode,
+        location: JSON.parse(result[0].location),
+        technician_1: result[0].technician_1,
+        technician_2: result[0].technician_2,
+      }
+      dispatch({
+        type: 'ADD_ADDRESS',
+        payload: data3
+      })
+    }
+  }
+
+
 
 
 
@@ -174,12 +233,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     if (technicianType === null) {
       logde();
     }
-    /* 
-        if (statusAddress !== null ) {
-          navigate('Profile');
-    
-        } */
-
 
   }, []);
 
@@ -190,7 +243,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     uri: "https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg",
   };
 
-  const editAddress = () => {
+
+  const addAddress = () => {
     return (
       <>
         <SafeAreaView style={styles.container}>
@@ -335,8 +389,9 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       </>
     )
   }
-  const showAddress = () => {
 
+
+  const showAddress = () => {
     return (
       <>
 
@@ -348,7 +403,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
         <Text>{statusAddress.zipcode}</Text>
         <Text>{statusAddress.technician_1}</Text>
         <Text>{statusAddress.technician_2}</Text>
-        <Text>qweqwe</Text>
+        <Text onPress={() => edit()}>Edit</Text>
 
 
         <View>
@@ -388,14 +443,167 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     )
   }
 
+
+  const editAddress = () => {
+    return (
+      <>
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <View>
+              <ImageBackground
+                source={image}
+                resizeMode="cover"
+                style={styles.backgroun}
+              >
+                <Image
+                  style={styles.image}
+                  source={{
+                    uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
+                  }}
+                />
+              </ImageBackground>
+            </View>
+
+            <View style={styles.box3}>
+              <View>
+                <Text style={styles.text1}>รายละเอียดติดต่อ editAddress</Text>
+              </View>
+              <View style={styles.boxhead}>
+                <View>
+                  <Text style={styles.text2}>{"ชื่อ"}</Text>
+                  <TextInput value={name}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setName(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+                <View>
+                  <View>
+                    <Text style={styles.text2}>{"เลือกประเภทงานช่าง"}</Text>
+                    <View>
+                      <Picker
+                        style={styles.box4_1}
+                        selectedValue={technician_1}
+                        onValueChange={(itemValue, itemIndex) =>
+                          setTechnician_1(itemValue)
+                        }
+                      >
+                        <Picker.Item label="เลือกประเภทงาน" value="null" />
+                        {technicianType !== null
+                          ? technicianType.map((value) => {
+                            let name = value.technician_type;
+                            let picker = (
+                              <Picker.Item label={name} value={name} />
+                            );
+                            return picker;
+                          })
+                          : null}
+                      </Picker>
+                    </View>
+                  </View>
+                  <View>
+                    <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
+                    <View>
+                      <Picker
+                        style={styles.box4_1}
+                        selectedValue={technician_2}
+                        onValueChange={(itemValue, itemIndex) =>
+                          setTechnician_2(itemValue)
+                        }
+                      >
+                        <Picker.Item label="เลือกประเภทงาน" value="null" />
+                        {technicianType !== null
+                          ? technicianType.map((value) => {
+                            let name = value.technician_type;
+                            let picker = (
+                              <Picker.Item label={name} value={name} />
+                            );
+                            return picker;
+                          })
+                          : null}
+                      </Picker>
+                    </View>
+                  </View>
+                </View>
+
+                <View>
+                  <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
+                  <TextInput value={addressUser}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setAddressUser(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"ตำบล"}</Text>
+                  <TextInput value={subdistrict}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setSubdistrict(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"อำเภอ"}</Text>
+                  <TextInput value={district}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setDistrict(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"จังหวัด"}</Text>
+                  <TextInput value={province}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setProvince(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.text2}>{"รหัสไปรษณีย์"}</Text>
+                  <TextInput value={zipcode}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setZipcode(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+              </View>
+              <Text style={styles.text2}>{"GPS"}</Text>
+              <View style={styles.containerMap}>
+                {location.longitude === null ? null : <>{map()}</>}
+              </View>
+              <TouchableOpacity style={styles.button} onPress={() => update()}>
+                <Text style={styles.text}>บันทึก</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </>
+    )
+  }
+
+
   /*   console.log(useSelector((state) => ({ ...state })));
    */
+
   return (
     <>
       {statusAddress === null ?
-        editAddress()
+        addAddress()
         :
-        showAddress()
+
+        statusEdit === true ?
+          editAddress()
+          :
+          showAddress()
 
       }
     </>

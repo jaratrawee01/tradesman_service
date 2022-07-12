@@ -27,52 +27,36 @@ class Login extends Component {
   }
 
 
-
-
-
   handleOnPress(e, user) {
     this.setState({
       [user]: e,
     });
   }
-/*   getLogin () {
-    console.log("555");
-    let data2 = {
-      id: getLogin[0].id,
-      phone: getLogin[0].phone,
-      password: getLogin[0].password,
-      status_user: getLogin[0].status_user,
-      status_check: getLogin[0].status_check,
-    }
-    this.props.dispatch({
-      type: 'ADD_LOGIN',
-      payload: data2
-    })
-  } */
-   getAddress = async (e) => {
-     console.log("e",e);
+
+  getAddress = async (e) => {
+    console.log("e", e);
     const result = await login.getAddress(e);
-    console.log("result",result);
+    console.log("result", result);
     if (result !== null) {
       let data3 = {
         id: result[0].id,
         name: result[0].name,
-        addressUser:  result[0].address,
+        addressUser: result[0].address,
         subdistrict: result[0].subdistrict,
         district: result[0].district,
         province: result[0].province,
         zipcode: result[0].zipcode,
-        location:  JSON.parse(result[0].location),
+        location: JSON.parse(result[0].location),
         technician_1: result[0].technician_1,
         technician_2: result[0].technician_2,
-      } 
+      }
       this.props.dispatch({
         type: 'ADD_ADDRESS',
         payload: data3
-      }) 
+      })
     }
   }
-  
+
 
   login = async () => {
     let password = md5(this.state.password);
