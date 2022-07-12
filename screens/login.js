@@ -62,7 +62,7 @@ class Login extends Component {
         district: result[0].district,
         province: result[0].province,
         zipcode: result[0].zipcode,
-        location: result[0].location,
+        location:  JSON.parse(result[0].location),
         technician_1: result[0].technician_1,
         technician_2: result[0].technician_2,
       } 
@@ -115,7 +115,7 @@ class Login extends Component {
             <View style={styles.marginTop}>
               <View style={styles.input}>
                 <FontAwesome name="user" style={styles.icons3} />
-                <TextInput
+                <TextInput keyboardType='numeric'
                   style={{ flex: 1, paddingLeft: 12, fontSize: 20 }}
                   placeholder="Name"
                   underlineColorAndroid="transparent"
@@ -131,6 +131,7 @@ class Login extends Component {
                   style={{ flex: 1, paddingLeft: 12, fontSize: 20 }}
                   placeholder="Password"
                   underlineColorAndroid="transparent"
+                  secureTextEntry={true}
                   onChange={(e) =>
                     this.handleOnPress(e.nativeEvent.text, "password")
                   }

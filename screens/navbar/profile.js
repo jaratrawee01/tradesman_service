@@ -292,7 +292,7 @@ class Profile_tradesman extends Component {
           <ImageBackground  source={img1} resizeMode="cover" style={styles.image4}>
             <View style={styles.container}>
             <TouchableOpacity  style={styles.box7} onPress={() => this.props.navigation.navigate("Login")}>
-                <Text style={styles.text4}>เข้าสุ่ระบบ</Text>
+                <Text style={styles.text4}>เข้าสู่ระบบ</Text>
             </TouchableOpacity >
             </View>
        
@@ -504,7 +504,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   text4: {
-    padding: 8,
+    padding: 5,
     marginLeft: "auto",
     marginRight: "auto",
     fontSize: 25,

@@ -96,7 +96,7 @@ const Registration = ({ navigation: { popToTop } }) => {
       <View style={styles.marginTop}>
           <View style={styles.input}>
             <FontAwesome name="phone-square" size={24} color="#00c2fe" />
-            <TextInput
+            <TextInput keyboardType='numeric'
               style={{ flex: 1, paddingLeft: 12, fontSize: 18 }}
               onChange={(e) => {
                 setPhone(e.nativeEvent.text);

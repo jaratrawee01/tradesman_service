@@ -23,7 +23,7 @@ import { connect } from "react-redux";
 
 let apiKey = "AIzaSyBdjxXSNpAnyW0lzE_uliQ121U4mkmSgPk";
 
-const Service_form = ({ navigation: { popToTop } }) => {
+const Service_form = ({ navigation: { popToTop, navigate } }) => {
   const [location, setLocation] = useState({
     latitude: null,
     longitude: null,
@@ -55,11 +55,7 @@ const Service_form = ({ navigation: { popToTop } }) => {
     if (status !== "granted") {
       setErrorMsg("Permission to access location was denied");
     }
-
     Location.setGoogleApiKey(apiKey);
-
-    console.log(status);
-
     let { coords } = await Location.getCurrentPositionAsync();
 
     setLocation({
@@ -74,7 +70,6 @@ const Service_form = ({ navigation: { popToTop } }) => {
         longitude,
         latitude,
       });
-
       const name = regionName[0];
       const address = JSON.stringify(name?.["subregion"]);
       setAddress(address);
@@ -153,11 +148,12 @@ const Service_form = ({ navigation: { popToTop } }) => {
         technician_2: technician_2,
       }
       dispatch({
-        type: ' ',
+        type: 'ADD_ADDRESS',
         payload: data3
       })
       await Alert.alert("บันทึกสำเร็จ");
       setStatusAddress(true);
+      await popToTop();
     } else {
       await Alert.alert("บันทึกไม่สำเร็จ กรุณาลองใหม่");
     }
@@ -178,13 +174,13 @@ const Service_form = ({ navigation: { popToTop } }) => {
     if (technicianType === null) {
       logde();
     }
-    if (statusAddress !== null) {
-      /*  const latitude =  useSelector((state) => state.address.location.latitude */
-      /*   setLocation({
-          latitude: `${useSelector((state) => state.address.location.latitude}`,
-          longitude: e.nativeEvent.coordinate.longitude,
-        }); */
-    }
+    /* 
+        if (statusAddress !== null ) {
+          navigate('Profile');
+    
+        } */
+
+
   }, []);
 
 
@@ -340,31 +336,68 @@ const Service_form = ({ navigation: { popToTop } }) => {
     )
   }
   const showAddress = () => {
+
     return (
       <>
 
-        <Text>{useSelector((state) => state.address.name)}</Text>
-        <Text>{useSelector((state) => state.address.addressUser)}</Text>
-        <Text>{useSelector((state) => state.address.subdistrict)}</Text>
-        <Text>{useSelector((state) => state.address.district)}</Text>
-        <Text>{useSelector((state) => state.address.province)}</Text>
-        <Text>{useSelector((state) => state.address.zipcode)}</Text>
-        <Text>{JSON.stringify(useSelector((state) => state.address.location))}</Text>
-        <Text>{useSelector((state) => state.address.technician_1)}</Text>
-        <Text>{useSelector((state) => state.address.technician_2)}</Text>
+        <Text>{statusAddress.name}</Text>
+        <Text>{statusAddress.addressUser}</Text>
+        <Text>{statusAddress.subdistrict}</Text>
+        <Text>{statusAddress.district}</Text>
+        <Text>{statusAddress.province}</Text>
+        <Text>{statusAddress.zipcode}</Text>
+        <Text>{statusAddress.technician_1}</Text>
+        <Text>{statusAddress.technician_2}</Text>
+        <Text>qweqwe</Text>
 
 
+        <View>
+          {
+            statusAddress.location !== undefined ?
+              <>
+                <MapView
+                  style={styles.map}
+                  initialRegion={{
+                    latitude: statusAddress.location.latitude,
+                    longitude: statusAddress.location.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }}
+                >
+                  <Marker
+                    coordinate={{
+                      latitude: statusAddress.location.latitude,
+                      longitude: statusAddress.location.longitude,
+                    }}
 
+                  >
+                    <Callout>
+                      <Text>ตำเเหน่งของคุณ</Text>
+                    </Callout>
+                  </Marker>
+                </MapView>
+              </>
+              :
+              null
+          }
+
+        </View>
       </>
+
 
     )
   }
 
-  console.log(useSelector((state) => ({ ...state })));
-
+  /*   console.log(useSelector((state) => ({ ...state })));
+   */
   return (
     <>
-      {statusAddress === null ? editAddress() : showAddress()}
+      {statusAddress === null ?
+        editAddress()
+        :
+        showAddress()
+
+      }
     </>
   );
 };
