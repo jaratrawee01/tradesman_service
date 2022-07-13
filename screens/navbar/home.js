@@ -39,7 +39,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างกระจก</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-3.png')}
@@ -59,7 +59,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างปูน</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-5.png')}
@@ -69,7 +69,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างสี</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-6.png')}
@@ -79,7 +79,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างไฟฟ้า</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-7.png')}
@@ -99,7 +99,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างเชือม</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-9.png')}
@@ -109,7 +109,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างไม้</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-10.png')}
@@ -119,7 +119,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างกระเบื้อง</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-11.png')}
@@ -129,7 +129,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างกระเบื้อง</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-12.png')}
@@ -139,7 +139,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>กรรมกร</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-13.png')}
