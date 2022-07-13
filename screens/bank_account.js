@@ -89,7 +89,7 @@ container: {
     borderRadius: 15,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: -40,
+    marginTop: -45,
     marginBottom: 10,
   },
   box1: {
