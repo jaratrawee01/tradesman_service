@@ -59,27 +59,30 @@ class Login extends Component {
 
 
   login = async () => {
+
     let password = md5(this.state.password);
     const data = [this.state.username, password];
     const getLogin = await login.getLogin(data);
-    if (getLogin === null) {
-      await alert('Login ไม่สำเร็จ กรุณาลองใหม่');
+    console.log("getLogin",getLogin);
+    if (getLogin) {
+      
+        //ส่วน login
+        let data2 = {
+          id: getLogin[0].id,
+          phone: getLogin[0].phone,
+          password: getLogin[0].password,
+          status_user: getLogin[0].status_user,
+          status_check: getLogin[0].status_check,
+        }
+        this.props.dispatch({
+          type: 'ADD_LOGIN',
+          payload: data2
+        })
+        await this.getAddress(getLogin[0].id);
+  
+        await this.props.navigation.popToTop();
     } else {
-      //ส่วน login
-      let data2 = {
-        id: getLogin[0].id,
-        phone: getLogin[0].phone,
-        password: getLogin[0].password,
-        status_user: getLogin[0].status_user,
-        status_check: getLogin[0].status_check,
-      }
-      this.props.dispatch({
-        type: 'ADD_LOGIN',
-        payload: data2
-      })
-      await this.getAddress(getLogin[0].id);
-
-      await this.props.navigation.popToTop();
+      await alert('Login ไม่สำเร็จ กรุณาลองใหม่');
     }
   };
 

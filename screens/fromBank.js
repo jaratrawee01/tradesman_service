@@ -105,7 +105,7 @@ container: {
     elevation: 4,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: -30,
+    marginTop: -45,
     marginBottom: 20,
     borderRadius: 15,
   },

@@ -18,6 +18,7 @@ import { setDisabled } from "react-native/Libraries/LogBox/Data/LogBoxData";
 import { Picker } from "@react-native-picker/picker";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
+import img1 from "../assets/images/BB-2.png";
 
 // You can import from local files
 
@@ -40,13 +41,15 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
   const [technicianType, setTechnicianType] = useState(null);
   const [technician_1, setTechnician_1] = useState(null);
   const [technician_2, setTechnician_2] = useState(null);
-  const [idPhone, setIdPhone] = useState(useSelector((state) => state.login.id));
-  const [statusAddress, setStatusAddress] = useState(useSelector((state) => state.address));
+  const [idPhone, setIdPhone] = useState(
+    useSelector((state) => state.login.id)
+  );
+  const [statusAddress, setStatusAddress] = useState(
+    useSelector((state) => state.address)
+  );
   const [statusEdit, setStatusEdit] = useState(false);
   const [id, setId] = useState(null);
   const dispatch = useDispatch();
-
-
 
   const mapRef = React.createRef();
 
@@ -119,8 +122,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     );
   };
 
-
-
   const serve = async () => {
     const data = [
       idPhone,
@@ -146,7 +147,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     }
   };
   const update = async () => {
-
     const data = [
       id,
       name,
@@ -163,7 +163,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     const result = await technician_type.updateAddress(data);
     console.log(result);
     if (result === "success") {
-      await getAddress(idPhone)
+      await getAddress(idPhone);
       setStatusEdit(false);
       await Alert.alert("เเก้ไขสำเร็จ");
       setStatusAddress(true);
@@ -171,17 +171,21 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     } else {
       await Alert.alert("เเก้ไขไม่สำเร็จ กรุณาลองใหม่");
     }
+  };
 
-  }
-
-  const logde = async () => {
+  const loadtTechnician = async () => {
     const result = await technician_type.technician_type();
-    setTechnicianType(result);
+    console.log("result", result);
+    if (result.length > 0) {
+      setTechnicianType(result);
+    } else {
+      setTechnicianType(null);
+    }
   };
 
   const edit = async () => {
     setStatusEdit(true);
-    setId(statusAddress.id)
+    setId(statusAddress.id);
     setName(statusAddress.name);
     setAddressUser(statusAddress.addressUser);
     setSubdistrict(statusAddress.subdistrict);
@@ -194,10 +198,9 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       latitude: statusAddress.location.latitude,
       longitude: statusAddress.location.longitude,
     });
-  }
+  };
 
   const getAddress = async (e) => {
-
     const result = await technician_type.getAddress(e);
 
     if (result !== null) {
@@ -212,18 +215,13 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
         location: JSON.parse(result[0].location),
         technician_1: result[0].technician_1,
         technician_2: result[0].technician_2,
-      }
+      };
       dispatch({
-        type: 'ADD_ADDRESS',
-        payload: data3
-      })
+        type: "ADD_ADDRESS",
+        payload: data3,
+      });
     }
-  }
-
-
-
-
-
+  };
 
   useEffect(() => {
     if (location.longitude === null) {
@@ -231,18 +229,15 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       map();
     }
     if (technicianType === null) {
-      logde();
+      loadtTechnician();
     }
-
   }, []);
-
 
   /*   const url = useSelector(state => ({...state}));
     console.log("url",url); */
   const image = {
     uri: "https://www.roojai.com/wp-content/uploads/2018/07/how-to-choose-garage-car-mechanic-cover.jpg",
   };
-
 
   const addAddress = () => {
     return (
@@ -251,16 +246,18 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
           <ScrollView>
             <View>
               <ImageBackground
-                source={image}
+                source={img1}
                 resizeMode="cover"
-                style={styles.backgroun}
+                style={styles.image2}
               >
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-                  }}
-                />
+                <View style={styles.container}>
+                  <Image
+                    style={styles.image}
+                    source={{
+                      uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
+                    }}
+                  />
+                </View>
               </ImageBackground>
             </View>
 
@@ -280,7 +277,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
                 <View>
                   <View>
-                    <Text style={styles.text2}>{"เลือกประเภทงานช่าง"}</Text>
+                    <Text style={styles.text2}>{"เลือกประเภทงานช่าง 1"}</Text>
                     <View>
                       <Picker
                         style={styles.box4_1}
@@ -292,18 +289,18 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                         <Picker.Item label="เลือกประเภทงาน" value="null" />
                         {technicianType !== null
                           ? technicianType.map((value) => {
-                            let name = value.technician_type;
-                            let picker = (
-                              <Picker.Item label={name} value={name} />
-                            );
-                            return picker;
-                          })
+                              let name = value.technician_type;
+                              let picker = (
+                                <Picker.Item label={name} value={name} />
+                              );
+                              return picker;
+                            })
                           : null}
                       </Picker>
                     </View>
                   </View>
                   <View>
-                    <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
+                    <Text style={styles.text4}>{"เลือกประเภทงานช่าง 2"}</Text>
                     <View>
                       <Picker
                         style={styles.box4_1}
@@ -315,12 +312,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                         <Picker.Item label="เลือกประเภทงาน" value="null" />
                         {technicianType !== null
                           ? technicianType.map((value) => {
-                            let name = value.technician_type;
-                            let picker = (
-                              <Picker.Item label={name} value={name} />
-                            );
-                            return picker;
-                          })
+                              let name = value.technician_type;
+                              let picker = (
+                                <Picker.Item label={name} value={name} />
+                              );
+                              return picker;
+                            })
                           : null}
                       </Picker>
                     </View>
@@ -387,62 +384,109 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
           </ScrollView>
         </SafeAreaView>
       </>
-    )
-  }
-
+    );
+  };
 
   const showAddress = () => {
     return (
       <>
+        <ScrollView>
+          <View>
+            <Image
+              style={styles.image2}
+              source={require("../assets/images/BB-2.png")}
+            />
+          </View>
+          <View style={styles.box}>
+            <View>
+              <Text style={styles.text1}>รายละเอียดติดต่อ</Text>
+            </View>
+            <TouchableOpacity style={styles.button1} onPress={() => edit()}>
+              <Text style={styles.text5}>แก้ไขข้อมูล</Text>
+            </TouchableOpacity>
+            <View>
+              <Text style={styles.text2}>{"ชื่อ"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.name}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{"บ้านเลขที่"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.addressUser}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{"ตำบล"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.subdistrict}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{"อำเภอ"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.district}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{"จังหวัด"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.province}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{"รหัสไปรษณีย์"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.zipcode}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{"ประเภทงาน 1"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.technician_1}</Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.text2}>{"ประเภทงาน 2"}</Text>
+              <View style={styles.box4}>
+                <Text style={styles.text3}>{statusAddress.technician_2}</Text>
+              </View>
+            </View>
 
-        <Text>{statusAddress.name}</Text>
-        <Text>{statusAddress.addressUser}</Text>
-        <Text>{statusAddress.subdistrict}</Text>
-        <Text>{statusAddress.district}</Text>
-        <Text>{statusAddress.province}</Text>
-        <Text>{statusAddress.zipcode}</Text>
-        <Text>{statusAddress.technician_1}</Text>
-        <Text>{statusAddress.technician_2}</Text>
-        <Text onPress={() => edit()}>Edit</Text>
-
-
-        <View>
-          {
-            statusAddress.location !== undefined ?
-              <>
-                <MapView
-                  style={styles.map}
-                  initialRegion={{
-                    latitude: statusAddress.location.latitude,
-                    longitude: statusAddress.location.longitude,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                  }}
-                >
-                  <Marker
-                    coordinate={{
-                      latitude: statusAddress.location.latitude,
-                      longitude: statusAddress.location.longitude,
-                    }}
-
-                  >
-                    <Callout>
-                      <Text>ตำเเหน่งของคุณ</Text>
-                    </Callout>
-                  </Marker>
-                </MapView>
-              </>
-              :
-              null
-          }
-
-        </View>
+            <View>
+              <Text style={styles.text2}>{"GPS"}</Text>
+              <View style={styles.box1}>
+                {statusAddress.location !== undefined ? (
+                  <>
+                    <MapView
+                      style={styles.map}
+                      initialRegion={{
+                        latitude: statusAddress.location.latitude,
+                        longitude: statusAddress.location.longitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                      }}
+                    >
+                      <Marker
+                        coordinate={{
+                          latitude: statusAddress.location.latitude,
+                          longitude: statusAddress.location.longitude,
+                        }}
+                      >
+                        <Callout>
+                          <Text>ตำเเหน่งของคุณ</Text>
+                        </Callout>
+                      </Marker>
+                    </MapView>
+                  </>
+                ) : null}
+              </View>
+            </View>
+          </View>
+        </ScrollView>
       </>
-
-
-    )
-  }
-
+    );
+  };
 
   const editAddress = () => {
     return (
@@ -451,27 +495,30 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
           <ScrollView>
             <View>
               <ImageBackground
-                source={image}
+                source={img1}
                 resizeMode="cover"
-                style={styles.backgroun}
+                style={styles.image2}
               >
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-                  }}
-                />
+                <View style={styles.container}>
+                  <Image
+                    style={styles.image}
+                    source={{
+                      uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
+                    }}
+                  />
+                </View>
               </ImageBackground>
             </View>
 
             <View style={styles.box3}>
               <View>
-                <Text style={styles.text1}>รายละเอียดติดต่อ editAddress</Text>
+                <Text style={styles.text1}>แก้ไขข้อมูล</Text>
               </View>
               <View style={styles.boxhead}>
                 <View>
                   <Text style={styles.text2}>{"ชื่อ"}</Text>
-                  <TextInput value={name}
+                  <TextInput
+                    value={name}
                     style={styles.box4}
                     onChange={(e) => {
                       setName(e.nativeEvent.text);
@@ -480,7 +527,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
                 <View>
                   <View>
-                    <Text style={styles.text2}>{"เลือกประเภทงานช่าง"}</Text>
+                    <Text style={styles.text2}>{"เลือกประเภทงานช่าง 1"}</Text>
                     <View>
                       <Picker
                         style={styles.box4_1}
@@ -492,18 +539,18 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                         <Picker.Item label="เลือกประเภทงาน" value="null" />
                         {technicianType !== null
                           ? technicianType.map((value) => {
-                            let name = value.technician_type;
-                            let picker = (
-                              <Picker.Item label={name} value={name} />
-                            );
-                            return picker;
-                          })
+                              let name = value.technician_type;
+                              let picker = (
+                                <Picker.Item label={name} value={name} />
+                              );
+                              return picker;
+                            })
                           : null}
                       </Picker>
                     </View>
                   </View>
                   <View>
-                    <Text style={styles.text4}>{"เลือกประเภทงานช่าง"}</Text>
+                    <Text style={styles.text4}>{"เลือกประเภทงานช่าง 2"}</Text>
                     <View>
                       <Picker
                         style={styles.box4_1}
@@ -515,12 +562,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                         <Picker.Item label="เลือกประเภทงาน" value="null" />
                         {technicianType !== null
                           ? technicianType.map((value) => {
-                            let name = value.technician_type;
-                            let picker = (
-                              <Picker.Item label={name} value={name} />
-                            );
-                            return picker;
-                          })
+                              let name = value.technician_type;
+                              let picker = (
+                                <Picker.Item label={name} value={name} />
+                              );
+                              return picker;
+                            })
                           : null}
                       </Picker>
                     </View>
@@ -529,7 +576,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
                 <View>
                   <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
-                  <TextInput value={addressUser}
+                  <TextInput
+                    value={addressUser}
                     style={styles.box4}
                     onChange={(e) => {
                       setAddressUser(e.nativeEvent.text);
@@ -539,7 +587,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
                 <View>
                   <Text style={styles.text2}>{"ตำบล"}</Text>
-                  <TextInput value={subdistrict}
+                  <TextInput
+                    value={subdistrict}
                     style={styles.box4}
                     onChange={(e) => {
                       setSubdistrict(e.nativeEvent.text);
@@ -549,7 +598,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
                 <View>
                   <Text style={styles.text2}>{"อำเภอ"}</Text>
-                  <TextInput value={district}
+                  <TextInput
+                    value={district}
                     style={styles.box4}
                     onChange={(e) => {
                       setDistrict(e.nativeEvent.text);
@@ -559,7 +609,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
                 <View>
                   <Text style={styles.text2}>{"จังหวัด"}</Text>
-                  <TextInput value={province}
+                  <TextInput
+                    value={province}
                     style={styles.box4}
                     onChange={(e) => {
                       setProvince(e.nativeEvent.text);
@@ -568,7 +619,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
                 <View>
                   <Text style={styles.text2}>{"รหัสไปรษณีย์"}</Text>
-                  <TextInput value={zipcode}
+                  <TextInput
+                    value={zipcode}
                     style={styles.box4}
                     onChange={(e) => {
                       setZipcode(e.nativeEvent.text);
@@ -587,25 +639,20 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
           </ScrollView>
         </SafeAreaView>
       </>
-    )
-  }
-
+    );
+  };
 
   /*   console.log(useSelector((state) => ({ ...state })));
    */
+  console.log("technicianType", technicianType);
 
   return (
     <>
-      {statusAddress === null ?
-        addAddress()
-        :
-
-        statusEdit === true ?
-          editAddress()
-          :
-          showAddress()
-
-      }
+      {statusAddress === null
+        ? addAddress()
+        : statusEdit === true
+        ? editAddress()
+        : showAddress()}
     </>
   );
 };
@@ -621,7 +668,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: "auto",
-    height: 330,
+    height: 200,
   },
   icons: {
     fontSize: 25,
@@ -651,6 +698,41 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
+  image2: {
+    height: 220,
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: -10,
+  },
+  box: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: -30,
+    marginBottom: 30,
+    borderRadius: 15,
+  },
+  box1: {
+    height: 200,
+    width: 300,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    borderRadius: 6,
+    marginLeft: 30,
+    marginRight: 30,
+    fontSize: 18,
+    marginTop: 5,
+  },
   box3: {
     height: "100%",
     width: "100%",
@@ -662,7 +744,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: -60,
+    marginTop: -45,
     marginBottom: 10,
   },
   box4: {
@@ -689,8 +771,6 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     fontSize: 18,
-
-
   },
   box6: {
     height: 150,
@@ -712,7 +792,7 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     fontWeight: "bold",
     fontSize: 30,
-    marginTop: 5,
+    padding: 6,
   },
   text1: {
     marginLeft: 30,
@@ -726,11 +806,24 @@ const styles = StyleSheet.create({
     marginTop: 15,
     fontWeight: "bold",
   },
+  text3: {
+    marginLeft: 5,
+    fontSize: 18,
+    padding: 10,
+  },
   text4: {
     marginLeft: 30,
     fontSize: 16,
     marginTop: 30,
     fontWeight: "bold",
+  },
+  text5: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    fontWeight: "bold",
+    fontSize: 15,
+    padding: 6,
+    color: '#fff',
   },
   input: {
     height: 50,
@@ -758,11 +851,21 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     marginTop: 30,
     marginBottom: 30,
+    borderRadius: 10,
+  },
+  button1: {
+    height: 30,
+    width: 90,
+    backgroundColor: "#37C1FB",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    marginLeft: 250,
+    marginTop: -20,
+    marginBottom: 5,
+    borderRadius: 10,
   },
 });
 
-
-
 export default connect()(Service_form);
-
-

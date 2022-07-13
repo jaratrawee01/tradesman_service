@@ -295,11 +295,7 @@ class Profile_tradesman extends Component {
                 <Text style={styles.text4}>เข้าสู่ระบบ</Text>
             </TouchableOpacity >
             </View>
-       
-               
           </ImageBackground>
-          
-              
           </View>
            
       </>
@@ -375,7 +371,6 @@ const styles = StyleSheet.create({
   image4: {
     width: '100%',
     height: '100%',
-
   },
   top: {
     marginTop: 20,

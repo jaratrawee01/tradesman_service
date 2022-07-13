@@ -7,7 +7,7 @@ import axios from "axios";
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
     // handle success
-
+a
     return result.data;
   })
     .catch((error) => {
