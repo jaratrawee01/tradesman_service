@@ -64,7 +64,7 @@ class Login extends Component {
     const data = [this.state.username, password];
     const getLogin = await login.getLogin(data);
     console.log("getLogin",getLogin);
-    if (getLogin) {
+    if (getLogin.length > 0) {
       
         //ส่วน login
         let data2 = {

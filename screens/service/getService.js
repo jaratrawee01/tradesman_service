@@ -1,8 +1,8 @@
 import axios from "axios";
 
 /*  const  url = 'https://reqres.in';  */
-/* const url = 'http://192.168.1.3/project/api-database'; //หน่วย */
- const url = 'http://192.168.0.108/project/api-database'; // ยอน 
+const url = 'http://192.168.1.4/project/api-database'; //หน่วย
+/*  const url = 'http://192.168.0.108/project/api-database';  */// ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
@@ -235,6 +235,36 @@ const createAddress = async (e) => {
   
 }
 
+const updateAddress = async (e) => {
+
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('id', e[0]);
+  formdata.append('name', e[1]);
+  formdata.append('addressUser', e[2]);
+  formdata.append('subdistrict', e[3]);
+  formdata.append('district', e[4]);
+  formdata.append('province', e[5]);
+  formdata.append('zipcode', e[6]);
+  formdata.append('location', JSON.stringify(e[7]));
+  formdata.append('technician_1', e[8]);
+  formdata.append('technician_2', e[9]);
+  const cerAdd = await axios.post(`${url}/updateAddress.php`, formdata, {
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+
+    return "success";
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return cerAdd;
+  
+}
+
 
 export default {
   createUser,
@@ -243,5 +273,6 @@ export default {
   technician_type,
   createAddress,
   getAddress,
+  updateAddress,
 
 };

@@ -161,7 +161,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     ];
 
     const result = await technician_type.updateAddress(data);
-    console.log(result);
+    console.log("result",result);
     if (result === "success") {
       await getAddress(idPhone);
       setStatusEdit(false);
