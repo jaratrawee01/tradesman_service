@@ -6,8 +6,10 @@ import {
   Image,
   View,
   ScrollView,
+  TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
+import { AntDesign } from "@expo/vector-icons";
 
 class Information extends Component {
   render() {
@@ -20,6 +22,16 @@ class Information extends Component {
               style={styles.image2}
               source={require("../assets/images/BB-2.png")}
             />
+          </View>
+
+          <View style={styles.box6}>
+            <TouchableOpacity>
+            <AntDesign
+                    name="pluscircleo"
+                    style={styles.icons}
+                    /* onPress={() => pickImage("image1")} */
+                  />
+            </TouchableOpacity>
           </View>
 
           <View style={styles.box1}>
@@ -98,12 +110,34 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     borderRadius: 25,
   },
+  box6: {
+    height: 140,
+    width: 140,
+    backgroundColor: '#37C1FB',
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderRadius: 100,
+    marginTop: 80,
+    marginLeft: 110,
+    borderWidth: 3,
+    borderColor: '#fff',
+    position:"absolute",
+    zIndex: 2,
+  },
+  icons: {
+    fontSize: 40,
+    color: "#000",
+    textAlign: "center",
+    marginTop: 45,
+  },
   text: {
     marginLeft: "auto",
     marginRight: "auto",
     fontWeight: "bold",
     fontSize: 30,
-    marginTop: 20,
+    marginTop: 50,
   },
   text2: {
     marginLeft: 26,
@@ -113,7 +147,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     fontSize: 18,
-    marginTop: -25,
+    marginTop: -20,
     fontWeight: "bold",
     textAlign:'right',
     marginRight: 26,
@@ -125,6 +159,13 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     marginTop: -10,
 
+  },
+  image3: {
+    width: 100,
+    height: 100,
+    marginTop: 15,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 });
 

@@ -45,24 +45,6 @@ class Bank_account extends Component {
             
               </View>
             </View>
-            
-            <View style={styles.box3}>
-              <View>
-                <Text style={styles.text1}>QR-Code</Text>
-              </View>
-                <View>
-                  <View style={styles.box2}>
-                </View>
-                <View >
-                    <TouchableOpacity style={styles.button} 
-                    onPress={() => this.props.navigation.navigate("FromBank")}
-                    >
-                    <AntDesign name="pluscircleo" style={styles.icons1} />
-                      <Text style={styles.text9}>เพิ่ม QR-Code</Text>
-                    </TouchableOpacity>
-                </View>
-              </View>
-            </View>
         
           </ScrollView>
       </SafeAreaView>

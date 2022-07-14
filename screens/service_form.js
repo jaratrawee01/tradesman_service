@@ -404,53 +404,45 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
             <TouchableOpacity style={styles.button1} onPress={() => edit()}>
               <Text style={styles.text5}>แก้ไขข้อมูล</Text>
             </TouchableOpacity>
-            <View>
-              <Text style={styles.text2}>{"ชื่อ"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.name}</Text>
-              </View>
+            
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"ชื่อ"}</Text>
+                <Text style={styles.text7}>{statusAddress.name}</Text>
             </View>
-            <View>
-              <Text style={styles.text2}>{"บ้านเลขที่"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.addressUser}</Text>
-              </View>
+            
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"บ้านเลขที่"}</Text>
+                <Text style={styles.text7}>{statusAddress.addressUser}</Text>
             </View>
-            <View>
-              <Text style={styles.text2}>{"ตำบล"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.subdistrict}</Text>
-              </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"ตำบล"}</Text>
+                <Text style={styles.text7}>{statusAddress.subdistrict}</Text>
             </View>
-            <View>
-              <Text style={styles.text2}>{"อำเภอ"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.district}</Text>
-              </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"อำเภอ"}</Text>
+                <Text style={styles.text7}>{statusAddress.district}</Text>
             </View>
-            <View>
-              <Text style={styles.text2}>{"จังหวัด"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.province}</Text>
-              </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"จังหวัด"}</Text>
+                <Text style={styles.text7}>{statusAddress.province}</Text>
             </View>
-            <View>
-              <Text style={styles.text2}>{"รหัสไปรษณีย์"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.zipcode}</Text>
-              </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"รหัสไปรษณีย์"}</Text>
+                <Text style={styles.text7}>{statusAddress.zipcode}</Text>
             </View>
-            <View>
-              <Text style={styles.text2}>{"ประเภทงาน 1"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.technician_1}</Text>
-              </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"ประเภทงาน 1"}</Text>
+                <Text style={styles.text7}>{statusAddress.technician_1}</Text>
             </View>
-            <View>
-              <Text style={styles.text2}>{"ประเภทงาน 2"}</Text>
-              <View style={styles.box4}>
-                <Text style={styles.text3}>{statusAddress.technician_2}</Text>
-              </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"ประเภทงาน 2"}</Text>
+                <Text style={styles.text7}>{statusAddress.technician_2}</Text>
             </View>
 
             <View>
@@ -786,6 +778,21 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 16,
   },
+  box7: {
+    height: 40,
+    width: 300,
+    backgroundColor: "#e8e9e9",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    borderRadius: 6,
+    marginLeft: 30,
+    marginRight: 30,
+    fontSize: 18,
+    paddingLeft: 15,
+    marginTop: 15,
+  },
 
   text: {
     marginLeft: "auto",
@@ -825,6 +832,18 @@ const styles = StyleSheet.create({
     padding: 6,
     color: '#fff',
   },
+  text6: {
+    marginLeft: 5,
+    fontSize: 18,
+    paddingTop: 10,
+    fontWeight: "bold",
+  },
+  text7: {
+    fontSize: 18,
+    marginTop: -20,
+    textAlign:'right',
+    marginRight: 20,
+  },
   input: {
     height: 50,
     width: 150,
@@ -862,7 +881,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 4,
     marginLeft: 250,
-    marginTop: -20,
+    marginTop: -25,
     marginBottom: 5,
     borderRadius: 10,
   },
