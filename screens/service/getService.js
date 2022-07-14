@@ -1,7 +1,6 @@
 import axios from "axios";
-
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.4/project/api-database'; //หน่วย
+const url = 'http://192.168.1.9/project/api-database'; //หน่วย
 /*  const url = 'http://192.168.0.108/project/api-database';  */// ยอน 
 /* const getUser = async () => {
 
@@ -234,7 +233,7 @@ const createAddress = async (e) => {
   return cerAdd;
   
 }
-
+/* update */
 const updateAddress = async (e) => {
 
   const formdata = new FormData();
@@ -266,6 +265,37 @@ const updateAddress = async (e) => {
 }
 
 
+
+
+const uplodeImages = async (e) => {
+
+   const formdata = new FormData();
+  formdata.append('image', {
+    uri: e.uri,
+    type: 'image/jpg',
+    name: e.uri.split('/').pop(),
+  })
+  formdata.append('idUser', {
+    id_user: 'id_user-123456',
+  })
+ 
+  const cerimg = await axios.post(`${url}/saveFile.php`, formdata, {
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+
+    return result;
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return cerimg;
+
+};
+
+
 export default {
   createUser,
   searchUser,
@@ -274,5 +304,6 @@ export default {
   createAddress,
   getAddress,
   updateAddress,
+  uplodeImages
 
 };

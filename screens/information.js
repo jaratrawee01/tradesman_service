@@ -112,9 +112,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   text3: {
-    marginLeft: 210,
     fontSize: 18,
-    marginTop: -20,
+    marginTop: -25,
     fontWeight: "bold",
     textAlign:'right',
     marginRight: 26,

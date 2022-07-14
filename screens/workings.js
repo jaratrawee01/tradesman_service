@@ -80,7 +80,12 @@ const ImagePickerExample = () => {
     }
   };
 
+ const pickImage2 = async () => {
+    console.log("555");
+  }
+
   const serve = async (e) => {
+  /*   console.log("image1",image1); */
     let result = null;
     if (image1 !== null) {
       const result1 = await bookBank.uplodeImages(image1);
@@ -118,6 +123,7 @@ const ImagePickerExample = () => {
       const result2 = await bookBank.uplodeImages(image9);
       result = result2;
     }
+    console.log("result",result);
 
     if (result === "success") {
       await alert("บันทึกภาพ สำเร็จ");
@@ -154,7 +160,7 @@ const ImagePickerExample = () => {
             <View style={styles.boxhead}>
               <View style={styles.box1}>
                 {image1 && (
-                  <Image source={{ uri: image1.uri }} style={styles.image3} />
+                  <Image source={{ uri: image1.uri }} style={styles.image3}  onPress={() => pickImage2()} />
                 )}
                 <TouchableOpacity>
                   <AntDesign
@@ -167,7 +173,7 @@ const ImagePickerExample = () => {
 
               <View style={styles.box1}>
                 {image2 && (
-                  <Image source={{ uri: image2.uri }} style={styles.image3} />
+                  <Image source={{ uri: image2.uri }} style={styles.image3}  />
                 )}
                 <TouchableOpacity>
                   <AntDesign
@@ -245,34 +251,6 @@ const ImagePickerExample = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-
-      {/*        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button title="Pick an image from camera roll" onPress={() => pickImage('image1')} />
-        {image1 && <Image source={{ uri: image1.uri }} style={{ width: 200, height: 200 }} />}
-        <TouchableOpacity onPress={() => serve('serve1')}>
-            <Text
-              style={{
-                textAlign: "center"
-              }}
-            >
-              สมัครสมาชิก
-            </Text>
-          </TouchableOpacity>
-      </View> 
-
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button title="Pick an image from camera roll" onPress={() => pickImage('image2')} />
-        {image2 && <Image source={{ uri: image2.uri }} style={{ width: 200, height: 200 }} />}
-        <TouchableOpacity onPress={() => serve('serve2')}>
-            <Text
-              style={{
-                textAlign: "center"
-              }}
-            >
-              สมัครสมาชิก
-            </Text>
-          </TouchableOpacity>
-      </View>   */}
     </>
   );
 };
@@ -314,6 +292,7 @@ const styles = StyleSheet.create({
     width: 110,
     height: 150,
     borderRadius: 15,
+    position: "absolute",
   },
   box1: {
     width: 110,
@@ -451,6 +430,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     marginTop: 5,
     marginBottom: 10,
+  
   },
   text3: {
     flex: 1,
