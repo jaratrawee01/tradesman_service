@@ -2,6 +2,8 @@ import React, { Component , useState} from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text,TouchableOpacity , View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import bookBank from './service/getService';
+import {useSelector,useDispatch} from 'react-redux';
+import { connect } from "react-redux";
 
  
 const FromBank = ({ navigation: { popToTop } }) => {
@@ -9,10 +11,13 @@ const FromBank = ({ navigation: { popToTop } }) => {
     const [name, setName] = useState(null);
     const [number_bank, setNumber_bank] = useState(null);
     const [bank, setBank] = useState(null);
+    const [id_user, setId_user] = useState(
+      useSelector((state) => state.login.id)
+    );
 
     const serve = async () => {
 
-        const data = [name, number_bank, bank];
+        const data = [id_user,name, number_bank, bank];
 
              const result = await bookBank.createBookBank(data);
              console.log(result);
@@ -25,7 +30,9 @@ const FromBank = ({ navigation: { popToTop } }) => {
            
       };
     
-
+console.log('gsgsgs',useState(
+  useSelector((state) => state.login.id)
+));
 
     return (
 
@@ -176,4 +183,4 @@ container: {
 
 
 
-export default FromBank; 
+export default connect()(FromBank); 
