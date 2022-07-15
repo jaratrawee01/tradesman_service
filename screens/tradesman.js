@@ -27,7 +27,7 @@ class Home extends Component {
                     <Text style={styles.text}>
                       รีวิว :
                     </Text>
-                    <View style={styles.icons1}>
+            {/*         <View style={styles.icons1}>
                       <View style={styles.boxhead}>
                         <FontAwesome name="star" style={styles.icons} />
                         <FontAwesome name="star" style={styles.icons} />
@@ -35,7 +35,7 @@ class Home extends Component {
                         <FontAwesome name="star" style={styles.icons} />
                         <FontAwesome name="star" style={styles.icons} />
                       </View>
-                    </View>      
+                    </View> */}      
                 </View>
             </TouchableWithoutFeedback>
 
@@ -55,7 +55,7 @@ class Home extends Component {
                       <Text style={styles.text}>
                         รีวิว :
                       </Text>
-                      <View style={styles.icons1}>
+                  {/*     <View style={styles.icons1}>
                       <View style={styles.boxhead}>
                         <FontAwesome name="star" style={styles.icons} />
                         <FontAwesome name="star" style={styles.icons} />
@@ -63,7 +63,7 @@ class Home extends Component {
                         <FontAwesome name="star" style={styles.icons} />
                         <FontAwesome name="star" style={styles.icons} />
                       </View>
-                    </View>
+                    </View> */}
                 </View>
             </TouchableWithoutFeedback>
             
@@ -83,7 +83,7 @@ class Home extends Component {
                 <Text style={styles.text}>
                   รีวิว :
                 </Text>
-                <View style={styles.icons1}>
+               {/*  <View style={styles.icons1}>
                     <View style={styles.boxhead}>
                       <FontAwesome name="star" style={styles.icons} />
                       <FontAwesome name="star" style={styles.icons} />
@@ -91,7 +91,7 @@ class Home extends Component {
                       <FontAwesome name="star" style={styles.icons} />
                       <FontAwesome name="star" style={styles.icons} />
                     </View>
-                  </View>
+                  </View> */}
               </View>
             </TouchableWithoutFeedback>
 
@@ -111,7 +111,7 @@ class Home extends Component {
                   <Text style={styles.text}>
                     รีวิว :
                   </Text>
-                    <View style={styles.icons1}>
+                {/*     <View style={styles.icons1}>
                       <View style={styles.boxhead}>
                         <FontAwesome name="star" style={styles.icons} />
                         <FontAwesome name="star" style={styles.icons} />
@@ -119,7 +119,7 @@ class Home extends Component {
                         <FontAwesome name="star" style={styles.icons} />
                         <FontAwesome name="star" style={styles.icons} />
                       </View>
-                    </View>
+                    </View> */}
                 </View>
             </TouchableWithoutFeedback>
 
