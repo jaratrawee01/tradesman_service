@@ -20,7 +20,7 @@ const FromBank = ({ navigation: { popToTop } }) => {
         const data = [id_user,name, number_bank, bank];
 
              const result = await bookBank.createBookBank(data);
-             console.log(result);
+
              if (result === "success") {
               await  alert('บันทึกสำเร็จ');
               await popToTop();
@@ -30,9 +30,11 @@ const FromBank = ({ navigation: { popToTop } }) => {
            
       };
     
-console.log('gsgsgs',useState(
+/* console.log('gsgsgs',useState(
   useSelector((state) => state.login.id)
-));
+  ));
+ */
+
 
     return (
 

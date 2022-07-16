@@ -116,8 +116,11 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     for (let i = 0; i < index; i++) {
         let id = nameImage[i].id;
         let name = nameImage[i].file_src;
-        const result1 = await bookBank.uplodeUpdateImages(dataImage[i], id,name);
-        result = result1;
+        if (dataImage[i] !== null) {
+          const result1 = await bookBank.uplodeUpdateImages(dataImage[i], id,name);
+          result = result1;
+        }
+
     }
 
       for (let i = index; i < 6; i++) {
