@@ -102,9 +102,9 @@ class Profile_tradesman extends Component {
                 <Text style={styles.text}>Jason Amada</Text>
                 <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
                 <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
+                  {/* <View style={styles.boxhead}>
                     {myStar}
-                  </View>
+                  </View> */}
                 </View>
               </View>
             </View>
@@ -176,9 +176,9 @@ class Profile_tradesman extends Component {
                 <Text style={styles.text}>Jason Amada</Text>
                 <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
                 <View style={styles.icons1}>
-                  <View style={styles.boxhead}>
+                  {/* <View style={styles.boxhead}>
                     {myStar}
-                  </View>
+                  </View> */}
                 </View>
               </View>
             </View>
@@ -494,12 +494,13 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     fontWeight: "bold",
     fontSize: 20,
-    marginTop: 5,
+    paddingTop: 10,
   },
   text1: {
     marginLeft: "auto",
     marginRight: "auto",
     fontSize: 20,
+    paddingTop: 10,
   },
   text2: {
     marginLeft: 55,
