@@ -230,14 +230,14 @@ class Profile_tradesman extends Component {
                   onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
                 </Text>
               </View>
-              <View style={styles.box3}>
+              <View style={styles.box2}>
                 <Ionicons name="card" style={styles.icons5} />
                 <Text
                   style={styles.text2}
                   onPress={() => this.props.navigation.navigate("Bank_account")}>{"บัญชีธนาคาร"}
                 </Text>
               </View>
-              <View style={styles.box5}>
+             {/*  <View style={styles.box5}>
                 <Text style={styles.text3}>ผลงาน</Text>
               </View>
               <View style={styles.box4}>
@@ -263,7 +263,7 @@ class Profile_tradesman extends Component {
                     </View>
                   </Pressable>
                 </View>
-              </View>
+              </View> */}
             </View>
           </ScrollView>
           <Modal
@@ -414,6 +414,20 @@ const styles = StyleSheet.create({
     marginLeft: 45,
     marginRight: 45,
     marginTop: 25,
+  },
+  box2: {
+    height: 60,
+    width: 300,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 3,
+    borderRadius: 10,
+    marginLeft: 28,
+    marginRight: 20,
+    marginTop: 10,
+    marginBottom: 20,
   },
   box3: {
     height: 60,
