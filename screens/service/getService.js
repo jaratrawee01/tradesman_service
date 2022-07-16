@@ -152,7 +152,7 @@ const getLogin = async (e) => {
   })
     .catch((error) => {
 
-      return error;
+      return null;
     });
   return seaUser;
 };
@@ -172,10 +172,32 @@ const getAddress = async (e) => {
   })
     .catch((error) => {
 
-      return error;
+      return null;
     });
   return seaUser;
 };
+
+
+const getImage = async (e) => {
+  const seaUser = await axios.get(`${url}/getImages.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
+
 
 /**
  * ! ส่วนของ post 
@@ -231,8 +253,57 @@ const createAddress = async (e) => {
       return error;
     });
   return cerAdd;
-  
 }
+
+const createBookBank = async (e) => {
+  console.log(e);
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('id_user', e[0]);
+  formdata.append('name', e[1]);
+  formdata.append('number_bank', e[2]);
+  formdata.append('bank', e[3]);
+  console.log("formdata",formdata);
+  const bookBank = await axios.post(`${url}/addBank.php`,formdata,{
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+    return "success";
+  })
+    .catch((error) => {
+      return error;
+    });
+  return bookBank;
+};
+
+
+const uplodeImages = async (e,id_user) => {
+  const formdata = new FormData();
+   formdata.append('image', {
+     uri: e.uri,
+     type: 'image/jpg',
+     name: e.uri.split('/').pop(),
+   })
+   formdata.append('id_user', id_user)
+ 
+   const cerimg = await axios.post(`${url}/saveFile.php`, formdata, {
+     headers: {
+       'Content-Type': 'multipart/form-data;charset=utf-8',
+     }
+   }).then((result) => {
+
+     return "success";
+   })
+     .catch((error) => {
+
+       return error;
+     });
+   return cerimg;
+ };
+
+
+
 /* update */
 const updateAddress = async (e) => {
 
@@ -264,36 +335,36 @@ const updateAddress = async (e) => {
   
 }
 
+const uplodeUpdateImages = async (e,id,name) => {
+
+  const formdata = new FormData();
+   formdata.append('image', {
+     uri: e.uri,
+     type: 'image/jpg',
+     name: e.uri.split('/').pop(),
+   })
+   formdata.append('id', id)
+   formdata.append('name', name)
+   const upimg = await axios.post(`${url}/saveUpdateFile.php`, formdata, {
+     headers: {
+       'Content-Type': 'multipart/form-data;charset=utf-8',
+     }
+   }).then((result) => {
+
+     return "success";
+   })
+     .catch((error) => {
+
+       return null;
+     });
+   return upimg;
+ };
 
 
 
-const uplodeImages = async (e) => {
 
-   const formdata = new FormData();
-  formdata.append('image', {
-    uri: e.uri,
-    type: 'image/jpg',
-    name: e.uri.split('/').pop(),
-  })
-  formdata.append('idUser', {
-    id_user: 'id_user-123456',
-  })
- 
-  const cerimg = await axios.post(`${url}/saveFile.php`, formdata, {
-    headers: {
-      'Content-Type': 'multipart/form-data;charset=utf-8',
-    }
-  }).then((result) => {
 
-    return result;
-  })
-    .catch((error) => {
 
-      return error;
-    });
-  return cerimg;
-
-};
 
 
 export default {
@@ -304,6 +375,8 @@ export default {
   createAddress,
   getAddress,
   updateAddress,
-  uplodeImages
-
+  uplodeImages,
+  getImage,
+  uplodeUpdateImages,
+  createBookBank,
 };
