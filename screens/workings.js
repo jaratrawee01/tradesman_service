@@ -14,23 +14,26 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import bookBank from "./service/getService";
 import { AntDesign } from "@expo/vector-icons";
-import img1 from "../assets/images/A-3.png";
+import img1 from "../assets/images/BB-1.png";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 
 const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
-
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
   const [image4, setImage4] = useState(null);
   const [image5, setImage5] = useState(null);
   const [image6, setImage6] = useState(null);
-  const [statusImage, setStatusImage] = useState(useSelector((state) => state.image));
+  const [statusImage, setStatusImage] = useState(
+    useSelector((state) => state.image)
+  );
   const [statusEditImage, setStatusEditImage] = useState(false);
-  const [id_user, setId_user] = useState(useSelector((state) => state.login.id));
+  const [id_user, setId_user] = useState(
+    useSelector((state) => state.login.id)
+  );
   const dispatch = useDispatch();
-  const url = "http://192.168.1.9/project/api-database/images/";
+  const url = "http://192.168.0.108/project/api-database/images/";
 
   const pickImage = async (e) => {
     // No permissions request is necessary for launching the image library
@@ -43,8 +46,6 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     });
 
     if (!result.cancelled) {
-
-
       if (e === "image1") {
         setImage1(result);
       } else if (e === "image2") {
@@ -55,7 +56,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
         setImage4(result);
       } else if (e === "image5") {
         setImage5(result);
-      }  else {
+      } else {
         setImage6(result);
       }
     }
@@ -63,10 +64,9 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
   const pickImage2 = async () => {
     console.log("555");
-  }
+  };
 
   const serve = async (e) => {
-
     let result = null;
     if (image1 !== null) {
       const result1 = await bookBank.uplodeImages(image1, id_user);
@@ -92,11 +92,11 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
       const result2 = await bookBank.uplodeImages(image6, id_user);
       result = result2;
     }
-   
+
     console.log("result", result);
 
     if (result === "success") {
-      await getImags(id_user)
+      await getImags(id_user);
       await alert("บันทึกภาพ สำเร็จ");
 
       await popToTop();
@@ -105,45 +105,42 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     }
   };
   const updateImage = async () => {
+    let nameImage = JSON.parse(statusImage);
+    let index = JSON.parse(statusImage).length;
+    var dataImage = [image1, image2, image3, image4, image5, image6];
 
-    let nameImage =  JSON.parse(statusImage);
-    let index  =  JSON.parse(statusImage).length;
-    var  dataImage  = [image1,image2,image3,image4,image5,image6];
-
-
-  
-    let  result;
+    let result;
     for (let i = 0; i < index; i++) {
-        let id = nameImage[i].id;
-        let name = nameImage[i].file_src;
-        if (dataImage[i] !== null) {
-          const result1 = await bookBank.uplodeUpdateImages(dataImage[i], id,name);
-          result = result1;
-        }
-
+      let id = nameImage[i].id;
+      let name = nameImage[i].file_src;
+      if (dataImage[i] !== null) {
+        const result1 = await bookBank.uplodeUpdateImages(
+          dataImage[i],
+          id,
+          name
+        );
+        result = result1;
+      }
     }
 
-      for (let i = index; i < 6; i++) {
-          console.log("I",dataImage[i]);
+    for (let i = index; i < 6; i++) {
+      console.log("I", dataImage[i]);
 
-          if (dataImage[i] !== null) {
-            const result2 = await bookBank.uplodeImages(dataImage[i], id_user);
-            result = result2;
-          }
+      if (dataImage[i] !== null) {
+        const result2 = await bookBank.uplodeImages(dataImage[i], id_user);
+        result = result2;
+      }
     }
-
 
     if (result === "success") {
-      await getImags(id_user)
+      await getImags(id_user);
       await alert("บันทึกภาพ สำเร็จ");
 
       await popToTop();
     } else {
       await alert("บันทึกภาพ ไม่สำเร็จ");
     }
-
-    
-  }
+  };
 
   const getImags = async (e) => {
     const result = await bookBank.getImage(e);
@@ -154,12 +151,9 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
         type: "ADD_IMAGE",
         payload: data,
       });
-      await setStatusImage(data)
+      await setStatusImage(data);
     }
-
-  }
-
-
+  };
 
   const addImage = () => {
     return (
@@ -178,7 +172,6 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                     source={require("../assets/images/A-11.png")}
                   />
                 </View>
-                <Text style={styles.text}>Yonzook</Text>
               </ImageBackground>
             </View>
             <View style={styles.box6}>
@@ -189,7 +182,11 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
               <View style={styles.boxhead}>
                 <View style={styles.box1}>
                   {image1 && (
-                    <Image source={{ uri: image1.uri }} style={styles.image3} onPress={() => pickImage2()} />
+                    <Image
+                      source={{ uri: image1.uri }}
+                      style={styles.image3}
+                      onPress={() => pickImage2()}
+                    />
                   )}
                   <TouchableOpacity>
                     <AntDesign
@@ -281,38 +278,55 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
           </ScrollView>
         </SafeAreaView>
       </>
-    )
-  }
+    );
+  };
   const showImage = () => {
     if (statusImage !== null) {
       var img = JSON.parse(statusImage);
     }
-    console.log(img[0].file_src);
+    /*     console.log(img[0].file_src); */
     return (
       <>
-        {
-          statusImage !== null ?
-            <>
-              <ScrollView>
-                {
-                  JSON.parse(statusImage).map((index) => {
-                    const image = <Image source={{ uri: `${url}${index.file_src}` }} style={styles.image4} />
+        {statusImage !== null ? (
+          <>
+            <ScrollView>
+              <View>
+                <Image
+                  style={styles.image5}
+                  source={require("../assets/images/BB-2.png")}
+                />
+              </View>
+              <View style={styles.box6}>
+                <View style={styles.top}>
+                  <View>
+              <Text style={styles.text4}>รูปภาพเกี่ยวกับงาน </Text>
+            </View>
+                  <TouchableOpacity style={styles.button1}>
+                    <Text 
+                    style={styles.text5}
+                    onPress={() => edit()}>แก้ไขภาพ</Text>
+                  </TouchableOpacity>
+                  
+                  {JSON.parse(statusImage).map((index) => {
+                    const image = (
+                      <Image
+                        source={{ uri: `${url}${index.file_src}` }}
+                        style={styles.image4}
+                      />
+                    );
                     return image;
-                  })
-                }
-              </ScrollView>
-
-            </>
-            :
-            null
-        }
-        <Text onPress={() => edit()}>EditImage</Text>
+                  })}
+                </View>
+              </View>
+            </ScrollView>
+          </>
+        ) : null}
       </>
-    )
-  }
+    );
+  };
   const edit = () => {
-    setStatusEditImage(true)
-  }
+    setStatusEditImage(true);
+  };
 
   const editImage = () => {
     return (
@@ -331,18 +345,21 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                     source={require("../assets/images/A-11.png")}
                   />
                 </View>
-                <Text style={styles.text}>Yonzook</Text>
               </ImageBackground>
             </View>
             <View style={styles.box6}>
               <View style={styles.box2}>
-                <Text style={styles.text1}>เเก้ ภาพ ประเภทงาน 1</Text>
+                <Text style={styles.text1}>เเก้ภาพงาน 1</Text>
               </View>
 
               <View style={styles.boxhead}>
                 <View style={styles.box1}>
                   {image1 && (
-                    <Image source={{ uri: image1.uri }} style={styles.image3} onPress={() => pickImage2()} />
+                    <Image
+                      source={{ uri: image1.uri }}
+                      style={styles.image3}
+                      onPress={() => pickImage2()}
+                    />
                   )}
                   <TouchableOpacity>
                     <AntDesign
@@ -381,7 +398,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
               </View>
 
               <View style={styles.box5}>
-                <Text style={styles.text1}>ประเภทงาน 2</Text>
+                <Text style={styles.text1}>แก้ไขภาพงาน 2</Text>
               </View>
 
               <View style={styles.boxhead}>
@@ -426,7 +443,10 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
               </View>
 
               <View>
-                <TouchableOpacity style={styles.button} onPress={() => updateImage()}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => updateImage()}
+                >
                   <Text style={styles.text3}>บันทึกข้อมูล</Text>
                 </TouchableOpacity>
               </View>
@@ -434,36 +454,25 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
           </ScrollView>
         </SafeAreaView>
       </>
-    )
-  }
-
-
+    );
+  };
 
   useEffect(() => {
     if (statusImage === null) {
       getImags(id_user);
-
     }
   }, []);
-  /* console.log(JSON.parse(statusImage)); */
 
   return (
     <>
-      {
-        statusImage === null ?
-
-          addImage()
-
-          :
-          statusEditImage === true ?
-            editImage()
-            :
-            showImage()
-      }
+      {statusImage === null
+        ? addImage()
+        : statusEditImage === true
+        ? editImage()
+        : showImage()}
     </>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -505,9 +514,22 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   image4: {
-    width: "auto",
+    width: 320,
     height: 200,
-
+    marginTop: 10,
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#b1b1b1',
+    
+  },
+  image5: {
+    height: 220,
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: -10,
   },
   box1: {
     width: 110,
@@ -600,7 +622,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: -10,
+    marginTop: -44,
     marginBottom: 10,
   },
   text: {
@@ -624,6 +646,26 @@ const styles = StyleSheet.create({
     marginTop: 15,
     fontWeight: "bold",
   },
+  text3: {
+    flex: 1,
+    textAlign: "center",
+    fontSize: 20,
+    marginTop: 12,
+  },
+  text4: {
+    marginLeft: 30,
+    fontWeight: "bold",
+    fontSize: 20,
+    marginTop: -20,
+  },
+  text5: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    fontWeight: "bold",
+    fontSize: 15,
+    padding: 6,
+    color: '#fff',
+  },
   icons: {
     fontSize: 35,
     color: "#000",
@@ -645,13 +687,22 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     marginTop: 5,
     marginBottom: 10,
-
   },
-  text3: {
-    flex: 1,
-    textAlign: "center",
-    fontSize: 20,
-    marginTop: 12,
+  button1: {
+    height: 30,
+    width: 90,
+    backgroundColor: "#37C1FB",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    marginLeft: 250,
+    marginTop: -25,
+    marginBottom: 5,
+    borderRadius: 10,
+  },
+  top: {
+    marginTop: 40,
   },
 });
 

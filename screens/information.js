@@ -158,7 +158,6 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: -10,
-
   },
   image3: {
     width: 100,
