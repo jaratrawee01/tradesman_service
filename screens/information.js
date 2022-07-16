@@ -60,17 +60,20 @@ class Information extends Component {
 
     gitImage = async (e) => {
       const result1 = await image.getImageProfile(e);
-      const imag = [{
-        id: `${result1[0].id}`,
-        name: `${result1[0].file_src}`,
-        uri: `${this.state.url}${result1[0].file_src}`
-      }]
-      this.props.dispatch({
-        type: "ADD_IMAGE_PROFILE",
-        payload: imag,
-      });
 
-      await this.setImage();
+        if (result1 !== null) {
+          const imag = [{
+            id: `${result1[0].id}`,
+            name: `${result1[0].file_src}`,
+            uri: `${this.state.url}${result1[0].file_src}`
+          }]
+          this.props.dispatch({
+            type: "ADD_IMAGE_PROFILE",
+            payload: imag,
+          });
+
+          await this.setImage();
+        }
     }
 
     setImage = async () => {
@@ -89,8 +92,8 @@ class Information extends Component {
       let name =  this.props.posts.imageProfile[0].name;
       let id_user = this.props.posts.login.id;
 
-      const result1 = await image.uplodeUpdateImagesProfile(img,id,name);
-      if (result1 === "success") {
+      const result2 = await image.uplodeUpdateImagesProfile(img,id,name);
+      if (result2 === "success") {
         this.gitImage(id_user)
         await Alert.alert('บันทึกสำเร็จ');
        
@@ -161,11 +164,11 @@ class Information extends Component {
               {
                 this.props.posts.imageProfile === null ? 
                 <Text onPress={() =>  this.saveImage()}>
-                Save
+                Save เพิ่มรูป
               </Text>
                 :
                 <Text onPress={() =>  this.updateImage()}>
-                updateImage
+                updateImage เเก้ไขรูป
                 </Text>
               }
               
