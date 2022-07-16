@@ -167,9 +167,13 @@ class Information extends Component {
                 Save เพิ่มรูป
               </Text>
                 :
-                <Text onPress={() =>  this.updateImage()}>
-                updateImage เเก้ไขรูป
+              <View style={styles.box2}>
+                <Text 
+                onPress={() =>  this.updateImage()}
+                style={styles.text4}>
+                  บันทึกรูปภาพ
                 </Text>
+              </View>
               }
               
              
@@ -206,7 +210,7 @@ const styles = StyleSheet.create({
   box2: {
     height: 40,
     width: 200,
-    backgroundColor: "#bcbdbe",
+    backgroundColor: "#37C1FB",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -214,7 +218,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: 40,
+    marginTop: 15,
     marginBottom: 10,
   },
   box3: {
@@ -267,7 +271,7 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 24,
     marginTop: 50,
   },
   text2: {
@@ -282,6 +286,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign:'right',
     marginRight: 26,
+  },
+  text4: {
+    paddingTop: 5,
+    marginLeft: "auto",
+    marginRight: "auto",
+    fontWeight: "bold",
+    fontSize: 24,
+    color: '#fff'
   },
   image2: {
     height: 220,

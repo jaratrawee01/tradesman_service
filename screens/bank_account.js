@@ -143,7 +143,7 @@ container: {
   box1: {
     height: 165,
     width: 290,
-    backgroundColor: '#c6c6c6',
+    backgroundColor: '#e8e9e9',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,

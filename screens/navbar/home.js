@@ -19,7 +19,7 @@ class Home extends Component {
           <View style={styles.boxhead}>
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างติดผนัง</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-1.png')}
@@ -29,7 +29,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างทำหลังคา</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-2.png')}
@@ -47,7 +47,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
+           {/*  <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ประเภทงาน</Text>
                 <Image
@@ -55,7 +55,7 @@ class Home extends Component {
                   source={require('../../assets/images/B-4.png')}
                 />
               </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
@@ -89,7 +89,7 @@ class Home extends Component {
 
             <TouchableWithoutFeedback>
               <View style={styles.box3}>
-                <Text style={styles.text1}>ประเภทงาน</Text>
+                <Text style={styles.text1}>ช่างฉาบปูน</Text>
                 <Image
                   style={styles.image1}
                   source={require('../../assets/images/B-8.png')}
@@ -127,7 +127,7 @@ class Home extends Component {
               </View>
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
+    {/*         <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ช่างกระเบื้อง</Text>
                 <Image
@@ -135,7 +135,7 @@ class Home extends Component {
                   source={require('../../assets/images/B-12.png')}
                 />
               </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
 
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
