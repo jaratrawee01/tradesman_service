@@ -57,12 +57,12 @@ async  componentDidMount() {
                 <View>
                   <Text style={styles.text2}><Text style={styles.text2}>ข้อมูลล่าสุด</Text></Text>
                   <View style={styles.box1}>
-                      <Text style={styles.text3}>เลขบัญชีธนาคาร</Text>
-                      <Text style={styles.text4}>{bookbank[0].number_bank}</Text>
-                      <Text style={styles.text8}>{bookbank[0].name}</Text>
-                      <Text style={styles.text8}>{bookbank[0].bank}</Text>
-                      <Text style={styles.text5}>ยอดเงินที่ใช้ได้</Text>
-                      <Text style={styles.text6}><Text style={styles.text6}>50,900.00</Text>  THB</Text>
+                      <Text style={styles.text3}>ชื่อบัญชี</Text>
+                      <Text style={styles.text4}>{bookbank[0].name}</Text>
+                      <Text style={styles.text5}>ธนาคาร</Text>
+                      <Text style={styles.text6}>{bookbank[0].bank}</Text>
+                      <Text style={styles.text7}>เลขบัญชี</Text>
+                      <Text style={styles.text8}>{bookbank[0].number_bank}</Text>
                   </View>
                 </View>
 
@@ -87,11 +87,12 @@ async  componentDidMount() {
 
                 <View>
                   <View style={styles.box1}>
-                      <Text style={styles.text3}>เลขบัญชีธนาคาร</Text>
+                      <Text style={styles.text3}>ชื่อบัญชี</Text>
                       <Text style={styles.text4}>ยังไม่มีข้อมูล</Text>
-                      <Text style={styles.text8}><Text style={styles.text8}>ยังไม่มีข้อมูล</Text></Text>
-                      <Text style={styles.text5}>ยอดเงินที่ใช้ได้</Text>
-                      <Text style={styles.text6}><Text style={styles.text6}>50,900.00</Text>  THB</Text>
+                      <Text style={styles.text5}>ธนาคาร</Text>
+                      <Text style={styles.text6}>ยังไม่มีข้อมูล</Text>
+                      <Text style={styles.text7}>เลขบัญชี</Text>
+                      <Text style={styles.text8}>ยังไม่มีข้อมูล</Text>
                   </View>
                 </View>
 
@@ -141,7 +142,7 @@ container: {
   box1: {
     height: 165,
     width: 290,
-    backgroundColor: '#cacdd2',
+    backgroundColor: '#c6c6c6',
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -153,22 +154,6 @@ container: {
     paddingLeft: 15,
     marginTop: 15,
 
-  },
-  box2: {
-    height: 200,
-    width: 300,
-    backgroundColor: '#cacdd2',
-    shadowColor: "#000",
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 4,
-    borderRadius: 15,
-    marginLeft: 20,
-    marginRight: 5,
-    fontSize: 18,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: 15,
   },
   box3: {
     height: 350,
@@ -206,37 +191,38 @@ container: {
   },
   text3: {
     fontSize: 16,
-    marginTop: 10,
+    paddingTop: 15,
     fontWeight: 'bold',
   },
   text4: {
     fontSize: 16,
     marginTop: 5,
-    fontWeight: 'bold',
-    marginLeft: 8,
+
   },
   text5: {
     fontSize: 16,
-    marginTop: 30,
+    marginTop: -40,
     fontWeight: 'bold',
-    marginLeft: 165,
+    textAlign: 'right',
+    paddingRight: 15,
+    
   },
   text6: {
-    fontSize: 18,
-    marginTop: 5,
-    fontWeight: 'bold',
-    marginLeft: 155,
+    fontSize: 16,
+    paddingTop: 5,
+    textAlign: 'right',
+    paddingRight: 15,
   },
   text7: {
     fontSize: 16,
-    marginTop: 3,
+    paddingTop: 20,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   text8: {
-    fontSize: 16,
-    marginTop: 5,
-    fontWeight: 'bold',
+    fontSize: 20,
+    paddingTop: 5,
+    textAlign: 'center',
   },
   text9: {
     flex: 1,
