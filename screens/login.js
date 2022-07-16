@@ -76,11 +76,15 @@ class Login extends Component {
           type: 'ADD_LOGIN',
           payload: data2
         })
+        this.props.dispatch({
+          type: 'ADD_URL',
+          payload: "http://192.168.1.9/project/api-database/images/"
+        })
         await this.getAddress(getLogin[0].id);
   
         await this.props.navigation.popToTop();
     } else {
-      await alert('Login ไม่สำเร็จ กรุณาลองใหม่');
+      await Alert.alert('Login ไม่สำเร็จ กรุณาลองใหม่');
     }
   };
 

@@ -61,6 +61,14 @@ class Profile_tradesman extends Component {
       type: "DELETE_BOOKBANK",
       payload: null,
     });
+    this.props.dispatch({
+      type: "DELETE_IMAGE_PROFILE",
+      payload: null,
+    });
+    this.props.dispatch({
+      type: "DELETE_URL",
+      payload: null,
+    });
     await  this.props.navigation.popToTop();
   }
 

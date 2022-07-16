@@ -33,7 +33,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     useSelector((state) => state.login.id)
   );
   const dispatch = useDispatch();
-  const url = "http://192.168.0.108/project/api-database/images/";
+  const url = useSelector((state) => state).urlImage;
 
   const pickImage = async (e) => {
     // No permissions request is necessary for launching the image library
@@ -314,6 +314,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                         style={styles.image4}
                       />
                     );
+
                     return image;
                   })}
                 </View>
@@ -462,6 +463,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
       getImags(id_user);
     }
   }, []);
+
 
   return (
     <>

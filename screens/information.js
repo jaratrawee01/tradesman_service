@@ -6,14 +6,115 @@ import {
   Image,
   View,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from "react-native";
 import { connect } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import image from "./service/getService";
 
 class Information extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        imgProfile: null,
+        url: `${this.props.posts.urlImage}profile/`
+    };
+  }
+
+  
+
+
+
+   pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+      this.setState({
+        imgProfile: result,
+      });
+      
+    }
+
+
+    saveImage = async () => {
+      let id_user = this.props.posts.login.id;
+      let imag = this.state.imgProfile;
+      const result = await image.imageProfile(imag,id_user);
+
+      if (result === "success") {
+        this.gitImage(id_user)
+        await Alert.alert('บันทึกสำเร็จ');
+      }else{
+        await Alert.alert('บันทึกไม่สำเร็จ');
+      }
+
+    }
+
+    gitImage = async (e) => {
+      const result1 = await image.getImageProfile(e);
+      const imag = [{
+        id: `${result1[0].id}`,
+        name: `${result1[0].file_src}`,
+        uri: `${this.state.url}${result1[0].file_src}`
+      }]
+      this.props.dispatch({
+        type: "ADD_IMAGE_PROFILE",
+        payload: imag,
+      });
+
+      await this.setImage();
+    }
+
+    setImage = async () => {
+       let  img  = await this.props.posts.imageProfile;
+          if (img !== null) {
+            this.setState({
+              imgProfile: img[0]
+            });
+          }
+    }
+
+    updateImage = async() => {
+
+      let img =  this.state.imgProfile;
+      let id =  this.props.posts.imageProfile[0].id;
+      let name =  this.props.posts.imageProfile[0].name;
+      let id_user = this.props.posts.login.id;
+
+      const result1 = await image.uplodeUpdateImagesProfile(img,id,name);
+      if (result1 === "success") {
+        this.gitImage(id_user)
+        await Alert.alert('บันทึกสำเร็จ');
+       
+      }else{
+        await Alert.alert('บันทึกไม่สำเร็จ');
+      }
+    }
+
+    componentDidMount() {
+      let id_user = this.props.posts.login.id;
+      let imag = this.state.imgProfile;
+      if (imag === null ) {
+        this.gitImage(id_user)
+      }
+      this.setImage()
+
+    }
+
+
+
   render() {
-    console.log(this.props.posts.login);
+    const  { imgProfile } = this.state;
+
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -25,12 +126,18 @@ class Information extends Component {
           </View>
 
           <View style={styles.box6}>
-            <TouchableOpacity>
-            <AntDesign
-                    name="pluscircleo"
-                    style={styles.icons}
-                    /* onPress={() => pickImage("image1")} */
-                  />
+            <TouchableOpacity   onPress={() => this.pickImage()}>
+              {
+                imgProfile === null ? 
+                <AntDesign name="pluscircleo" 
+                style={styles.icons}/>
+                :
+                <Image
+                style={styles.imgPro}
+                source={{ uri: imgProfile.uri }}
+              />
+              }
+           
             </TouchableOpacity>
           </View>
 
@@ -51,6 +158,18 @@ class Information extends Component {
                   {this.props.posts.login.status_user}
                 </Text>
               </View>
+              {
+                this.props.posts.imageProfile === null ? 
+                <Text onPress={() =>  this.saveImage()}>
+                Save
+              </Text>
+                :
+                <Text onPress={() =>  this.updateImage()}>
+                updateImage
+                </Text>
+              }
+              
+             
             </View>
           </View>
         </ScrollView>
@@ -124,13 +243,22 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: '#fff',
     position:"absolute",
-    zIndex: 2,
+    zIndex: 1,
+  },
+  imgPro: {
+    height: 135,
+    width: 135,
+    backgroundColor: '#37C1FB',
+    shadowColor: "#000",
+    borderRadius: 100,
+    zIndex: 1,
   },
   icons: {
     fontSize: 40,
     color: "#000",
     textAlign: "center",
     marginTop: 45,
+    color: '#fff'
   },
   text: {
     marginLeft: "auto",

@@ -16,25 +16,26 @@ class Bank_account extends Component {
 
 
 async  componentDidMount() {
+ 
     if (this.state.bookbank === null) {
       const result1 = await bookBank.getBookBank(this.state.id);
-
-      /* const data = JSON.stringify(result); */
-   
              if (result1 !== null) {
                await this.props.dispatch({
                  type: "ADD_BOOKBANK",
                  payload: result1,
                });
-  
+               this.setState({
+                bookbank:   this.props.posts.bookbank,
+              })
            } 
     }
+ 
   }
 
 
    render() {
         const {bookbank} =this.state; 
-        console.log(bookbank);
+
     return (
 
       <SafeAreaView style={styles.container}> 

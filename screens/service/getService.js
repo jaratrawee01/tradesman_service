@@ -197,6 +197,26 @@ const getImage = async (e) => {
     });
   return seaUser;
 };
+const getImageProfile = async (e) => {
+
+  const seaUser = await axios.get(`${url}/getImagesProfile.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
 
 const getBookBank = async (e) => {
   const bookbank = await axios.get(`${url}/getBank.php`, {
@@ -322,6 +342,31 @@ const uplodeImages = async (e,id_user) => {
    return cerimg;
  };
 
+ const imageProfile = async (e,id_user) => {
+  const formdata = new FormData();
+   formdata.append('image', {
+     uri: e.uri,
+     type: 'image/jpg',
+     name: e.uri.split('/').pop(),
+   })
+   formdata.append('id_user', id_user)
+ 
+   const cerimg = await axios.post(`${url}/saveFile_Profile.php`, formdata, {
+     headers: {
+       'Content-Type': 'multipart/form-data;charset=utf-8',
+     }
+   }).then((result) => {
+
+     return "success";
+   })
+     .catch((error) => {
+
+       return error;
+     });
+   return cerimg;
+ };
+
+
 
 
 /* update */
@@ -380,6 +425,32 @@ const uplodeUpdateImages = async (e,id,name) => {
    return upimg;
  };
 
+ 
+const uplodeUpdateImagesProfile = async (e,id,name) => {
+
+  const formdata = new FormData();
+   formdata.append('image', {
+     uri: e.uri,
+     type: 'image/jpg',
+     name: e.uri.split('/').pop(),
+   })
+   formdata.append('id', id)
+   formdata.append('name', name)
+   const upimg_pro = await axios.post(`${url}/saveUpdateFile_Profile.php`, formdata, {
+     headers: {
+       'Content-Type': 'multipart/form-data;charset=utf-8',
+     }
+   }).then((result) => {
+
+     return "success";
+   })
+     .catch((error) => {
+
+       return null;
+     });
+   return upimg_pro;
+ };
+
  const updateBookBank = async (e) => {
 
   const formdata = new FormData();
@@ -421,4 +492,8 @@ export default {
   createBookBank,
   getBookBank,
   updateBookBank,
+  imageProfile,
+  uplodeUpdateImagesProfile,
+  getImageProfile,
+
 };

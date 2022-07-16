@@ -6,10 +6,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunk from 'redux-thunk';
 
 import  {logInReducer}  from  './logInReducer';
-import {FriendListReducer}  from  './FriendListReducer';
+import {urlReducer}  from  './urlReducer';
 import {addressReducer}  from  './addressReducer';
 import {imagesReducer}  from  './imagesReducer';
 import {bookbankReducer}  from  './bookbankReducer';
+import {imageProfileReducer}  from  './imageProfileReducer';
 
 const persistConfig = {
   key: "root",    
@@ -20,10 +21,11 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     login: logInReducer,
-    url: FriendListReducer,
+    urlImage: urlReducer,
     address: addressReducer,
     image: imagesReducer,
-    bookbank: bookbankReducer,
+    imageProfile: imageProfileReducer,
+    bookbank:bookbankReducer,
 
 });
 
