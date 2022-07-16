@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import  {logInReducer}  from  './logInReducer';
 import {FriendListReducer}  from  './FriendListReducer';
 import {addressReducer}  from  './addressReducer';
+import {imagesReducer}  from  './imagesReducer';
 
 const persistConfig = {
   key: "root",    
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     login: logInReducer,
     url: FriendListReducer,
     address: addressReducer,
+    image: imagesReducer,
 
 });
 

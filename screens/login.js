@@ -36,7 +36,7 @@ class Login extends Component {
   getAddress = async (e) => {
     console.log("e", e);
     const result = await login.getAddress(e);
-    console.log("result", result);
+/*     console.log("result", result); */
     if (result !== null) {
       let data3 = {
         id: result[0].id,
@@ -64,7 +64,7 @@ class Login extends Component {
     const data = [this.state.username, password];
     const getLogin = await login.getLogin(data);
     console.log("getLogin",getLogin);
-    if (getLogin.length > 0) {
+    if (getLogin !== null) {
       
         //ส่วน login
         let data2 = {

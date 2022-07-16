@@ -54,17 +54,21 @@ class Profile_tradesman extends Component {
       type: 'DELETE_ADDRESS',
       payload: null
     })
+    this.props.dispatch({
+      type: "DELETE_IMAGE",
+      payload: null,
+    });
     await  this.props.navigation.popToTop();
   }
 
   customer() {
-/*     var myStar = [
+    var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />
-    ]; */
+    ];
 
 
     for (let i = 0; i < this.state.star; i++) {
@@ -86,11 +90,11 @@ class Profile_tradesman extends Component {
                 </View>
                 <Text style={styles.text}>Jason Amada</Text>
                 <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
-               {/*  <View style={styles.icons1}>
+                <View style={styles.icons1}>
                   <View style={styles.boxhead}>
                     {myStar}
                   </View>
-                </View> */}
+                </View>
               </View>
             </View>
 
@@ -98,7 +102,7 @@ class Profile_tradesman extends Component {
               <View style={styles.box3}>
                 <FontAwesome5 name="user-alt" style={styles.icons3} />
                 <Text style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Information")}>{"โปรไฟล์"}
+                  onPress={() => this.props.navigation.navigate("Information ")}>{"โปรไฟล์"}
                 </Text>
               </View>
 
@@ -160,11 +164,11 @@ class Profile_tradesman extends Component {
                 </View>
                 <Text style={styles.text}>Jason Amada</Text>
                 <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
-                {/* <View style={styles.icons1}>
+                <View style={styles.icons1}>
                   <View style={styles.boxhead}>
                     {myStar}
                   </View>
-                </View> */}
+                </View>
               </View>
             </View>
 
@@ -485,7 +489,6 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
     fontSize: 20,
-    marginTop: 10,
   },
   text2: {
     marginLeft: 55,
