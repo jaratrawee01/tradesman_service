@@ -63,9 +63,7 @@ class Login extends Component {
     let password = md5(this.state.password);
     const data = [this.state.username, password];
     const getLogin = await login.getLogin(data);
-    console.log("getLogin",getLogin);
     if (getLogin !== null) {
-      
         //ส่วน login
         let data2 = {
           id: getLogin[0].id,

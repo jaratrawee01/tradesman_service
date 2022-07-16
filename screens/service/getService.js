@@ -110,7 +110,7 @@ const searchUser = async (e) => {
   })
     .catch((error) => {
 
-      return error;
+      return null;
     });
   return seaUser;
 };
@@ -130,7 +130,7 @@ const technician_type = async () => {
   })
     .catch((error) => {
 
-      return error;
+      return null;
     });
   return seaUser;
 }
@@ -152,7 +152,7 @@ const getLogin = async (e) => {
   })
     .catch((error) => {
 
-      return null;
+      return error;
     });
   return seaUser;
 };
@@ -197,6 +197,27 @@ const getImage = async (e) => {
     });
   return seaUser;
 };
+
+const getBookBank = async (e) => {
+  const bookbank = await axios.get(`${url}/getBank.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return bookbank;
+};
+
 
 
 /**
@@ -256,14 +277,13 @@ const createAddress = async (e) => {
 }
 
 const createBookBank = async (e) => {
-  console.log(e);
+
   const formdata = new FormData();
   formdata.append('isAdd', true);
   formdata.append('id_user', e[0]);
   formdata.append('name', e[1]);
   formdata.append('number_bank', e[2]);
   formdata.append('bank', e[3]);
-  console.log("formdata",formdata);
   const bookBank = await axios.post(`${url}/addBank.php`,formdata,{
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
@@ -360,6 +380,26 @@ const uplodeUpdateImages = async (e,id,name) => {
    return upimg;
  };
 
+ const updateBookBank = async (e) => {
+
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('id', e[0]);
+  formdata.append('name', e[1]);
+  formdata.append('number_bank', e[2]);
+  formdata.append('bank', e[3]);
+  const upBookBank = await axios.post(`${url}/updateBank.php`,formdata,{
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+    return "success";
+  })
+    .catch((error) => {
+      return error;
+    });
+  return upBookBank;
+};
 
 
 
@@ -379,4 +419,6 @@ export default {
   getImage,
   uplodeUpdateImages,
   createBookBank,
+  getBookBank,
+  updateBookBank,
 };

@@ -44,7 +44,6 @@ class Profile_tradesman extends Component {
   };
   
  async logout () {
-    
 
     this.props.dispatch({
       type: 'DELETE_LOGIN',
@@ -56,6 +55,10 @@ class Profile_tradesman extends Component {
     })
     this.props.dispatch({
       type: "DELETE_IMAGE",
+      payload: null,
+    });
+    this.props.dispatch({
+      type: "DELETE_BOOKBANK",
       payload: null,
     });
     await  this.props.navigation.popToTop();

@@ -9,7 +9,7 @@ import  {logInReducer}  from  './logInReducer';
 import {FriendListReducer}  from  './FriendListReducer';
 import {addressReducer}  from  './addressReducer';
 import {imagesReducer}  from  './imagesReducer';
-import {reducer as bookbank}  from  './bookbank';
+import {bookbankReducer}  from  './bookbankReducer';
 
 const persistConfig = {
   key: "root",    
@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
     url: FriendListReducer,
     address: addressReducer,
     image: imagesReducer,
-    bookbank: bookbank,
+    bookbank: bookbankReducer,
 
 });
 

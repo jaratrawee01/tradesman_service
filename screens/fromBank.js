@@ -1,4 +1,4 @@
-import React, { Component , useState} from 'react';
+import React, { Component , useState,useEffect} from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text,TouchableOpacity , View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import bookBank from './service/getService';
@@ -11,34 +11,64 @@ const FromBank = ({ navigation: { popToTop } }) => {
     const [name, setName] = useState(null);
     const [number_bank, setNumber_bank] = useState(null);
     const [bank, setBank] = useState(null);
-    const [id_user, setId_user] = useState(
-      useSelector((state) => state.login.id)
-    );
+    const [id_user, setId_user] = useState(useSelector((state) => state.login.id));
+    const [statusBookBank ,setBookBank] = useState(useSelector((state) => state.bookbank));
+    const dispatch = useDispatch();
 
     const serve = async () => {
-
-        const data = [id_user,name, number_bank, bank];
-
+      const data = [id_user,name, number_bank, bank];
              const result = await bookBank.createBookBank(data);
-
              if (result === "success") {
+              getBookBank(id_user)
               await  alert('บันทึกสำเร็จ');
               await popToTop();
             }else{
               await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
             } 
-           
       };
-    
-/* console.log('gsgsgs',useState(
-  useSelector((state) => state.login.id)
-  ));
- */
+
+     const update  = async () =>  {
+       let id =  statusBookBank[0].id;
+       console.log(id);
+          const data = [id,name, number_bank, bank];
+          const result = await bookBank.updateBookBank(data);
+          if (result === "success") {
+          getBookBank(id_user)
+          await  alert('บันทึกสำเร็จ');
+          await popToTop();
+        }else{
+          await  alert('บันทึกไม่สำเร็จ กรุณาลองใหม่');
+      } 
+     }
+      
+    const  getBookBank = async (e) => {
+      const result1 = await bookBank.getBookBank(e);
+          if (result1 !== null) {
+            await dispatch({
+              type: "ADD_BOOKBANK",
+              payload: result1,
+            });
+        } 
+      }
+  const setbank = async () => {
+        setName(statusBookBank[0].name)
+        setNumber_bank(statusBookBank[0].number_bank)
+        setBank(statusBookBank[0].bank)
+      
+    }
 
 
+  useEffect(() => {
+    if (statusBookBank === null ) {
+        getBookBank(id_user);
+    }else {
+      setbank();
+    }
+  }, []);
+
+  const addBookBank = () => {
     return (
-
-     <>
+      <>
       <SafeAreaView style={styles.container}> 
         <ScrollView>
         <View>
@@ -90,6 +120,81 @@ const FromBank = ({ navigation: { popToTop } }) => {
             </View>
           </ScrollView>
       </SafeAreaView>
+      </>
+    )
+  }
+
+   const editBookBank = () => {
+    return (
+      <>
+      <SafeAreaView style={styles.container}> 
+        <ScrollView>
+        <View>
+            <Image
+              style={styles.image2}
+              source={require("../assets/images/BB-2.png")}
+            />
+          </View>
+            <View style={styles.box}>
+              <View>
+                <Text style={styles.text1}>เเก้บัญชีธนาคาร</Text>
+              </View>
+              <View style={styles.boxhead}>
+                <View>
+                    <Text style={styles.text2}>{'ชื่อบัญชีธนาคาร'}</Text>
+                    <TextInput style={styles.box2} 
+                    value={name}
+                     onChange={(e) => {
+                        setName(e.nativeEvent.text);
+                      }}
+                    />
+                </View>
+
+                <View>
+                    <Text style={styles.text2}>{'เลขบัญชีธนาคาร'}</Text>
+                    <TextInput style={styles.box2} 
+                      value={number_bank}
+                     onChange={(e) => {
+                        setNumber_bank(e.nativeEvent.text);
+                      }}
+                    />
+                </View>
+
+                <View>
+                    <Text style={styles.text2}>{'ธนาคาร'}</Text>
+                    <TextInput style={styles.box2} 
+                     value={bank}
+                    id="backname"
+                    onChange={(e) => {
+                        setBank(e.nativeEvent.text);
+                      }}
+                    />
+                </View>
+
+                <View >
+                    <TouchableOpacity  style={styles.button} onPress={() => update()}>
+                      <Text style={styles.text}>บันทึกข้อมูล</Text>
+                    </TouchableOpacity>
+                </View>
+            
+              </View>
+            </View>
+          </ScrollView>
+      </SafeAreaView>
+      </>
+    )
+  } 
+ 
+
+    return (
+
+     <>
+      {
+        statusBookBank === null ? 
+        addBookBank()
+        : 
+        editBookBank()
+      }
      </>
     );
   }

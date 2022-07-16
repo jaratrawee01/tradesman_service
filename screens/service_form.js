@@ -161,7 +161,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     ];
 
     const result = await technician_type.updateAddress(data);
-    console.log("result",result);
     if (result === "success") {
       await getAddress(idPhone);
       setStatusEdit(false);
@@ -175,7 +174,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
   const loadtTechnician = async () => {
     const result = await technician_type.technician_type();
-    console.log("result", result);
     if (result.length > 0) {
       setTechnicianType(result);
     } else {
@@ -636,7 +634,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
   /*   console.log(useSelector((state) => ({ ...state })));
    */
-  console.log("technicianType", technicianType);
 
   return (
     <>

@@ -1,10 +1,40 @@
 import React, { Component } from 'react';
 import { SafeAreaView,StyleSheet,TextInput,Text,TouchableOpacity, View, Image, ScrollView} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { connect } from "react-redux";
+import bookBank from './service/getService';
 
  
 class Bank_account extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bookbank:   this.props.posts.bookbank,
+      id: this.props.posts.login.id
+    };
+  }
+
+
+async  componentDidMount() {
+    if (this.state.bookbank === null) {
+      const result1 = await bookBank.getBookBank(this.state.id);
+
+      /* const data = JSON.stringify(result); */
+   
+             if (result1 !== null) {
+               await this.props.dispatch({
+                 type: "ADD_BOOKBANK",
+                 payload: result1,
+               });
+  
+           } 
+    }
+  }
+
+
    render() {
+        const {bookbank} =this.state; 
+        console.log(bookbank);
     return (
 
       <SafeAreaView style={styles.container}> 
@@ -16,19 +46,50 @@ class Bank_account extends Component {
               source={require("../assets/images/BB-2.png")}
             />
           </View>
-
-            <View style={styles.box}>
+            {
+              bookbank !== null ? 
+              <View style={styles.box}>
               <View>
                 <Text style={styles.text1}>บัญชีธนาคาร</Text>
               </View>
               <View>
 
                 <View>
-                  <Text style={styles.text2}><Text style={styles.text2}>ข้อมูลล่าสุด</Text>    24 ก.พ 2565 17.00</Text>
+                  <Text style={styles.text2}><Text style={styles.text2}>ข้อมูลล่าสุด</Text></Text>
                   <View style={styles.box1}>
                       <Text style={styles.text3}>เลขบัญชีธนาคาร</Text>
-                      <Text style={styles.text4}>140-158-1555</Text>
-                      <Text style={styles.text8}><Text style={styles.text8}>จรัสรวี</Text> สายวรรณ</Text>
+                      <Text style={styles.text4}>{bookbank[0].number_bank}</Text>
+                      <Text style={styles.text8}>{bookbank[0].name}</Text>
+                      <Text style={styles.text8}>{bookbank[0].bank}</Text>
+                      <Text style={styles.text5}>ยอดเงินที่ใช้ได้</Text>
+                      <Text style={styles.text6}><Text style={styles.text6}>50,900.00</Text>  THB</Text>
+                  </View>
+                </View>
+
+                <View >
+                    <TouchableOpacity style={styles.button} 
+                    onPress={() => this.props.navigation.navigate("FromBank")}
+                    >
+                    <AntDesign name="pluscircleo" style={styles.icons} />
+                      <Text style={styles.text}>เเก้ไขบัญชี</Text>
+                    </TouchableOpacity>
+                </View>
+            
+              </View>
+            </View>
+              :
+              <>
+               <View style={styles.box}>
+              <View>
+                <Text style={styles.text1}>บัญชีธนาคาร</Text>
+              </View>
+              <View>
+
+                <View>
+                  <View style={styles.box1}>
+                      <Text style={styles.text3}>เลขบัญชีธนาคาร</Text>
+                      <Text style={styles.text4}>ยังไม่มีข้อมูล</Text>
+                      <Text style={styles.text8}><Text style={styles.text8}>ยังไม่มีข้อมูล</Text></Text>
                       <Text style={styles.text5}>ยอดเงินที่ใช้ได้</Text>
                       <Text style={styles.text6}><Text style={styles.text6}>50,900.00</Text>  THB</Text>
                   </View>
@@ -45,6 +106,9 @@ class Bank_account extends Component {
             
               </View>
             </View>
+              </> 
+            }
+
         
           </ScrollView>
       </SafeAreaView>
@@ -220,4 +284,9 @@ container: {
 
 
 
-export default Bank_account; 
+const mapStateToProps = (state) => {
+  return {
+    posts: state
+  }
+}
+export default connect(mapStateToProps,null)(Bank_account);
