@@ -78,7 +78,7 @@ class Login extends Component {
         })
         this.props.dispatch({
           type: 'ADD_URL',
-          payload: "http://192.168.1.9/project/api-database/images/"
+          payload: "http://192.168.1.4/project/api-database/images/"
         })
         await this.getAddress(getLogin[0].id);
   

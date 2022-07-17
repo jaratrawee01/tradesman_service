@@ -32,9 +32,22 @@ class Profile_tradesman extends Component {
       urlImg: null,
       modalVisible: false,
       star: "2",
+      image: this.props.posts.imageProfile,
+      name: this.props.posts.address
     };
   }
 
+
+  componentDidUpdate() {
+    console.log("aaa",this.state.name);
+    if (this.props.posts.address.name !==  this.state.name.name || this.props.posts.imageProfile[0].name !== this.state.image[0].name) {
+      this.setState({
+        image: this.props.posts.imageProfile,
+        name: this.props.posts.address
+      });
+    }
+  
+  }
 
   setModalVisible = (visible, urlImg) => {
     this.setState({
@@ -99,8 +112,8 @@ class Profile_tradesman extends Component {
                     source={require('../../assets/images/A-11.png')}
                   />
                 </View>
-                <Text style={styles.text}>Jason Amada</Text>
-                <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
+                <Text style={styles.text}>Jason Amada aa</Text>
+                <Text style={styles.text1}>aaaa_dddd@gmail.wwcom</Text>
                 <View style={styles.icons1}>
                   {/* <View style={styles.boxhead}>
                     {myStar}
@@ -147,7 +160,7 @@ class Profile_tradesman extends Component {
   }
 
   tradesman() {
-    const { modalVisible, urlImg} = this.state;
+    const { modalVisible, urlImg,image,name} = this.state;
     var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
@@ -168,13 +181,30 @@ class Profile_tradesman extends Component {
             <View style={styles.box}>
               <View style={styles.box1}>
                 <View style={styles.box6}>
-                  <Image
+                  {
+                    image === null ? 
+                    <Image
                     style={styles.image3}
                     source={require('../../assets/images/A-11.png')}
                   />
+                    :
+                    <Image
+                    style={styles.imgPro}
+                    source={{ uri: image[0].uri }}
+                  />
+                  }
                 </View>
-                <Text style={styles.text}>Jason Amada</Text>
-                <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
+                {
+                  name === null ? 
+                  null 
+                  :
+                  <>
+                  <Text style={styles.text}>{name.name}</Text>
+                  <Text style={styles.text1}>เบอรติดต่อ {this.props.posts.login.phone}</Text>
+                  </>
+                }
+               
+
                 <View style={styles.icons1}>
                   {/* <View style={styles.boxhead}>
                     {myStar}
@@ -320,7 +350,7 @@ class Profile_tradesman extends Component {
 
    render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-/*     console.log("stausLogin",this.props.posts); */
+    console.log("stausLogin",this.props.posts.imageProfile,this.state.image[0].name);
     return (
       <>
         {
@@ -507,13 +537,13 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
     fontWeight: "bold",
-    fontSize: 20,
-    paddingTop: 10,
+    fontSize: 18,
+    paddingTop: 15,
   },
   text1: {
     marginLeft: "auto",
     marginRight: "auto",
-    fontSize: 20,
+    fontSize: 16,
     paddingTop: 10,
   },
   text2: {
@@ -595,6 +625,15 @@ const styles = StyleSheet.create({
     marginLeft: 28,
     marginRight: 20,
     marginTop: "70%",
+  },
+  imgPro: {
+    height: 130,
+    width: 130,
+    backgroundColor: '#37C1FB',
+    shadowColor: "#000",
+    borderRadius: 100,
+    zIndex: 1,
+    
   },
 });
 

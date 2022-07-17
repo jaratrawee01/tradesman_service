@@ -45,6 +45,7 @@ class Information extends Component {
     if (result === "success") {
       this.gitImage(id_user);
       await Alert.alert("บันทึกสำเร็จ");
+      this.props.navigation.popToTop();
     } else {
       await Alert.alert("บันทึกไม่สำเร็จ");
     }
@@ -89,6 +90,7 @@ class Information extends Component {
     if (result2 === "success") {
       this.gitImage(id_user);
       await Alert.alert("บันทึกสำเร็จ");
+      this.props.navigation.popToTop();
     } else {
       await Alert.alert("บันทึกไม่สำเร็จ");
     }
