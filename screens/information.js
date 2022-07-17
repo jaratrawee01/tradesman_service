@@ -7,7 +7,7 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  Alert
+  Alert,
 } from "react-native";
 import { connect } from "react-redux";
 import { AntDesign } from "@expo/vector-icons";
@@ -15,20 +15,15 @@ import * as ImagePicker from "expo-image-picker";
 import image from "./service/getService";
 
 class Information extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-        imgProfile: null,
-        url: `${this.props.posts.urlImage}profile/`
+      imgProfile: null,
+      url: `${this.props.posts.urlImage}profile/`,
     };
   }
 
-  
-
-
-
-   pickImage = async () => {
+  pickImage = async () => {
     // No permissions request is necessary for launching the image library
 
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -37,86 +32,79 @@ class Information extends Component {
       aspect: [4, 3],
       quality: 1,
     });
-      this.setState({
-        imgProfile: result,
+    this.setState({
+      imgProfile: result,
+    });
+  };
+
+  saveImage = async () => {
+    let id_user = this.props.posts.login.id;
+    let imag = this.state.imgProfile;
+    const result = await image.imageProfile(imag, id_user);
+
+    if (result === "success") {
+      this.gitImage(id_user);
+      await Alert.alert("บันทึกสำเร็จ");
+    } else {
+      await Alert.alert("บันทึกไม่สำเร็จ");
+    }
+  };
+
+  gitImage = async (e) => {
+    const result1 = await image.getImageProfile(e);
+
+    if (result1 !== null) {
+      const imag = [
+        {
+          id: `${result1[0].id}`,
+          name: `${result1[0].file_src}`,
+          uri: `${this.state.url}${result1[0].file_src}`,
+        },
+      ];
+      this.props.dispatch({
+        type: "ADD_IMAGE_PROFILE",
+        payload: imag,
       });
-      
+
+      await this.setImage();
     }
+  };
 
-
-    saveImage = async () => {
-      let id_user = this.props.posts.login.id;
-      let imag = this.state.imgProfile;
-      const result = await image.imageProfile(imag,id_user);
-
-      if (result === "success") {
-        this.gitImage(id_user)
-        await Alert.alert('บันทึกสำเร็จ');
-      }else{
-        await Alert.alert('บันทึกไม่สำเร็จ');
-      }
-
+  setImage = async () => {
+    let img = await this.props.posts.imageProfile;
+    if (img !== null) {
+      this.setState({
+        imgProfile: img[0],
+      });
     }
+  };
 
-    gitImage = async (e) => {
-      const result1 = await image.getImageProfile(e);
+  updateImage = async () => {
+    let img = this.state.imgProfile;
+    let id = this.props.posts.imageProfile[0].id;
+    let name = this.props.posts.imageProfile[0].name;
+    let id_user = this.props.posts.login.id;
 
-        if (result1 !== null) {
-          const imag = [{
-            id: `${result1[0].id}`,
-            name: `${result1[0].file_src}`,
-            uri: `${this.state.url}${result1[0].file_src}`
-          }]
-          this.props.dispatch({
-            type: "ADD_IMAGE_PROFILE",
-            payload: imag,
-          });
-
-          await this.setImage();
-        }
+    const result2 = await image.uplodeUpdateImagesProfile(img, id, name);
+    if (result2 === "success") {
+      this.gitImage(id_user);
+      await Alert.alert("บันทึกสำเร็จ");
+    } else {
+      await Alert.alert("บันทึกไม่สำเร็จ");
     }
+  };
 
-    setImage = async () => {
-       let  img  = await this.props.posts.imageProfile;
-          if (img !== null) {
-            this.setState({
-              imgProfile: img[0]
-            });
-          }
+  componentDidMount() {
+    let id_user = this.props.posts.login.id;
+    let imag = this.state.imgProfile;
+    if (imag === null) {
+      this.gitImage(id_user);
     }
-
-    updateImage = async() => {
-
-      let img =  this.state.imgProfile;
-      let id =  this.props.posts.imageProfile[0].id;
-      let name =  this.props.posts.imageProfile[0].name;
-      let id_user = this.props.posts.login.id;
-
-      const result2 = await image.uplodeUpdateImagesProfile(img,id,name);
-      if (result2 === "success") {
-        this.gitImage(id_user)
-        await Alert.alert('บันทึกสำเร็จ');
-       
-      }else{
-        await Alert.alert('บันทึกไม่สำเร็จ');
-      }
-    }
-
-    componentDidMount() {
-      let id_user = this.props.posts.login.id;
-      let imag = this.state.imgProfile;
-      if (imag === null ) {
-        this.gitImage(id_user)
-      }
-      this.setImage()
-
-    }
-
-
+    this.setImage();
+  }
 
   render() {
-    const  { imgProfile } = this.state;
-
+    const { imgProfile } = this.state;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -129,18 +117,12 @@ class Information extends Component {
           </View>
 
           <View style={styles.box6}>
-            <TouchableOpacity   onPress={() => this.pickImage()}>
-              {
-                imgProfile === null ? 
-                <AntDesign name="pluscircleo" 
-                style={styles.icons}/>
-                :
-                <Image
-                style={styles.imgPro}
-                source={{ uri: imgProfile.uri }}
-              />
-              }
-           
+            <TouchableOpacity onPress={() => this.pickImage()}>
+              {imgProfile === null ? (
+                <AntDesign name="pluscircleo" style={styles.icons} />
+              ) : (
+                <Image style={styles.imgPro} source={{ uri: imgProfile.uri }} />
+              )}
             </TouchableOpacity>
           </View>
 
@@ -161,22 +143,15 @@ class Information extends Component {
                   {this.props.posts.login.status_user}
                 </Text>
               </View>
-              {
-                this.props.posts.imageProfile === null ? 
-                <Text onPress={() =>  this.saveImage()}>
-                Save เพิ่มรูป
-              </Text>
-                :
-              <View style={styles.box2}>
-                <Text 
-                onPress={() =>  this.updateImage()}
-                style={styles.text4}>
-                  บันทึกรูปภาพ
-                </Text>
-              </View>
-              }
-              
-             
+              {this.props.posts.imageProfile === null ? (
+                <Text onPress={() => this.saveImage()}>Save เพิ่มรูป</Text>
+              ) : (
+                <View style={styles.box2}>
+                  <Text onPress={() => this.updateImage()} style={styles.text4}>
+                    บันทึกรูปภาพ
+                  </Text>
+                </View>
+              )}
             </View>
           </View>
         </ScrollView>
@@ -208,14 +183,14 @@ const styles = StyleSheet.create({
     marginTop: -44,
   },
   box2: {
-    height: 40,
+    height: 45,
     width: 200,
     backgroundColor: "#37C1FB",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 3,
-    borderRadius: 20,
+    borderRadius: 25,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 15,
@@ -239,7 +214,7 @@ const styles = StyleSheet.create({
   box6: {
     height: 140,
     width: 140,
-    backgroundColor: '#37C1FB',
+    backgroundColor: "#37C1FB",
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
@@ -248,14 +223,14 @@ const styles = StyleSheet.create({
     marginTop: 80,
     marginLeft: 110,
     borderWidth: 3,
-    borderColor: '#fff',
-    position:"absolute",
+    borderColor: "#fff",
+    position: "absolute",
     zIndex: 1,
   },
   imgPro: {
     height: 135,
     width: 135,
-    backgroundColor: '#37C1FB',
+    backgroundColor: "#37C1FB",
     shadowColor: "#000",
     borderRadius: 100,
     zIndex: 1,
@@ -265,7 +240,7 @@ const styles = StyleSheet.create({
     color: "#000",
     textAlign: "center",
     marginTop: 45,
-    color: '#fff'
+    color: "#fff",
   },
   text: {
     marginLeft: "auto",
@@ -284,16 +259,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: -20,
     fontWeight: "bold",
-    textAlign:'right',
+    textAlign: "right",
     marginRight: 26,
   },
   text4: {
-    paddingTop: 5,
+    paddingTop: 10,
     marginLeft: "auto",
     marginRight: "auto",
     fontWeight: "bold",
-    fontSize: 24,
-    color: '#fff'
+    fontSize: 20,
+    color: "#fff",
   },
   image2: {
     height: 220,
@@ -306,8 +281,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     marginTop: 15,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 });
 
