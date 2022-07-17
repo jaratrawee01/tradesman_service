@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, View, Image, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, ImageBackground, Text, TouchableWithoutFeedback, View, Image, ScrollView } from 'react-native';
+import img1 from "../../assets/images/A-12.png";
+
+
 
 class Home extends Component {
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container}> 
         <ScrollView>
           <View style={styles.box1}>
               <View style={styles.box}>
@@ -17,6 +20,11 @@ class Home extends Component {
           </View>
  
           <View style={styles.boxhead}>
+         {/*    <ImageBackground 
+            source={img1}
+            resizeMode="cover"
+            style={styles.backgroun}>
+            </ImageBackground> */}
             <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
               <View style={styles.box3}>
                 <Text style={styles.text1}>ช่างติดผนัง</Text>
