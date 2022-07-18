@@ -1,13 +1,63 @@
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, View, Image, ScrollView } from 'react-native';
 import { connect } from "react-redux";
+import technician_type from "../service/getService";
+
+
 class Home extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {  
+      address: this.props.posts.address,
+      technician: null,
+      urlImg: this.props.posts.urlImage,
+      login: this.props.posts.login,
+    };
+  }
 
 
+
+  componentDidMount() {
+
+    this.setUrl();
+    this.getTechnician_type();
+
+  }
+  getTechnician_type = async () =>  {
+    const result = await technician_type.technician_type();
+    this.setState({
+      technician: result
+    });
+  }
+
+
+  setUrl = () => {
+    this.props.dispatch({
+      type: 'ADD_URL',
+      payload: "http://192.168.1.5/project/api-database/images/"
+    })
+    this.props.dispatch({
+      type: 'DELETE_TECHNICAN',
+      payload: null
+    })
+  }
+
+  setLogin  (e) {
+    if (this.state.login !== null) {
+      this.props.navigation.navigate("Tradesman");
+      this.props.dispatch({
+        type: 'ADD_TECHNICAN',
+        payload: e
+      })
+
+    }
+  } 
 
 
   customer = () => {
+    const { technician,urlImg } = this.state;
+
     return (
       <>
         <SafeAreaView style={styles.container}>
@@ -19,120 +69,28 @@ class Home extends Component {
                   source={require('../../assets/images/A-11.png')}
                 />
               </View>
-              <Text style={styles.text}>ประเภทงาน</Text>
+              <Text style={styles.text}>ประเภทงาน User</Text>
             </View>
-
             <View style={styles.boxhead}>
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างติดผนัง</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-1.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
+            {technician && technician.map((index) => {
 
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างทำหลังคา</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-2.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างกระจก</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-3.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างปูน</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-5.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างสี</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-6.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างไฟฟ้า</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-7.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างฉาบปูน</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-8.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างเชือม</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-9.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างไม้</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-10.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างกระเบื้อง</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-11.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-
-
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>กรรมกร</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-13.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
+                  const nameImage = index.image_name;
+                  const name = index.technician_type;
+                    const image = (
+                     <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
+                    <View style={styles.box3}>
+                      <Text style={styles.text1}>{name}</Text>
+                       {
+                           nameImage !== null ? 
+                           <Image style={styles.image1}  source={{ uri: `${urlImg}image_tradesman/${nameImage}` }} />
+                           :
+                           <Image style={styles.image1} source={require('../../assets/images/B-1.png')} />
+                       }
+                      </View>
+                    </TouchableWithoutFeedback>
+                    )
+                    return image; 
+                  })} 
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -141,6 +99,8 @@ class Home extends Component {
   }
 
   tradesman = () => {
+    const { technician,urlImg,address } = this.state;
+   /*  console.log("address",this.state.address); */
     return (
       <>
         <SafeAreaView style={styles.container}>
@@ -156,24 +116,25 @@ class Home extends Component {
             </View>
 
             <View style={styles.boxhead}>
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
+
+           {/*  {technician && technician.fa((index) => {
+              const nameImage = index.image_name;
+              const name = index.technician_type;
+                const image = (
+                <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
                 <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างติดผนัง</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-1.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Tradesman")}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>ช่างติดผนัง</Text>
-                  <Image
-                    style={styles.image1}
-                    source={require('../../assets/images/B-1.png')}
-                  />
-                </View>
-              </TouchableWithoutFeedback>
+                  <Text style={styles.text1}>{name}</Text>
+                  {
+                      nameImage !== null ? 
+                      <Image style={styles.image1}  source={{ uri: `${urlImg}image_tradesman/${nameImage}` }} />
+                      :
+                      <Image style={styles.image1} source={require('../../assets/images/B-1.png')} />
+                  }
+                  </View>
+                </TouchableWithoutFeedback>
+                )
+                return image; 
+              })}  */}
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -183,17 +144,19 @@ class Home extends Component {
   }
 
   render() {
+
+     const login = this.props.posts.login;
+
     return (
       <>
-        {
-
-          this.props.posts.login.status_user === "ลูกค้าทั่วไป"
-            ?
-            this.customer()
-            :
-            this.tradesman()
-
-        }
+     { login !== null ? 
+        this.props.posts.login.status_user === "ช่าง" ?
+          this.tradesman()
+          :
+          this.customer()
+     :
+     this.customer()
+     }
       </>
     );
   }

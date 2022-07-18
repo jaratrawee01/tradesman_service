@@ -58,6 +58,25 @@ class Login extends Component {
   }
 
 
+  getImge = async (e) => {
+    const result1 = await login.getImageProfile(e);
+
+    if (result1 !== null) {
+      const imag = [
+        {
+          id: `${result1[0].id}`,
+          name: `${result1[0].file_src}`,
+          uri: `${this.state.url}${result1[0].file_src}`,
+        },
+      ];
+      this.props.dispatch({
+        type: "ADD_IMAGE_PROFILE",
+        payload: imag,
+      });
+    }
+  }
+
+
   login = async () => {
 
     let password = md5(this.state.password);
@@ -76,11 +95,12 @@ class Login extends Component {
           type: 'ADD_LOGIN',
           payload: data2
         })
-        this.props.dispatch({
+    /*     this.props.dispatch({
           type: 'ADD_URL',
-          payload: "http://192.168.1.4/project/api-database/images/"
-        })
+          payload: "http://192.168.1.5/project/api-database/images/"
+        }) */
         await this.getAddress(getLogin[0].id);
+        await this.getImge(getLogin[0].id);
   
         await this.props.navigation.popToTop();
     } else {

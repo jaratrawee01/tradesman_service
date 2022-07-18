@@ -20,12 +20,12 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { Button } from "react-native-web";
 import { connect } from "react-redux";
-import  img1 from "../../assets/images/A-6.png";
-import {logoutStore} from "../logout";
+import img1 from "../../assets/images/A-6.png";
+import { logoutStore } from "../logout";
 
 
 class Profile_tradesman extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -37,16 +37,36 @@ class Profile_tradesman extends Component {
     };
   }
 
+  componentDidMount() {
 
-  componentDidUpdate() {
-    console.log("aaa",this.state.name);
-    if (this.props.posts.address.name !==  this.state.name.name || this.props.posts.imageProfile[0].name !== this.state.image[0].name) {
+    if (this.state.name === null) {
       this.setState({
-        image: this.props.posts.imageProfile,
         name: this.props.posts.address
       });
     }
-  
+
+    if (this.state.image === null) {
+      this.setState({
+        image: this.props.posts.imageProfile,
+      });
+    }
+
+
+  }
+
+  componentDidUpdate() {
+
+    if (this.props.posts.address !== this.state.name) {
+      this.setState({
+        name: this.props.posts.address
+      });
+    }
+
+    if (this.props.posts.imageProfile !== this.state.image) {
+      this.setState({
+        image: this.props.posts.imageProfile,
+      });
+    }
   }
 
   setModalVisible = (visible, urlImg) => {
@@ -55,8 +75,8 @@ class Profile_tradesman extends Component {
       urlImg: urlImg,
     });
   };
-  
- async logout () {
+
+  async logout() {
 
     this.props.dispatch({
       type: 'DELETE_LOGIN',
@@ -78,11 +98,11 @@ class Profile_tradesman extends Component {
       type: "DELETE_IMAGE_PROFILE",
       payload: null,
     });
-    this.props.dispatch({
-      type: "DELETE_URL",
-      payload: null,
-    });
-    await  this.props.navigation.popToTop();
+    /*    this.props.dispatch({
+         type: "DELETE_URL",
+         payload: null,
+       }); */
+    await this.props.navigation.popToTop();
   }
 
   customer() {
@@ -115,9 +135,6 @@ class Profile_tradesman extends Component {
                 <Text style={styles.text}>Jason Amada aa</Text>
                 <Text style={styles.text1}>aaaa_dddd@gmail.wwcom</Text>
                 <View style={styles.icons1}>
-                  {/* <View style={styles.boxhead}>
-                    {myStar}
-                  </View> */}
                 </View>
               </View>
             </View>
@@ -147,20 +164,20 @@ class Profile_tradesman extends Component {
               </View>
             </View>
             <View style={styles.box3}>
-                <MaterialCommunityIcons name="logout" style={styles.icons5} />
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.logout()}>{"Logout"}
-                </Text>
-              </View>
+              <MaterialCommunityIcons name="logout" style={styles.icons5} />
+              <Text
+                style={styles.text2}
+                onPress={() => this.logout()}>{"Logout"}
+              </Text>
+            </View>
           </ScrollView>
         </SafeAreaView>
       </>
     )
   }
 
-  tradesman() {
-    const { modalVisible, urlImg,image,name} = this.state;
+   tradesman ()  {
+    const  { modalVisible, urlImg, image, name } =  this.state;
     var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
@@ -182,28 +199,23 @@ class Profile_tradesman extends Component {
               <View style={styles.box1}>
                 <View style={styles.box6}>
                   {
-                    image === null ? 
-                    <Image
-                    style={styles.image3}
-                    source={require('../../assets/images/A-11.png')}
-                  />
-                    :
-                    <Image
-                    style={styles.imgPro}
-                    source={{ uri: image[0].uri }}
-                  />
+                    image !== null ?
+                    <Image  style={styles.imgPro} source={{ uri: image[0].uri }}/>
+                      :
+                    <Image style={styles.image3} source={require('../../assets/images/A-11.png')}/>
+                     
                   }
                 </View>
                 {
-                  name === null ? 
-                  null 
-                  :
-                  <>
-                  <Text style={styles.text}>{name.name}</Text>
-                  <Text style={styles.text1}>เบอรติดต่อ {this.props.posts.login.phone}</Text>
-                  </>
+                  name === null ?
+                    null
+                    :
+                    <>
+                      <Text style={styles.text}>{name.name}</Text>
+                      <Text style={styles.text1}>เบอรติดต่อ {this.props.posts.login.phone}</Text>
+                    </>
                 }
-               
+
 
                 <View style={styles.icons1}>
                   {/* <View style={styles.boxhead}>
@@ -267,7 +279,7 @@ class Profile_tradesman extends Component {
                   onPress={() => this.props.navigation.navigate("Bank_account")}>{"บัญชีธนาคาร"}
                 </Text>
               </View>
-             {/*  <View style={styles.box5}>
+              {/*  <View style={styles.box5}>
                 <Text style={styles.text3}>ผลงาน</Text>
               </View>
               <View style={styles.box4}>
@@ -327,48 +339,44 @@ class Profile_tradesman extends Component {
   }
 
 
-  login2 () {
-    console.log("asdasd");
-  }
+
   login() {
     return (
       <>
-          <View>
-          <ImageBackground  source={img1} resizeMode="cover" style={styles.image4}>
+        <View>
+          <ImageBackground source={img1} resizeMode="cover" style={styles.image4}>
             <View style={styles.container}>
-            <TouchableOpacity  style={styles.box7} onPress={() => this.props.navigation.navigate("Login")}>
+              <TouchableOpacity style={styles.box7} onPress={() => this.props.navigation.navigate("Login")}>
                 <Text style={styles.text4}>เข้าสู่ระบบ</Text>
-            </TouchableOpacity >
+              </TouchableOpacity >
             </View>
           </ImageBackground>
-          </View>
-           
+        </View>
+
       </>
     )
   }
-  
 
-   render  () {
+
+  render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-    console.log("stausLogin",this.props.posts.imageProfile,this.state.image[0].name);
-    return (
+
+    return  (
       <>
         {
-           this.props.posts.login === null
+          this.props.posts.login === null
             ?
-             this.login()
+            this.login()
             :
             this.props.posts.login.status_user === "ลูกค้าทั่วไป"
 
               ?
-                this.customer()
+              this.customer()
               :
-               this.tradesman()
+             this.tradesman()
 
         }
       </>
-
-      /*   */
 
     );
   }
@@ -526,7 +534,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     fontSize: 18,
     zIndex: 2,
-    top:80,
+    top: 80,
     position: "absolute",
     marginTop: "90%",
     marginLeft: 40,
@@ -633,7 +641,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     borderRadius: 100,
     zIndex: 1,
-    
+
   },
 });
 
@@ -642,6 +650,6 @@ const mapStateToProps = (state) => {
     posts: state
   }
 }
-export default connect(mapStateToProps,null)(Profile_tradesman);
+export default connect(mapStateToProps, null)(Profile_tradesman);
 
 
