@@ -146,13 +146,20 @@ class Information extends Component {
                 </Text>
               </View>
               {this.props.posts.imageProfile === null ? (
-                <Text onPress={() => this.saveImage()}>Save เพิ่มรูป</Text>
+                <Viev>
+                  <TouchableOpacity style={styles.box2}>
+                    <Text onPress={() => this.saveImage()} style={styles.text4}>
+                      Save เพิ่มรูป
+                    </Text>
+                  </TouchableOpacity>
+                </Viev>
+                
               ) : (
-                <View style={styles.box2}>
+                <TouchableOpacity style={styles.box2}>
                   <Text onPress={() => this.updateImage()} style={styles.text4}>
                     บันทึกรูปภาพ
                   </Text>
-                </View>
+                </TouchableOpacity>
               )}
             </View>
           </View>

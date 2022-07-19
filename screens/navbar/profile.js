@@ -143,14 +143,17 @@ class Profile_tradesman extends Component {
               <View style={styles.box3}>
                 <FontAwesome5 name="user-alt" style={styles.icons3} />
                 <Text style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Information ")}>{"โปรไฟล์"}
+                  onPress={() => this.props.navigation.navigate("Information")}>{"โปรไฟล์"}
                 </Text>
               </View>
 
 
               <View style={styles.box3}>
                 <FontAwesome5 name="address-book" style={styles.icons5} />
-                <Text style={styles.text2}>{"ข้อมูลการติดต่อ"}</Text>
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Address_user")}>{"ข้อมูลการติดต่อ"}
+                </Text>
               </View>
 
               <View style={styles.box3}>
@@ -160,7 +163,9 @@ class Profile_tradesman extends Component {
 
               <View style={styles.box3}>
                 <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-                <Text style={styles.text2}>{"แชท"}</Text>
+                <Text style={styles.text2}
+                onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
+                </Text>
               </View>
             </View>
             <View style={styles.box3}>
