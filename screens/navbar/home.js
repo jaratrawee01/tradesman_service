@@ -8,7 +8,7 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {  
+    this.state = {
       address: this.props.posts.address,
       technician: null,
       urlImg: this.props.posts.urlImage,
@@ -24,7 +24,7 @@ class Home extends Component {
     this.getTechnician_type();
 
   }
-  getTechnician_type = async () =>  {
+  getTechnician_type = async () => {
     const result = await technician_type.technician_type();
     this.setState({
       technician: result
@@ -35,7 +35,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.1.5/project/api-database/images/"
+      payload: "http://192.168.1.4/project/api-database/images/"
     })
     this.props.dispatch({
       type: 'DELETE_TECHNICAN',
@@ -43,7 +43,7 @@ class Home extends Component {
     })
   }
 
-  setLogin  (e) {
+  setLogin(e) {
     if (this.state.login !== null) {
       this.props.navigation.navigate("Tradesman");
       this.props.dispatch({
@@ -52,11 +52,11 @@ class Home extends Component {
       })
 
     }
-  } 
+  }
 
 
   customer = () => {
-    const { technician,urlImg } = this.state;
+    const { technician, urlImg } = this.state;
 
     return (
       <>
@@ -72,25 +72,25 @@ class Home extends Component {
               <Text style={styles.text}>ประเภทงาน User</Text>
             </View>
             <View style={styles.boxhead}>
-            {technician && technician.map((index) => {
+              {technician && technician.map((index) => {
 
-                  const nameImage = index.image_name;
-                  const name = index.technician_type;
-                    const image = (
-                     <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
+                const nameImage = index.image_name;
+                const name = index.technician_type;
+                const image = (
+                  <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
                     <View style={styles.box3}>
                       <Text style={styles.text1}>{name}</Text>
-                       {
-                           nameImage !== null ? 
-                           <Image style={styles.image1}  source={{ uri: `${urlImg}image_tradesman/${nameImage}` }} />
-                           :
-                           <Image style={styles.image1} source={require('../../assets/images/B-1.png')} />
-                       }
-                      </View>
-                    </TouchableWithoutFeedback>
-                    )
-                    return image; 
-                  })} 
+                      {
+                        nameImage !== null ?
+                          <Image style={styles.image1} source={{ uri: `${urlImg}image_tradesman/${nameImage}` }} />
+                          :
+                          <Image style={styles.image1} source={require('../../assets/images/B-1.png')} />
+                      }
+                    </View>
+                  </TouchableWithoutFeedback>
+                )
+                return image;
+              })}
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -99,8 +99,10 @@ class Home extends Component {
   }
 
   tradesman = () => {
-    const { technician,urlImg,address } = this.state;
-   /*  console.log("address",this.state.address); */
+    const { technician, urlImg, address } = this.state;
+    var technician_1 = [address.technician_1, address.technician_2];
+
+
     return (
       <>
         <SafeAreaView style={styles.container}>
@@ -112,29 +114,40 @@ class Home extends Component {
                   source={require('../../assets/images/A-11.png')}
                 />
               </View>
-              <Text style={styles.text}>ประเภทงาน</Text>
+              <Text style={styles.text}>ประเภทงานของคุณ</Text>
             </View>
 
             <View style={styles.boxhead}>
-
-           {/*  {technician && technician.fa((index) => {
-              const nameImage = index.image_name;
-              const name = index.technician_type;
-                const image = (
-                <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
-                <View style={styles.box3}>
-                  <Text style={styles.text1}>{name}</Text>
-                  {
-                      nameImage !== null ? 
-                      <Image style={styles.image1}  source={{ uri: `${urlImg}image_tradesman/${nameImage}` }} />
-                      :
-                      <Image style={styles.image1} source={require('../../assets/images/B-1.png')} />
+              {
+                technician_1 && technician_1.map((va) => {
+                  const image_type = technician && technician.filter((index, id) => {
+                    if (va === index.technician_type) {
+                      const name = index;
+                      return name
+                    }
+                  })
+                  if (image_type) {
+                    const nameImage = image_type[0].image_name;
+                    const name = image_type[0].technician_type;
+                    const image = (
+                      <TouchableWithoutFeedback>
+                        <View style={styles.box3}>
+                          <Text style={styles.text1}>{name}</Text>
+                          {
+                            nameImage !== null ?
+                              <Image style={styles.image1} source={{ uri: `${urlImg}image_tradesman/${nameImage}` }} />
+                              :
+                              <Image style={styles.image1} source={require('../../assets/images/B-1.png')} />
+                          }
+                        </View>
+                      </TouchableWithoutFeedback>
+                    )
+                    return image;
                   }
-                  </View>
-                </TouchableWithoutFeedback>
-                )
-                return image; 
-              })}  */}
+                })
+              }
+
+
             </View>
           </ScrollView>
         </SafeAreaView>
@@ -145,18 +158,18 @@ class Home extends Component {
 
   render() {
 
-     const login = this.props.posts.login;
+    const login = this.props.posts.login;
 
     return (
       <>
-     { login !== null ? 
-        this.props.posts.login.status_user === "ช่าง" ?
-          this.tradesman()
+        {login !== null ?
+          this.props.posts.login.status_user === "ช่าง" ?
+            this.tradesman()
+            :
+            this.customer()
           :
           this.customer()
-     :
-     this.customer()
-     }
+        }
       </>
     );
   }
