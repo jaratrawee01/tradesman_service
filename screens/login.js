@@ -34,7 +34,6 @@ class Login extends Component {
   }
 
   getAddress = async (e) => {
-    console.log("e", e);
     const result = await login.getAddress(e);
 /*     console.log("result", result); */
     if (result !== null) {

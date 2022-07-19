@@ -32,8 +32,9 @@ class Profile_tradesman extends Component {
       urlImg: null,
       modalVisible: false,
       star: "2",
-      image: this.props.posts.imageProfile,
-      name: this.props.posts.address
+      image: null,
+      name: null,
+      stausLogin: null,
     };
   }
 
@@ -42,6 +43,12 @@ class Profile_tradesman extends Component {
     if (this.state.name === null) {
       this.setState({
         name: this.props.posts.address
+      });
+    }
+    
+    if (this.state.stausLogin === null) {
+      this.setState({
+        stausLogin: this.props.posts.login
       });
     }
 
@@ -62,6 +69,11 @@ class Profile_tradesman extends Component {
       });
     }
 
+    if (this.props.posts.login !== this.state.stausLogin) {
+      this.setState({
+        stausLogin: this.props.posts.login
+      });
+    }
     if (this.props.posts.imageProfile !== this.state.image) {
       this.setState({
         image: this.props.posts.imageProfile,
@@ -157,11 +169,6 @@ class Profile_tradesman extends Component {
               </View>
 
               <View style={styles.box3}>
-                <FontAwesome5 name="unlock-alt" style={styles.icons5} />
-                <Text style={styles.text2}>{"เปลียน user/password"}</Text>
-              </View>
-
-              <View style={styles.box3}>
                 <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
                 <Text style={styles.text2}
                 onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
@@ -182,7 +189,7 @@ class Profile_tradesman extends Component {
   }
 
    tradesman ()  {
-    const  { modalVisible, urlImg, image, name } =  this.state;
+    const  { modalVisible, urlImg, image, name ,stausLogin} =  this.state;
     var myStar = [
       <FontAwesome name="star" style={styles.icons} />,
       <FontAwesome name="star" style={styles.icons} />,
@@ -217,7 +224,12 @@ class Profile_tradesman extends Component {
                     :
                     <>
                       <Text style={styles.text}>{name.name}</Text>
-                      <Text style={styles.text1}>เบอรติดต่อ {this.props.posts.login.phone}</Text>
+                      <Text style={styles.text1}>เบอรติดต่อ {
+                      stausLogin !== null ?
+                      <>{stausLogin.phone}</>
+                       :
+                        null
+                      }</Text>
                     </>
                 }
 
@@ -365,15 +377,16 @@ class Profile_tradesman extends Component {
 
   render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-
+    const login_a =  this.props.posts.login;
+    console.log(stausLogin);
     return  (
       <>
         {
-          this.props.posts.login === null
+        login_a === null
             ?
             this.login()
             :
-            this.props.posts.login.status_user === "ลูกค้าทั่วไป"
+            login_a.status_user === "ลูกค้าทั่วไป"
 
               ?
               this.customer()

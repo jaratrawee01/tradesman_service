@@ -9,25 +9,31 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: this.props.posts.address,
+      address: null,
       technician: null,
-      urlImg: this.props.posts.urlImage,
-      login: this.props.posts.login,
+      urlImg: null,
+      login: null,
     };
   }
 
 
 
   componentDidMount() {
-
     this.setUrl();
     this.getTechnician_type();
 
   }
+  componentDidUpdate() {
+    this.getTechnician_type();
+  }
+
   getTechnician_type = async () => {
     const result = await technician_type.technician_type();
     this.setState({
-      technician: result
+      technician: result,
+      address: this.props.posts.address,
+      urlImg: this.props.posts.urlImage,
+      login: this.props.posts.login,
     });
   }
 
@@ -43,14 +49,17 @@ class Home extends Component {
     })
   }
 
+
   setLogin(e) {
+
     if (this.state.login !== null) {
       this.props.navigation.navigate("Tradesman");
       this.props.dispatch({
         type: 'ADD_TECHNICAN',
         payload: e
       })
-
+    }else{
+      this.props.navigation.navigate("Login")
     }
   }
 
@@ -100,7 +109,13 @@ class Home extends Component {
 
   tradesman = () => {
     const { technician, urlImg, address } = this.state;
-    var technician_1 = [address.technician_1, address.technician_2];
+
+    if (address !== null) {
+      var technician_1 = [address.technician_1, address.technician_2];
+    }
+ 
+    
+
 
 
     return (
@@ -119,11 +134,13 @@ class Home extends Component {
 
             <View style={styles.boxhead}>
               {
+                
                 technician_1 && technician_1.map((va) => {
                   const image_type = technician && technician.filter((index, id) => {
                     if (va === index.technician_type) {
                       const name = index;
-                      return name
+            
+                      return name;
                     }
                   })
                   if (image_type) {
@@ -158,15 +175,16 @@ class Home extends Component {
 
   render() {
 
-    const login = this.props.posts.login;
+    const login_props = this.props.posts.login;
 
     return (
       <>
-        {login !== null ?
-          this.props.posts.login.status_user === "ช่าง" ?
+        {login_props !== null ?
+
+         login_props.status_user === "ช่าง" ?
             this.tradesman()
             :
-            this.customer()
+            this.customer() 
           :
           this.customer()
         }
