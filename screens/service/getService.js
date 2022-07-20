@@ -1,7 +1,7 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.4/project/api-database'; //หน่วย
-/*  const url = 'http://192.168.0.105/project/api-database'; */ // ยอน 
+/* const url = 'http://192.168.1.4/project/api-database';  *///หน่วย
+ const url = 'http://192.168.0.105/project/api-database'; // ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
@@ -177,6 +177,26 @@ const getAddress = async (e) => {
   return seaUser;
 };
 
+const getAddress_user = async (e) => {
+  const seaUser = await axios.get(`${url}/getAddress_user.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
+
 
 const getImage = async (e) => {
   const seaUser = await axios.get(`${url}/getImages.php`, {
@@ -307,7 +327,7 @@ const createAddress_user = async (e) => {
   formdata.append('province', e[5]);
   formdata.append('zipcode', e[6]);
   formdata.append('location', JSON.stringify(e[7]));
-  const cerAdd = await axios.post(`${url}/addAddress_user.php`, formdata, {
+  const adduser = await axios.post(`${url}/addAddress_user.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
     }
@@ -319,7 +339,8 @@ const createAddress_user = async (e) => {
 
       return error;
     });
-  return cerAdd;
+
+  return adduser;
 }
 
 const createBookBank = async (e) => {
@@ -426,6 +447,34 @@ const updateAddress = async (e) => {
   
 }
 
+const updateAddress_user = async (e) => {
+
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('id', e[0]);
+  formdata.append('name', e[1]);
+  formdata.append('addressUser', e[2]);
+  formdata.append('subdistrict', e[3]);
+  formdata.append('district', e[4]);
+  formdata.append('province', e[5]);
+  formdata.append('zipcode', e[6]);
+  formdata.append('location', JSON.stringify(e[7]));
+  const upuser = await axios.post(`${url}/updateAddress_user.php`, formdata, {
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+
+    return "success";
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return upuser;
+  
+}
+
 const uplodeUpdateImages = async (e,id,name) => {
 
   const formdata = new FormData();
@@ -522,5 +571,7 @@ export default {
   uplodeUpdateImagesProfile,
   getImageProfile,
   createAddress_user,
+  getAddress_user,
+  updateAddress_user,
 
 };

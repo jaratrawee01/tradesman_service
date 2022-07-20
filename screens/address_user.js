@@ -16,7 +16,7 @@ import technician_type from "./service/getService";
 import * as Location from "expo-location";
 import { setDisabled } from "react-native/Libraries/LogBox/Data/LogBoxData";
 import { Picker } from "@react-native-picker/picker";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import img1 from "../assets/images/BB-2.png";
 
@@ -24,7 +24,7 @@ import img1 from "../assets/images/BB-2.png";
 
 let apiKey = "AIzaSyBdjxXSNpAnyW0lzE_uliQ121U4mkmSgPk";
 
-const Address_user  = ({ navigation: { popToTop, navigate } }) => {
+const Address_user = ({ navigation: { popToTop, navigate } }) => {
   const [location, setLocation] = useState({
     latitude: null,
     longitude: null,
@@ -43,7 +43,7 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
     useSelector((state) => state.login.id)
   );
   const [statusAddress, setStatusAddress] = useState(
-    useSelector((state) => state.address)
+    useSelector((state) => state.addressUser)
   );
   const [statusEdit, setStatusEdit] = useState(false);
   const [id, setId] = useState(null);
@@ -121,7 +121,8 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
   };
 
   const serve = async () => {
-    const data = [
+
+   const data = [
       idPhone,
       name,
       addressUser,
@@ -131,48 +132,42 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
       zipcode,
       location,
     ];
+    
 
-    const result = await technician_type.createAddress_user(data);
-    if (result === "success") {
-      await getAddress(idPhone);
-      await Alert.alert("บันทึกสำเร็จ");
+ const result = await technician_type.createAddress_user(data);
+ console.log(result);
+
+     if (result === "success") {
+      await getAddress_user(idPhone); 
       setStatusAddress(true);
+      await Alert.alert("บันทึกสำเร็จ");
       await popToTop();
     } else {
       await Alert.alert("บันทึกไม่สำเร็จ กรุณาลองใหม่");
     }
   };
-  const update = async () => {
-    const data = [
-      id,
-      name,
-      addressUser,
-      subdistrict,
-      district,
-      province,
-      zipcode,
-      location,
-    ];
 
-    const result = await technician_type.updateAddress(data);
-    if (result === "success") {
-      await getAddress(idPhone);
-      setStatusEdit(false);
-      await Alert.alert("เเก้ไขสำเร็จ");
-      setStatusAddress(true);
-      await popToTop();
-    } else {
-      await Alert.alert("เเก้ไขไม่สำเร็จ กรุณาลองใหม่");
-    }
-  };
+  const getAddress_user = async (e) => {
+    const result1 = await technician_type.getAddress_user(e);
+   
 
-  const loadtTechnician = async () => {
-    const result = await technician_type.technician_type();
-    if (result.length > 0) {
-      setTechnicianType(result);
-    } else {
-      setTechnicianType(null);
-    }
+   if (result1 !== null) {
+    
+      let data3 = {
+        id: result1[0].id,
+        name: result1[0].name,
+        addressUser: result1[0].address,
+        subdistrict: result1[0].subdistrict,
+        district: result1[0].district,
+        province: result1[0].province,
+        zipcode: result1[0].zipcode,
+        location: JSON.parse(result1[0].location),
+      }; 
+      dispatch({
+        type: "ADD_ADDRESS_USER",
+        payload: data3,
+      }); 
+    } 
   };
 
   const edit = async () => {
@@ -190,36 +185,39 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
     });
   };
 
-  const getAddress = async (e) => {
-    const result = await technician_type.getAddress(e);
 
-    if (result !== null) {
-      let data3 = {
-        id: result[0].id,
-        name: result[0].name,
-        addressUser: result[0].address,
-        subdistrict: result[0].subdistrict,
-        district: result[0].district,
-        province: result[0].province,
-        zipcode: result[0].zipcode,
-        location: JSON.parse(result[0].location),
-      };
-      dispatch({
-        type: "ADD_ADDRESS",
-        payload: data3,
-      });
+  const update = async () => {
+    const data = [
+      id,
+      name,
+      addressUser,
+      subdistrict,
+      district,
+      province,
+      zipcode,
+      location,
+    ];
+    const result = await technician_type.updateAddress_user(data);
+    
+    if (result === "success") {
+      await getAddress_user(idPhone);
+      await Alert.alert("เเก้ไขสำเร็จ");
+      setStatusEdit(false);
+      setStatusAddress(true);
+      await popToTop();
+    } else {
+      await Alert.alert("เเก้ไขไม่สำเร็จ กรุณาลองใหม่");
     }
-  };
+  }; 
 
   useEffect(() => {
     if (location.longitude === null) {
       getLocation();
       map();
     }
-    if (technicianType === null) {
-      loadtTechnician();
-    }
+
   }, []);
+
 
   /*   const url = useSelector(state => ({...state}));
     console.log("url",url); */
@@ -251,7 +249,7 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
 
             <View style={styles.box3}>
               <View>
-                <Text style={styles.text1}>รายละเอียดติดต่อ</Text>
+                <Text style={styles.text1}>รายละเอียดติดต่อ ADD</Text>
               </View>
               <View style={styles.boxhead}>
                 <View>
@@ -263,9 +261,9 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
                     }}
                   />
                 </View>
-
+  
                 <View>
-                  <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
+                  <Text style={styles.text2}>{"บ้านเลขที่"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
@@ -327,9 +325,9 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
     );
   };
 
-  const showAddress = () => { 
+  const showAddress = () => {
     return (
-      <> 
+      <>
         <ScrollView>
           <View>
             <Image
@@ -339,7 +337,7 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
           </View>
           <View style={styles.box}>
             <View>
-              <Text style={styles.text1}>รายละเอียดติดต่อ</Text>
+              <Text style={styles.text1}>รายละเอียดติดต่อ SHOW</Text>
             </View>
             <TouchableOpacity style={styles.button1} onPress={() => edit()}>
               <Text style={styles.text5}>แก้ไขข้อมูล</Text>
@@ -449,7 +447,7 @@ const Address_user  = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
+                  <Text style={styles.text2}>{"บ้านเลขที่"}</Text>
                   <TextInput
                     value={addressUser}
                     style={styles.box4}

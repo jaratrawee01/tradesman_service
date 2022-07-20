@@ -110,6 +110,10 @@ class Profile_tradesman extends Component {
       type: "DELETE_IMAGE_PROFILE",
       payload: null,
     });
+    this.props.dispatch({
+      type: "DELETE_ADDRESS_USER",
+      payload: null,
+    });
     /*    this.props.dispatch({
          type: "DELETE_URL",
          payload: null,
@@ -378,7 +382,7 @@ class Profile_tradesman extends Component {
   render  () {
     const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
     const login_a =  this.props.posts.login;
-    console.log(stausLogin);
+/*     console.log(stausLogin); */
     return  (
       <>
         {
