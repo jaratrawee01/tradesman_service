@@ -1,7 +1,7 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
-/* const url = 'http://192.168.1.4/project/api-database';  *///หน่วย
- const url = 'http://192.168.0.105/project/api-database'; // ยอน 
+const url = 'http://192.168.1.5/project/api-database'; //หน่วย
+/*  const url = 'http://192.168.0.105/project/api-database'; */ // ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
@@ -134,6 +134,27 @@ const technician_type = async () => {
     });
   return seaUser;
 }
+
+// ดึงข้อมูล ช่าง ตามประเภทงาน
+const gettechnician = async (e) => {
+  const seaUser = await axios.get(`${url}/getTechnician.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      name: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  return seaUser;
+};
 
 // เช็ค user/pass login
 const getLogin = async (e) => {
@@ -573,5 +594,6 @@ export default {
   createAddress_user,
   getAddress_user,
   updateAddress_user,
+  gettechnician,
 
 };
