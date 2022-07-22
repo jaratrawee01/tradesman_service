@@ -107,64 +107,67 @@ class Information extends Component {
 
   render() {
     const { imgProfile } = this.state;
-
     return (
-      <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <View>
-            <Image
-              style={styles.image2}
-              source={require("../assets/images/BB-2.png")}
-            />
-          </View>
 
-          <View style={styles.box6}>
-            <TouchableOpacity onPress={() => this.pickImage()}>
-              {imgProfile === null ? (
-                <AntDesign name="pluscircleo" style={styles.icons} />
-              ) : (
-                <Image style={styles.imgPro} source={{ uri: imgProfile.uri }} />
-              )}
-            </TouchableOpacity>
-          </View>
+      <>
+        <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <View>
+              <Image
+                style={styles.image2}
+                source={require("../assets/images/BB-2.png")}
+              />
+            </View>
+
+            <View style={styles.box6}>
+              <TouchableOpacity onPress={() => this.pickImage()}>
+                {imgProfile === null ? (
+                  <AntDesign name="pluscircleo" style={styles.icons} />
+                ) : (
+                  <Image style={styles.imgPro} source={{ uri: imgProfile.uri }} />
+                )}
+              </TouchableOpacity>
+            </View>
 
           <View style={styles.box1}>
-            <View style={styles.box}>
-              <Text style={styles.text}>ข้อมูลเกี่ยวกับบัญชี</Text>
-            </View>
-
-            <View style={styles.box}>
-              <View style={styles.box3}>
-                <Text style={styles.text2}>{"เบอร์โทร"}</Text>
-                <Text style={styles.text3}>{this.props.posts.login.phone}</Text>
+              <View style={styles.box}>
+                <Text style={styles.text}>ข้อมูลเกี่ยวกับบัญชี</Text>
               </View>
 
-              <View style={styles.box3}>
-                <Text style={styles.text2}>{"สถานะการสมัคร"}</Text>
-                <Text style={styles.text3}>
-                  {this.props.posts.login.status_user}
-                </Text>
-              </View>
-              {this.props.posts.imageProfile === null ? (
-                <Viev>
-                  <TouchableOpacity style={styles.box2}>
-                    <Text onPress={() => this.saveImage()} style={styles.text4}>
-                      Save เพิ่มรูป
+              <View style={styles.box}>
+                <View style={styles.box3}>
+                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <Text style={styles.text3}>{this.props.posts.login.phone}</Text>
+                </View>
+
+                <View style={styles.box3}>
+                  <Text style={styles.text2}>{"สถานะการสมัคร"}</Text>
+                  <Text style={styles.text3}>
+                    {this.props.posts.login.status_user}
+                  </Text>
+                </View>
+                {this.props.posts.imageProfile === null ? 
+                <>
+                    <TouchableOpacity style={styles.box2}>
+                      <Text onPress={() => this.saveImage()} style={styles.text4}>
+                        Save เพิ่มรูป
+                      </Text>
+                    </TouchableOpacity>
+                </> 
+                : 
+                <>
+                <TouchableOpacity style={styles.box2}>
+                    <Text onPress={() => this.updateImage()} style={styles.text4}>
+                      บันทึกรูปภาพ
                     </Text>
                   </TouchableOpacity>
-                </Viev>
-                
-              ) : (
-                <TouchableOpacity style={styles.box2}>
-                  <Text onPress={() => this.updateImage()} style={styles.text4}>
-                    บันทึกรูปภาพ
-                  </Text>
-                </TouchableOpacity>
-              )}
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+                </>
+                }
+              </View>
+            </View> 
+          </ScrollView>
+        </SafeAreaView>
+      </>
     );
   }
 }
