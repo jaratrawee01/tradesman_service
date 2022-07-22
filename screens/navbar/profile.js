@@ -136,6 +136,7 @@ class Profile_tradesman extends Component {
         <FontAwesome name="star" style={styles.iconsGold} />
       );
     }
+    const  { modalVisible, urlImg, image, name ,stausLogin} =  this.state;
     return (
       <>
         <SafeAreaView style={styles.container}>
