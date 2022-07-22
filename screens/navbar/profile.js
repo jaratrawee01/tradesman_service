@@ -141,17 +141,30 @@ class Profile_tradesman extends Component {
         <SafeAreaView style={styles.container}>
           <ScrollView>
             <View style={styles.box}>
-              <View style={styles.box1}>
+            <View style={styles.box1}>
                 <View style={styles.box6}>
-                  <Image
-                    style={styles.image3}
-                    source={require('../../assets/images/A-11.png')}
-                  />
+                  {
+                    image !== null ?
+                    <Image  style={styles.imgPro} source={{ uri: image[0].uri }}/>
+                      :
+                    <Image style={styles.image3} source={require('../../assets/images/A-11.png')}/>
+                     
+                  }
                 </View>
-                <Text style={styles.text}>Jason Amada aa</Text>
-                <Text style={styles.text1}>aaaa_dddd@gmail.wwcom</Text>
-                <View style={styles.icons1}>
-                </View>
+                {
+                  name === null ?
+                  <Text style={styles.text}>TECHNICIAN ONLINE</Text>
+                    :
+                    <>
+                      <Text style={styles.text}>{name.name}</Text>
+                      <Text style={styles.text1}>เบอรติดต่อ {
+                      stausLogin !== null ?
+                      <>{stausLogin.phone}</>
+                       :
+                        null
+                      }</Text>
+                    </>
+                }
               </View>
             </View>
 
@@ -224,7 +237,7 @@ class Profile_tradesman extends Component {
                 </View>
                 {
                   name === null ?
-                    null
+                  <Text style={styles.text}>TECHNICIAN ONLINE</Text>
                     :
                     <>
                       <Text style={styles.text}>{name.name}</Text>
@@ -236,13 +249,6 @@ class Profile_tradesman extends Component {
                       }</Text>
                     </>
                 }
-
-
-                <View style={styles.icons1}>
-                  {/* <View style={styles.boxhead}>
-                    {myStar}
-                  </View> */}
-                </View>
               </View>
             </View>
 
