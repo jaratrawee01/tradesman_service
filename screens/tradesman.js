@@ -93,7 +93,7 @@ class Home_tar extends Component {
                             </>
                             :
                             <>
-                              <Image style={styles.image} source={{ uri: `${urlImg}profile/logo_technician.png` }}/>
+                              <Image style={styles.image3} source={{ uri: `${urlImg}profile/logo_technician.png` }}/>
                               <Image style={styles.image1}  source={{ uri: `${urlImg}profile/logo_technician.png` }}/>
                             </>
                             }
@@ -166,15 +166,22 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-    elevation: 2,
     marginBottom: 4,
   },
   image: {
-    width: 90,
-    height: 90,
-    marginTop: 20,
+    width: 95,
+    height: 95,
+    marginTop: 15,
     borderRadius: 10,
-    marginLeft: 38,
+    marginLeft: 35,
+    position:"absolute"
+  },
+  image3: {
+    width: 140,
+    height: 140,
+    marginTop: -7,
+    borderRadius: 10,
+    marginLeft: 12,
     position:"absolute"
   },
   image1: {
