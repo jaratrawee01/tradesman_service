@@ -36,6 +36,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
   const [district, setDistrict] = useState(null);
   const [province, setProvince] = useState(null);
   const [zipcode, setZipcode] = useState(null);
+  const [phone_number, setPhone_number] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
   const [technicianType, setTechnicianType] = useState(null);
@@ -130,6 +131,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
       district,
       province,
       zipcode,
+      phone_number,
       location,
     ];
     
@@ -161,6 +163,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
         district: result1[0].district,
         province: result1[0].province,
         zipcode: result1[0].zipcode,
+        phone_number: result[0].phone_number,
         location: JSON.parse(result1[0].location),
       }; 
       dispatch({
@@ -179,6 +182,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
     setDistrict(statusAddress.district);
     setProvince(statusAddress.province);
     setZipcode(statusAddress.zipcode);
+    setPhone_number(statusAddress.phone_number);
     setLocation({
       latitude: statusAddress.location.latitude,
       longitude: statusAddress.location.longitude,
@@ -195,6 +199,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
       district,
       province,
       zipcode,
+      phone_number,
       location,
     ];
     const result = await technician_type.updateAddress_user(data);
@@ -310,6 +315,16 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                     }}
                   />
                 </View>
+
+                <View>
+                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
               <View style={styles.containerMap}>
@@ -371,6 +386,11 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
             <View style={styles.box7}>
                 <Text style={styles.text6}>{"รหัสไปรษณีย์"}</Text>
                 <Text style={styles.text7}>{statusAddress.zipcode}</Text>
+            </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"รหัสไปรษณีย์"}</Text>
+                <Text style={styles.text7}>{statusAddress.phone_number}</Text>
             </View>
 
             <View>
@@ -496,6 +516,17 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                     style={styles.box4}
                     onChange={(e) => {
                       setZipcode(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <TextInput
+                    value={zipcode}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setPhone_number(e.nativeEvent.text);
                     }}
                   />
                 </View>

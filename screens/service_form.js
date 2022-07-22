@@ -38,6 +38,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
   const [zipcode, setZipcode] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
+  const [phone_number, setPhone_number] = useState(null);
   const [technicianType, setTechnicianType] = useState(null);
   const [technician_1, setTechnician_1] = useState(null);
   const [technician_2, setTechnician_2] = useState(null);
@@ -131,6 +132,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       district,
       province,
       zipcode,
+      phone_number,
       location,
       technician_1,
       technician_2,
@@ -155,6 +157,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       district,
       province,
       zipcode,
+      phone_number,
       location,
       technician_1,
       technician_2,
@@ -190,6 +193,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     setDistrict(statusAddress.district);
     setProvince(statusAddress.province);
     setZipcode(statusAddress.zipcode);
+    setPhone_number(statusAddress.phone_number);
     setTechnician_1(statusAddress.technician_1);
     setTechnician_2(statusAddress.technician_2);
     setLocation({
@@ -197,6 +201,8 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       longitude: statusAddress.location.longitude,
     });
   };
+
+  console.log(statusAddress);
 
   const getAddress = async (e) => {
     const result = await technician_type.getAddress(e);
@@ -210,6 +216,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
         district: result[0].district,
         province: result[0].province,
         zipcode: result[0].zipcode,
+        phone_number: result[0].Phone_number,
         location: JSON.parse(result[0].location),
         technician_1: result[0].technician_1,
         technician_2: result[0].technician_2,
@@ -370,6 +377,16 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                     }}
                   />
                 </View>
+
+                <View>
+                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
               <View style={styles.containerMap}>
@@ -431,6 +448,11 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
             <View style={styles.box7}>
                 <Text style={styles.text6}>{"รหัสไปรษณีย์"}</Text>
                 <Text style={styles.text7}>{statusAddress.zipcode}</Text>
+            </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"เบอร์โทร"}</Text>
+                <Text style={styles.text7}>{statusAddress.phone_number}</Text>
             </View>
 
             <View style={styles.box7}>
@@ -614,6 +636,17 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                     style={styles.box4}
                     onChange={(e) => {
                       setZipcode(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <TextInput
+                    value={zipcode}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setPhone_number(e.nativeEvent.text);
                     }}
                   />
                 </View>
@@ -830,7 +863,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   text6: {
-    marginLeft: 5,
+    marginLeft: 2,
     fontSize: 18,
     paddingTop: 10,
     fontWeight: "bold",
