@@ -25,6 +25,9 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
   const [image4, setImage4] = useState(null);
   const [image5, setImage5] = useState(null);
   const [image6, setImage6] = useState(null);
+  const [image7, setImage7] = useState(null);
+  const [image8, setImage8] = useState(null);
+  const [image9, setImage9] = useState(null);
   const [statusImage, setStatusImage] = useState(
     useSelector((state) => state.image)
   );
@@ -56,8 +59,14 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
         setImage4(result);
       } else if (e === "image5") {
         setImage5(result);
-      } else {
+      } else if (e === "image6") {
         setImage6(result);
+      } else if (e === "image7") {
+        setImage7(result);
+      } else if (e === "image8") {
+        setImage8(result);
+      } else {
+        setImage9(result);
       }
     }
   };
@@ -90,6 +99,18 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     }
     if (image6 !== null) {
       const result2 = await bookBank.uplodeImages(image6, id_user);
+      result = result2;
+    }
+    if (image7 !== null) {
+      const result2 = await bookBank.uplodeImages(image7, id_user);
+      result = result2;
+    }
+    if (image8 !== null) {
+      const result2 = await bookBank.uplodeImages(image8, id_user);
+      result = result2;
+    }
+    if (image9 !== null) {
+      const result2 = await bookBank.uplodeImages(image9, id_user);
       result = result2;
     }
 
@@ -269,6 +290,51 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                 </View>
               </View>
 
+              <View style={styles.box5}>
+                <Text style={styles.text1}>ประเภทงาน 2</Text>
+              </View>
+
+              <View style={styles.boxhead}>
+                <View style={styles.box1}>
+                  {image7 && (
+                    <Image source={{ uri: image7.uri }} style={styles.image3} />
+                  )}
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="pluscircleo"
+                      style={styles.icons}
+                      onPress={() => pickImage("image7")}
+                    />
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.box1}>
+                  {image8 && (
+                    <Image source={{ uri: image8.uri }} style={styles.image3} />
+                  )}
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="pluscircleo"
+                      style={styles.icons}
+                      onPress={() => pickImage("image8")}
+                    />
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.box1}>
+                  {image9 && (
+                    <Image source={{ uri: image9.uri }} style={styles.image3} />
+                  )}
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="pluscircleo"
+                      style={styles.icons}
+                      onPress={() => pickImage("image9")}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+
               <View>
                 <TouchableOpacity style={styles.button} onPress={() => serve()}>
                   <Text style={styles.text3}>บันทึกข้อมูล</Text>
@@ -326,7 +392,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     );
   };
   const edit = () => {
-    setStatusEditImage(true);
+    setStatusEdit (true);
   };
 
   const editImage = () => {
@@ -438,6 +504,45 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                       name="pluscircleo"
                       style={styles.icons}
                       onPress={() => pickImage("image6")}
+                    />
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.box1}>
+                  {image7 && (
+                    <Image source={{ uri: image7.uri }} style={styles.image3} />
+                  )}
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="pluscircleo"
+                      style={styles.icons}
+                      onPress={() => pickImage("image7")}
+                    />
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.box1}>
+                  {image8 && (
+                    <Image source={{ uri: image8.uri }} style={styles.image3} />
+                  )}
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="pluscircleo"
+                      style={styles.icons}
+                      onPress={() => pickImage("image8")}
+                    />
+                  </TouchableOpacity>
+                </View>
+
+                <View style={styles.box1}>
+                  {image9 && (
+                    <Image source={{ uri: image9.uri }} style={styles.image3} />
+                  )}
+                  <TouchableOpacity>
+                    <AntDesign
+                      name="pluscircleo"
+                      style={styles.icons}
+                      onPress={() => pickImage("image9")}
                     />
                   </TouchableOpacity>
                 </View>

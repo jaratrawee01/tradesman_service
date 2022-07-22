@@ -643,7 +643,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 <View>
                   <Text style={styles.text2}>{"เบอร์โทร"}</Text>
                   <TextInput
-                    value={zipcode}
+                    value={phone_number}
                     style={styles.box4}
                     onChange={(e) => {
                       setPhone_number(e.nativeEvent.text);

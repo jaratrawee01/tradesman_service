@@ -1,6 +1,6 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
-const url = 'http://192.168.1.5/project/api-database';   //หน่วย
+ const url = 'http://192.168.1.5/project/api-database';   //หน่วย
   /*  const url = 'http://192.168.0.106/project/api-database';  */ // ยอน 
 /* const getUser = async () => {
 
@@ -472,9 +472,10 @@ const updateAddress = async (e) => {
   formdata.append('district', e[4]);
   formdata.append('province', e[5]);
   formdata.append('zipcode', e[6]);
-  formdata.append('location', JSON.stringify(e[7]));
-  formdata.append('technician_1', e[8]);
-  formdata.append('technician_2', e[9]);
+  formdata.append('phone_number', e[7]);
+  formdata.append('location', JSON.stringify(e[8]));
+  formdata.append('technician_1', e[9]);
+  formdata.append('technician_2', e[10]);
   const cerAdd = await axios.post(`${url}/updateAddress.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
@@ -492,7 +493,7 @@ const updateAddress = async (e) => {
 }
 
 const updateAddress_user = async (e) => {
-
+  
   const formdata = new FormData();
   formdata.append('isAdd', true);
   formdata.append('id', e[0]);
@@ -502,7 +503,8 @@ const updateAddress_user = async (e) => {
   formdata.append('district', e[4]);
   formdata.append('province', e[5]);
   formdata.append('zipcode', e[6]);
-  formdata.append('location', JSON.stringify(e[7]));
+  formdata.append('phone_number', e[7]);
+  formdata.append('location', JSON.stringify(e[8]));
   const upuser = await axios.post(`${url}/updateAddress_user.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
