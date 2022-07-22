@@ -249,7 +249,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
 
             <View style={styles.box3}>
               <View>
-                <Text style={styles.text1}>รายละเอียดติดต่อ ADD</Text>
+                <Text style={styles.text1}>รายละเอียดติดต่อ</Text>
               </View>
               <View style={styles.boxhead}>
                 <View>
@@ -337,7 +337,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
           </View>
           <View style={styles.box}>
             <View>
-              <Text style={styles.text1}>รายละเอียดติดต่อ SHOW</Text>
+              <Text style={styles.text1}>รายละเอียดติดต่อ </Text>
             </View>
             <TouchableOpacity style={styles.button1} onPress={() => edit()}>
               <Text style={styles.text5}>แก้ไขข้อมูล</Text>

@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, Vi
 import { FontAwesome } from '@expo/vector-icons';
 import { connect } from "react-redux";
 import get_technician from './service/getService';
-
+import img1 from "../assets/images/A-4.jpg";
 
 class Home_tar extends Component {
 
@@ -78,6 +78,7 @@ class Home_tar extends Component {
                       const name = (
                         <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile")}>
                           <View style={styles.box}>
+                          <Image style={styles.image2} source={require('../assets/images/A-4.jpg')}/>
                             { va.file_src !== null ? 
                             <>
                               <Image style={styles.image} source={{ uri: `${urlImg}profile/${va.file_src}` }}/>
@@ -93,7 +94,7 @@ class Home_tar extends Component {
                                <Text style={styles.text1}>
                               ชื่อ : {va.name}
                             </Text>
-                            <Text style={styles.text1}>
+                            <Text style={styles.text2}>
                               ประเภทงาน : {va.technician_1} เเละ {va.technician_2}
                             </Text>
                           </View>
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: '45%',
-    height: 240,
+    height: 200,
     padding: 5,
     marginTop: 20,
     marginLeft: 12,
@@ -160,31 +161,49 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   image: {
-    width: 140,
-    height: 150,
-    marginTop: 5,
-    borderRadius: 15,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    width: 90,
+    height: 90,
+    marginTop: 20,
+    borderRadius: 10,
+    marginLeft: 38,
+    position:"absolute"
   },
   image1: {
-    width: 25,
-    height: 25,
-    marginTop: 10,
-    marginLeft: 10,
+    width: 24,
+    height: 24,
+    marginTop: 120,
+    marginLeft: 3,
     borderRadius: 50,
+    position:"absolute"
+  },
+  image2: {
+    width: 162,
+    height: 200,
+    borderRadius: 10,
+    marginTop: -5,
+    marginLeft: -5,
+
   },
   text: {
     marginTop: 15,
     marginLeft: 15,
     fontWeight: 'bold',
     fontSize: 15,
+    position:"absolute"
   },
   text1: {
     fontSize: 15,
     fontWeight: 'bold',
-    marginLeft: 45,
-    marginTop: -22,
+    marginLeft: 32,
+    marginTop: 123,
+    position:"absolute"
+  },
+  text2: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginLeft: 15,
+    marginTop: 150,
+    position:"absolute"
   },
   icons: {
     marginLeft: 5,
