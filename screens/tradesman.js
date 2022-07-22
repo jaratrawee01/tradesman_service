@@ -90,14 +90,17 @@ class Home_tar extends Component {
                               <Image style={styles.image1}  source={{ uri: `${urlImg}profile/logo_technician.png` }}/>
                             </>
                             }
-                       
-                               <Text style={styles.text1}>
-                              ชื่อ : {va.name}
-                            </Text>
-                            <Text style={styles.text2}>
-                              ประเภทงาน : {va.technician_1} เเละ {va.technician_2}
-                            </Text>
+                            <Text style={styles.text1}>ชื่อ : </Text>
+                            <Text style={styles.text3}>{va.name}</Text>
+
+                            <Text style={styles.text2}>ประเภทงาน : </Text>
+                            <Text style={styles.text4}>{va.technician_1}</Text>
+
+                            <Text style={styles.text5}>ประเภทงาน : </Text>
+                            <Text style={styles.text6}>{va.technician_2}</Text>
+
                           </View>
+                          
                         </TouchableWithoutFeedback>
                       )
                       return name;
@@ -153,7 +156,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 12,
     borderRadius: 10,
-    backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
@@ -172,16 +174,16 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     marginTop: 120,
-    marginLeft: 3,
+    marginLeft: 10,
     borderRadius: 50,
     position:"absolute"
   },
   image2: {
-    width: 162,
+    width: '100%',
     height: 200,
     borderRadius: 10,
     marginTop: -5,
-    marginLeft: -5,
+
 
   },
   text: {
@@ -192,17 +194,42 @@ const styles = StyleSheet.create({
     position:"absolute"
   },
   text1: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: 'bold',
-    marginLeft: 32,
-    marginTop: 123,
+    marginLeft: 40,
+    marginTop: 125,
     position:"absolute"
   },
   text2: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: 'bold',
-    marginLeft: 15,
+    marginLeft: 20,
     marginTop: 150,
+    position:"absolute"
+  },
+  text3: {
+    fontSize: 13,
+    marginLeft: 65,
+    marginTop: 125,
+    position:"absolute"
+  },
+  text4: {
+    fontSize: 13,
+    marginLeft: 90,
+    marginTop: 150,
+    position:"absolute"
+  },
+  text5: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    marginLeft: 20,
+    marginTop: 170,
+    position:"absolute"
+  },
+  text6: {
+    fontSize: 13,
+    marginLeft: 90,
+    marginTop: 170,
     position:"absolute"
   },
   icons: {
