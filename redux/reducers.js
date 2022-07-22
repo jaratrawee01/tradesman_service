@@ -13,6 +13,7 @@ import {bookbankReducer}  from  './bookbankReducer';
 import {imageProfileReducer}  from  './imageProfileReducer';
 import {addressUserReducer} from './addressUserReducer';
 import {technicianReducer} from './technicianReducer';
+import {idTechnicianReducer} from './idTechnicianReducer';
 
 const persistConfig = {
   key: "root",    
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
     bookbank:bookbankReducer,
     addressUser:addressUserReducer,
     technician:technicianReducer,
+    id: idTechnicianReducer,
 
 });
 

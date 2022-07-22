@@ -87,9 +87,7 @@ class Profile_tradesman extends Component {
       urlImg: urlImg,
     });
   };
-
-  async logout() {
-
+   deleteStor() {
     this.props.dispatch({
       type: 'DELETE_LOGIN',
       payload: null
@@ -114,10 +112,15 @@ class Profile_tradesman extends Component {
       type: "DELETE_ADDRESS_USER",
       payload: null,
     });
-    /*    this.props.dispatch({
-         type: "DELETE_URL",
-         payload: null,
-       }); */
+    this.props.dispatch({
+      type: 'DELETE_IDTECHNICAN',
+      payload: null
+    })
+  }
+
+  async logout() {
+
+    this.deleteStor();
     await this.props.navigation.popToTop();
   }
 

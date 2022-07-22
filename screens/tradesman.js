@@ -32,6 +32,15 @@ class Home_tar extends Component {
 
   }
 
+  ClickU(e) {
+    this.props.dispatch({
+      type: 'ADD_IDTECHNICAN',
+      payload: e
+    })
+    console.log(e);
+  /*  this.props.navigation.navigate("Profile_tras_user") */
+  }
+
 
   render() {
     const { technician,urlImg } = this.state;
@@ -76,7 +85,7 @@ class Home_tar extends Component {
                     technician && technician.map((va) => {
                       console.log(va);
                       const name = (
-                        <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Profile")}>
+                        <TouchableWithoutFeedback onPress={() => this.ClickU(va.idPhone)}>
                           <View style={styles.box}>
                           <Image style={styles.image2} source={require('../assets/images/A-4.jpg')}/>
                             { va.file_src !== null ? 

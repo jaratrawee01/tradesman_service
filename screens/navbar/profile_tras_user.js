@@ -11,97 +11,62 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
-import { Button } from "react-native-web";
+import { connect } from "react-redux";
+import get_technician from '../service/getService';
 
-class Profile_tradesman extends Component {
+class Profile_tras_user extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
+      technician: null,
       urlImg: null,
-      modalVisible: false,
-      stausLogin: true,
-      ckeckUserId: "2",
-      star: "2",
     };
   }
 
 
 
-  setModalVisible = (visible, urlImg) => {
-    console.log(visible, urlImg);
+  componentDidMount() {
+    const name = this.props.posts.technician;
+    this.technicianAndUser(name);
+  }
+
+  technicianAndUser = async (e) => {
+    const result1 = await get_technician.gettechnician(e);
     this.setState({
-      modalVisible: visible,
-      urlImg: urlImg,
-    });
-  };
-  /* 
-    clickImg = (e) => {
-      console.log(e);
-      /*     this.setState({
-        urlImg: e,
-      });  
-    }; */
+      technician: result1,
+      urlImg: this.props.posts.urlImage,
+    })
 
-
-
+  }
 
   render() {
-    const { modalVisible, urlImg, stausLogin, ckeckUserId } = this.state;
-    /* console.log(urlImg,"123"); */
-    var myStar = [
-      <FontAwesome name="star" style={styles.icons} />,
-      <FontAwesome name="star" style={styles.icons} />,
-      <FontAwesome name="star" style={styles.icons} />,
-      <FontAwesome name="star" style={styles.icons} />,
-      <FontAwesome name="star" style={styles.icons} />
-    ];
 
 
-    for (let i = 0; i < this.state.star; i++) {
-      myStar.splice(i, 1,
-        <FontAwesome name="star" style={styles.iconsGold} />
-      );
-    }
+    const { technician,urlImg } = this.state;
 
+    console.log("technician");
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.box}>
             <View style={styles.box1}>
               <View style={styles.box6}>
-                <Image
-                  style={styles.image3}
-                  source={require('../../assets/images/A-11.png')}
-                />
+                {
+                  
+                }
+                <Image style={styles.image3} source={require('../../assets/images/A-11.png')} />
               </View>
               <Text style={styles.text}>Jason Amada</Text>
               <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
               <View style={styles.icons1}>
                 <View style={styles.boxhead}>
-                  {myStar}
                 </View>
               </View>
             </View>
           </View>
 
           <View style={styles.top}>
-
-            {
-              (ckeckUserId === "2") ?
-
-                <View style={styles.box3}>
-                  <FontAwesome name="user" style={styles.icons3} />
-                  <Text
-                    style={styles.text2}
-                    onPress={() => this.props.navigation.navigate("Information")}>{"โปรไฟล์"}
-                  </Text>
-                </View>
-                :
-                null
-            }
             <View style={styles.box3}>
               <FontAwesome5 name="file-image" style={styles.icons5} />
               <Text style={styles.text2}
@@ -124,98 +89,8 @@ class Profile_tradesman extends Component {
                 onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
               </Text>
             </View>
-
-            {(ckeckUserId === "2" ?
-              <>
-                {(stausLogin === true ?
-                  <View style={styles.box3}>
-                    <Entypo name="login" style={styles.icons5} />
-                    <Text
-                      style={styles.text2}
-                      onPress={() => this.props.navigation.navigate("Login")}>{"Login"}
-                    </Text>
-                  </View>
-                  :
-                  <View style={styles.box3}>
-                    <MaterialCommunityIcons name="logout" style={styles.icons5} />
-                    <Text
-                      style={styles.text2}
-                      onPress={() => this.props.navigation.navigate("Logout")}>{"Logout"}
-                    </Text>
-                  </View>
-                )}
-
-                <View style={styles.box3}>
-                  <FontAwesome5 name="cc-visa" style={styles.icons4} />
-                  <Text
-                    style={styles.text2}
-                    onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
-                  </Text>
-                </View>
-                <View style={styles.box3}>
-                  <Ionicons name="card" style={styles.icons5} />
-                  <Text
-                    style={styles.text2} 
-                    onPress={() => this.props.navigation.navigate("Bank_account")}>{"บัญชีธนาคาร"}
-                  </Text>
-                </View>
-              </>
-              : null
-            )}
-            <View style={styles.box5}>
-              <Text style={styles.text3}>ผลงาน</Text>
             </View>
-            <View style={styles.box4}>
-              <View style={styles.boxhead}>
-                <Pressable onPress={() => this.setModalVisible(true, "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg")}>
-                  <View>
-                    <Image
-                      style={styles.image1}
-                      source={{
-                        uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-                      }}
-                    />
-                  </View>
-                </Pressable>
-                <Pressable onPress={() => this.setModalVisible(true, "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg")}>
-                  <View>
-                    <Image
-                      style={styles.image1}
-                      source={{
-                        uri: "https://teerapong5839010009.files.wordpress.com/2017/04/011.jpg",
-                      }}
-                    />
-                  </View>
-                </Pressable>
-              </View>
-            </View>
-          </View>
         </ScrollView>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-            this.setModalVisible(!modalVisible);
-          }}
-        >
-          <View>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => this.setModalVisible(!modalVisible)}
-            >
-              <View>
-                <Image
-                  style={styles.image2}
-                  source={{
-                    uri: `${urlImg}`,
-                  }}
-                />
-              </View>
-            </Pressable>
-          </View>
-        </Modal>
       </SafeAreaView>
     );
   }
@@ -431,12 +306,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile_tradesman;
-
-{
-  /* <Image
-style={styles.image1}
-source={{uri: 'https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg'}}
-/>
- */
+const mapStateToProps = (state) => {
+  return {
+    posts: state
+  }
 }
+export default connect(mapStateToProps, null)(Profile_tras_user);
+
+

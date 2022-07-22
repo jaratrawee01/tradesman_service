@@ -21,6 +21,7 @@ class Home extends Component {
   componentDidMount() {
     this.setUrl();
     this.getTechnician_type();
+    this.deleteSarte();
 
   }
   componentDidUpdate() {
@@ -41,14 +42,21 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.0.106/project/api-database/images/"
+      payload: "http://192.168.1.5/project/api-database/images/"
     })
+  }
+  
+  deleteSarte() {
+
     this.props.dispatch({
       type: 'DELETE_TECHNICAN',
       payload: null
     })
+    this.props.dispatch({
+      type: 'DELETE_IDTECHNICAN',
+      payload: null
+    })
   }
-
 
   setLogin(e) {
 
