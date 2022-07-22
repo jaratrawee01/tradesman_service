@@ -37,14 +37,12 @@ class Home_tar extends Component {
       type: 'ADD_IDTECHNICAN',
       payload: e
     })
-    console.log(e);
-  /*  this.props.navigation.navigate("Profile_tras_user") */
+   this.props.navigation.navigate("Profile_tras_user")
   }
 
 
   render() {
     const { technician,urlImg } = this.state;
-    console.log(urlImg);
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
