@@ -96,6 +96,9 @@ class Home extends Component {
                 const image = (
                   <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
                     <View style={styles.box3}>
+
+                      <Image style={styles.image3} source={require('../../assets/images/A-9.jpg')}/>
+
                       <Text style={styles.text1}>{name}</Text>
                       {
                         nameImage !== null ?
@@ -242,16 +245,13 @@ const styles = StyleSheet.create({
   box3: {
     width: 160,
     height: 100,
-    padding: 5,
     marginTop: 10,
     marginLeft: 12,
     borderRadius: 10,
-    backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-    elevation: 2,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   image: {
     width: 300,
@@ -264,9 +264,9 @@ const styles = StyleSheet.create({
   image1: {
     width: 120,
     height: 70,
-    marginTop: 2,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    marginTop: 20,
+    marginLeft: 24,
+    position:"absolute"
   },
   image2: {
     width: 100,
@@ -275,6 +275,12 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  image3: {
+    width: '100%',
+    height: 100,
+    borderRadius: 10,
+    marginTop: -5,
+  },
   text: {
     marginTop: 15,
     textAlign: 'center',
@@ -282,8 +288,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   text1: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
+    position:"absolute",
+    marginTop: 2,
+    marginLeft: 15,
+    
 
   },
 

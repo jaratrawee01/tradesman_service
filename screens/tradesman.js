@@ -197,8 +197,6 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     marginTop: -5,
-
-
   },
   text: {
     marginTop: 15,
