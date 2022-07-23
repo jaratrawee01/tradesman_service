@@ -122,11 +122,11 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
     if (result === "success") {
       await getImags(id_user);
-      await alert("บันทึกภาพ สำเร็จ");
+      await Alert.alert("บันทึกภาพ สำเร็จ");
 
       await popToTop();
     } else {
-      await alert("บันทึกภาพ ไม่สำเร็จ");
+      await Alert.alert("บันทึกภาพ ไม่สำเร็จ");
     }
   };
   const updateImage = async () => {
@@ -161,11 +161,11 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
     if (result === "success") {
       await getImags(id_user);
-      await alert("บันทึกภาพ สำเร็จ");
+      await Alert.alert("บันทึกภาพ สำเร็จ");
 
       await popToTop();
     } else {
-      await alert("บันทึกภาพ ไม่สำเร็จ");
+      await Alert.alert("บันทึกภาพ ไม่สำเร็จ");
     }
   };
 
