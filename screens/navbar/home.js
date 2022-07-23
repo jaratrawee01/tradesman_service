@@ -24,10 +24,13 @@ class Home extends Component {
     this.deleteSarte();
 
   }
-/*   componentDidUpdate() {
-    this.getTechnician_type();
+  componentDidUpdate(prevProps, prevState) {
+    const  {login } =  this.props.posts;
+    if (prevProps.login !== this.state.login) {
+      this.getTechnician_type();
+    }
   }
- */
+
   getTechnician_type = async () => {
     const result = await technician_type.technician_type();
     this.setState({
@@ -42,7 +45,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.0.106/project/api-database/images/"
+      payload: "http://192.168.1.5/project/api-database/images/"
     })
   }
   
@@ -183,7 +186,7 @@ class Home extends Component {
   render() {
 
     const login_props = this.props.posts.login;
-
+console.log(login_props);
     return (
       <>
         {login_props !== null ?

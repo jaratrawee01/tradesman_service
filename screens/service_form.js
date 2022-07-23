@@ -216,7 +216,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
         district: result[0].district,
         province: result[0].province,
         zipcode: result[0].zipcode,
-        phone_number: result[0].Phone_number,
+        phone_number: result[0].phone_number,
         location: JSON.parse(result[0].location),
         technician_1: result[0].technician_1,
         technician_2: result[0].technician_2,
