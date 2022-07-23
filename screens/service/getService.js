@@ -168,7 +168,7 @@ const gettechnicianAddressid = async (e) => {
     }
   }).then((result) => {
 
-    return result.data;
+    return result.data[0];
   })
     .catch((error) => {
 

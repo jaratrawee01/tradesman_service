@@ -27,12 +27,12 @@ class Profile_tras_user extends Component {
 
 
   componentDidMount() {
-    const name = this.props.posts.technician;
-    this.technicianAndUser(name);
+    const id = this.props.posts.id;
+    this.technicianAndUser(id);
   }
 
   technicianAndUser = async (e) => {
-    const result1 = await get_technician.gettechnician(e);
+    const result1 = await get_technician.gettechnicianAddressid(e);
     this.setState({
       technician: result1,
       urlImg: this.props.posts.urlImage,
@@ -44,8 +44,6 @@ class Profile_tras_user extends Component {
 
 
     const { technician,urlImg } = this.state;
-
-    console.log("technician");
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -53,16 +51,29 @@ class Profile_tras_user extends Component {
             <View style={styles.box1}>
               <View style={styles.box6}>
                 {
-                  
+                  technician !== null  ? 
+                  technician.file_src !== null   ? 
+                  <Image style={styles.imgPro} source={{ uri: `${urlImg}profile/${technician.file_src}` }} />
+                  :
+                  <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
+                  :
+                  <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
                 }
-                <Image style={styles.image3} source={require('../../assets/images/A-11.png')} />
+               
               </View>
-              <Text style={styles.text}>Jason Amada</Text>
-              <Text style={styles.text1}>aaaa_dddd@gmail.com</Text>
-              <View style={styles.icons1}>
-                <View style={styles.boxhead}>
-                </View>
-              </View>
+              {
+                  technician !== null ? 
+                  
+                  technician.name !== null ?
+                  <Text style={styles.text}>{technician.name}</Text>
+                  :
+                  <Text style={styles.text}>TECHNICIAN ONLINE</Text>
+                  :
+                  <Text style={styles.text}>TECHNICIAN ONLINE</Text>
+  
+                }
+
+
             </View>
           </View>
 
@@ -70,7 +81,7 @@ class Profile_tras_user extends Component {
             <View style={styles.box3}>
               <FontAwesome5 name="file-image" style={styles.icons5} />
               <Text style={styles.text2}
-               onPress={() => this.props.navigation.navigate("Workings")}>{"ผลงาน"}
+               onPress={() => this.props.navigation.navigate("workings_tras_user")}>{"ผลงาน"}
               </Text>
             </View>
 
@@ -78,7 +89,7 @@ class Profile_tras_user extends Component {
               <FontAwesome5 name="address-book" style={styles.icons5} />
               <Text
                 style={styles.text2}
-                onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
+                onPress={() => this.props.navigation.navigate("address")}>{"ข้อมูลการติดต่อ"}
               </Text>
             </View>
 
@@ -106,6 +117,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
   },
+  imgPro: {
+    height: 130,
+    width: 130,
+    backgroundColor: '#37C1FB',
+    shadowColor: "#000",
+    borderRadius: 100,
+    zIndex: 1,
+
+  },
   image: {
     width: 120,
     height: 120,
@@ -115,11 +135,11 @@ const styles = StyleSheet.create({
     marginRight: "auto",
   },
   image1: {
-    width: 134,
-    height: 160,
-    marginTop: 10,
-    borderRadius: 10,
-    marginLeft: 11,
+    width: 120,
+    height: 70,
+    marginTop: 2,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   image2: {
     width: 300,

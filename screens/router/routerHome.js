@@ -4,6 +4,8 @@ import Home from '../navbar/home';
 import Tradesman from '../tradesman';
 import Profile from '../navbar/profile';
 import profile_tras_user from '../navbar/profile_tras_user';
+import workings_tras_user from '../workings_tras_user';
+import address from '../address';
 import Login from '../login';
 
 
@@ -18,6 +20,8 @@ function App() {
              <HomeStack.Screen name="Tradesman" component={Tradesman} />
              <HomeStack.Screen name="Profile" component={Profile} />
              <HomeStack.Screen name="Profile_tras_user" component={profile_tras_user} />
+             <HomeStack.Screen name="workings_tras_user" component={workings_tras_user} />
+             <HomeStack.Screen name="address" component={address} />
              <HomeStack.Screen name="Login" component={Login} />
         </HomeStack.Navigator>
     );
