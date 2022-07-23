@@ -45,7 +45,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.1.5/project/api-database/images/"
+      payload: "http://192.168.0.106/project/api-database/images/"
     })
   }
   
@@ -100,6 +100,7 @@ class Home extends Component {
                 const image = (
                   <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
                     <View style={styles.box3}>
+                    <Image style={styles.image3} source={require('../../assets/images/A-9.jpg')}/>
                       <Text style={styles.text1}>{name}</Text>
                       {
                         nameImage !== null ?
@@ -159,6 +160,7 @@ class Home extends Component {
                     const image = (
                       <TouchableWithoutFeedback>
                         <View style={styles.box3}>
+                        <Image style={styles.image3} source={require('../../assets/images/A-9.jpg')}/>
                           <Text style={styles.text1}>{name}</Text>
                           {
                             nameImage !== null ?
@@ -186,7 +188,7 @@ class Home extends Component {
   render() {
 
     const login_props = this.props.posts.login;
-
+/* console.log(login_props); */
     return (
       <>
         {login_props !== null ?
@@ -244,16 +246,12 @@ const styles = StyleSheet.create({
   box3: {
     width: 160,
     height: 100,
-    padding: 5,
     marginTop: 10,
     marginLeft: 12,
     borderRadius: 10,
-    backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-    elevation: 2,
-    marginBottom: 4,
   },
   image: {
     width: 300,
@@ -266,9 +264,9 @@ const styles = StyleSheet.create({
   image1: {
     width: 120,
     height: 70,
-    marginTop: 2,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    marginTop: 20,
+    marginLeft: 20,
+    position:"absolute"
   },
   image2: {
     width: 100,
@@ -276,6 +274,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+  image3: {
+    width: '100%',
+    height: 100,
+    borderRadius: 10,
+    marginTop: -5,
   },
   text: {
     marginTop: 15,
@@ -286,6 +290,8 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 15,
     fontWeight: 'bold',
+    position:"absolute",
+    marginLeft: 10,
 
   },
 

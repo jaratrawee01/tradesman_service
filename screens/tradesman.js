@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     marginTop: 120,
-    marginLeft: 10,
+    marginLeft: 15,
     borderRadius: 50,
     position:"absolute"
   },
@@ -207,39 +207,39 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     fontWeight: 'bold',
-    marginLeft: 40,
+    marginLeft: 48,
     marginTop: 125,
     position:"absolute"
   },
   text2: {
     fontSize: 13,
     fontWeight: 'bold',
-    marginLeft: 20,
+    marginLeft: 15,
     marginTop: 150,
     position:"absolute"
   },
   text3: {
     fontSize: 13,
-    marginLeft: 65,
+    marginLeft: 75,
     marginTop: 125,
     position:"absolute"
   },
   text4: {
     fontSize: 13,
-    marginLeft: 90,
+    marginLeft: 85,
     marginTop: 150,
     position:"absolute"
   },
   text5: {
     fontSize: 13,
     fontWeight: 'bold',
-    marginLeft: 20,
+    marginLeft: 15,
     marginTop: 170,
     position:"absolute"
   },
   text6: {
     fontSize: 13,
-    marginLeft: 90,
+    marginLeft: 85,
     marginTop: 170,
     position:"absolute"
   },

@@ -114,7 +114,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
       result = result2;
     }
 
-    console.log("result", result);
+   /*  console.log("result", result); */
 
     if (result === "success") {
       await getImags(id_user);

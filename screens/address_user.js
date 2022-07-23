@@ -137,13 +137,12 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
     
 
  const result = await technician_type.createAddress_user(data);
- console.log(result);
 
      if (result === "success") {
       await getAddress_user(idPhone); 
-      setStatusAddress(true);
+      setStatusAddress(true);  
       await Alert.alert("บันทึกสำเร็จ");
-      await popToTop();
+      await popToTop(); 
     } else {
       await Alert.alert("บันทึกไม่สำเร็จ กรุณาลองใหม่");
     }
@@ -166,11 +165,10 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
         phone_number: result1[0].phone_number,
         location: JSON.parse(result1[0].location),
       }; 
-
-  dispatch({
+      dispatch({
         type: "ADD_ADDRESS_USER",
         payload: data3,
-      });
+      }); 
     } 
   };
 
@@ -207,8 +205,8 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
     
     if (result === "success") {
       await getAddress_user(idPhone);
-      await Alert.alert("เเก้ไขสำเร็จ");
       setStatusEdit(false);
+      await Alert.alert("เเก้ไขสำเร็จ");
       setStatusAddress(true);
       await popToTop();
     } else {
