@@ -87,7 +87,7 @@ class Home extends Component {
               <View style={styles.box}>
                 <Image
                   style={styles.image2}
-                  source={require('../../assets/images/A-11.png')}
+                  source={require('../../assets/images/logo_technician.png')}
                 />
               </View>
               <Text style={styles.text}>ประเภทงาน User</Text>
@@ -136,7 +136,7 @@ class Home extends Component {
               <View style={styles.box}>
                 <Image
                   style={styles.image2}
-                  source={require('../../assets/images/A-11.png')}
+                  source={require('../../assets/images/logo_technician.png')}
                 />
               </View>
               <Text style={styles.text}>ประเภทงานของคุณ</Text>
@@ -220,12 +220,11 @@ const styles = StyleSheet.create({
   box: {
     height: 150,
     width: 150,
-    backgroundColor: '#37C1FB',
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
-    borderRadius: 100,
+    borderRadius: 30,
     marginTop: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -269,11 +268,10 @@ const styles = StyleSheet.create({
     position:"absolute"
   },
   image2: {
-    width: 100,
-    height: 100,
-    marginTop: 20,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    width: 200,
+    height: 200,
+    marginTop: -30,
+    marginLeft: -30,
   },
   image3: {
     width: '100%',
