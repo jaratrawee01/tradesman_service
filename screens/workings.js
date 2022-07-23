@@ -10,6 +10,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Text,
+  Alert
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import bookBank from "./service/getService";
@@ -37,7 +38,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
   );
   const dispatch = useDispatch();
   const url = useSelector((state) => state).urlImage;
-
+  
   const pickImage = async (e) => {
     // No permissions request is necessary for launching the image library
 
@@ -75,7 +76,10 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     console.log("555");
   };
 
+
   const serve = async (e) => {
+
+    await Alert.alert("กำลังบันทึกภาพ กรุณารอสักครู่");
     let result = null;
     if (image1 !== null) {
       const result1 = await bookBank.uplodeImages(image1, id_user);
@@ -113,7 +117,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
       const result2 = await bookBank.uplodeImages(image9, id_user);
       result = result2;
     }
-
+ 
    /*  console.log("result", result); */
 
     if (result === "success") {
@@ -128,8 +132,10 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
   const updateImage = async () => {
     let nameImage = JSON.parse(statusImage);
     let index = JSON.parse(statusImage).length;
-    var dataImage = [image1, image2, image3, image4, image5, image6];
-
+    var dataImage = [image1, image2, image3, image4, image5, image6, image7, image8, image9 ];
+   
+    await Alert.alert("กำลังบันทึกภาพ กรุณารอสักครู่");
+    
     let result;
     for (let i = 0; i < index; i++) {
       let id = nameImage[i].id;
@@ -144,7 +150,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
       }
     }
 
-    for (let i = index; i < 6; i++) {
+    for (let i = index; i < 9; i++) {
       console.log("I", dataImage[i]);
 
       if (dataImage[i] !== null) {
@@ -291,7 +297,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
               </View>
 
               <View style={styles.box5}>
-                <Text style={styles.text1}>ประเภทงาน 2</Text>
+                <Text style={styles.text1}>ประเภทงาน 3</Text>
               </View>
 
               <View style={styles.boxhead}>
@@ -392,7 +398,8 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
     );
   };
   const edit = () => {
-    setStatusEdit (true);
+    
+    setStatusEditImage(true);
   };
 
   const editImage = () => {
@@ -416,7 +423,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
             </View>
             <View style={styles.box6}>
               <View style={styles.box2}>
-                <Text style={styles.text1}>เเก้ภาพงาน 1</Text>
+                <Text style={styles.text1}>เเก้ไขภาพงาน 1</Text>
               </View>
 
               <View style={styles.boxhead}>
@@ -508,7 +515,12 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                   </TouchableOpacity>
                 </View>
 
-                <View style={styles.box1}>
+                <View style={styles.box7}>
+                <Text style={styles.text1}>แก้ไขภาพงาน 3</Text>
+                </View>  
+
+                 <View style={styles.boxhead}>
+                 <View style={styles.box1}>
                   {image7 && (
                     <Image source={{ uri: image7.uri }} style={styles.image3} />
                   )}
@@ -546,6 +558,9 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                     />
                   </TouchableOpacity>
                 </View>
+                  </View>   
+                
+
               </View>
 
               <View>
@@ -731,6 +746,18 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     marginTop: -44,
     marginBottom: 10,
+  },
+  box7: {
+    height: 25,
+    width: 120,
+    backgroundColor: "#e8e9e9",
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 3,
+    borderRadius: 10,
+    marginLeft: 15,
+    marginTop: 15,
   },
   text: {
     marginLeft: "auto",

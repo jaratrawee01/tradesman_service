@@ -30,10 +30,10 @@ function MyStack() {
         options={{
           tabBarIcon: ({ size, color }) => (<MaterialCommunityIcons name="home" color={color} size={size} />)
         }} />
-      <Tab.Screen name="Shop" component={RouterShop}
+    {/*   <Tab.Screen name="Shop" component={RouterShop}
         options={{
           tabBarIcon: ({ size, color }) => (<MaterialCommunityIcons name="shopping" color={color} size={size} />)
-        }} />
+        }} /> */}
       <Tab.Screen name="message" component={RouterMessge}
         options={{
           tabBarIcon: ({ size, color }) => (<MaterialCommunityIcons name="message-processing" color={color} size={size} />)
