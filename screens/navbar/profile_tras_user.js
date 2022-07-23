@@ -30,6 +30,7 @@ class Profile_tras_user extends Component {
   componentDidMount() {
 
     const id = this.props.posts.id;
+/*     console.log(id); */
     this.setState({
       login: this.props.posts.login.status_user,
     })
@@ -49,7 +50,7 @@ class Profile_tras_user extends Component {
 
 
     const { technician, urlImg, login } = this.state;
-    console.log(technician);
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>

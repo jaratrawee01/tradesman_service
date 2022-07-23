@@ -1,7 +1,7 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
-/*  const url = 'http://192.168.1.5/project/api-database';   */ //หน่วย
-   const url = 'http://192.168.0.106/project/api-database';   // ยอน 
+ const url = 'http://192.168.1.5/project/api-database';   //หน่วย
+/*    const url = 'http://192.168.0.106/project/api-database';  */  // ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
@@ -238,6 +238,46 @@ const getAddress_user = async (e) => {
     });
   return seaUser;
 };
+
+const getMessage_user = async (e) => {
+  const seaUser = await axios.get(`${url}/getMessage_user.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
+const getMessage_technician = async (e) => {
+  const seaUser = await axios.get(`${url}/getMessage_technician.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
+
 
 
 const getImage = async (e) => {
@@ -621,5 +661,7 @@ export default {
   updateAddress_user,
   gettechnician,
   gettechnicianAddressid,
+  getMessage_user,
+  getMessage_technician,
 
 };

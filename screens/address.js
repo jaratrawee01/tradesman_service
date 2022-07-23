@@ -34,22 +34,31 @@ class address extends Component {
 
 
   componentDidMount() {
-    const name = this.props.posts.technician;
-    this.technicianAndUser(name);
+    const id = this.props.posts.id;
+    this.setState({
+      login: this.props.posts.login.status_user,
+    })
+    this.technicianAndUser(id);
   }
 
   technicianAndUser = async (e) => {
-    /*       const result1 = await get_technician.gettechnician(e);
-          this.setState({
-            technician: result1,
-            urlImg: this.props.posts.urlImage,
-          }) */
+    const result1 = await get_technician.gettechnicianAddressid(e);
+    const location = JSON.parse(result1.location);
+    console.log(location.latitude);
+    this.setState({
+      technician: result1,
+      urlImg: this.props.posts.urlImage,
+      location: {
+        latitude: location.latitude,
+        longitude: location.longitude
+      }
+    })
 
   }
 
   map = () => {
     const { location } = this.state;
-    console.log(location.latitude);
+    console.log(location);
     return (
       <>
         {
@@ -104,9 +113,89 @@ class address extends Component {
 
 
   render() {
+    const { technician, login } = this.state;
+
+
+    console.log(technician);
     return (
       <>
-        {this.map()}
+        {
+          technician !== null ?
+            <>
+              <ScrollView>
+                <View>
+                  <Image
+                    style={styles.image2}
+                    source={require("../assets/images/BB-2.png")}
+                  />
+                </View>
+                <View style={styles.box}>
+                  <View>
+                    <Text style={styles.text1}>รายละเอียดติดต่อ </Text>
+                  </View>
+
+                  <View style={styles.box7}>
+                    <Text style={styles.text6}>{"ชื่อ"}</Text>
+                    <Text style={styles.text7}>{technician.name}</Text>
+                  </View>
+                  <View style={styles.box7}>
+                    <Text style={styles.text6}>{"เบอร์ติดต่อ"}</Text>
+                    <Text style={styles.text7}>{technician.phone_number}</Text>
+                  </View>
+                  <View style={styles.box7}>
+                    <Text style={styles.text6}>{"บ้านเลขที่"}</Text>
+                    <Text style={styles.text7}>{technician.address}</Text>
+                  </View>
+
+                  <View style={styles.box7}>
+                    <Text style={styles.text6}>{"ตำบล"}</Text>
+                    <Text style={styles.text7}>{technician.subdistrict}</Text>
+                  </View>
+
+                  <View style={styles.box7}>
+                    <Text style={styles.text6}>{"อำเภอ"}</Text>
+                    <Text style={styles.text7}>{technician.district}</Text>
+                  </View>
+
+                  <View style={styles.box7}>
+                    <Text style={styles.text6}>{"จังหวัด"}</Text>
+                    <Text style={styles.text7}>{technician.province}</Text>
+                  </View>
+
+                  <View style={styles.box7}>
+                    <Text style={styles.text6}>{"รหัสไปรษณีย์"}</Text>
+                    <Text style={styles.text7}>{technician.zipcode}</Text>
+                  </View>
+                  {login === "ลูกค้าทั่วไป" ?
+                    <>
+                      <View style={styles.box7}>
+                        <Text style={styles.text6}>{"ประเภทงาน"}</Text>
+                        <Text style={styles.text7}>{technician.technician_1}</Text>
+                      </View>
+                      <View style={styles.box7}>
+                        <Text style={styles.text6}>{"ประเภทงาน"}</Text>
+                        <Text style={styles.text7}>{technician.technician_2}</Text>
+                      </View>
+                    </>
+                    :
+                    null
+
+                  }
+
+                  <View>
+                    <Text style={styles.text2}>{"GPS"}</Text>
+                    <View style={styles.box1}>
+                      {this.map()}
+                    </View>
+                  </View>
+                </View>
+              </ScrollView>
+
+            </>
+            :
+            null
+        }
+
       </>
     )
   }

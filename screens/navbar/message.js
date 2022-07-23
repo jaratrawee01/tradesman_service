@@ -17,7 +17,7 @@ class Message extends Component {
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.top}>
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
+          {/*   <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
               <View style={styles.box1}>
                 <Image
                   style={styles.image}
@@ -79,7 +79,7 @@ class Message extends Component {
                 <Text style={styles.text3}>Message</Text>
                 <Text style={styles.text4}>{"3"}</Text>
               </View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
           </View>
         </ScrollView>
       </SafeAreaView>

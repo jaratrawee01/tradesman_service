@@ -188,13 +188,6 @@ class Profile_tradesman extends Component {
                   onPress={() => this.props.navigation.navigate("Address_user")}>{"ข้อมูลการติดต่อ"}
                 </Text>
               </View>
-
-              <View style={styles.box3}>
-                <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-                <Text style={styles.text2}
-                onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
-                </Text>
-              </View>
             </View>
             <View style={styles.box3}>
               <MaterialCommunityIcons name="logout" style={styles.icons5} />
@@ -279,15 +272,6 @@ class Profile_tradesman extends Component {
                   onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
                 </Text>
               </View>
-
-              <View style={styles.box3}>
-                <Ionicons name="chatbox-ellipses-sharp" style={styles.icons5} />
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
-                </Text>
-              </View>
-
 
               <View style={styles.box3}>
                 <MaterialCommunityIcons name="logout" style={styles.icons5} />
