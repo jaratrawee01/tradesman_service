@@ -7,6 +7,7 @@ import {
   Modal,
   Image,
   ScrollView,
+  TouchableOpacity
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -115,6 +116,15 @@ class Profile_tras_user extends Component {
                 onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
               </Text>
             </View>
+
+            <View style={styles.box3}>
+              <Ionicons name="card" style={styles.icons5} />
+              <Text
+                style={styles.text2}
+                onPress={() => this.props.navigation.navigate("Ahow_bank")}>{"บัญชีธนาคาร"}
+              </Text>
+            </View>
+
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -141,28 +151,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
 
   },
-  image: {
-    width: 120,
-    height: 120,
-    marginTop: 20,
-    borderRadius: 15,
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  image1: {
-    width: 120,
-    height: 70,
-    marginTop: 2,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  image2: {
-    width: 300,
-    height: 350,
-    marginLeft: 28,
-    marginTop: 150,
-    borderRadius: 15,
-  },
   image3: {
     width: 100,
     height: 100,
@@ -180,7 +168,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    elevation: 6,
+    elevation: 2,
     borderBottomLeftRadius: 60,
     borderBottomRightRadius: 60,
 
@@ -212,33 +200,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 4,
   },
-  box4: {
-    height: 180,
-    width: 300,
-    backgroundColor: "#fff",
-    shadowColor: "#000",
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 3,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginRight: 20,
-    marginTop: 10,
-    marginBottom: 4,
-  },
-  box5: {
-    height: 25,
-    width: 80,
-    backgroundColor: '#bcbdbe',
-    shadowColor: "#000",
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 3,
-    borderRadius: 10,
-    marginLeft: 28,
-    marginRight: 20,
-    marginTop: 10,
-  },
   box6: {
     height: 140,
     width: 140,
@@ -246,9 +207,9 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    elevation: 6,
+    elevation: 2,
     borderRadius: 100,
-    marginTop: 10,
+    marginTop: 20,
     marginLeft: 'auto',
     marginRight: 'auto',
     borderWidth: 5,
@@ -259,61 +220,13 @@ const styles = StyleSheet.create({
     marginRight: "auto",
     fontWeight: "bold",
     fontSize: 25,
-    marginTop: 5,
+    marginTop: 15,
   },
-  text1: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    fontSize: 20,
-  },
+
   text2: {
     marginLeft: 55,
     fontSize: 20,
     marginTop: -35,
-  },
-  text3: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    fontWeight: "bold",
-    fontSize: 16,
-    marginTop: 2,
-  },
-  iconsGold: {
-    marginLeft: 5,
-    fontSize: 25,
-    color: "#FFD700",
-  },
-  icons: {
-    marginLeft: 5,
-    fontSize: 25,
-    color: "#bcbdbe",
-  },
-  icons1: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: 5,
-  },
-  icons3: {
-    width: 50,
-    height: 48,
-    marginLeft: 6,
-    marginTop: 5,
-    fontSize: 26,
-    color: "#37C1FB",
-    borderRadius: 10,
-    paddingTop: 12,
-    paddingLeft: 13,
-  },
-  icons4: {
-    width: 50,
-    height: 48,
-    marginLeft: 6,
-    marginTop: 5,
-    fontSize: 20,
-    color: "#37C1FB",
-    borderRadius: 10,
-    paddingTop: 12,
-    paddingLeft: 13,
   },
   icons5: {
     width: 50,
@@ -326,19 +239,7 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     paddingLeft: 13,
   },
-  modalView: {
-    height: 300,
-    width: 300,
-    backgroundColor: "#fff",
-    shadowColor: "#000",
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
-    borderRadius: 15,
-    marginLeft: 28,
-    marginRight: 20,
-    marginTop: "70%",
-  },
+
 });
 
 const mapStateToProps = (state) => {

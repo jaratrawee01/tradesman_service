@@ -31,6 +31,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
   });
 
   const [name, setName] = useState(null);
+  const [phone_number, setPhone_number] = useState(null);
   const [addressUser, setAddressUser] = useState(null);
   const [subdistrict, setSubdistrict] = useState(null);
   const [district, setDistrict] = useState(null);
@@ -38,7 +39,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
   const [zipcode, setZipcode] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
-  const [phone_number, setPhone_number] = useState(null);
   const [technicianType, setTechnicianType] = useState(null);
   const [technician_1, setTechnician_1] = useState(null);
   const [technician_2, setTechnician_2] = useState(null);
@@ -127,12 +127,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     const data = [
       idPhone,
       name,
+      phone_number,
       addressUser,
       subdistrict,
       district,
       province,
       zipcode,
-      phone_number,
       location,
       technician_1,
       technician_2,
@@ -152,12 +152,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     const data = [
       id,
       name,
+      phone_number,
       addressUser,
       subdistrict,
       district,
       province,
       zipcode,
-      phone_number,
       location,
       technician_1,
       technician_2,
@@ -188,12 +188,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     setStatusEdit(true);
     setId(statusAddress.id);
     setName(statusAddress.name);
+    setPhone_number(statusAddress.phone_number);
     setAddressUser(statusAddress.addressUser);
     setSubdistrict(statusAddress.subdistrict);
     setDistrict(statusAddress.district);
     setProvince(statusAddress.province);
     setZipcode(statusAddress.zipcode);
-    setPhone_number(statusAddress.phone_number);
     setTechnician_1(statusAddress.technician_1);
     setTechnician_2(statusAddress.technician_2);
     setLocation({
@@ -211,12 +211,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       let data3 = {
         id: result[0].id,
         name: result[0].name,
+        phone_number: result[0].phone_number,
         addressUser: result[0].address,
         subdistrict: result[0].subdistrict,
         district: result[0].district,
         province: result[0].province,
         zipcode: result[0].zipcode,
-        phone_number: result[0].phone_number,
         location: JSON.parse(result[0].location),
         technician_1: result[0].technician_1,
         technician_2: result[0].technician_2,
@@ -280,6 +280,17 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                     }}
                   />
                 </View>
+
+                <View>
+                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+                
                 <View>
                   <View>
                     <Text style={styles.text2}>{"เลือกประเภทงานช่าง 1"}</Text>
@@ -378,15 +389,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                   />
                 </View>
 
-                <View>
-                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
-                  <TextInput
-                    style={styles.box4}
-                    onChange={(e) => {
-                      setPhone_number(e.nativeEvent.text);
-                    }}
-                  />
-                </View>
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
               <View style={styles.containerMap}>
@@ -424,6 +426,11 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 <Text style={styles.text6}>{"ชื่อ"}</Text>
                 <Text style={styles.text7}>{statusAddress.name}</Text>
             </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"เบอร์โทร"}</Text>
+                <Text style={styles.text7}>{statusAddress.phone_number}</Text>
+            </View>
             
             <View style={styles.box7}>
                 <Text style={styles.text6}>{"บ้านเลขที่"}</Text>
@@ -448,11 +455,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
             <View style={styles.box7}>
                 <Text style={styles.text6}>{"รหัสไปรษณีย์"}</Text>
                 <Text style={styles.text7}>{statusAddress.zipcode}</Text>
-            </View>
-
-            <View style={styles.box7}>
-                <Text style={styles.text6}>{"เบอร์โทร"}</Text>
-                <Text style={styles.text7}>{statusAddress.phone_number}</Text>
             </View>
 
             <View style={styles.box7}>
@@ -537,6 +539,18 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                     }}
                   />
                 </View>
+
+                <View>
+                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <TextInput
+                    value={phone_number}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+                
                 <View>
                   <View>
                     <Text style={styles.text2}>{"เลือกประเภทงานช่าง 1"}</Text>
@@ -640,16 +654,6 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                   />
                 </View>
 
-                <View>
-                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
-                  <TextInput
-                    value={phone_number}
-                    style={styles.box4}
-                    onChange={(e) => {
-                      setPhone_number(e.nativeEvent.text);
-                    }}
-                  />
-                </View>
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
               <View style={styles.containerMap}>

@@ -45,7 +45,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.1.5/project/api-database/images/"
+      payload: "http://192.168.0.106/project/api-database/images/"
     })
   }
   
