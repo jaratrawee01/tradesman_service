@@ -24,10 +24,10 @@ class Home extends Component {
     this.deleteSarte();
 
   }
-  componentDidUpdate() {
+/*   componentDidUpdate() {
     this.getTechnician_type();
   }
-
+ */
   getTechnician_type = async () => {
     const result = await technician_type.technician_type();
     this.setState({
@@ -42,7 +42,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.1.5/project/api-database/images/"
+      payload: "http://192.168.0.106/project/api-database/images/"
     })
   }
   
@@ -149,7 +149,8 @@ class Home extends Component {
                       return name;
                     }
                   })
-                  if (image_type) {
+       
+                   if (image_type[0]) {
                     const nameImage = image_type[0].image_name;
                     const name = image_type[0].technician_type;
                     const image = (
@@ -163,10 +164,10 @@ class Home extends Component {
                               <Image style={styles.image1} source={require('../../assets/images/B-1.png')} />
                           }
                         </View>
-                      </TouchableWithoutFeedback>
+                      </TouchableWithoutFeedback> 
                     )
                     return image;
-                  }
+                  } 
                 })
               }
 
