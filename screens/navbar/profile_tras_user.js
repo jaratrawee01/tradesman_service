@@ -21,13 +21,18 @@ class Profile_tras_user extends Component {
     this.state = {
       technician: null,
       urlImg: null,
+      login: null
     };
   }
 
 
 
   componentDidMount() {
+
     const id = this.props.posts.id;
+    this.setState({
+      login: this.props.posts.login.status_user,
+    })
     this.technicianAndUser(id);
   }
 
@@ -43,7 +48,8 @@ class Profile_tras_user extends Component {
   render() {
 
 
-    const { technician,urlImg } = this.state;
+    const { technician, urlImg, login } = this.state;
+    console.log(technician);
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -51,39 +57,47 @@ class Profile_tras_user extends Component {
             <View style={styles.box1}>
               <View style={styles.box6}>
                 {
-                  technician !== null  ? 
-                  technician.file_src !== null   ? 
-                  <Image style={styles.imgPro} source={{ uri: `${urlImg}profile/${technician.file_src}` }} />
-                  :
-                  <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
-                  :
-                  <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
+                  technician !== null ?
+                    technician.file_src !== null ?
+                      <Image style={styles.imgPro} source={{ uri: `${urlImg}profile/${technician.file_src}` }} />
+                      :
+                      <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
+                    :
+                    <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
                 }
-               
+
               </View>
               {
-                  technician !== null ? 
-                  
+                technician !== null ?
+
                   technician.name !== null ?
-                  <Text style={styles.text}>{technician.name}</Text>
+                    <Text style={styles.text}>{technician.name}</Text>
+                    :
+                    <Text style={styles.text}>TECHNICIAN ONLINE</Text>
                   :
                   <Text style={styles.text}>TECHNICIAN ONLINE</Text>
-                  :
-                  <Text style={styles.text}>TECHNICIAN ONLINE</Text>
-  
-                }
+
+              }
 
 
             </View>
           </View>
 
           <View style={styles.top}>
-            <View style={styles.box3}>
-              <FontAwesome5 name="file-image" style={styles.icons5} />
-              <Text style={styles.text2}
-               onPress={() => this.props.navigation.navigate("workings_tras_user")}>{"ผลงาน"}
-              </Text>
-            </View>
+            {login === "ลูกค้าทั่วไป" ?
+              <>
+                <View style={styles.box3}>
+                  <FontAwesome5 name="file-image" style={styles.icons5} />
+                  <Text style={styles.text2}
+                    onPress={() => this.props.navigation.navigate("workings_tras_user")}>{"ผลงาน"}
+                  </Text>
+                </View>
+              </>
+              :
+              null
+
+            }
+
 
             <View style={styles.box3}>
               <FontAwesome5 name="address-book" style={styles.icons5} />
@@ -100,7 +114,7 @@ class Profile_tras_user extends Component {
                 onPress={() => this.props.navigation.navigate("Chat")}>{"แชท"}
               </Text>
             </View>
-            </View>
+          </View>
         </ScrollView>
       </SafeAreaView>
     );

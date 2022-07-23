@@ -186,7 +186,7 @@ class Home extends Component {
   render() {
 
     const login_props = this.props.posts.login;
-console.log(login_props);
+
     return (
       <>
         {login_props !== null ?

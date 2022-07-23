@@ -81,7 +81,6 @@ class Home_tar extends Component {
                 <>
                   {
                     technician && technician.map((va) => {
-                      console.log(va);
                       const name = (
                         <TouchableWithoutFeedback onPress={() => this.ClickU(va.idPhone)}>
                           <View style={styles.box}>
