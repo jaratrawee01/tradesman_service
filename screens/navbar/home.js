@@ -133,6 +133,8 @@ class Home extends Component {
     return (
       <>
         <SafeAreaView style={styles.container}>
+
+        <ActivityIndicator size="large" />
           <ScrollView>
             <View style={styles.box1}>
               <View style={styles.box}>
