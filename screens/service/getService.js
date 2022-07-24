@@ -1,6 +1,6 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
- const url = 'http://192.168.0.106/project/api-database';   //หน่วย
+ const url = 'http://192.168.1.5/project/api-database';   //หน่วย
 /*    const url = 'http://192.168.0.106/project/api-database';  */  // ยอน 
 /* const getUser = async () => {
 
@@ -258,6 +258,26 @@ const getMessage_user = async (e) => {
     });
   return seaUser;
 };
+
+const getMessage_user_groupBy = async (e) => {
+  const seaUser = await axios.get(`${url}/getMessage_user_groupBy.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
 const getMessage_technician = async (e) => {
   const seaUser = await axios.get(`${url}/getMessage_technician.php`, {
     headers: {
@@ -426,6 +446,26 @@ const createAddress_user = async (e) => {
 
   return adduser;
 }
+const addMessage = async (e) => {
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('id_user', e[0]);
+  formdata.append('id', e[1]);
+  formdata.append('message', e[2]);
+  formdata.append('status_read', e[3]);
+  formdata.append('status_user', e[4]);
+  const message = await axios.post(`${url}/addMessage.php`,formdata,{
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+    return "success";
+  })
+    .catch((error) => {
+      return error;
+    });
+  return message;
+};
 
 const createBookBank = async (e) => {
 
@@ -633,12 +673,6 @@ const uplodeUpdateImagesProfile = async (e,id,name) => {
   return upBookBank;
 };
 
-
-
-
-
-
-
 export default {
   createUser,
   searchUser,
@@ -663,5 +697,6 @@ export default {
   gettechnicianAddressid,
   getMessage_user,
   getMessage_technician,
-
+  addMessage,
+  getMessage_user_groupBy,
 };

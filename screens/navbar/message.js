@@ -10,14 +10,115 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { connect } from "react-redux";
+import getMessage from '../service/getService';
 
 class Message extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: null,
+      urlImg: null,
+      messageGrou: null
+    };
+  }
+
+  componentDidMount() {
+    this.set_State();
+  }
+
+  /*   componentDidUpdate() {
+      this.set_State();
+    } */
+
+  set_State = async () => {
+    const userlogin = this.props.posts.login.status_user;
+
+    if (userlogin === "ลูกค้าทั่วไป") {
+      const idlogin = this.props.posts.login.id;
+      ;
+      const result = await getMessage.getMessage_user(idlogin);
+      const resultGrouBy = await getMessage.getMessage_user_groupBy(idlogin);
+      if (result) {
+        this.setState({
+          message: result,
+          messageGrou: resultGrouBy,
+          urlImg: this.props.posts.urlImage,
+        })
+      }
+    } else {
+      const idlogin = this.props.posts.login.id;
+      const result1 = await getMessage.getMessage_technician(idlogin);
+      if (result1) {
+        this.setState({
+          message: result1,
+          urlImg: this.props.posts.urlImage,
+        })
+      }
+    }
+  }
   render() {
+
+    const { message, messageGrou, urlImg } = this.state;
+
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.top}>
-          {/*   <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
+
+            {
+              messageGrou && messageGrou.map((index) => {
+
+                const id_teh = message && message.filter((va) => {
+                  if (va.id_technician === index.id_technician) {
+                    if (va.status_read === "0") {
+                      return va.id_technician;
+                    }
+                  }
+                }
+                )
+
+                const name = (
+                  <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
+                    <View style={styles.box1}>
+                      {index.file_src !== null ?
+                        <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
+                        :
+                        <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+
+                      }
+
+                      <Text style={styles.text1}>
+                        <Text style={styles.text2}>{index.name}</Text> {"14.06"}
+                      </Text>
+                      <Text style={styles.text3}>Message</Text>
+                      <Text style={styles.text4}>{id_teh.length}</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+                )
+
+                return name;
+
+              })
+            }
+
+            {/* <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
+              <View style={styles.box1}>
+                <Image
+                  style={styles.image}
+                  source={{
+                    uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg",
+                  }}
+                />
+                <Text style={styles.text1}>
+                  <Text style={styles.text2}>{"# Anna"}</Text> {"14.06"}
+                </Text>
+                <Text style={styles.text3}>Message</Text>
+                <Text style={styles.text4}>{"2"}</Text>
+              </View>
+            </TouchableWithoutFeedback> */}
+            {/*   <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
               <View style={styles.box1}>
                 <Image
                   style={styles.image}
@@ -135,12 +236,20 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: 20,
     marginTop: -18,
-    fontSize: 18,
-    width: 20,
-    height: 20,
-    backgroundColor: "#5f6569",
-    borderRadius: 20,
-    color: "#fff",
+    fontSize: 20,
+    width: 40,
+    height: 30,
+    padding: 5,
+    backgroundColor: "#37C1FB",
+    color: "#ffff",
   },
 });
-export default Message;
+
+const mapStateToProps = (state) => {
+  return {
+    posts: state
+  }
+}
+export default connect(mapStateToProps, null)(Message);
+
+

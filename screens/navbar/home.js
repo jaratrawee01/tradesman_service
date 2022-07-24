@@ -45,7 +45,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.0.106/project/api-database/images/"
+      payload: "http://192.168.1.5/project/api-database/images/"
     })
   }
   
@@ -82,7 +82,7 @@ class Home extends Component {
 
       <>
         <SafeAreaView style={styles.container}>
-        <ActivityIndicator size="large" />
+        
 
           <ScrollView>
             <View style={styles.box1}>
@@ -99,7 +99,7 @@ class Home extends Component {
 
                 const nameImage = index.image_name;
                 const name = index.technician_type;
-                const image = (
+                const image = ( 
                   <TouchableWithoutFeedback onPress={() => this.setLogin(name)}>
                     <View style={styles.box3}>
                     <Image style={styles.image3} source={require('../../assets/images/A-9.jpg')}/>

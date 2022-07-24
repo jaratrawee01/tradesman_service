@@ -8,6 +8,7 @@ import workings_tras_user from '../workings_tras_user';
 import address from '../address';
 import Login from '../login';
 import Ahow_bank from '../show_bank';
+import chat from '../chat';
 
 
 
@@ -25,6 +26,7 @@ function App() {
              <HomeStack.Screen name="address" component={address} />
              <HomeStack.Screen name="Login" component={Login} />
              <HomeStack.Screen name="Ahow_bank" component={Ahow_bank} />
+             <HomeStack.Screen name="chat" component={chat} />
         </HomeStack.Navigator>
     );
   }

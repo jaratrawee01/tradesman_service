@@ -1,4 +1,4 @@
-import * as React from "react";
+import { React, Component } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,77 +11,148 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
+import { connect } from "react-redux";
+import getMessage from './service/getService';
 
-export default function Chat() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.footer}>
-        <ScrollView>
-          <View>
-            <Image
-              style={styles.image}
-              source={{
-                uri: "https://st2.depositphotos.com/5592054/8393/v/600/depositphotos_83937052-stock-illustration-cartoon-plumber-holding-a-big.jpg",
-              }}
-            />
-            <View style={styles.box2}>
-              <Text style={styles.text1}>15.31</Text>
-            </View>
-            <View style={styles.box3}>
-              <Text style={styles.text2}>สวัสดีครับ55555</Text>
+
+class Chat extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: null,
+      messageUser: null,
+      urlImg:null
+    };
+  }
+
+  componentDidMount() {
+    this.set_State();
+  }
+
+  set_State = async () => {
+    const userlogin =  this.props.posts.login.status_user;
+
+    if (userlogin === "ลูกค้าทั่วไป") {
+      const idlogin = this.props.posts.login.id;
+      const result1 = await getMessage.getMessage_user(idlogin);
+      if (result1) {
+        this.setState({
+          message: result1,
+          urlImg: this.props.posts.urlImage,
+        })
+      }
+    }else{
+      const id = this.props.posts.id;
+      const result1 = await getMessage.getMessage_technician(id);
+      if (result1) {
+        this.setState({
+          message: result1,
+          urlImg: this.props.posts.urlImage,
+        })
+      }
+    }
+  }
+
+  click_Message = async () => {
+    const { messageUser } = this.state;
+    const status_read = null;
+    const status_user = 1;
+    if (messageUser) {
+      const data = [this.props.posts.login.id, this.props.posts.id, messageUser, status_read, status_user];
+      const result1 = await getMessage.addMessage(data);
+      if (result1 === "success") {
+      this.set_State()
+        this.setState({
+          messageUser: null,
+        })
+      }
+    }
+
+
+  }
+
+  message_user(e) {
+    this.setState({
+      messageUser: e
+    })
+  }
+
+  render() {
+    const { messageUser, message } = this.state;
+
+
+    return (
+      <>
+        <SafeAreaView style={styles.container}>
+          <View style={styles.footer}>
+            <ScrollView ref={ref => {this.scrollView = ref}}
+            onContentSizeChange={() => this.scrollView.scrollToEnd({animated: true})}>
+
+              {
+                message && message.map((index) => {
+
+                  if (index.status_user === "2") {
+                    const name = (
+                      <View>
+                        <Image
+                          style={styles.image}
+                          source={{
+                            uri: "https://st2.depositphotos.com/5592054/8393/v/600/depositphotos_83937052-stock-illustration-cartoon-plumber-holding-a-big.jpg",
+                          }}
+                        />
+                        <View style={styles.box2}>
+                          <Text style={styles.text1}>{index.created_at}</Text>
+                        </View>
+                        <View style={styles.box3}>
+                          <Text style={styles.text2}>{index.message}</Text>
+                        </View>
+                      </View>
+                    )
+                    return name;
+                  } else {
+                    const name = (
+                      <View style={styles.chat}>
+                        <View style={styles.box2}>
+                          <Text style={styles.chat1}>{index.created_at}</Text>
+                        </View>
+                        <View style={styles.box4}>
+                          <Text style={styles.text2}>{index.message}</Text>
+                        </View>
+                      </View>
+                    )
+                    return name;
+                  }
+                })
+              }
+
+            </ScrollView>
+
+            <View style={styles.box1} >
+              <View style={styles.boxhead}>
+                <TextInput
+                  style={styles.text}
+                  placeholder="Type a message"
+                  underlineColorAndroid="transparent"
+                  value={messageUser}
+                  onChange={(e) => this.message_user(e.nativeEvent.text)}
+                />
+                <View >
+                  <TouchableOpacity >
+                    <Octicons name="paper-airplane" style={styles.icons} onPress={() => this.click_Message()} />
+                  </TouchableOpacity>
+                </View>
+
+              </View>
             </View>
           </View>
-
-          <View style={styles.chat}>
-            <View style={styles.box2}>
-              <Text style={styles.chat1}>15.32</Text>
-            </View>
-            <View style={styles.box4}>
-              <Text style={styles.text2}>สวัสดีครับ5555</Text>
-            </View>
-          </View>
-
-          <View>
-            <Image
-              style={styles.image}
-              source={{
-                uri: "https://st2.depositphotos.com/5592054/8393/v/600/depositphotos_83937052-stock-illustration-cartoon-plumber-holding-a-big.jpg",
-              }}
-            />
-            <View style={styles.box2}>
-              <Text style={styles.text1}>15.33</Text>
-            </View>
-            <View style={styles.box3}>
-              <Text style={styles.text2}>สวัสดีครับ55555</Text>
-            </View>
-          </View>
-
-          <View style={styles.chat}>
-            <View style={styles.box2}>
-              <Text style={styles.chat1}>15.34</Text>
-            </View>
-            <View style={styles.box4}>
-              <Text style={styles.text2}>สวัสดีครับ5555</Text>
-            </View>
-          </View>
-        </ScrollView>
-
-        <View style={styles.box1}>
-          <View style={styles.boxhead}>
-            <TextInput
-              style={styles.text}
-              placeholder="Type a message"
-              underlineColorAndroid="transparent"
-            />
-            <TouchableOpacity>
-                <Octicons name="paper-airplane" style={styles.icons} />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
+        </SafeAreaView>
+      </>
+    )
+  }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -92,6 +163,9 @@ const styles = StyleSheet.create({
   boxhead: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  scrollButton: {
+    textAlign: "end",
   },
   footer: {
     flex: 1,
@@ -177,3 +251,12 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
 });
+
+const mapStateToProps = (state) => {
+  return {
+    posts: state
+  }
+}
+export default connect(mapStateToProps, null)(Chat);
+
+
