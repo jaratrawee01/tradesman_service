@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, View, Image, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, ActivityIndicator, View, Image, ScrollView } from 'react-native';
 import { connect } from "react-redux";
 import technician_type from "../service/getService";
 
@@ -82,6 +82,8 @@ class Home extends Component {
 
       <>
         <SafeAreaView style={styles.container}>
+        <ActivityIndicator size="large" />
+
           <ScrollView>
             <View style={styles.box1}>
               <View style={styles.box}>
