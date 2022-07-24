@@ -10,7 +10,8 @@ import {
   ScrollView,
   TouchableOpacity,
   Text,
-  Alert
+  Alert,
+  ActivityIndicator
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import bookBank from "./service/getService";
@@ -29,6 +30,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
   const [image7, setImage7] = useState(null);
   const [image8, setImage8] = useState(null);
   const [image9, setImage9] = useState(null);
+  const [activityIndicator, setActivityIndicator] = useState(false);
   const [statusImage, setStatusImage] = useState(
     useSelector((state) => state.image)
   );
@@ -79,7 +81,6 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
   const serve = async (e) => {
 
-    await Alert.alert("กำลังบันทึกภาพ กรุณารอสักครู่");
     let result = null;
     if (image1 !== null) {
       const result1 = await bookBank.uplodeImages(image1, id_user);
@@ -122,19 +123,20 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
     if (result === "success") {
       await getImags(id_user);
+      setActivityIndicator(true)
       await Alert.alert("บันทึกภาพ สำเร็จ");
-
       await popToTop();
     } else {
       await Alert.alert("บันทึกภาพ ไม่สำเร็จ");
     }
   };
   const updateImage = async () => {
+    setActivityIndicator(true)
     let nameImage = JSON.parse(statusImage);
     let index = JSON.parse(statusImage).length;
     var dataImage = [image1, image2, image3, image4, image5, image6, image7, image8, image9 ];
    
-    await Alert.alert("กำลังบันทึกภาพ กรุณารอสักครู่");
+    
     
     let result;
     for (let i = 0; i < index; i++) {
@@ -161,8 +163,9 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
     if (result === "success") {
       await getImags(id_user);
+      setActivityIndicator(false)
       await Alert.alert("บันทึกภาพ สำเร็จ");
-
+      
       await popToTop();
     } else {
       await Alert.alert("บันทึกภาพ ไม่สำเร็จ");
@@ -187,6 +190,19 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
       <>
         <SafeAreaView style={styles.container}>
           <ScrollView>
+
+          {
+            activityIndicator === true ?   
+           <View style={styles.box8}>
+             <View style={styles.horizontal}>
+              <Text>กำลังบันทึกภาพ</Text>
+              <ActivityIndicator size={80} color="#fff" />
+            </View>
+           </View>
+            : 
+            null
+            }
+
             <View>
               <ImageBackground
                 source={img1}
@@ -297,7 +313,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
               </View>
 
               <View style={styles.box5}>
-                <Text style={styles.text1}>ประเภทงาน 3</Text>
+                <Text style={styles.text1}>ใบประกาศ</Text>
               </View>
 
               <View style={styles.boxhead}>
@@ -403,10 +419,24 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
   };
 
   const editImage = () => {
+
     return (
       <>
         <SafeAreaView style={styles.container}>
           <ScrollView>
+            {
+            activityIndicator === true ?   
+           <View style={styles.box8}>
+             <View style={styles.horizontal}>
+              <Text>กำลังอัพเดทภาพ</Text>
+              <ActivityIndicator size={80} color="#fff" />
+            </View>
+           </View>
+            : 
+            null
+            }
+          
+         
             <View>
               <ImageBackground
                 source={img1}
@@ -516,7 +546,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View style={styles.box7}>
-                <Text style={styles.text1}>แก้ไขภาพงาน 3</Text>
+                <Text style={styles.text1}>แก้ไขใบประกาศ</Text>
                 </View>  
 
                  <View style={styles.boxhead}>
@@ -603,6 +633,15 @@ const styles = StyleSheet.create({
       height: "100%",
       position: "relative",
     },
+  },
+  horizontal: {
+
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  marginTop: -50,
+  marginLeft: -40,
+  zIndex: 1,
   },
   backgroun: {
     width: 360,
@@ -759,6 +798,20 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 15,
   },
+  box8: {
+    height: 280,
+    width: 320,
+    backgroundColor: "#37C1FB",
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 4,
+    borderRadius: 10,
+    position: "absolute",
+    zIndex: 1,
+    marginTop: 330,
+    marginLeft: 20,
+  },
   text: {
     marginLeft: "auto",
     marginRight: "auto",
@@ -802,7 +855,7 @@ const styles = StyleSheet.create({
   },
   icons: {
     fontSize: 35,
-    color: "#000",
+    color: "#e2e2e2",
     textAlign: "center",
     marginTop: 55,
   },
