@@ -7,6 +7,7 @@ import profile_tras_user from '../navbar/profile_tras_user';
 import workings_tras_user from '../workings_tras_user';
 import address from '../address';
 import Login from '../login';
+import Ahow_bank from '../show_bank';
 
 
 
@@ -23,6 +24,7 @@ function App() {
              <HomeStack.Screen name="workings_tras_user" component={workings_tras_user} />
              <HomeStack.Screen name="address" component={address} />
              <HomeStack.Screen name="Login" component={Login} />
+             <HomeStack.Screen name="Ahow_bank" component={Ahow_bank} />
         </HomeStack.Navigator>
     );
   }

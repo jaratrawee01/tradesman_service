@@ -88,7 +88,7 @@ class Home_tar extends Component {
                             { va.file_src !== null ? 
                             <>
                               <Image style={styles.image} source={{ uri: `${urlImg}profile/${va.file_src}` }}/>
-                              <Image style={styles.image1}  source={{ uri: `${urlImg}profile/${va.file_src}` }}/>
+                              {/* <Image style={styles.image1}  source={{ uri: `${urlImg}profile/${va.file_src}` }}/> */}
                             </>
                             :
                             <>
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   text1: {
     fontSize: 13,
     fontWeight: 'bold',
-    marginLeft: 48,
+    marginLeft: 15,
     marginTop: 125,
     position:"absolute"
   },
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     fontSize: 13,
-    marginLeft: 75,
+    marginLeft: 42,
     marginTop: 125,
     position:"absolute"
   },

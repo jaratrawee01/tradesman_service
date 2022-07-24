@@ -6,35 +6,35 @@ import bookBank from './service/getService';
 
  
 class Ahow_bank extends Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
-      bookbank:   this.props.posts.bookbank,
-      id: this.props.posts.login.id
+      technician: null,
     };
   }
 
 
-async  componentDidMount() {
- 
-    if (this.state.bookbank === null) {
-      const result1 = await bookBank.getBookBank(this.state.id);
-             if (result1 !== null) {
-               await this.props.dispatch({
-                 type: "ADD_BOOKBANK",
-                 payload: result1,
-               });
-               this.setState({
-                bookbank:   this.props.posts.bookbank,
-              })
-           } 
-    }
- 
+
+  componentDidMount() {
+    const id = this.props.posts.id;
+    
+    this.technicianAndUser(id);
+  }
+
+  technicianAndUser = async (e) => {
+    const result1 = await bookBank.getBookBank(e);
+    this.setState({
+      technician: result1,
+    })
+    
   }
 
 
-   render() {
-        const {bookbank} =this.state; 
+  render() {
+    const { technician } = this.state;
+    console.log(technician);
 
     return (
 
@@ -47,70 +47,31 @@ async  componentDidMount() {
               source={require("../assets/images/BB-2.png")}
             />
           </View>
-            {
-              bookbank !== null ? 
-              <View style={styles.box}>
-              <View>
-                <Text style={styles.text1}>บัญชีธนาคาร</Text>
-              </View>
-              <View>
-
-               {/*  <View>
-                  <Text style={styles.text2}><Text style={styles.text2}>ข้อมูลล่าสุด</Text></Text>
-                  <View style={styles.box1}>
-                      <Text style={styles.text3}>ชื่อบัญชี</Text>
-                      <Text style={styles.text4}>{bookbank[0].name}</Text>
-                      <Text style={styles.text5}>ธนาคาร</Text>
-                      <Text style={styles.text6}>{bookbank[0].bank}</Text>
-                      <Text style={styles.text7}>เลขบัญชี</Text>
-                      <Text style={styles.text8}>{bookbank[0].number_bank}</Text>
-                  </View>
-                </View> */}
-
-           {/*      <View >
-                    <TouchableOpacity style={styles.button} 
-                    onPress={() => this.props.navigation.navigate("FromBank")}
-                    >
-                    <AntDesign name="pluscircleo" style={styles.icons} />
-                      <Text style={styles.text}>เเก้ไขบัญชี</Text>
-                    </TouchableOpacity>
-                </View>  */}
-            
-              </View>
-            </View>
-              :
-              <>
+     
                <View style={styles.box}>
               <View>
                 <Text style={styles.text1}>บัญชีธนาคาร</Text>
               </View>
               <View>
 
-                <View>
+              {technician !== null ?
+              <>
                   <View style={styles.box1}>
                       <Text style={styles.text3}>ชื่อบัญชี</Text>
-                      <Text style={styles.text4}>ยังไม่มีข้อมูล</Text>
+                      <Text style={styles.text4}>{technician[0].name}</Text>
                       <Text style={styles.text5}>ธนาคาร</Text>
-                      <Text style={styles.text6}>ยังไม่มีข้อมูล</Text>
+                      <Text style={styles.text6}>{technician[0].bank}</Text>
                       <Text style={styles.text7}>เลขบัญชี</Text>
-                      <Text style={styles.text8}>ยังไม่มีข้อมูล</Text>
+                      <Text style={styles.text8}>{technician[0].number_bank}</Text>
                   </View>
-                </View>
+              </>
+              : 
+                null }
 
-            {/*     <View >
-                    <TouchableOpacity style={styles.button} 
-                    onPress={() => this.props.navigation.navigate("FromBank")}
-                    >
-                    <AntDesign name="pluscircleo" style={styles.icons} />
-                      <Text style={styles.text}>เพิ่มบัญชี</Text>
-                    </TouchableOpacity>
-                </View> */}
             
               </View>
             </View>
-              </> 
-            }
-
+           
         
           </ScrollView>
       </SafeAreaView>
