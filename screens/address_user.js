@@ -151,7 +151,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
   const getAddress_user = async (e) => {
     const result1 = await technician_type.getAddress_user(e);
    
-
+    
    if (result1 !== null) {
     
       let data3 = {
@@ -165,13 +165,14 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
         zipcode: result1[0].zipcode,
         location: JSON.parse(result1[0].location),
       }; 
+      
       dispatch({
         type: "ADD_ADDRESS_USER",
         payload: data3,
       }); 
     } 
   };
-
+ 
   const edit = async () => {
     setStatusEdit(true);
     setId(statusAddress.id);
@@ -219,9 +220,10 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
       getLocation();
       map();
     }
-
+    if (statusAddress === null) {
+      getAddress_user(idPhone);
+    }
   }, []);
-
 
   /*   const url = useSelector(state => ({...state}));
     console.log("url",url); */
@@ -279,7 +281,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                 </View>
   
                 <View>
-                  <Text style={styles.text2}>{"บ้านเลขที่"}</Text>
+                  <Text style={styles.text2}>{"ที่อยู่"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
@@ -289,7 +291,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"ตำบล"}</Text>
+                  <Text style={styles.text2}>{"แขวง/ตำบล"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
@@ -299,7 +301,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"อำเภอ"}</Text>
+                  <Text style={styles.text2}>{"เขต/อำเภอ"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
@@ -371,17 +373,17 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
             </View>
             
             <View style={styles.box7}>
-                <Text style={styles.text6}>{"บ้านเลขที่"}</Text>
+                <Text style={styles.text6}>{"ที่อยู่"}</Text>
                 <Text style={styles.text7}>{statusAddress.addressUser}</Text>
             </View>
 
             <View style={styles.box7}>
-                <Text style={styles.text6}>{"ตำบล"}</Text>
+                <Text style={styles.text6}>{"แขวง/ตำบล"}</Text>
                 <Text style={styles.text7}>{statusAddress.subdistrict}</Text>
             </View>
 
             <View style={styles.box7}>
-                <Text style={styles.text6}>{"อำเภอ"}</Text>
+                <Text style={styles.text6}>{"เขต/อำเภอ"}</Text>
                 <Text style={styles.text7}>{statusAddress.district}</Text>
             </View>
 
@@ -482,7 +484,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"บ้านเลขที่"}</Text>
+                  <Text style={styles.text2}>{"ที่อยู่"}</Text>
                   <TextInput
                     value={addressUser}
                     style={styles.box4}
@@ -493,7 +495,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"ตำบล"}</Text>
+                  <Text style={styles.text2}>{"แขวง/ตำบล"}</Text>
                   <TextInput
                     value={subdistrict}
                     style={styles.box4}
@@ -504,7 +506,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"อำเภอ"}</Text>
+                  <Text style={styles.text2}>{"เขต/อำเภอ"}</Text>
                   <TextInput
                     value={district}
                     style={styles.box4}
@@ -762,7 +764,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   text6: {
-    marginLeft: 5,
+    marginLeft: 0,
     fontSize: 18,
     paddingTop: 10,
     fontWeight: "bold",

@@ -343,7 +343,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
+                  <Text style={styles.text4}>{"ที่อยู่"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
@@ -353,7 +353,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"ตำบล"}</Text>
+                  <Text style={styles.text2}>{"แขวง/ตำบล"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
@@ -363,7 +363,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"อำเภอ"}</Text>
+                  <Text style={styles.text2}>{"เขต/อำเภอ"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
@@ -435,17 +435,17 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
             </View>
             
             <View style={styles.box7}>
-                <Text style={styles.text6}>{"บ้านเลขที่"}</Text>
+                <Text style={styles.text6}>{"ที่อยู่"}</Text>
                 <Text style={styles.text7}>{statusAddress.addressUser}</Text>
             </View>
 
             <View style={styles.box7}>
-                <Text style={styles.text6}>{"ตำบล"}</Text>
+                <Text style={styles.text6}>{"แขวง/ตำบล"}</Text>
                 <Text style={styles.text7}>{statusAddress.subdistrict}</Text>
             </View>
 
             <View style={styles.box7}>
-                <Text style={styles.text6}>{"อำเภอ"}</Text>
+                <Text style={styles.text6}>{"เขต/อำเภอ"}</Text>
                 <Text style={styles.text7}>{statusAddress.district}</Text>
             </View>
 
@@ -605,7 +605,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text4}>{"บ้านเลขที่"}</Text>
+                  <Text style={styles.text4}>{"ที่อยู่"}</Text>
                   <TextInput
                     value={addressUser}
                     style={styles.box4}
@@ -616,7 +616,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"ตำบล"}</Text>
+                  <Text style={styles.text2}>{"แขวง/ตำบล"}</Text>
                   <TextInput
                     value={subdistrict}
                     style={styles.box4}
@@ -627,7 +627,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"อำเภอ"}</Text>
+                  <Text style={styles.text2}>{"เขต/อำเภอ"}</Text>
                   <TextInput
                     value={district}
                     style={styles.box4}
