@@ -66,7 +66,7 @@ class Login extends Component {
         {
           id: `${result1[0].id}`,
           name: `${result1[0].file_src}`,
-          uri: `${this.state.url}${result1[0].file_src}`,
+          uri: `${this.props.posts.urlImage}profile/${result1[0].file_src}`,
         },
       ];
       this.props.dispatch({
@@ -326,4 +326,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect()(Login);
+const mapStateToProps = (state) => {
+  return {
+    posts: state
+  }
+}
+export default connect(mapStateToProps, null)(Login);
