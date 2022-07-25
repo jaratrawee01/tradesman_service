@@ -40,18 +40,40 @@ class Login extends Component {
       let data3 = {
         id: result[0].id,
         name: result[0].name,
+        phone_number: result[0].phone_number,
         addressUser: result[0].address,
         subdistrict: result[0].subdistrict,
         district: result[0].district,
         province: result[0].province,
         zipcode: result[0].zipcode,
-        phone_number: result[0].phone_number,
         location: JSON.parse(result[0].location),
         technician_1: result[0].technician_1,
         technician_2: result[0].technician_2,
       }
       this.props.dispatch({
         type: 'ADD_ADDRESS',
+        payload: data3
+      })
+    }
+  }
+
+  getAddress_user = async (e) => {
+    const result = await login.getAddress_user(e);
+/*     console.log("result", result); */
+    if (result !== null) {
+      let data3 = {
+        id: result[0].id,
+        name: result[0].name,
+        phone_number: result[0].phone_number,
+        addressUser: result[0].address,
+        subdistrict: result[0].subdistrict,
+        district: result[0].district,
+        province: result[0].province,
+        zipcode: result[0].zipcode,
+        location: JSON.parse(result[0].location),
+      }
+      this.props.dispatch({
+        type: 'ADD_ADDRESS_USER',
         payload: data3
       })
     }
@@ -95,10 +117,12 @@ class Login extends Component {
           type: 'ADD_LOGIN',
           payload: data2
         })
+        
     /*     this.props.dispatch({
           type: 'ADD_URL',
           payload: "http://192.168.1.5/project/api-database/images/"
         }) */
+        await this.getAddress_user(getLogin[0].id);
         await this.getAddress(getLogin[0].id);
         await this.getImge(getLogin[0].id);
   

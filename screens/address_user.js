@@ -140,8 +140,8 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
 
      if (result === "success") {
       await getAddress_user(idPhone); 
-      setStatusAddress(true);  
       await Alert.alert("บันทึกสำเร็จ");
+      setStatusAddress(true);  
       await popToTop(); 
     } else {
       await Alert.alert("บันทึกไม่สำเร็จ กรุณาลองใหม่");
@@ -220,9 +220,9 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
       getLocation();
       map();
     }
-    if (statusAddress === null) {
+/*     if (statusAddress === null) {
       getAddress_user(idPhone);
-    }
+    } */
   }, []);
 
   /*   const url = useSelector(state => ({...state}));
@@ -246,9 +246,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                   <View style={styles.box5}>
                   <Image
                     style={styles.image}
-                    source={{
-                      uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-                    }}
+                    source={require('../assets/images/AAA.png')}
                   />
                   </View>
                 </View>
@@ -447,9 +445,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                   <View style={styles.box5}>
                   <Image
                     style={styles.image}
-                    source={{
-                      uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
-                    }}
+                    source={require('../assets/images/AAA.png')}
                   />
                   </View>
                 </View>
@@ -594,11 +590,12 @@ const styles = StyleSheet.create({
     marginTop: -8,
   },
   image: {
-    width: 132,
-    height: 132,
+    width: 145,
+    height: 145,
     borderRadius: 100,
-    marginLeft: "auto",
-    marginRight: "auto",
+    marginLeft: -5,
+    marginTop: -5
+    
   },
   image1: {
     width: 128,
