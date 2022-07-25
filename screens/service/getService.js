@@ -246,7 +246,28 @@ const getMessage_user = async (e) => {
     },
     params: {
       isAdd: true,
-      id: e,
+      id:e,
+ 
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
+const getMessage_user_id = async (id_user,id_tech) => {
+  const seaUser = await axios.get(`${url}/getMessage_user_id.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id_user: id_user,
+      id_tech: id_tech,
     }
   }).then((result) => {
 
@@ -278,6 +299,8 @@ const getMessage_user_groupBy = async (e) => {
     });
   return seaUser;
 };
+
+
 const getMessage_technician = async (e) => {
   const seaUser = await axios.get(`${url}/getMessage_technician.php`, {
     headers: {
@@ -298,6 +321,45 @@ const getMessage_technician = async (e) => {
   return seaUser;
 };
 
+const getMessage_technician_id = async (id_user,id_tech) => {
+  const seaUser = await axios.get(`${url}/getMessage_technician_id.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id_user: id_user,
+      id_tech: id_tech
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
+const getMessage_technician_groupBy = async (e) => {
+  const seaUser = await axios.get(`${url}/getMessage_technician_groupBy.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return null;
+    });
+  return seaUser;
+};
 
 
 const getImage = async (e) => {
@@ -446,8 +508,10 @@ const createAddress_user = async (e) => {
 
   return adduser;
 }
+
 const addMessage = async (e) => {
-  const formdata = new FormData();
+
+const formdata = new FormData();
   formdata.append('isAdd', true);
   formdata.append('id_user', e[0]);
   formdata.append('id', e[1]);
@@ -464,7 +528,7 @@ const addMessage = async (e) => {
     .catch((error) => {
       return error;
     });
-  return message;
+  return message; 
 };
 
 const createBookBank = async (e) => {
@@ -696,7 +760,12 @@ export default {
   gettechnician,
   gettechnicianAddressid,
   getMessage_user,
+  getMessage_user_id,
   getMessage_technician,
+  getMessage_technician_id,
   addMessage,
   getMessage_user_groupBy,
+  getMessage_technician_groupBy,
+  
+
 };

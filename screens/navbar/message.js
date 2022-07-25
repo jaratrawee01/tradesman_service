@@ -20,167 +20,237 @@ class Message extends Component {
     this.state = {
       message: null,
       urlImg: null,
-      messageGrou: null
+      messageGrou: null,
+      starusLogin: this.props.posts.login
     };
   }
 
   componentDidMount() {
-    this.set_State();
-  }
-
-  /*   componentDidUpdate() {
+    if (this.state.starusLogin === null || this.state.message === null) {
       this.set_State();
-    } */
-
-  set_State = async () => {
-    const userlogin = this.props.posts.login.status_user;
-
-    if (userlogin === "ลูกค้าทั่วไป") {
-      const idlogin = this.props.posts.login.id;
-      ;
-      const result = await getMessage.getMessage_user(idlogin);
-      const resultGrouBy = await getMessage.getMessage_user_groupBy(idlogin);
-      if (result) {
-        this.setState({
-          message: result,
-          messageGrou: resultGrouBy,
-          urlImg: this.props.posts.urlImage,
-        })
-      }
-    } else {
-      const idlogin = this.props.posts.login.id;
-      const result1 = await getMessage.getMessage_technician(idlogin);
-      if (result1) {
-        this.setState({
-          message: result1,
-          urlImg: this.props.posts.urlImage,
-        })
-      }
     }
   }
-  render() {
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.starusLogin !== this.state.starusLogin && this.state.starusLogin !== null) {
+      this.set_State();
+    }
+    if (this.state.message === null && prevProps.message !== this.state.message) {
+      this.set_State();
+    }
+  }
+
+  set_State = async () => {
+    const { starusLogin } = this.state;
+    if (starusLogin !== null) {
+      if (starusLogin.status_user === "ลูกค้าทั่วไป") {
+        const idlogin = starusLogin.id;
+        const result = await getMessage.getMessage_user(idlogin);
+        const resultGrouBy = await getMessage.getMessage_user_groupBy(idlogin);
+        if (result) {
+          this.setState({
+            message: result,
+            messageGrou: resultGrouBy,
+            urlImg: this.props.posts.urlImage,
+            starusLogin: this.props.posts.login
+          })
+        }
+      } else {
+        const idlogin2 = starusLogin.id;
+        const result1 = await getMessage.getMessage_technician(idlogin2);
+        const resultGrouBy = await getMessage.getMessage_technician_groupBy(idlogin2);
+        if (result1) {
+          this.setState({
+            message: result1,
+            messageGrou: resultGrouBy,
+            urlImg: this.props.posts.urlImage,
+            starusLogin: this.props.posts.login
+          })
+        }
+      }
+    }
+
+  }
+  clickChat(e) {
+    console.log(e);
+    this.props.dispatch({
+      type: 'ADD_IDTECHNICAN',
+      payload: e
+    })
+    this.props.navigation.navigate("Chat")
+
+  }
+
+  user = async () => {
     const { message, messageGrou, urlImg } = this.state;
+    return (
+      <>
+        {
+          messageGrou && messageGrou.map((index) => {
+            const id_teh = message && message.filter((va) => {
+              if (va.id_technician === index.id_technician) {
+                if (va.status_read === "0") {
+                  return va.id_technician;
+                }
+              }
+            }
+            )
+            const name = (
+              <TouchableWithoutFeedback onPress={() => this.clickChat(index.id_technician)}>
+                <View style={styles.box1}>
+                  {index.file_src !== null ?
+                    <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
+                    :
+                    <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                  }
+                  <Text style={styles.text1}>
+                    <Text style={styles.text2}>{index.name}</Text> {"14.06"}
+                  </Text>
+                  <Text style={styles.text3}>Message  ลูกค้า </Text>
+                  {
+                    id_teh.length !== 0 ? <Text style={styles.text4}>{id_teh.length}</Text>
+                      :
+                      null
+                  }
+                </View>
+              </TouchableWithoutFeedback>
+            )
+            return name;
+          })
+        }
+      </>
+    )
+  }
 
+  technician() {
+    const { message, messageGrou, urlImg } = this.state;
+    return (
+      <>
+        {
+          messageGrou && messageGrou.map((index) => {
+            const id_teh = message && message.filter((va) => {
+              if (va.idUser === index.idUser) {
+                if (va.status_read === "0") {
+                  return va.idUser;
+                }
+              }
+            }
+            )
+            const name = (
+              <TouchableWithoutFeedback onPress={() => this.clickChat(index.idUser)}>
+                <View style={styles.box1}>
+                  {index.file_src !== null ?
+                    <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
+                    :
+                    <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                  }
+                  <Text style={styles.text1}>
+                    <Text style={styles.text2}>{index.name}</Text> {"14.06"}
+                  </Text>
+                  <Text style={styles.text3}>Message {index.idUser}</Text>
+                  {
+                    id_teh.length !== 0 ? <Text style={styles.text4}>{id_teh.length}</Text>
+                      :
+                      null
+                  }
+
+                </View>
+              </TouchableWithoutFeedback>
+            )
+            return name;
+          })
+        }
+      </>
+    )
+  }
+
+  render() {
+    const { message, messageGrou, urlImg, } = this.state;
+    console.log("55");
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.top}>
 
             {
-              messageGrou && messageGrou.map((index) => {
-
-                const id_teh = message && message.filter((va) => {
-                  if (va.id_technician === index.id_technician) {
-                    if (va.status_read === "0") {
-                      return va.id_technician;
+              this.props.posts.login !== null ?
+                this.props.posts.login.status_user === "ลูกค้าทั่วไป" ?
+                  <>
+                    {
+                      messageGrou && messageGrou.map((index) => {
+                        const id_teh = message && message.filter((va) => {
+                          if (va.id_technician === index.id_technician) {
+                            if (va.status_read === "0") {
+                              return va.id_technician;
+                            }
+                          }
+                        }
+                        )
+                        const name = (
+                          <TouchableWithoutFeedback onPress={() => this.clickChat(index.id_technician)}>
+                            <View style={styles.box1}>
+                              {index.file_src !== null ?
+                                <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
+                                :
+                                <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                              }
+                              <Text style={styles.text1}>
+                                <Text style={styles.text2}>{index.name}</Text> {"14.06"}
+                              </Text>
+                              <Text style={styles.text3}>Message  ลูกค้า </Text>
+                              {
+                                id_teh.length !== 0 ? <Text style={styles.text4}>{id_teh.length}</Text>
+                                  :
+                                  null
+                              }
+                            </View>
+                          </TouchableWithoutFeedback>
+                        )
+                        return name;
+                      })
                     }
-                  }
-                }
-                )
+                  </>
+                  :
+                  <>
+                    {
+                      messageGrou && messageGrou.map((index) => {
+                        const id_teh = message && message.filter((va) => {
+                          if (va.idUser === index.idUser) {
+                            if (va.status_read === "0") {
+                              return va.idUser;
+                            }
+                          }
+                        }
+                        )
+                        const name = (
+                          <TouchableWithoutFeedback onPress={() => this.clickChat(index.idUser)}>
+                            <View style={styles.box1}>
+                              {index.file_src !== null ?
+                                <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
+                                :
+                                <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                              }
+                              <Text style={styles.text1}>
+                                <Text style={styles.text2}>{index.name}</Text> {"14.06"}
+                              </Text>
+                              <Text style={styles.text3}>Message {index.idUser}</Text>
+                              {
+                                id_teh.length !== 0 ? <Text style={styles.text4}>{id_teh.length}</Text>
+                                  :
+                                  null
+                              }
 
-                const name = (
-                  <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
-                    <View style={styles.box1}>
-                      {index.file_src !== null ?
-                        <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
-                        :
-                        <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                            </View>
+                          </TouchableWithoutFeedback>
+                        )
+                        return name;
+                      })
+                    }
+                  </>
+                : null
 
-                      }
-
-                      <Text style={styles.text1}>
-                        <Text style={styles.text2}>{index.name}</Text> {"14.06"}
-                      </Text>
-                      <Text style={styles.text3}>Message</Text>
-                      <Text style={styles.text4}>{id_teh.length}</Text>
-                    </View>
-                  </TouchableWithoutFeedback>
-                )
-
-                return name;
-
-              })
             }
 
-            {/* <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
-              <View style={styles.box1}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg",
-                  }}
-                />
-                <Text style={styles.text1}>
-                  <Text style={styles.text2}>{"# Anna"}</Text> {"14.06"}
-                </Text>
-                <Text style={styles.text3}>Message</Text>
-                <Text style={styles.text4}>{"2"}</Text>
-              </View>
-            </TouchableWithoutFeedback> */}
-            {/*   <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Chat")}>
-              <View style={styles.box1}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg",
-                  }}
-                />
-                <Text style={styles.text1}>
-                  <Text style={styles.text2}>{"# Anna"}</Text> {"14.06"}
-                </Text>
-                <Text style={styles.text3}>Message</Text>
-                <Text style={styles.text4}>{"2"}</Text>
-              </View>
-            </TouchableWithoutFeedback>
-
-            <TouchableWithoutFeedback  onPress={() => this.props.navigation.navigate("Chat")}>
-              <View style={styles.box1}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD47w-kjxI64_mo8RmdEFl0qJz-zZAwXDn8r6wNKZsyck8f4g3he8Qib_S_aXrygr6rlY&usqp=CAU",
-                  }}
-                />
-                <Text style={styles.text1}>
-                  <Text style={styles.text2}>{"# Jenny"}</Text> {"22.36"}
-                </Text>
-                <Text style={styles.text3}>Message</Text>
-                <Text style={styles.text4}>{"1"}</Text>
-              </View>
-            </TouchableWithoutFeedback>
-
-            <TouchableWithoutFeedback  onPress={() => this.props.navigation.navigate("Chat")}>
-              <View style={styles.box1}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: "https://img.my-best.in.th/press_component/images/60032404a06bfae09ca65f06363457f6.jpg?ixlib=rails-4.2.0&q=70&lossless=0&w=690&fit=max",
-                  }}
-                />
-                <Text style={styles.text1}>
-                  <Text style={styles.text2}>{"# Minton"}</Text> {"14.06"}
-                </Text>
-                <Text style={styles.text3}>Message</Text>
-                <Text style={styles.text4}>{"3"}</Text>
-              </View>
-            </TouchableWithoutFeedback>
-
-            <TouchableWithoutFeedback  onPress={() => this.props.navigation.navigate("Chat")}>
-              <View style={styles.box1}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: "https://www.josephiteweb.org/wp-content/uploads/2017/03/sel_237-400x300.jpg",
-                  }}
-                />
-                <Text style={styles.text1}>
-                  <Text style={styles.text2}>{"# Jasmine"}</Text> {"14.06"}
-                </Text>
-                <Text style={styles.text3}>Message</Text>
-                <Text style={styles.text4}>{"3"}</Text>
-              </View>
-            </TouchableWithoutFeedback> */}
           </View>
         </ScrollView>
       </SafeAreaView>

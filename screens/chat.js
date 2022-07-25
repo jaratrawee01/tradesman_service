@@ -21,55 +21,82 @@ class Chat extends Component {
     super(props);
     this.state = {
       message: null,
-      messageUser: null,
-      urlImg:null
+      urlImg:null,
+      id:this.props.posts.id,
+      starusLogin: this.props.posts.login
     };
   }
 
   componentDidMount() {
-    this.set_State();
+        this.set_State()
   }
+
+   componentDidUpdate(prevProps, prevState) {
+/*     if (prevProps.starusLogin === this.state.starusLogin && this.state.starusLogin !==  null) {
+      this.set_State();
+     } */
+     if (this.state.message ===  null ||  prevProps.message !== this.state.message) {
+      this.set_State();
+     }
+   }
+
 
   set_State = async () => {
-    const userlogin =  this.props.posts.login.status_user;
+    let {starusLogin,id} =  this.state;
+    if (starusLogin.status_user === "ลูกค้าทั่วไป") {
+     
+      const result1 = await getMessage.getMessage_technician_id(starusLogin.id,id);
+      if (result1) {
+        this.setState({
+          message: result1,
+          urlImg: this.props.posts.urlImage,
+        })
+      }
 
-    if (userlogin === "ลูกค้าทั่วไป") {
-      const idlogin = this.props.posts.login.id;
-      const result1 = await getMessage.getMessage_user(idlogin);
-      if (result1) {
-        this.setState({
-          message: result1,
-          urlImg: this.props.posts.urlImage,
-        })
-      }
     }else{
-      const id = this.props.posts.id;
-      const result1 = await getMessage.getMessage_technician(id);
+      console.log(id,starusLogin.id);
+      const result1 = await getMessage.getMessage_user_id(id,starusLogin.id);
+
       if (result1) {
         this.setState({
           message: result1,
           urlImg: this.props.posts.urlImage,
         })
       }
-    }
   }
+}
 
   click_Message = async () => {
     const { messageUser } = this.state;
-    const status_read = null;
+    const status_read = 0;
     const status_user = 1;
+
     if (messageUser) {
-      const data = [this.props.posts.login.id, this.props.posts.id, messageUser, status_read, status_user];
-      const result1 = await getMessage.addMessage(data);
-      if (result1 === "success") {
-      this.set_State()
-        this.setState({
-          messageUser: null,
-        })
+      const { starusLogin,id} = this.state;
+      if (starusLogin.status_user === "ลูกค้าทั่วไป") {
+        const data = [starusLogin.id,id, messageUser, status_read, status_user];
+        if (starusLogin.id !== null && id !== null) {
+          const result1 = await getMessage.addMessage(data);
+          if (result1 === "success") {
+            this.setState({
+              messageUser: null,
+            })
+          }
+        }
+      }else{
+        const data = [id,starusLogin.id, messageUser, status_read, status_user];
+        if (starusLogin.id !== null && id !== null) {
+          const result1 = await getMessage.addMessage(data);
+          if (result1 === "success") {
+            this.setState({
+              messageUser: null,
+            })
+          }
+        }
       }
+    
+    
     }
-
-
   }
 
   message_user(e) {
