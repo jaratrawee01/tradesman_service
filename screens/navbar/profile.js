@@ -151,7 +151,7 @@ class Profile_tradesman extends Component {
                     image !== null ?
                     <Image  style={styles.imgPro} source={{ uri: image[0].uri }}/>
                       :
-                    <Image style={styles.image3} source={require('../../assets/images/A-11.png')}/>
+                    <Image style={styles.image3} source={require('../../assets/images/AAA.png')}/>
                      
                   }
                 </View>
@@ -228,7 +228,7 @@ class Profile_tradesman extends Component {
                     image !== null ?
                     <Image  style={styles.imgPro} source={{ uri: image[0].uri }}/>
                       :
-                    <Image style={styles.image3} source={require('../../assets/images/A-11.png')}/>
+                    <Image style={styles.image3} source={require('../../assets/images/AAA.png')}/>
                      
                   }
                 </View>
@@ -431,11 +431,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   image3: {
-    width: 100,
-    height: 100,
-    marginTop: 15,
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    width: 145,
+    height: 145,
+    marginTop: -5,
+    marginLeft: -5,
   },
   image4: {
     width: '100%',
@@ -536,7 +535,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 'auto',
     marginRight: 'auto',
-    borderWidth: 5,
+    borderWidth: 4,
     borderColor: '#fff',
   },
   box7: {
@@ -651,8 +650,8 @@ const styles = StyleSheet.create({
     marginTop: "70%",
   },
   imgPro: {
-    height: 130,
-    width: 130,
+    height: 132,
+    width: 132,
     backgroundColor: '#37C1FB',
     shadowColor: "#000",
     borderRadius: 100,

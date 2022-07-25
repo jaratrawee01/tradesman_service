@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, View, Image, ScrollView } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, Text, TouchableWithoutFeedback, ActivityIndicator, View, Image, ScrollView } from 'react-native';
 import { connect } from "react-redux";
 import technician_type from "../service/getService";
 
@@ -45,7 +45,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.1.5/project/api-database/images/"
+      payload: "http://192.168.0.106/project/api-database/images/"
     })
   }
   
@@ -82,12 +82,14 @@ class Home extends Component {
 
       <>
         <SafeAreaView style={styles.container}>
+        
+
           <ScrollView>
             <View style={styles.box1}>
               <View style={styles.box}>
                 <Image
                   style={styles.image2}
-                  source={require('../../assets/images/logo_technician.png')}
+                  source={require('../../assets/images/AAA.png')}
                 />
               </View>
               <Text style={styles.text}>ประเภทงาน User</Text>
@@ -131,12 +133,14 @@ class Home extends Component {
     return (
       <>
         <SafeAreaView style={styles.container}>
+
+        <ActivityIndicator size="large" />
           <ScrollView>
             <View style={styles.box1}>
               <View style={styles.box}>
                 <Image
                   style={styles.image2}
-                  source={require('../../assets/images/logo_technician.png')}
+                  source={require('../../assets/images/AAA.png')}
                 />
               </View>
               <Text style={styles.text}>ประเภทงานของคุณ</Text>
@@ -218,17 +222,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   box: {
-    height: 150,
-    width: 150,
+    height: 140,
+    width: 140,
     shadowColor: "#000",
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
     elevation: 6,
-    borderRadius: 30,
+    borderRadius: 100,
     marginTop: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
-    borderWidth: 5,
+    borderWidth: 4,
     borderColor: '#fff',
   },
   box1: {
@@ -268,10 +272,10 @@ const styles = StyleSheet.create({
     position:"absolute"
   },
   image2: {
-    width: 200,
-    height: 200,
-    marginTop: -30,
-    marginLeft: -30,
+    width: 145,
+    height: 145,
+    marginTop: -5,
+    marginLeft: -4,
   },
   image3: {
     width: '100%',

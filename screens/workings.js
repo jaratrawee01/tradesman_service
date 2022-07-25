@@ -80,7 +80,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
 
   const serve = async (e) => {
-
+    setActivityIndicator(true)
     let result = null;
     if (image1 !== null) {
       const result1 = await bookBank.uplodeImages(image1, id_user);
@@ -123,7 +123,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
 
     if (result === "success") {
       await getImags(id_user);
-      setActivityIndicator(true)
+      setActivityIndicator(false)
       await Alert.alert("บันทึกภาพ สำเร็จ");
       await popToTop();
     } else {
@@ -212,7 +212,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                 <View style={styles.box4}>
                   <Image
                     style={styles.image2}
-                    source={require("../assets/images/A-11.png")}
+                    source={require("../assets/images/AAA.png")}
                   />
                 </View>
               </ImageBackground>
@@ -446,7 +446,7 @@ const ImagePickerExample = ({ navigation: { popToTop, navigate } }) => {
                 <View style={styles.box4}>
                   <Image
                     style={styles.image2}
-                    source={require("../assets/images/A-11.png")}
+                    source={require("../assets/images/AAA.png")}
                   />
                 </View>
               </ImageBackground>
@@ -662,11 +662,11 @@ const styles = StyleSheet.create({
     marginRight: "auto",
   },
   image2: {
-    width: 100,
-    height: 100,
-    marginTop: 20,
-    marginLeft: "auto",
-    marginRight: "auto",
+    width: 145,
+    height: 145,
+    marginTop: -6,
+    marginLeft: -5.5,
+
   },
   image3: {
     width: 110,

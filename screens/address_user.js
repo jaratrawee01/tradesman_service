@@ -235,18 +235,20 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
         <SafeAreaView style={styles.container}>
           <ScrollView>
             <View>
-              <ImageBackground
+            <ImageBackground
                 source={img1}
                 resizeMode="cover"
                 style={styles.image2}
               >
                 <View style={styles.container}>
+                  <View style={styles.box5}>
                   <Image
                     style={styles.image}
                     source={{
                       uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
                     }}
                   />
+                  </View>
                 </View>
               </ImageBackground>
             </View>
@@ -434,18 +436,20 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
         <SafeAreaView style={styles.container}>
           <ScrollView>
             <View>
-              <ImageBackground
+            <ImageBackground
                 source={img1}
                 resizeMode="cover"
                 style={styles.image2}
               >
                 <View style={styles.container}>
+                  <View style={styles.box5}>
                   <Image
                     style={styles.image}
                     source={{
                       uri: "https://www.cdti.ac.th/uploads/images/image_750x422_5da3c6560cde8.jpg",
                     }}
                   />
+                  </View>
                 </View>
               </ImageBackground>
             </View>
@@ -588,10 +592,9 @@ const styles = StyleSheet.create({
     marginTop: -8,
   },
   image: {
-    width: 100,
-    height: 100,
-    marginTop: 40,
-    borderRadius: 50,
+    width: 132,
+    height: 132,
+    borderRadius: 100,
     marginLeft: "auto",
     marginRight: "auto",
   },
@@ -674,6 +677,21 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
     fontSize: 18,
+  },
+  box5: {
+    height: 140,
+    width: 140,
+    backgroundColor: "#37C1FB",
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderRadius: 100,
+    marginTop: 25,
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderWidth: 4,
+    borderColor: "#fff",
   },
   box6: {
     height: 150,
