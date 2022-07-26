@@ -45,7 +45,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.0.107/project/api-database/images/"
+      payload: "http://192.168.1.3/project/api-database/images/"
     })
   }
   
@@ -133,8 +133,6 @@ class Home extends Component {
     return (
       <>
         <SafeAreaView style={styles.container}>
-
-        <ActivityIndicator size="large" />
           <ScrollView>
             <View style={styles.box1}>
               <View style={styles.box}>

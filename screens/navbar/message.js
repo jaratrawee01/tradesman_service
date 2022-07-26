@@ -25,19 +25,19 @@ class Message extends Component {
       starusLogin: this.props.posts.login
     };
   }
-  
+
   componentDidMount() {
-    const { message,login } = this.props.posts;
+    const { message, login } = this.props.posts;
     if (login != null) {
-    this.set_State(this.state.starusLogin);
-   }
+      this.set_State(this.state.starusLogin);
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { message,login } = this.props.posts;
-      if (login != null) {
+    const { message, login } = this.props.posts;
+    if (login != null) {
       this.set_State(this.state.starusLogin);
-     }
+    }
   }
 
 
@@ -45,7 +45,7 @@ class Message extends Component {
 
     if (e !== null) {
       if (e.status_user === "ลูกค้าทั่วไป") {
-        const {starusLogin} =  this.state;
+        const { starusLogin } = this.state;
         const result = await getMessage.getMessage_user(e.id);
         const resultGrouBy = await getMessage.getMessage_user_groupBy(e.id);
         if (result) {
@@ -146,9 +146,9 @@ class Message extends Component {
                     <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
                   }
                   <Text style={styles.text1}>
-                    <Text style={styles.text2}>{index.name}</Text> {"14.06"}
+                    <Text style={styles.text2}>{index.name}</Text> {index.created_at}
                   </Text>
-                  <Text style={styles.text3}>Message {index.idUser}</Text>
+                  <Text style={styles.text3}>Message</Text>
                   {
                     id_teh.length !== 0 ? <Text style={styles.text4}>{id_teh.length}</Text>
                       :
@@ -166,8 +166,8 @@ class Message extends Component {
   }
 
   render() {
-    const { starusLogin ,message, messageGrou, urlImg } = this.state;
-    console.log("9999",starusLogin);
+    const { starusLogin, message, messageGrou, urlImg } = this.state;
+    console.log("9999", starusLogin);
 
     return (
       <SafeAreaView style={styles.container}>
@@ -176,28 +176,22 @@ class Message extends Component {
 
             {
               this.props.posts.login != null ?
-              this.props.posts.login.status_user === "ลูกค้าทั่วไป" ?
+                this.props.posts.login.status_user === "ลูกค้าทั่วไป" ?
                   this.user(message, messageGrou, urlImg)
                   :
                   this.technician(message, messageGrou, urlImg)
                 :
-                <TouchableWithoutFeedback onPress={() => this.clickChat(index.idUser)}>
-                <View style={styles.box1}>
-                    
+                <TouchableWithoutFeedback  onPress={() => this.props.navigation.navigate("Login")}>
+                  <View style={styles.box1}>
                     <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
-                  <Text style={styles.text1}>
-                    <Text style={styles.text2}>ยังไม่ได้ login</Text> </Text>
-                  <Text style={styles.button}
-                  onPress={() => this.props.navigation.navigate("Login")} 
-                  >lohin</Text>
-                <Text style={styles.text4}>5</Text>
-    
-                </View>
-              </TouchableWithoutFeedback>
-               /*  <View style={styles.box1}>
-                   <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
-                  <Text style={styles.text0}>ยังไม่ login</Text>
-                </View> */
+                    <Text style={styles.text1}>
+                      <Text style={styles.text2}>ยังไม่ได้ login</Text> </Text>
+                  </View>
+                </TouchableWithoutFeedback>
+              /*  <View style={styles.box1}>
+                  <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                 <Text style={styles.text0}>ยังไม่ login</Text>
+               </View> */
             }
           </View>
         </ScrollView>
@@ -205,7 +199,7 @@ class Message extends Component {
     );
   }
 }
- 
+
 
 
 const styles = StyleSheet.create({

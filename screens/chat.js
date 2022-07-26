@@ -21,31 +21,56 @@ class Chat extends Component {
     super(props);
     this.state = {
       message: null,
-      urlImg:null,
-      id:this.props.posts.id,
-      starusLogin: this.props.posts.login
+      urlImg: null,
+      id_click: this.props.posts.id,
+      starusLogin: this.props.posts.login,
+      id_maessage: null
     };
   }
 
   componentDidMount() {
-        this.set_State()
+    this.set_State()
   }
 
-   componentDidUpdate(prevProps, prevState) {
-/*     if (prevProps.starusLogin === this.state.starusLogin && this.state.starusLogin !==  null) {
+  componentDidUpdate(prevProps, prevState) {
+    /*     if (prevProps.starusLogin === this.state.starusLogin && this.state.starusLogin !==  null) {
+          this.set_State();
+         } */
+    if (this.state.message === null || prevProps.message !== this.state.message) {
       this.set_State();
-     } */
-     if (this.state.message ===  null ||  prevProps.message !== this.state.message) {
-      this.set_State();
-     }
-   }
+    }
+  }
 
 
   set_State = async () => {
-    let {starusLogin,id} =  this.state;
+    var { starusLogin, id_click } = this.state;
     if (starusLogin.status_user === "ลูกค้าทั่วไป") {
-     
-      const result1 = await getMessage.getMessage_technician_id(starusLogin.id,id);
+
+      const result1 = await getMessage.getMessage_technician_id(starusLogin.id, id_click);
+      if (result1) {
+        this.setState({
+          message: result1,
+          urlImg: this.props.posts.urlImage,
+        })
+      }
+      result1 && result1.map((value)=>{
+        if ((value.status_read === "0") && (id_click === value.status_user)) {
+        /*   console.log(value.id); */
+          const id = value.id;
+          const status_read = "1";
+          const result_status =  getMessage.updateMessage(id,status_read);
+        }
+      })
+
+    } else {
+      const result1 = await getMessage.getMessage_user_id(id_click, starusLogin.id);
+      if (result1.status_read === "0") {
+         const dataId = [];
+        dataId.push(result1[0].id);
+        this.setState({
+          id_maessage: dataId
+        }) 
+      }
       if (result1) {
         this.setState({
           message: result1,
@@ -53,29 +78,29 @@ class Chat extends Component {
         })
       }
 
-    }else{
-      console.log(id,starusLogin.id);
-      const result1 = await getMessage.getMessage_user_id(id,starusLogin.id);
 
-      if (result1) {
-        this.setState({
-          message: result1,
-          urlImg: this.props.posts.urlImage,
-        })
-      }
+      result1 && result1.map((value)=>{
+        if ((value.status_read === "0") && (id_click === value.status_user)) {
+          console.log("asdas",id_click,  value.idUser,value.id);
+          const id = value.id;
+          const status_read = "1";
+          const result_status =  getMessage.updateMessage(id,status_read);
+        }
+      })
+    }
   }
-}
 
   click_Message = async () => {
-    const { messageUser } = this.state;
+    const { messageUser, starusLogin } = this.state;
     const status_read = 0;
-    const status_user = 1;
+    const status_user = starusLogin.id;
 
     if (messageUser) {
-      const { starusLogin,id} = this.state;
+      const { starusLogin, id_click } = this.state;
+
       if (starusLogin.status_user === "ลูกค้าทั่วไป") {
-        const data = [starusLogin.id,id, messageUser, status_read, status_user];
-        if (starusLogin.id !== null && id !== null) {
+        const data = [starusLogin.id, id_click, messageUser, status_read, status_user];
+        if (starusLogin.id !== null && id_click !== null) {
           const result1 = await getMessage.addMessage(data);
           if (result1 === "success") {
             this.setState({
@@ -83,9 +108,9 @@ class Chat extends Component {
             })
           }
         }
-      }else{
-        const data = [id,starusLogin.id, messageUser, status_read, status_user];
-        if (starusLogin.id !== null && id !== null) {
+      } else {
+        const data = [id_click, starusLogin.id, messageUser, status_read, status_user];
+        if (starusLogin.id !== null && id_click !== null) {
           const result1 = await getMessage.addMessage(data);
           if (result1 === "success") {
             this.setState({
@@ -94,8 +119,8 @@ class Chat extends Component {
           }
         }
       }
-    
-    
+
+
     }
   }
 
@@ -106,32 +131,26 @@ class Chat extends Component {
   }
 
   render() {
-    const { messageUser, message } = this.state;
+    const { messageUser, message, starusLogin ,urlImg,id_click} = this.state;
 
 
     return (
       <>
         <SafeAreaView style={styles.container}>
           <View style={styles.footer}>
-            <ScrollView ref={ref => {this.scrollView = ref}}
-            onContentSizeChange={() => this.scrollView.scrollToEnd({animated: true})}>
+            <ScrollView ref={ref => { this.scrollView = ref }}
+              onContentSizeChange={() => this.scrollView.scrollToEnd({ animated: true })}>
 
               {
                 message && message.map((index) => {
 
-                  if (index.status_user === "2") {
+                  if (index.status_user === starusLogin.id) {
                     const name = (
-                      <View>
-                        <Image
-                          style={styles.image}
-                          source={{
-                            uri: "https://st2.depositphotos.com/5592054/8393/v/600/depositphotos_83937052-stock-illustration-cartoon-plumber-holding-a-big.jpg",
-                          }}
-                        />
+                      <View style={styles.chat}>
                         <View style={styles.box2}>
-                          <Text style={styles.text1}>{index.created_at}</Text>
+                          <Text style={styles.chat1}>{index.created_at}</Text>
                         </View>
-                        <View style={styles.box3}>
+                        <View style={styles.box4}>
                           <Text style={styles.text2}>{index.message}</Text>
                         </View>
                       </View>
@@ -139,11 +158,18 @@ class Chat extends Component {
                     return name;
                   } else {
                     const name = (
-                      <View style={styles.chat}>
+                      <View>
+                        {
+                          index.file_src != null ?
+                          <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
+                          :
+                          <Image style={styles.image} source={{ uri: "https://st2.depositphotos.com/5592054/8393/v/600/depositphotos_83937052-stock-illustration-cartoon-plumber-holding-a-big.jpg"}}/>
+                        }
+                    
                         <View style={styles.box2}>
-                          <Text style={styles.chat1}>{index.created_at}</Text>
+                          <Text style={styles.text1}>{index.created_at}</Text>
                         </View>
-                        <View style={styles.box4}>
+                        <View style={styles.box3}>
                           <Text style={styles.text2}>{index.message}</Text>
                         </View>
                       </View>

@@ -1,7 +1,7 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
 /*  const url = 'http://192.168.1.5/project/api-database';  */  //หน่วย
-   const url = 'http://192.168.0.106/project/api-database';    // ยอน 
+   const url = 'http://192.168.1.3/project/api-database';    // ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
@@ -717,7 +717,6 @@ const uplodeUpdateImagesProfile = async (e,id,name) => {
  };
 
  const updateBookBank = async (e) => {
-
   const formdata = new FormData();
   formdata.append('isAdd', true);
   formdata.append('id', e[0]);
@@ -725,6 +724,23 @@ const uplodeUpdateImagesProfile = async (e,id,name) => {
   formdata.append('number_bank', e[2]);
   formdata.append('bank', e[3]);
   const upBookBank = await axios.post(`${url}/updateBank.php`,formdata,{
+    headers: {
+      'Content-Type': 'multipart/form-data;charset=utf-8',
+    }
+  }).then((result) => {
+    return "success";
+  })
+    .catch((error) => {
+      return error;
+    });
+  return upBookBank;
+};
+ const updateMessage = async (id,value) => {
+  const formdata = new FormData();
+  formdata.append('isAdd', true);
+  formdata.append('id', id);
+  formdata.append('status_read', value);
+  const upBookBank = await axios.post(`${url}/updateMessage.php`,formdata,{
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
     }
@@ -766,6 +782,6 @@ export default {
   addMessage,
   getMessage_user_groupBy,
   getMessage_technician_groupBy,
-  
+  updateMessage,
 
 };
