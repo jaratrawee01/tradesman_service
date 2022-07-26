@@ -181,19 +181,32 @@ class Message extends Component {
                   :
                   this.technician(message, messageGrou, urlImg)
                 :
-                <View >
-                  <Text onPress={() => this.props.navigation.navigate("Login")}>ยังไม่ login</Text>
+                <TouchableWithoutFeedback onPress={() => this.clickChat(index.idUser)}>
+                <View style={styles.box1}>
+                    
+                    <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                  <Text style={styles.text1}>
+                    <Text style={styles.text2}>ยังไม่ได้ login</Text> </Text>
+                  <Text style={styles.button}
+                  onPress={() => this.props.navigation.navigate("Login")} 
+                  >lohin</Text>
+                <Text style={styles.text4}>5</Text>
+    
                 </View>
-
-
+              </TouchableWithoutFeedback>
+               /*  <View style={styles.box1}>
+                   <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
+                  <Text style={styles.text0}>ยังไม่ login</Text>
+                </View> */
             }
-
           </View>
         </ScrollView>
       </SafeAreaView>
     );
   }
 }
+ 
+
 
 const styles = StyleSheet.create({
   container: {
@@ -203,6 +216,21 @@ const styles = StyleSheet.create({
   },
   top: {
     marginTop: 20,
+  },
+  button: {
+    height: 25,
+    width: 60,
+    backgroundColor: '#37C1FB',
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 2,
+    borderRadius: 10,
+    marginLeft: 60,
+    fontSize: 18,
+    paddingLeft: 15,
+    marginTop: 5,
+    padding: 1
   },
   box1: {
     height: 80,
@@ -224,6 +252,24 @@ const styles = StyleSheet.create({
     marginTop: 5,
     borderRadius: 50,
   },
+  text0: {
+    textAlign: 'center',
+    fontSize: 24,
+    padding: 5,
+    marginTop: -45,
+    width: 150,
+    height: 40,
+    backgroundColor: "#37C1FB",
+    marginLeft: 80,
+    borderRadius: 10,
+  },
+  text: {
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 24,
+    padding: 10,
+    color: '#fff'
+  },
   text1: {
     marginLeft: 55,
     marginTop: -50,
@@ -242,13 +288,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginLeft: "auto",
     marginRight: 20,
-    marginTop: -18,
+    marginTop: -40,
     fontSize: 20,
-    width: 40,
+    width: 30,
     height: 30,
-    padding: 5,
+    padding: 4,
     backgroundColor: "#37C1FB",
     color: "#ffff",
+    borderRadius: 30,
   },
 });
 
