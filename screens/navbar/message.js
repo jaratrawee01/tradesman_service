@@ -35,8 +35,8 @@ class Message extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { message, login } = this.props.posts;
-    if (login != null) {
-      this.set_State(this.state.starusLogin);
+    if (this.props.posts.login != null) {
+      this.set_State(this.props.posts.login);
     }
   }
 
