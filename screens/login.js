@@ -57,6 +57,8 @@ class Login extends Component {
     }
   }
 
+  
+
   getAddress_user = async (e) => {
     const result = await login.getAddress_user(e);
 /*     console.log("result", result); */
@@ -79,6 +81,38 @@ class Login extends Component {
     }
   }
 
+/*   set_State = async (e) => {
+    if (e !== null ) {
+      if (e[0].status_user === "ลูกค้าทั่วไป") {
+        const result = await login.getMessage_user(e[0].id);
+        const resultGrouBy = await login.getMessage_user_groupBy(e[0].id);
+        if (result && resultGrouBy) {
+          this.props.dispatch({
+            type: "ADD_MEASSAGE",
+            payload: result,
+          });
+          this.props.dispatch({
+            type: "ADD_MEASSAGEGROUBY",
+            payload: resultGrouBy,
+          });
+        }
+      } else {
+        const result1 = await login.getMessage_technician(e[0].id);
+        const resultGrouBy = await login.getMessage_technician_groupBy(e[0].id);
+        if (result1 && resultGrouBy) {
+          this.props.dispatch({
+            type: "ADD_MEASSAGE",
+            payload: result1,
+          });
+          this.props.dispatch({
+            type: "ADD_MEASSAGEGROUBY",
+            payload: resultGrouBy,
+          });
+        }
+      }
+    }
+  }
+ */
 
   getImge = async (e) => {
     const result1 = await login.getImageProfile(e);
@@ -122,8 +156,14 @@ class Login extends Component {
           type: 'ADD_URL',
           payload: "http://192.168.1.5/project/api-database/images/"
         }) */
-        await this.getAddress_user(getLogin[0].id);
-        await this.getAddress(getLogin[0].id);
+
+        if (getLogin[0].status_user === "ช่าง") {
+          await this.getAddress(getLogin[0].id);
+        }else{
+          await this.getAddress_user(getLogin[0].id);
+        }
+/*         await this.set_State(getLogin) */
+      
         await this.getImge(getLogin[0].id);
   
         await this.props.navigation.popToTop();
