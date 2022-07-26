@@ -8,21 +8,21 @@ import {
   Image,
   ScrollView,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { connect } from "react-redux";
-import getMessage from '../service/getService';
-
+import getMessage from "../service/getService";
+import { Fontisto } from '@expo/vector-icons';
 
 class Message extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       message: this.props.posts.message,
       messageGrou: this.props.posts.messageGrouby,
       urlImg: null,
-      starusLogin: this.props.posts.login
+      starusLogin: this.props.posts.login,
     };
   }
 
@@ -40,9 +40,7 @@ class Message extends Component {
     }
   }
 
-
   set_State = async (e) => {
-
     if (e !== null) {
       if (e.status_user === "ลูกค้าทั่วไป") {
         const { starusLogin } = this.state;
@@ -52,117 +50,138 @@ class Message extends Component {
           this.setState({
             message: result,
             messageGrou: resultGrouBy,
-            urlImg: this.props.posts.urlImage
-          })
+            urlImg: this.props.posts.urlImage,
+          });
         }
       } else {
         const result1 = await getMessage.getMessage_technician(e.id);
-        const resultGrouBy = await getMessage.getMessage_technician_groupBy(e.id);
+        const resultGrouBy = await getMessage.getMessage_technician_groupBy(
+          e.id
+        );
         if (result1 && resultGrouBy) {
           this.setState({
             message: result1,
             messageGrou: resultGrouBy,
-            urlImg: this.props.posts.urlImage
-          })
+            urlImg: this.props.posts.urlImage,
+          });
         }
       }
     }
-  }
-
+  };
 
   clickChat(e) {
     console.log(e);
     this.props.dispatch({
-      type: 'ADD_IDTECHNICAN',
-      payload: e
-    })
-    this.props.navigation.navigate("Chat")
-
+      type: "ADD_IDTECHNICAN",
+      payload: e,
+    });
+    this.props.navigation.navigate("Chat");
   }
 
   user = (message, messageGrou, urlImg) => {
     return (
       <>
-        {
-          messageGrou && messageGrou.map((index) => {
-            const id_teh = message && message.filter((va) => {
-              if (va.id_technician === index.id_technician) {
-                if (va.status_read === "0") {
-                  return va.id_technician;
+        {messageGrou &&
+          messageGrou.map((index) => {
+            const id_teh =
+              message &&
+              message.filter((va) => {
+                if (va.id_technician === index.id_technician) {
+                  if (va.status_read === "0") {
+                    return va.id_technician;
+                  }
                 }
-              }
-            }
-            )
+              });
             const name = (
-              <TouchableWithoutFeedback onPress={() => this.clickChat(index.id_technician)}>
-                <View style={styles.box1}>
-                  {index.file_src !== null ?
-                    <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
-                    :
-                    <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
-                  }
-                  <Text style={styles.text1}>
-                    <Text style={styles.text2}>{index.name}</Text> {"14.06"}
-                  </Text>
-                  <Text style={styles.text3}>Message  {index.id_technician} </Text>
-                  {
-                    id_teh.length !== 0 ? <Text style={styles.text4}>{id_teh.length}</Text>
-                      :
-                      null
-                  }
-                </View>
-              </TouchableWithoutFeedback>
-            )
+  
+                <TouchableWithoutFeedback
+                  onPress={() => this.clickChat(index.id_technician)}
+                >
+                  <View style={styles.box1}>
+                    {index.file_src !== null ? (
+                      <Image
+                        style={styles.image}
+                        source={{ uri: `${urlImg}profile/${index.file_src}` }}
+                      />
+                    ) : (
+                      <Image
+                        style={styles.image}
+                        source={{
+                          uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg",
+                        }}
+                      />
+                    )}
+                    <Text style={styles.text1}>
+                      <Text style={styles.text2}>{index.name}</Text> {"14.06"}
+                    </Text>
+                    <Text style={styles.text3}>
+                      Message {index.id_technician}{}
+                    </Text>
+                    {id_teh.length !== 0 ? (
+                      <Text style={styles.text4}>{id_teh.length}</Text>
+                    ) : null}
+                  </View>
+                </TouchableWithoutFeedback>
+              
+            );
             return name;
-          })
-        }
+          })}
       </>
-    )
-  }
+    );
+  };
 
   technician(message, messageGrou, urlImg) {
-
     /*     console.log("message",messageGrou); */
     return (
       <>
-        {
-          messageGrou && messageGrou.map((index) => {
-            const id_teh = message && message.filter((va) => {
-              if (va.idUser === index.idUser) {
-                if (va.status_read === "0") {
-                  console.log("va", va);
-                  return va.idUser;
+        {messageGrou &&
+          messageGrou.map((index) => {
+            const id_teh =
+              message &&
+              message.filter((va) => {
+                if (va.idUser === index.idUser) {
+                  if (va.status_read === "0") {
+                    console.log("va", va);
+                    return va.idUser;
+                  }
                 }
-              }
-            }
-            )
+              });
 
             const name = (
-              <TouchableWithoutFeedback onPress={() => this.clickChat(index.idUser)}>
-                <View style={styles.box1}>
-                  {index.file_src !== null ?
-                    <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
-                    :
-                    <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
-                  }
-                  <Text style={styles.text1}>
-                    <Text style={styles.text2}>{index.name}</Text> {index.created_at}
-                  </Text>
-                  <Text style={styles.text3}>Message</Text>
-                  {
-                    id_teh.length !== 0 ? <Text style={styles.text4}>{id_teh.length}</Text>
-                      :
-                      null
-                  }
-
-                </View>
-              </TouchableWithoutFeedback>
-            )
+              
+                <TouchableWithoutFeedback
+                  onPress={() => this.clickChat(index.idUser)}
+                >
+                  <View style={styles.box1}>
+                    {index.file_src !== null ? (
+                      <Image
+                        style={styles.image}
+                        source={{ uri: `${urlImg}profile/${index.file_src}` }}
+                      />
+                    ) : (
+                      <Image
+                        style={styles.image}
+                        source={{
+                          uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg",
+                        }}
+                      />
+                    )}
+                    <Text style={styles.text1}>
+                      <Text style={styles.text2}>{index.name}</Text>{" "}
+                      {index.created_at}
+                    </Text>
+                    <Text style={styles.text3}>Message</Text>
+                    {id_teh.length !== 0 ? (
+                      <Text style={styles.text4}>{id_teh.length}</Text>
+                    ) : null}
+                  </View>
+                </TouchableWithoutFeedback>
+              
+            );
             return name;
-          })
-        }
+          })}
       </>
-    )
+    );
   }
 
   render() {
@@ -173,34 +192,43 @@ class Message extends Component {
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <View style={styles.top}>
+            {this.props.posts.login != null ? (
+              this.props.posts.login.status_user === "ลูกค้าทั่วไป" ? 
+                <>
+                <TouchableOpacity onPress={() => this.set_State(this.props.posts.login)}>
+                    <Fontisto name="spinner-refresh" style={styles.icons} />
+                </TouchableOpacity>
+                {
+                    this.user(message, messageGrou, urlImg)
+                }
+              
+                </>
+            
+               : (
+                this.technician(message, messageGrou, urlImg)
+              )
+            ) : (
+              <TouchableWithoutFeedback
+                onPress={() => this.props.navigation.navigate("Login")}
+              >
+                <View style={styles.box1}>
+                  <Image
+                    style={styles.image}
+                    source={{
+                      uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg",
+                    }}
+                  />
 
-            {
-              this.props.posts.login != null ?
-                this.props.posts.login.status_user === "ลูกค้าทั่วไป" ?
-                  this.user(message, messageGrou, urlImg)
-                  :
-                  this.technician(message, messageGrou, urlImg)
-                :
-                <TouchableWithoutFeedback  onPress={() => this.props.navigation.navigate("Login")}>
-                  <View style={styles.box1}>
-                    <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
-                    <Text style={styles.text1}>
-                      <Text style={styles.text2}>ยังไม่ได้ login</Text> </Text>
-                  </View>
-                </TouchableWithoutFeedback>
-              /*  <View style={styles.box1}>
-                  <Image style={styles.image} source={{ uri: "https://www.josephiteweb.org/wp-content/uploads/2018/02/paslk-600x400.jpg" }} />
-                 <Text style={styles.text0}>ยังไม่ login</Text>
-               </View> */
-            }
+                  <Text style={styles.text5}>ยังไม่ได้ login</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>
     );
   }
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -214,7 +242,7 @@ const styles = StyleSheet.create({
   button: {
     height: 25,
     width: 60,
-    backgroundColor: '#37C1FB',
+    backgroundColor: "#37C1FB",
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -224,7 +252,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 15,
     marginTop: 5,
-    padding: 1
+    padding: 1,
   },
   box1: {
     height: 80,
@@ -237,7 +265,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-    elevation: 4,
+    elevation: 2,
     marginBottom: 10,
   },
   image: {
@@ -247,7 +275,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   text0: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 24,
     padding: 5,
     marginTop: -45,
@@ -259,10 +287,10 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 24,
     padding: 10,
-    color: '#fff'
+    color: "#fff",
   },
   text1: {
     marginLeft: 55,
@@ -281,8 +309,8 @@ const styles = StyleSheet.create({
   text4: {
     textAlign: "center",
     marginLeft: "auto",
-    marginRight: 20,
-    marginTop: -40,
+    marginRight: 10,
+    marginTop: -30,
     fontSize: 20,
     width: 30,
     height: 30,
@@ -291,12 +319,24 @@ const styles = StyleSheet.create({
     color: "#ffff",
     borderRadius: 30,
   },
+  text5: {
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: -36,
+    fontSize: 20,
+    color: "#37C1FB",
+  },
+  icons: {
+    fontSize: 30,
+    color: "#37C1FB",
+    marginLeft: 170,
+    marginTop: -10,
+  }
 });
 
 const mapStateToProps = (state) => {
   return {
-    posts: state
-  }
-}
+    posts: state,
+  };
+};
 export default connect(mapStateToProps, null)(Message);
-
