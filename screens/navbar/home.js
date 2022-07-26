@@ -45,7 +45,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://192.168.0.106/project/api-database/images/"
+      payload: "http://192.168.0.107/project/api-database/images/"
     })
   }
   
@@ -92,7 +92,7 @@ class Home extends Component {
                   source={require('../../assets/images/AAA.png')}
                 />
               </View>
-              <Text style={styles.text}>ประเภทงาน User</Text>
+              <Text style={styles.text}>รายละเอียดงาน</Text>
             </View>
             <View style={styles.boxhead}>
               {technician && technician.map((index) => {
