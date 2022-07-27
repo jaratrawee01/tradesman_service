@@ -31,12 +31,13 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
   });
 
   const [name, setName] = useState(null);
+  const [phone_number, setPhone_number] = useState(null);
+  const [email, setEmail] = useState(null);
   const [addressUser, setAddressUser] = useState(null);
   const [subdistrict, setSubdistrict] = useState(null);
   const [district, setDistrict] = useState(null);
   const [province, setProvince] = useState(null);
   const [zipcode, setZipcode] = useState(null);
-  const [phone_number, setPhone_number] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [address, setAddress] = useState(null);
   const [technicianType, setTechnicianType] = useState(null);
@@ -127,6 +128,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
       idPhone,
       name,
       phone_number,
+      email,
       addressUser,
       subdistrict,
       district,
@@ -158,6 +160,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
         id: result1[0].id,
         name: result1[0].name,
         phone_number: result1[0].phone_number,
+        email: result1[0].email,
         addressUser: result1[0].address,
         subdistrict: result1[0].subdistrict,
         district: result1[0].district,
@@ -178,6 +181,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
     setId(statusAddress.id);
     setName(statusAddress.name);
     setPhone_number(statusAddress.phone_number);
+    setEmail(statusAddress.email);
     setAddressUser(statusAddress.addressUser);
     setSubdistrict(statusAddress.subdistrict);
     setDistrict(statusAddress.district);
@@ -195,6 +199,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
       id,
       name,
       phone_number,
+      email,
       addressUser,
       subdistrict,
       district,
@@ -274,6 +279,16 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                     style={styles.box4}
                     onChange={(e) => {
                       setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"อีเมล"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setEmail(e.nativeEvent.text);
                     }}
                   />
                 </View>
@@ -368,6 +383,11 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
             <View style={styles.box7}>
                 <Text style={styles.text6}>{"เบอร์ติดต่อ"}</Text>
                 <Text style={styles.text7}>{statusAddress.phone_number}</Text>
+            </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"อีเมล"}</Text>
+                <Text style={styles.text7}>{statusAddress.email}</Text>
             </View>
             
             <View style={styles.box7}>
@@ -475,6 +495,17 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                     style={styles.box4}
                     onChange={(e) => {
                       setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"อีเมล"}</Text>
+                  <TextInput
+                    value={email}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setEmail(e.nativeEvent.text);
                     }}
                   />
                 </View>

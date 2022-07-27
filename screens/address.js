@@ -143,6 +143,10 @@ class address extends Component {
                     <Text style={styles.text7}>{technician.phone_number}</Text>
                   </View>
                   <View style={styles.box7}>
+                    <Text style={styles.text6}>{"อีเมล"}</Text>
+                    <Text style={styles.text7}>{technician.email}</Text>
+                  </View>
+                  <View style={styles.box7}>
                     <Text style={styles.text6}>{"บ้านเลขที่"}</Text>
                     <Text style={styles.text7}>{technician.address}</Text>
                   </View>

@@ -32,6 +32,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
 
   const [name, setName] = useState(null);
   const [phone_number, setPhone_number] = useState(null);
+  const [email, setEmail] = useState(null);
   const [addressUser, setAddressUser] = useState(null);
   const [subdistrict, setSubdistrict] = useState(null);
   const [district, setDistrict] = useState(null);
@@ -128,6 +129,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       idPhone,
       name,
       phone_number,
+      email,
       addressUser,
       subdistrict,
       district,
@@ -153,6 +155,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
       id,
       name,
       phone_number,
+      email,
       addressUser,
       subdistrict,
       district,
@@ -189,6 +192,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     setId(statusAddress.id);
     setName(statusAddress.name);
     setPhone_number(statusAddress.phone_number);
+    setEmail(statusAddress.email);
     setAddressUser(statusAddress.addressUser);
     setSubdistrict(statusAddress.subdistrict);
     setDistrict(statusAddress.district);
@@ -211,6 +215,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
         id: result[0].id,
         name: result[0].name,
         phone_number: result[0].phone_number,
+        email: result[0].email,
         addressUser: result[0].address,
         subdistrict: result[0].subdistrict,
         district: result[0].district,
@@ -281,11 +286,21 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <Text style={styles.text2}>{"เบอร์ติดต่อ"}</Text>
                   <TextInput
                     style={styles.box4}
                     onChange={(e) => {
                       setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"อีเมล"}</Text>
+                  <TextInput
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setEmail(e.nativeEvent.text);
                     }}
                   />
                 </View>
@@ -427,8 +442,13 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
             </View>
 
             <View style={styles.box7}>
-                <Text style={styles.text6}>{"เบอร์โทร"}</Text>
+                <Text style={styles.text6}>{"เบอร์ติดต่อ"}</Text>
                 <Text style={styles.text7}>{statusAddress.phone_number}</Text>
+            </View>
+
+            <View style={styles.box7}>
+                <Text style={styles.text6}>{"อีเมล"}</Text>
+                <Text style={styles.text7}>{statusAddress.email}</Text>
             </View>
             
             <View style={styles.box7}>
@@ -540,12 +560,23 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                 </View>
 
                 <View>
-                  <Text style={styles.text2}>{"เบอร์โทร"}</Text>
+                  <Text style={styles.text2}>{"เบอร์ติดต่อ"}</Text>
                   <TextInput
                     value={phone_number}
                     style={styles.box4}
                     onChange={(e) => {
                       setPhone_number(e.nativeEvent.text);
+                    }}
+                  />
+                </View>
+
+                <View>
+                  <Text style={styles.text2}>{"อีเมล"}</Text>
+                  <TextInput
+                    value={email}
+                    style={styles.box4}
+                    onChange={(e) => {
+                      setEmail(e.nativeEvent.text);
                     }}
                   />
                 </View>

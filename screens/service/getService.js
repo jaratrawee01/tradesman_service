@@ -1,7 +1,7 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
 /*  const url = 'http://192.168.1.5/project/api-database';  */  //หน่วย
-   const url = 'http://192.168.1.3/project/api-database';    // ยอน 
+   const url = 'http://192.168.0.107/project/api-database';    // ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
@@ -458,14 +458,15 @@ const createAddress = async (e) => {
   formdata.append('idPhone', e[0]);
   formdata.append('name', e[1]);
   formdata.append('phone_number', e[2]);
-  formdata.append('addressUser', e[3]);
-  formdata.append('subdistrict', e[4]);
-  formdata.append('district', e[5]);
-  formdata.append('province', e[6]);
-  formdata.append('zipcode', e[7]);
-  formdata.append('location', JSON.stringify(e[8]));
-  formdata.append('technician_1', e[9]);
-  formdata.append('technician_2', e[10]);
+  formdata.append('email', e[3]);
+  formdata.append('addressUser', e[4]);
+  formdata.append('subdistrict', e[5]);
+  formdata.append('district', e[6]);
+  formdata.append('province', e[7]);
+  formdata.append('zipcode', e[8]);
+  formdata.append('location', JSON.stringify(e[9]));
+  formdata.append('technician_1', e[10]);
+  formdata.append('technician_2', e[11]);
   const cerAdd = await axios.post(`${url}/addAddress.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
@@ -487,12 +488,13 @@ const createAddress_user = async (e) => {
   formdata.append('idPhone', e[0]);
   formdata.append('name', e[1]);
   formdata.append('phone_number', e[2]);
-  formdata.append('addressUser', e[3]);
-  formdata.append('subdistrict', e[4]);
-  formdata.append('district', e[5]);
-  formdata.append('province', e[6]);
-  formdata.append('zipcode', e[7]);
-  formdata.append('location', JSON.stringify(e[8]));
+  formdata.append('email', e[3]);
+  formdata.append('addressUser', e[4]);
+  formdata.append('subdistrict', e[5]);
+  formdata.append('district', e[6]);
+  formdata.append('province', e[7]);
+  formdata.append('zipcode', e[8]);
+  formdata.append('location', JSON.stringify(e[9]));
   const adduser = await axios.post(`${url}/addAddress_user.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
@@ -612,14 +614,15 @@ const updateAddress = async (e) => {
   formdata.append('id', e[0]);
   formdata.append('name', e[1]);
   formdata.append('phone_number', e[2]);
-  formdata.append('addressUser', e[3]);
-  formdata.append('subdistrict', e[4]);
-  formdata.append('district', e[5]);
-  formdata.append('province', e[6]);
-  formdata.append('zipcode', e[7]);
-  formdata.append('location', JSON.stringify(e[8]));
-  formdata.append('technician_1', e[9]);
-  formdata.append('technician_2', e[10]);
+  formdata.append('email', e[3]);
+  formdata.append('addressUser', e[4]);
+  formdata.append('subdistrict', e[5]);
+  formdata.append('district', e[6]);
+  formdata.append('province', e[7]);
+  formdata.append('zipcode', e[8]);
+  formdata.append('location', JSON.stringify(e[9]));
+  formdata.append('technician_1', e[10]);
+  formdata.append('technician_2', e[11]);
   const cerAdd = await axios.post(`${url}/updateAddress.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
@@ -643,12 +646,13 @@ const updateAddress_user = async (e) => {
   formdata.append('id', e[0]);
   formdata.append('name', e[1]);
   formdata.append('phone_number', e[2]);
-  formdata.append('addressUser', e[3]);
-  formdata.append('subdistrict', e[4]);
-  formdata.append('district', e[5]);
-  formdata.append('province', e[6]);
-  formdata.append('zipcode', e[7]);
-  formdata.append('location', JSON.stringify(e[8]));
+  formdata.append('email', e[3]);
+  formdata.append('addressUser', e[4]);
+  formdata.append('subdistrict', e[5]);
+  formdata.append('district', e[6]);
+  formdata.append('province', e[7]);
+  formdata.append('zipcode', e[8]);
+  formdata.append('location', JSON.stringify(e[9]));
   const upuser = await axios.post(`${url}/updateAddress_user.php`, formdata, {
     headers: {
       'Content-Type': 'multipart/form-data;charset=utf-8',
