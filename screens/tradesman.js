@@ -132,7 +132,10 @@ class Home_tar extends Component {
                 </TouchableWithoutFeedback>  */}
                 </>
                 :
-                <Text>ไม่มีข้อมูลมูลช่าง</Text>
+                <View style={styles.box1}>
+                    <Text style={styles.text7}>ไม่มีข้อมูลมูลช่าง</Text>
+                </View>
+                
             }
 
 
@@ -166,6 +169,21 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     marginBottom: 4,
+  },
+  box1: {
+    height: 40,
+    width: 300,
+    backgroundColor: "#37C1FB",
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
+    borderRadius: 6,
+    marginLeft: 30,
+    marginRight: 30,
+    fontSize: 18,
+    paddingLeft: 15,
+    marginTop: 15,
   },
   image: {
     width: 95,
@@ -242,6 +260,14 @@ const styles = StyleSheet.create({
     marginLeft: 85,
     marginTop: 170,
     position:"absolute"
+  },
+  text7: {
+    fontSize: 20,
+    marginLeft: "auto",
+    marginRight: "auto",
+    fontWeight: "bold",
+    marginTop: 8,
+    color: "#fff",
   },
   icons: {
     marginLeft: 5,
