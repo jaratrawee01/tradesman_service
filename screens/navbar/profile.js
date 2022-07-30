@@ -272,19 +272,11 @@ class Profile_tradesman extends Component {
                   onPress={() => this.props.navigation.navigate("Servict_form")}>{"ข้อมูลการติดต่อ"}
                 </Text>
               </View>
-
-              <View style={styles.box3}>
-                <MaterialCommunityIcons name="logout" style={styles.icons5} />
-                <Text
-                  style={styles.text2}
-                  onPress={() => this.logout()}>{"Logout"}
-                </Text>
-              </View>
               <View style={styles.box3}>
                 <FontAwesome5 name="cc-visa" style={styles.icons4} />
                 <Text
                   style={styles.text2}
-                  onChange={(e) => this.clickImg("8887", e)}>{"ชำระเงิน"}
+                  onPress={() => this.props.navigation.navigate("Payment")}>{"ชำระเงิน"}
                 </Text>
               </View>
               <View style={styles.box2}>
@@ -292,6 +284,13 @@ class Profile_tradesman extends Component {
                 <Text
                   style={styles.text2}
                   onPress={() => this.props.navigation.navigate("Bank_account")}>{"บัญชีธนาคาร"}
+                </Text>
+              </View>
+              <View style={styles.box3}>
+                <MaterialCommunityIcons name="logout" style={styles.icons5} />
+                <Text
+                  style={styles.text2}
+                  onPress={() => this.logout()}>{"Logout"}
                 </Text>
               </View>
               {/*  <View style={styles.box5}>

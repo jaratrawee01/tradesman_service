@@ -1,7 +1,7 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
 /*  const url = 'http://192.168.1.5/project/api-database';  */  //หน่วย
-   const url = 'http://192.168.0.107/project/api-database';    // ยอน 
+   const url = 'http://192.168.1.3/project/api-database';    // ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
@@ -93,6 +93,11 @@ const image  =  await axios.post(`${url}/uplodeImages`,formdata, {
 /**
  * ! ส่วนของ get 
 */ 
+
+
+
+
+
 
 // ดึง user  WHERE phone  ว่ามีเบอร์ อยู่ใหม
 const searchUser = async (e) => {

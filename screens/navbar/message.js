@@ -186,7 +186,7 @@ class Message extends Component {
 
   render() {
     const { starusLogin, message, messageGrou, urlImg } = this.state;
-    console.log("9999", starusLogin);
+
 
     return (
       <SafeAreaView style={styles.container}>

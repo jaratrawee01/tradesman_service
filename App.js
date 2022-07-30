@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useEffect,useState}from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FontAwesome } from '@expo/vector-icons';
@@ -18,6 +18,9 @@ import { createStore } from 'redux';
 import { Provider } from "react-redux"; 
 import  configureStore   from './redux/reducers';
 import { PersistGate } from 'redux-persist/integration/react';
+import * as Linking from 'expo-linking';
+
+
 const { store, persistor } = configureStore();
 /* const store = createStore(allReducer); */
 const Tab = createBottomTabNavigator();
@@ -50,6 +53,21 @@ function MyStack() {
 }
 
 export default function App() {
+ 
+  const [data, setData] = useState(null);
+
+function handleDeepLink(event) {
+  let data = Linking.parse(event.url);
+  setData(data);
+}
+
+  useEffect(() => {
+    Linking.addEventListener("ur", handleDeepLink);
+    return() =>{
+      Linking.removeEventListener("url");
+    }
+  },[]) 
+
   return (
     <>
      <Provider store={store}> 
