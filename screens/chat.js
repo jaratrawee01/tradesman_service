@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  TouchableWithoutFeedback
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
@@ -130,6 +131,15 @@ class Chat extends Component {
     })
   }
 
+  ClickU(e) {
+        console.log(e);
+    this.props.dispatch({
+      type: 'ADD_IDTECHNICAN',
+      payload: e
+    })
+   this.props.navigation.navigate("Profile_tras_user")
+  }
+
   render() {
     const { messageUser, message, starusLogin ,urlImg,id_click} = this.state;
 
@@ -159,12 +169,15 @@ class Chat extends Component {
                   } else {
                     const name = (
                       <View>
-                        {
-                          index.file_src != null ?
-                          <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
-                          :
-                          <Image style={styles.image} source={{ uri: "https://st2.depositphotos.com/5592054/8393/v/600/depositphotos_83937052-stock-illustration-cartoon-plumber-holding-a-big.jpg"}}/>
-                        }
+                            <TouchableWithoutFeedback onPress={() => this.ClickU(id_click)}>
+                            {
+                                index.file_src != null ?
+                                <Image style={styles.image} source={{ uri: `${urlImg}profile/${index.file_src}` }} />
+                                :
+                                <Image style={styles.image} source={{ uri: "https://st2.depositphotos.com/5592054/8393/v/600/depositphotos_83937052-stock-illustration-cartoon-plumber-holding-a-big.jpg"}}/>
+                              }
+                            </TouchableWithoutFeedback>
+              
                     
                         <View style={styles.box2}>
                           <Text style={styles.text1}>{index.created_at}</Text>

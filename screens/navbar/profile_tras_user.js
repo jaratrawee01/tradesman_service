@@ -29,13 +29,41 @@ class Profile_tras_user extends Component {
 
 
   componentDidMount() {
-
-    const id = this.props.posts.id;
-/*     console.log(id); */
+    
+    var id = this.props.posts.id;
+    console.log("technician",this.state.technician);
     this.setState({
-      login: this.props.posts.login.status_user,
+      login: this.props.posts.login,
     })
-    this.technicianAndUser(id);
+    if (this.props.posts.login.status_user === "ช่าง") {
+      this.andUsers(id);
+    }else{
+      this.technicianAndUser(id);
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const {id} = this.props.posts;
+
+
+    if(prevProps.id !== this.state.id){
+      if (this.props.posts.login.status_user === "ช่าง") {
+        this.andUsers(id);
+      }else{
+        this.technicianAndUser(id);
+      }
+    }
+  
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const {technician} = this.state;
+    if(prevProps.technician != technician || technician === null){
+      const {id} = this.props.posts;
+      if (this.props.posts.login.status_user === "ช่าง") {
+        this.andUsers(id);
+      }else{
+        this.technicianAndUser(id);
+      }
+    }
   }
 
   technicianAndUser = async (e) => {
@@ -46,12 +74,19 @@ class Profile_tras_user extends Component {
     })
 
   }
+  andUsers = async (e) => {
+    const result2 = await get_technician.getUserAddressid(e);
+    this.setState({
+      technician:  result2[0],
+      urlImg: this.props.posts.urlImage,
+    })
+
+  }
 
   render() {
 
 
     const { technician, urlImg, login } = this.state;
-
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView>
@@ -59,25 +94,31 @@ class Profile_tras_user extends Component {
             <View style={styles.box1}>
               <View style={styles.box6}>
                 {
-                  technician !== null ?
+                  technician != null ?
                     technician.file_src !== null ?
                       <Image style={styles.imgPro} source={{ uri: `${urlImg}profile/${technician.file_src}` }} />
                       :
-                      <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
+                      <Image style={styles.image3} source={require('../../assets/images/AAA.png')} />
                     :
-                    <Image style={styles.image3} source={require('../../assets/images/logo_technician.png')} />
+                    <Image style={styles.image3} source={require('../../assets/images/AAA.png')} />
                 }
 
               </View>
               {
-                technician !== null ?
+                technician != null ?
 
-                  technician.name !== null ?
+                  technician.name != null ?
                     <Text style={styles.text}>{technician.name}</Text>
                     :
+                    <>
                     <Text style={styles.text}>TECHNICIAN ONLINE</Text>
+                      <Text style={styles.text1}>ยังไม่มีขูมูล</Text>
+                    </>
                   :
-                  <Text style={styles.text}>TECHNICIAN ONLINE</Text>
+                <>
+                    <Text style={styles.text}>TECHNICIAN ONLINE</Text>
+                  <Text style={styles.text1}>ยังไม่มีขูมูล</Text>
+                </>
 
               }
 
@@ -97,7 +138,6 @@ class Profile_tras_user extends Component {
               </>
               :
               null
-
             }
 
 
@@ -117,13 +157,20 @@ class Profile_tras_user extends Component {
               </Text>
             </View>
 
-            <View style={styles.box3}>
-              <Ionicons name="card" style={styles.icons5} />
-              <Text
-                style={styles.text2}
-                onPress={() => this.props.navigation.navigate("Ahow_bank")}>{"บัญชีธนาคาร"}
-              </Text>
-            </View>
+            {login === "ลูกค้าทั่วไป" ?
+              <>
+                   <View style={styles.box3}>
+                  <Ionicons name="card" style={styles.icons5} />
+                  <Text
+                    style={styles.text2}
+                    onPress={() => this.props.navigation.navigate("Ahow_bank")}>{"บัญชีธนาคาร"}
+                  </Text>
+                </View>
+              </>
+              :
+              null
+            }
+         
 
           </View>
         </ScrollView>
@@ -152,10 +199,10 @@ const styles = StyleSheet.create({
 
   },
   image3: {
-    width: 100,
-    height: 100,
-    marginTop: 15,
-    marginLeft: 'auto',
+    width: 142,
+    height: 142,
+    marginTop: -5,
+    marginLeft: -4,
     marginRight: 'auto',
   },
   top: {
@@ -221,6 +268,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 25,
     marginTop: 15,
+  },
+  text1: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    fontWeight: "bold",
+    fontSize:16,
   },
 
   text2: {

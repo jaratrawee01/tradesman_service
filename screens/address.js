@@ -38,8 +38,24 @@ class address extends Component {
     this.setState({
       login: this.props.posts.login.status_user,
     })
-    this.technicianAndUser(id);
+    if (this.props.posts.login.status_user === "ช่าง") {
+      this.andUsers(id);
+    }else{
+      this.technicianAndUser(id);
+    }
   }
+  componentDidUpdate(prevProps, prevState) {
+    const {technician} = this.state;
+    if(prevProps.technician != technician || technician === null){
+      const {id} = this.props.posts;
+      if (this.props.posts.login.status_user === "ช่าง") {
+        this.andUsers(id);
+      }else{
+        this.technicianAndUser(id);
+      }
+    }
+  }
+
 
   technicianAndUser = async (e) => {
     const result1 = await get_technician.gettechnicianAddressid(e);
@@ -47,6 +63,18 @@ class address extends Component {
     console.log(location.latitude);
     this.setState({
       technician: result1,
+      urlImg: this.props.posts.urlImage,
+      location: {
+        latitude: location.latitude,
+        longitude: location.longitude
+      }
+    })
+  }
+  andUsers = async (e) => {
+    const result2 = await get_technician.getUserAddressid(e);
+    const location = JSON.parse(result2[0].location);
+    this.setState({
+      technician:  result2[0],
       urlImg: this.props.posts.urlImage,
       location: {
         latitude: location.latitude,
