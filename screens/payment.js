@@ -59,7 +59,7 @@ class Payment extends Component {
          </head>
          <body>
          <div class="text">
-         <p>TECHNICIAN <span class="span">ONLINE</span></p>
+         <p>TECHNICIAN ONLINE</p>
          <p>พิเศษ 250.-/ปี</p>
          </div>
              <form method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
