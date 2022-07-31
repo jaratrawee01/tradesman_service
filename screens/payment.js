@@ -45,22 +45,30 @@ class Payment extends Component {
                 width: 500px;
                 height: 120px;
                 position: absolute;
-                top: 50%;
+                top: 60%;
                 left: 50%;
                 margin-top: -100px;
                 margin-left: -240px;
                 
              }
              .text {
+                width: 500px;
+                height: 120px;
+                border-radius: 20px;
                 font-size: 55px;
                 text-align: center;
-                margin-top: 65%;
-                color: #;
+                margin-top: 75%;
+                margin-left: 240px;
+                color: #fff;
+                background-color: #d0cccc;
+                border: 3px solid #fff;
              }
                 </style>
          </head>
          <body bgcolor="#FFFFFF" text="#000000">
-         <div class="text">พิเศษสำหรับ 250฿/ปี</div>
+         <div>
+            <img src=" assets/images/AAA.png" alt="#">
+         </div>
              <form method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
                  <input type="hidden" name="refno" value="999999999999">
                  <input type="hidden" name="merchantid" value="86636884">
@@ -69,6 +77,8 @@ class Payment extends Component {
                  <input type="hidden" name="productdetail" value="Testing Product">
                  <input type="hidden" name="total" id="total" value="5"><br>
                  <input type="submit" class="submit" name="Submit" value="ชำระเงิน">
+                 <input type="submit" class="text" name="Submit" value="พิเศษสำหรับ 250฿/ปี">
+                 
              </form>
          </body>
          </html> 
