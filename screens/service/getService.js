@@ -1,12 +1,12 @@
 import axios from "axios";
 /*  const  url = 'https://reqres.in';  */
 /*  const url = 'http://192.168.1.5/project/api-database';  */  //หน่วย
-   const url = 'http://192.168.1.3/project/api-database';    // ยอน 
+   const url = 'http://192.168.1.5/project/api-database';    // ยอน 
 /* const getUser = async () => {
 
   const rse = await axios.get(`${url}/getUsers`).then((result) => {
     // handle success
-a
+
     return result.data;
   })
     .catch((error) => {
@@ -181,6 +181,29 @@ const gettechnicianAddressid = async (e) => {
     });
   return seaUser;
 };
+/* ดึงข้อมูลลูกค้า เเต่ละคน */
+const getUserAddressid = async (e) => {
+
+  const getUserID = await axios.get(`${url}/getUserAddress.php`, {
+    headers: {
+      'Content-Type': 'text/javascript;charset=utf-8',
+    },
+    params: {
+      isAdd: true,
+      id: e,
+    }
+  }).then((result) => {
+
+    return result.data;
+  })
+    .catch((error) => {
+
+      return error;
+    });
+  
+  return getUserID;
+};
+
 
 // เช็ค user/pass login
 const getLogin = async (e) => {
@@ -792,5 +815,5 @@ export default {
   getMessage_user_groupBy,
   getMessage_technician_groupBy,
   updateMessage,
-
+  getUserAddressid
 };
