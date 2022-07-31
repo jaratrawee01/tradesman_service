@@ -11,63 +11,56 @@ import {
 } from "react-native";
 import { WebView } from 'react-native-webview';
 import get_Api from './service/getService';
-/* const PolicyHTML = require('./cc_payment.html'); */
+import img1 from "../assets/images/logo_technician.png";
 
 class Payment extends Component {
-        componentDidMount() {
-            console.log("ตอนเเรก");
-        }
+    componentDidMount() {
+        console.log("ตอนเเรก");
+    }
 
-        componentDidUpdate() {
-            console.log("โหลดเร็จ");
-        }
+    componentDidUpdate() {
+        console.log("โหลดเร็จ");
+    }
 
 
     render() {
-    
+
         return (
             <SafeAreaView style={{ flex: 1 }}>
-            <WebView
-            /*  source={PolicyHTML} */
-             style={{ flex: 1 }}
-             source={{
-                 html: `
+                <WebView
+                    /*  source={PolicyHTML} */
+                    style={{ flex: 1 }}
+                    source={{
+                        html: `
         <html>
          <head>
              <title>EPAYLINK Testing</title>
              <style>
-             .submit {
-                border: 3px solid #fff;
-                background-color: #37C1FB;
-                color: #fff;
-                font-size: 60px;
-                border-radius: 60px;
-                width: 500px;
-                height: 120px;
-                position: absolute;
-                top: 60%;
-                left: 50%;
-                margin-top: -100px;
-                margin-left: -240px;
-                
-             }
-             .text {
-                width: 500px;
-                height: 120px;
-                border-radius: 20px;
-                font-size: 55px;
-                text-align: center;
-                margin-top: 75%;
-                margin-left: 240px;
-                color: #fff;
-                background-color: #d0cccc;
-                border: 3px solid #fff;
-             }
-                </style>
+                .submit {
+                    border: 3px solid #fff;
+                    background-color: #37C1FB;
+                    color: #fff;
+                    font-size: 60px;
+                    border-radius: 60px;
+                    width: 500px;
+                    height: 120px;
+                    position: absolute;
+                    top: 60%;
+                    left: 50%;
+                    margin-top: -100px;
+                    margin-left: -240px;
+                    
+                }
+                .text {
+                    font-size: 55px;
+                    text-align: center;
+                    margin-top: 45%;
+            </style>
          </head>
-         <body bgcolor="#FFFFFF" text="#000000">
-         <div>
-            <img src=" assets/images/AAA.png" alt="#">
+         <body>
+         <div class="text">
+         <p>TECHNICIAN <span class="span">ONLINE</span></p>
+         <p>พิเศษ 250.-/ปี</p>
          </div>
              <form method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
                  <input type="hidden" name="refno" value="999999999999">
@@ -77,20 +70,18 @@ class Payment extends Component {
                  <input type="hidden" name="productdetail" value="Testing Product">
                  <input type="hidden" name="total" id="total" value="5"><br>
                  <input type="submit" class="submit" name="Submit" value="ชำระเงิน">
-                 <input type="submit" class="text" name="Submit" value="พิเศษสำหรับ 250฿/ปี">
-                 
              </form>
          </body>
          </html> 
          `}}
-         onShouldStartLoadWithRequest={req => {
-             if (req.url.startsWith('about')) {
-                 this.props.navigation.navigate("home")
-             }
-             return true;
-           }}
-         />
-         </SafeAreaView>
+                    onShouldStartLoadWithRequest={req => {
+                        if (req.url.startsWith('about')) {
+                            this.props.navigation.navigate("home")
+                        }
+                        return true;
+                    }}
+                />
+            </SafeAreaView>
         )
     }
 }
