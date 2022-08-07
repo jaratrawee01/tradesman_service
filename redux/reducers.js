@@ -13,6 +13,7 @@ import {imageProfileReducer}  from  './imageProfileReducer';
 import {addressUserReducer} from './addressUserReducer';
 import {technicianReducer} from './technicianReducer';
 import {idTechnicianReducer} from './idTechnicianReducer';
+import {startAppReducer} from './startAppReducer';
 
 const persistConfig = {
   key: "root",    
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
     addressUser:addressUserReducer,
     technician:technicianReducer,
     id: idTechnicianReducer,
+    startApp: startAppReducer,
 
 });
 

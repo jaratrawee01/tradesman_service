@@ -216,8 +216,8 @@ class Login extends Component {
             </View>
 
             <View style={styles.icons}>
-              <AntDesign name="checkcircleo" size={20} color="#37C1FB" />
-              <Text style={styles.text1}>{"จดจำฉัน"}</Text>
+         {/*      <AntDesign name="checkcircleo" size={20} color="#37C1FB" />
+              <Text style={styles.text1}>{"จดจำฉัน"}</Text> */}
               <View style={styles.button2}>
                 <Text
                   style={styles.text2}
@@ -269,6 +269,25 @@ const styles = StyleSheet.create({
     height: "100%",
     position: "relative",
     backgroundColor: "#fff",
+  },
+  boxhead: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 20,
+  },
+  box: {
+    height: 140,
+    width: 140,
+    shadowColor: "#000",
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+    borderRadius: 100,
+    marginTop: 15,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderWidth: 4,
+    borderColor: '#fff',
   },
   boxIcon: {
     height: 100,

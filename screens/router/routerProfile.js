@@ -12,6 +12,7 @@ import Information from '../information';
 import Home_paste from '../home_page';
 import Address_user from '../address_user';
 import Payment from '../payment';
+import Privacypolicy from '../privacypolicy';
 
 
 const HomeStack = createNativeStackNavigator();
@@ -32,6 +33,7 @@ function App() {
             <HomeStack.Screen name="Home_paste" component={Home_paste} />
             <HomeStack.Screen name="Address_user" component={Address_user} />
             <HomeStack.Screen name="Payment" component={Payment} />
+            <HomeStack.Screen name="Privacypolicy" component={Privacypolicy} />
             
         </HomeStack.Navigator>
     );

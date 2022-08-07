@@ -13,6 +13,12 @@
     "production": {}
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "lollipopwar-love@hotmail.co.th",
+        "ascAppId": "1637943361",
+        "appleTeamId": "6ZT95LZDWH"
+      }
+    }
   }
 }

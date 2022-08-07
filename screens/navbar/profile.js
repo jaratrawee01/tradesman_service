@@ -357,7 +357,7 @@ class Profile_tradesman extends Component {
   login() {
     return (
       <>
-        <View>
+        {/* <View>
           <ImageBackground source={img1} resizeMode="cover" style={styles.image4}>
             <View style={styles.container}>
               <TouchableOpacity style={styles.box7} onPress={() => this.props.navigation.navigate("Login")}>
@@ -365,7 +365,40 @@ class Profile_tradesman extends Component {
               </TouchableOpacity >
             </View>
           </ImageBackground>
-        </View>
+        </View> */}
+         <SafeAreaView style={styles.container}>
+          <ScrollView>
+            <View style={styles.box}>
+            <View style={styles.box1}>
+                <View style={styles.box6}>
+                <Image style={styles.image3} source={require('../../assets/images/AAA.png')}/>
+                </View>
+                <Text style={styles.text}>TECHNICIAN ONLINE</Text>
+              </View>
+            </View>
+
+            <View style={styles.top}>
+              <View style={styles.box3}>
+                <FontAwesome5 name="user-alt" style={styles.icons3} />
+                <Text style={styles.text2}>{"โปรไฟล์"}
+                </Text>
+              </View>
+              <View style={styles.box3}>
+                <FontAwesome5 name="user-alt" style={styles.icons3} />
+                <Text style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Login")}>{"เข้าสู่ระบบ"}
+                </Text>
+              </View>
+              <View style={styles.box3}>
+                <FontAwesome5 name="user-alt" style={styles.icons3} />
+                <Text style={styles.text2}
+                  onPress={() => this.props.navigation.navigate("Privacypolicy")}>{"privacy policy"}
+                </Text>
+              </View>
+            </View>
+            
+          </ScrollView>
+        </SafeAreaView>
 
       </>
     )
