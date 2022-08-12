@@ -140,7 +140,7 @@ const storage = multer.diskStorage({
 
   });
 
-
+/* ้เเก้ไขภาพ */
 /*   app.post('/getLogin', (req, res) => {
 
     console.log(req.body);
