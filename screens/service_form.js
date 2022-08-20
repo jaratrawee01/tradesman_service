@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, usePreviousEffect } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
 import {
   SafeAreaView,
@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  Dimensions
 } from "react-native";
 import technician_type from "./service/getService";
 import * as Location from "expo-location";
@@ -23,6 +24,7 @@ import img1 from "../assets/images/BB-2.png";
 // You can import from local files
 
 let apiKey = "AIzaSyBdjxXSNpAnyW0lzE_uliQ121U4mkmSgPk";
+
 
 const Service_form = ({ navigation: { popToTop, navigate } }) => {
   const [location, setLocation] = useState({
@@ -83,46 +85,46 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     }
   };
 
-  const map = () => {
-    return (
-      <>
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: location.latitude,
-            longitude: location.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        >
-          <Marker
-            coordinate={{
+  /*   const map = () => {
+      return (
+        <>
+          <MapView
+            style={styles.map}
+            initialRegion={{
               latitude: location.latitude,
               longitude: location.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
             }}
-            draggable={true}
-            onDragStart={(e) => {
-              setLocation({
-                latitude: e.nativeEvent.coordinate.latitude,
-                longitude: e.nativeEvent.coordinate.longitude,
-              });
-            }}
-            onDragEnd={(e) => {
-              setLocation({
-                latitude: e.nativeEvent.coordinate.latitude,
-                longitude: e.nativeEvent.coordinate.longitude,
-              });
-            }}
-            provider="google"
-          >
-            <Callout>
-              <Text>ตำเเหน่งของคุณ</Text>
-            </Callout>
-          </Marker>
-        </MapView>
-      </>
-    );
-  };
+            >
+            <Marker
+              coordinate={{
+                latitude: location.latitude,
+                longitude: location.longitude,
+              }}
+              draggable={true}
+              onDragStart={(e) => {
+                setLocation({
+                  latitude: e.nativeEvent.coordinate.latitude,
+                  longitude: e.nativeEvent.coordinate.longitude,
+                });
+              }}
+              onDragEnd={(e) => {
+                setLocation({
+                  latitude: e.nativeEvent.coordinate.latitude,
+                  longitude: e.nativeEvent.coordinate.longitude,
+                });
+              }}
+              provider="google"
+            >
+              <Callout>
+                <Text>ตำเเหน่งของคุณ</Text>
+              </Callout>
+            </Marker>
+          </MapView>
+        </>
+      );
+    }; */
 
   const serve = async () => {
     const data = [
@@ -232,15 +234,23 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     }
   };
 
+
   useEffect(() => {
-    if (location.longitude === null) {
+    if (location.latitude === null) {
+      getLocation();
+    }
+   
+  })
+
+  /*   useEffect(() => {
+    
       getLocation();
       map();
-    }
-    if (technicianType === null) {
-      loadtTechnician();
-    }
-  }, []);
+  
+      if (technicianType === null) {
+        loadtTechnician();
+      } 
+    }, [location.latitude]); */
 
   /*   const url = useSelector(state => ({...state}));
     console.log("url",url); */
@@ -261,10 +271,10 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
               >
                 <View style={styles.container}>
                   <View style={styles.box5}>
-                  <Image
-                    style={styles.image}
-                    source={require('../assets/images/AAA.png')}
-                  />
+                    <Image
+                      style={styles.image}
+                      source={require('../assets/images/AAA.png')}
+                    />
                   </View>
                 </View>
               </ImageBackground>
@@ -304,7 +314,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                     }}
                   />
                 </View>
-                
+
                 <View>
                   <View>
                     <Text style={styles.text2}>{"เลือกประเภทงานช่าง 1"}</Text>
@@ -319,12 +329,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                         <Picker.Item label="เลือกประเภทงาน" value="null" />
                         {technicianType !== null
                           ? technicianType.map((value) => {
-                              let name = value.technician_type;
-                              let picker = (
-                                <Picker.Item label={name} value={name} />
-                              );
-                              return picker;
-                            })
+                            let name = value.technician_type;
+                            let picker = (
+                              <Picker.Item label={name} value={name} />
+                            );
+                            return picker;
+                          })
                           : null}
                       </Picker>
                     </View>
@@ -342,12 +352,12 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
                         <Picker.Item label="เลือกประเภทงาน" value="null" />
                         {technicianType !== null
                           ? technicianType.map((value) => {
-                              let name = value.technician_type;
-                              let picker = (
-                                <Picker.Item label={name} value={name} />
-                              );
-                              return picker;
-                            })
+                            let name = value.technician_type;
+                            let picker = (
+                              <Picker.Item label={name} value={name} />
+                            );
+                            return picker;
+                          })
                           : null}
                       </Picker>
                     </View>
@@ -406,7 +416,17 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
               <View style={styles.containerMap}>
-                {location.longitude === null ? null : <>{map()}</>}
+                    <Text> {location.latitude}  </Text>
+                    <Text> {location.longitude}  </Text>
+                     <MapView
+                     style={styles.map}
+                      initialRegion={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                      }}
+                  />
               </View>
               <TouchableOpacity style={styles.button} onPress={() => serve()}>
                 <Text style={styles.text}>บันทึก</Text>
@@ -418,7 +438,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
     );
   };
 
-  const showAddress = () => {
+  /* const showAddress = () => {
     return (
       <>
         <ScrollView>
@@ -687,7 +707,7 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
               <View style={styles.containerMap}>
-                {location.longitude === null ? null : <>{map()}</>}
+                {map()}
               </View>
               <TouchableOpacity style={styles.button} onPress={() => update()}>
                 <Text style={styles.text}>บันทึก</Text>
@@ -697,23 +717,32 @@ const Service_form = ({ navigation: { popToTop, navigate } }) => {
         </SafeAreaView>
       </>
     );
-  };
+  }; */
 
   /*   console.log(useSelector((state) => ({ ...state })));
    */
 
   return (
-    <>
+    <MapView
+    style={styles.map}
+    initialRegion={{
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    }}
+  />
+/*     <>
       {statusAddress === null
         ? addAddress()
         : statusEdit === true
         ? editAddress()
         : showAddress()}
-    </>
+    </> */
   );
 };
 
-const styles = StyleSheet.create({
+/* const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
@@ -724,7 +753,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: "auto",
-    height: 200,
+    height: 300,
   },
   icons: {
     fontSize: 25,
@@ -746,7 +775,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     marginLeft: -5,
     marginTop: -5,
-    
+
   },
   image1: {
     width: 128,
@@ -776,15 +805,15 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   box1: {
-    height: 200,
-    width: 300,
+    height: 300,
+    width: "90%",
     backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
     borderRadius: 6,
-    marginLeft: 30,
+    marginLeft: "5%",
     marginRight: 30,
     fontSize: 18,
     marginTop: 5,
@@ -859,14 +888,14 @@ const styles = StyleSheet.create({
   },
   box7: {
     height: 40,
-    width: 300,
+    width: "90%",
     backgroundColor: "#e8e9e9",
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
     borderRadius: 6,
-    marginLeft: 30,
+    marginLeft: "5%",
     marginRight: 30,
     fontSize: 18,
     paddingLeft: 15,
@@ -920,7 +949,7 @@ const styles = StyleSheet.create({
   text7: {
     fontSize: 18,
     marginTop: -20,
-    textAlign:'right',
+    textAlign: 'right',
     marginRight: 20,
   },
   input: {
@@ -963,6 +992,18 @@ const styles = StyleSheet.create({
     marginTop: -25,
     marginBottom: 5,
     borderRadius: 10,
+  },
+}); */
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
 

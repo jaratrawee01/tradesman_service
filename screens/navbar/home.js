@@ -12,7 +12,7 @@ class Home extends Component {
       address: null,
       technician: null,
       urlImg: null,
-      login: null,
+/*       login: null, */
       startApp: null,
     };
   }
@@ -29,9 +29,10 @@ class Home extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     const { login,startApp } = this.props.posts;
-    if (prevProps.login !== this.state.login && this.state.login  !== null) {
+    if (prevProps.login !== login && this.state.login  !== null) {
       this.getTechnician_type();
     }
+    
 
     if (startApp !== this.state.startApp) {
       this.setState({
@@ -46,7 +47,7 @@ class Home extends Component {
       technician: result,
       address: this.props.posts.address,
       urlImg: this.props.posts.urlImage,
-      login: this.props.posts.login,
+/*       login: this.props.posts.login, */
     });
   }
 
@@ -54,7 +55,7 @@ class Home extends Component {
   setUrl = () => {
     this.props.dispatch({
       type: 'ADD_URL',
-      payload: "http://th-projet.com/api-database/images/"
+      payload: "https://th-projet.com/api-database/images/"
     })
   }
 
@@ -72,7 +73,7 @@ class Home extends Component {
 
   setLogin(e) {
 
-    if (this.state.login !== null) {
+    if (this.props.posts.login !== null) {
       this.props.navigation.navigate("Tradesman");
       this.props.dispatch({
         type: 'ADD_TECHNICAN',
@@ -311,7 +312,7 @@ class Home extends Component {
 
 
   render() {
-    console.log(this.props.posts.startApp);
+
     const login_props = this.props.posts.login;
     const {startApp} = this.state;
     return (
@@ -345,6 +346,9 @@ const styles = StyleSheet.create({
 
   },
   boxhead: {
+    
+    display: "flex",
+    justifyContent: "center",
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginBottom: 20,

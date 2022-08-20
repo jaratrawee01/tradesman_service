@@ -222,9 +222,11 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
 
   useEffect(() => {
     if (location.longitude === null) {
+      console.log("asdasdad");
       getLocation();
       map();
     }
+    console.log("555555");
 /*     if (statusAddress === null) {
       getAddress_user(idPhone);
     } */
@@ -344,9 +346,9 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
 
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
-              <View style={styles.containerMap}>
-                {location.longitude === null ? null : <>{map()}</>}
-              </View>
+     {/*          <View style={styles.containerMap}>
+                {location.longitude === null ? null : null }
+              </View> */}
               <TouchableOpacity style={styles.button} onPress={() => serve()}>
                 <Text style={styles.text}>บันทึก</Text>
               </TouchableOpacity>
@@ -420,7 +422,8 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
               <View style={styles.box1}>
                 {statusAddress.location !== undefined ? (
                   <>
-                    <MapView
+                  {null}
+               {/*      <MapView
                       style={styles.map}
                       initialRegion={{
                         latitude: statusAddress.location.latitude,
@@ -439,7 +442,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
                           <Text>ตำเเหน่งของคุณ</Text>
                         </Callout>
                       </Marker>
-                    </MapView>
+                    </MapView> */}
                   </>
                 ) : null}
               </View>
@@ -567,7 +570,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
               </View>
               <Text style={styles.text2}>{"GPS"}</Text>
               <View style={styles.containerMap}>
-                {location.longitude === null ? null : <>{map()}</>}
+                {location.longitude === null ? null : null/*  <>{map()}</> */}
               </View>
               <TouchableOpacity style={styles.button} onPress={() => update()}>
                 <Text style={styles.text}>บันทึก</Text>
@@ -582,6 +585,7 @@ const Address_user = ({ navigation: { popToTop, navigate } }) => {
   /*   console.log(useSelector((state) => ({ ...state })));
    */
 
+  console.log("AAAA");
   return (
     <>
       {statusAddress === null
@@ -604,7 +608,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: "auto",
-    height: 200,
+    height: 300,
   },
   icons: {
     fontSize: 25,
@@ -656,8 +660,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   box1: {
-    height: 200,
-    width: 300,
+    height: 300,
+    width: "90%",
     backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOpacity: 0.3,
@@ -739,7 +743,7 @@ const styles = StyleSheet.create({
   },
   box7: {
     height: 40,
-    width: 300,
+    width: "90%",
     backgroundColor: "#e8e9e9",
     shadowColor: "#000",
     shadowOpacity: 0.3,
